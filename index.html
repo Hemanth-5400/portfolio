@@ -41,7 +41,7 @@
       position: relative;
     }
 
-    /* Dedicated Fullscreen Logic Gates & PCB Canvas */
+    /* Fullscreen Logic Gates & Circuit Background */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -58,7 +58,7 @@
       z-index: 1;
     }
 
-    /* Navbar */
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -530,4 +530,773 @@
       border-radius: 10px;
       max-width: 88%;
       line-height: 1.45;
-      white-
+      white-space: pre-wrap;
+    }
+
+    .ai-msg-bot {
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      align-self: flex-start;
+      color: #e2e8f0;
+    }
+
+    .ai-msg-user {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      align-self: flex-end;
+      color: #f0fdf4;
+    }
+
+    .ai-quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .quick-chip {
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      color: var(--primary);
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .quick-chip:hover {
+      background: rgba(0, 212, 255, 0.25);
+    }
+
+    .ai-footer {
+      padding: 0.75rem;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(6, 10, 18, 0.6);
+    }
+
+    .ai-input {
+      flex: 1;
+      background: rgba(16, 28, 48, 0.7);
+      border: 1px solid var(--card-border);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .ai-input:focus {
+      border-color: var(--primary);
+    }
+
+    .ai-send {
+      background: var(--primary);
+      border: none;
+      color: #060a12;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 3.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 850px) {
+      .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+      }
+      .hero-btns {
+        justify-content: center;
+      }
+      .hero h1 { font-size: 2.2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="pcb-canvas"></canvas>
+
+  <div class="site-wrapper">
+    <nav>
+      <div class="logo"><i class="fas fa-microchip"></i> &lt;Dogga /&gt;</div>
+      <ul class="nav-links">
+        <li><a href="#patents">Patents</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge"><i class="fas fa-bolt"></i> B.Tech ECE (AIoT) • Hardware Security & VLSI</div>
+          <h1>Hi, I'm <span>Hema Prasad Dogga.</span></h1>
+          <p>Results-oriented Electronics and Communication Engineering student focused on building innovative solutions across RISC-V Hardware Security, Cloud-Connected AIoT, Industrial PLC Automation, and Digital VLSI.</p>
+          <div class="hero-btns">
+            <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" class="btn btn-primary">
+              <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
+            <button class="btn btn-ai" onclick="toggleAIChat()">
+              <i class="fas fa-robot"></i> Ask AI Assistant
+            </button>
+            <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" class="btn btn-outline">
+              <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp Direct
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrapper">
+          <div class="profile-glow"></div>
+          <div class="profile-img-container">
+            <img src="hemanth.jpeg" alt="Hema Prasad Dogga" class="profile-img" onerror="this.src='https://github.com/Hemanth-5400.png';" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="patents">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
+        <div class="grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
+              <span class="tag">App: 459423-001</span>
+            </div>
+            <div class="card-meta">Utility Patent • Granted 2025</div>
+            <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
+              <span class="tag">App: 202511118413</span>
+            </div>
+            <div class="card-meta">Design Patent • Granted 2025</div>
+            <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Lighting Shrub</h3>
+              <span class="tag">App: 465417-001</span>
+            </div>
+            <div class="card-meta">Design Patent • Granted 2025</div>
+            <p class="card-desc">Decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">IEEE Research Publication</h3>
+              <span class="tag">IEEE Xplore</span>
+            </div>
+            <div class="card-meta">Research Paper • Doc ID: 11400200</div>
+            <p class="card-desc">"A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications."</p>
+            <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View on IEEE Xplore &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
+        <div class="grid">
+          <div class="card card-featured">
+            <div class="card-header">
+              <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
+              <span class="tag tag-highlight">⚡ Ongoing (Funded)</span>
+            </div>
+            <div class="card-meta">Internal Research Grant (₹1,00,000) • MRIIRS (2026–2028)</div>
+            <p class="card-desc">Sanctioned research work implementing root-of-trust hardware cryptographic primitives, side-channel attack countermeasures, and security extensions on the open-source RISC-V instruction set architecture.</p>
+            <div class="tag-list">
+              <span class="tag">RISC-V ISA</span>
+              <span class="tag">Hardware Security</span>
+              <span class="tag">Verilog HDL</span>
+              <span class="tag">FPGA Emulation</span>
+              <span class="tag">Vivado</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">AI Fruit Sorting System (PLC + Jetson Nano)</h3>
+            <div class="card-meta">Edge AI & Industrial Automation (2026)</div>
+            <p class="card-desc">Deep learning computer vision model deployed on Nvidia Jetson Nano coupled with industrial Mitsubishi PLC for real-time fruit grading and pneumatic sorting.</p>
+            <div class="tag-list">
+              <span class="tag">Jetson Nano</span>
+              <span class="tag">PLC (GX Works3)</span>
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Cloud-Connected Smart Agriculture Boat</h3>
+            <div class="card-meta">AgriTech & Cloud Telemetry (2024)</div>
+            <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection.</p>
+            <div class="tag-list">
+              <span class="tag">ESP32-CAM</span>
+              <span class="tag">AWS IoT / MQTT</span>
+              <span class="tag">ThingSpeak</span>
+              <span class="tag">C++</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">IoT Prenatal Health Cloud Monitor</h3>
+            <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)</div>
+            <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness.</p>
+            <div class="tag-list">
+              <span class="tag">ESP8266</span>
+              <span class="tag">ThingSpeak Cloud</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Sensors</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Mobile Safety Cloud Tracking System</h3>
+            <div class="card-meta">Embedded Security & Cloud Logging (2024)</div>
+            <p class="card-desc">Safety telemetry tracker featuring real-time coordinate broadcasting, geofencing, and emergency trigger alerts over cloud-hosted endpoints.</p>
+            <div class="tag-list">
+              <span class="tag">ESP32</span>
+              <span class="tag">GPS/Wi-Fi</span>
+              <span class="tag">Firebase Cloud</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Smart Cloud Relay Switch</h3>
+            <div class="card-meta">Home Automation (2024)</div>
+            <p class="card-desc">Low-latency cloud-controlled power relay system designed using ESP8266 supporting remote switching via MQTT brokers.</p>
+            <div class="tag-list">
+              <span class="tag">ESP8266</span>
+              <span class="tag">MQTT Cloud</span>
+              <span class="tag">Home Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
+            <div class="tag-list">
+              <span class="tag">Circuit Designing</span>
+              <span class="tag">Zero PCB Designing</span>
+              <span class="tag">ESP32 / ESP8266</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">Jetson Nano</span>
+              <span class="tag">Proteus</span>
+              <span class="tag">Tinkercad</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3><i class="fas fa-cloud"></i> Cloud & IoT Protocols</h3>
+            <div class="tag-list">
+              <span class="tag">ThingSpeak Cloud</span>
+              <span class="tag">AWS IoT Core</span>
+              <span class="tag">MQTT Protocol</span>
+              <span class="tag">HTTP / REST APIs</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">n8n Automation</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
+            <div class="tag-list">
+              <span class="tag">Vivado</span>
+              <span class="tag">Quartus Prime</span>
+              <span class="tag">Cadence Virtuoso</span>
+              <span class="tag">GX Works3 (PLC)</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Fusion 360</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3><i class="fas fa-terminal"></i> Languages & Architecture</h3>
+            <div class="tag-list">
+              <span class="tag">RISC-V ISA</span>
+              <span class="tag">Verilog HDL</span>
+              <span class="tag">Python</span>
+              <span class="tag">C / Embedded C</span>
+              <span class="tag">PLC Ladder Logic</span>
+              <span class="tag">Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
+        <div class="grid">
+          <div class="card">
+            <h3 class="card-title">₹1,00,000 Research Grant Sanction</h3>
+            <div class="card-meta">MRIIRS Research Board • July 2026</div>
+            <p class="card-desc">Sanctioned research funding for 24-month project on "Hardware Security Implementation on RISC-V Architecture".</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">6th Mitsubishi Electric Cup</h3>
+            <div class="card-meta">National Level • Feb 2026</div>
+            <p class="card-desc">Awarded National Appreciation for engineering automation model implementation.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">INNOSKILL 2025 (Srijan)</h3>
+            <div class="card-meta">2nd Prize • April 2025</div>
+            <p class="card-desc">Hardware prototype innovation award at the annual institute festival.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Health Tech Innovation (CHI)</h3>
+            <div class="card-meta">1st Prize • April 2024</div>
+            <p class="card-desc">1st place for developing the IoT-based maternal healthcare monitoring system.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container">
+        <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
+        <p style="margin-bottom: 1rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
+        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1rem;">
+          <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--primary);">&copy; 2026 Hema Prasad Dogga. Hosted on GitHub Pages.</p>
+      </div>
+    </footer>
+  </div>
+
+  <div class="floating-actions">
+    <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+      <span class="badge-tooltip">Chat with Hema Prasad</span>
+    </a>
+    <button class="float-btn float-ai" onclick="toggleAIChat()" title="AI Portfolio Assistant">
+      <i class="fas fa-robot"></i>
+      <span class="badge-tooltip">Ask AI Assistant</span>
+    </button>
+  </div>
+
+  <div class="ai-modal" id="aiModal">
+    <div class="ai-header">
+      <h4><i class="fas fa-microchip"></i> Hema's AI Assistant</h4>
+      <button class="ai-close" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="ai-body" id="aiChatBody">
+      <div class="ai-msg ai-msg-bot">
+        Hello! I am Hema Prasad's AI assistant. Ask me anything about his technical background, RISC-V research, patents, or digital electronics concepts (Mealy vs Moore FSMs, Setup/Hold time, Verilog, etc.)!
+        <div class="ai-quick-replies">
+          <span class="quick-chip" onclick="askQuestion('What is Mealy and Moore machine?')">Mealy vs Moore?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V project')">RISC-V Project?</span>
+          <span class="quick-chip" onclick="askQuestion('What are your patents?')">Patents?</span>
+          <span class="quick-chip" onclick="askQuestion('What are your skills?')">Skills?</span>
+        </div>
+      </div>
+    </div>
+    <div class="ai-footer">
+      <input type="text" id="aiInput" class="ai-input" placeholder="Ask a question..." onkeypress="handleKeyPress(event)" />
+      <button class="ai-send" onclick="sendUserMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('pcb-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let traces = [];
+    let logicGates = [];
+    let icChips = [];
+    let pulses = [];
+    let mouse = { x: -1000, y: -1000 };
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      buildDigitalBoard();
+    }
+
+    class LogicGate {
+      constructor(x, y, type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+        this.w = 42;
+        this.h = 30;
+      }
+
+      draw() {
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.28)';
+        ctx.lineWidth = 1.4;
+
+        const { x, y, w, h } = this;
+
+        ctx.beginPath();
+        ctx.moveTo(x - 12, y - h / 3);
+        ctx.lineTo(x, y - h / 3);
+        if (this.type !== 'NOT') {
+          ctx.moveTo(x - 12, y + h / 3);
+          ctx.lineTo(x, y + h / 3);
+        }
+        ctx.moveTo(x + w, y);
+        ctx.lineTo(x + w + 12, y);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
+        ctx.beginPath();
+        ctx.arc(x - 12, y - h / 3, 2, 0, Math.PI * 2);
+        if (this.type !== 'NOT') ctx.arc(x - 12, y + h / 3, 2, 0, Math.PI * 2);
+        ctx.arc(x + w + 12, y, 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        if (this.type === 'AND' || this.type === 'NAND') {
+          ctx.moveTo(x, y - h / 2);
+          ctx.lineTo(x + w / 2, y - h / 2);
+          ctx.arc(x + w / 2, y, h / 2, -Math.PI / 2, Math.PI / 2);
+          ctx.lineTo(x, y + h / 2);
+          ctx.closePath();
+        } else if (this.type === 'OR' || this.type === 'NOR') {
+          ctx.moveTo(x, y - h / 2);
+          ctx.quadraticCurveTo(x + w * 0.4, y - h * 0.4, x + w, y);
+          ctx.quadraticCurveTo(x + w * 0.4, y + h * 0.4, x, y + h / 2);
+          ctx.quadraticCurveTo(x + w * 0.25, y, x, y - h / 2);
+          ctx.closePath();
+        } else if (this.type === 'NOT') {
+          ctx.moveTo(x, y - h / 2);
+          ctx.lineTo(x + w, y);
+          ctx.lineTo(x, y + h / 2);
+          ctx.closePath();
+        } else if (this.type === 'XOR') {
+          ctx.moveTo(x - 6, y - h / 2);
+          ctx.quadraticCurveTo(x + w * 0.2 - 6, y, x - 6, y + h / 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(x, y - h / 2);
+          ctx.quadraticCurveTo(x + w * 0.4, y - h * 0.4, x + w, y);
+          ctx.quadraticCurveTo(x + w * 0.4, y + h * 0.4, x, y + h / 2);
+          ctx.quadraticCurveTo(x + w * 0.25, y, x, y - h / 2);
+          ctx.closePath();
+        }
+        ctx.fillStyle = 'rgba(7, 15, 28, 0.9)';
+        ctx.fill();
+        ctx.stroke();
+
+        if (this.type === 'NOT' || this.type === 'NAND' || this.type === 'NOR') {
+          ctx.beginPath();
+          ctx.arc(x + w + 3, y, 3, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(7, 15, 28, 0.9)';
+          ctx.fill();
+          ctx.stroke();
+        }
+
+        ctx.font = '9px JetBrains Mono';
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
+        ctx.fillText(this.type, x + 6, y + 3);
+      }
+    }
+
+    class CircuitTrace {
+      constructor(startX, startY) {
+        this.points = [{ x: startX, y: startY }];
+        this.segments = Math.floor(Math.random() * 4) + 3;
+        this.generateOrthogonalPath(startX, startY);
+      }
+
+      generateOrthogonalPath(x, y) {
+        let curX = x;
+        let curY = y;
+        const step = 55;
+
+        for (let i = 0; i < this.segments; i++) {
+          const moveType = Math.floor(Math.random() * 4);
+          if (moveType === 0) curX += (Math.random() > 0.5 ? step : -step);
+          else if (moveType === 1) curY += (Math.random() > 0.5 ? step : -step);
+          else if (moveType === 2) {
+            const diag = step * 0.707;
+            curX += (Math.random() > 0.5 ? diag : -diag);
+            curY += (Math.random() > 0.5 ? diag : -diag);
+          } else {
+            curX += (Math.random() > 0.5 ? step * 1.5 : -step * 1.5);
+          }
+          this.points.push({ x: curX, y: curY });
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        for (let i = 1; i < this.points.length; i++) {
+          ctx.lineTo(this.points[i].x, this.points[i].y);
+        }
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.14)';
+        ctx.lineWidth = 1.3;
+        ctx.stroke();
+
+        for (let pt of this.points) {
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.35)';
+          ctx.fill();
+        }
+      }
+    }
+
+    class CircuitPulse {
+      constructor(trace) {
+        this.trace = trace;
+        this.currentSegment = 0;
+        this.progress = 0;
+        this.speed = 0.012 + Math.random() * 0.018;
+        this.color = Math.random() > 0.35 ? '#00d4ff' : '#10b981';
+      }
+
+      update() {
+        this.progress += this.speed;
+        if (this.progress >= 1) {
+          this.progress = 0;
+          this.currentSegment++;
+          if (this.currentSegment >= this.trace.points.length - 1) {
+            this.currentSegment = 0;
+          }
+        }
+      }
+
+      draw() {
+        const p1 = this.trace.points[this.currentSegment];
+        const p2 = this.trace.points[this.currentSegment + 1];
+        if (!p1 || !p2) return;
+
+        const x = p1.x + (p2.x - p1.x) * this.progress;
+        const y = p1.y + (p2.y - p1.y) * this.progress;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = this.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function buildDigitalBoard() {
+      traces = [];
+      logicGates = [];
+      icChips = [];
+      pulses = [];
+
+      const gateTypes = ['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XOR'];
+      const gateCount = Math.floor((width * height) / 75000) + 6;
+
+      for (let i = 0; i < gateCount; i++) {
+        const x = Math.random() * (width - 140) + 70;
+        const y = Math.random() * (height - 140) + 70;
+        const type = gateTypes[Math.floor(Math.random() * gateTypes.length)];
+        logicGates.push(new LogicGate(x, y, type));
+
+        const trace = new CircuitTrace(x + 54, y);
+        traces.push(trace);
+        pulses.push(new CircuitPulse(trace));
+      }
+
+      const chipCount = Math.floor((width * height) / 180000) + 2;
+      for (let i = 0; i < chipCount; i++) {
+        icChips.push({
+          x: Math.random() * (width - 150) + 75,
+          y: Math.random() * (height - 150) + 75,
+          w: 80 + Math.random() * 40,
+          h: 60 + Math.random() * 30,
+          label: i % 2 === 0 ? 'RISC-V_RV32I' : 'FPGA_SEC',
+          pins: 6
+        });
+      }
+
+      const extraTraces = Math.floor((width * height) / 35000) + 6;
+      for (let i = 0; i < extraTraces; i++) {
+        const startX = Math.floor((Math.random() * width) / 40) * 40;
+        const startY = Math.floor((Math.random() * height) / 40) * 40;
+        const trace = new CircuitTrace(startX, startY);
+        traces.push(trace);
+        pulses.push(new CircuitPulse(trace));
+      }
+    }
+
+    function drawChips() {
+      for (let chip of icChips) {
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.16)';
+        ctx.lineWidth = 1.2;
+        ctx.fillStyle = 'rgba(6, 12, 22, 0.85)';
+        ctx.fillRect(chip.x, chip.y, chip.w, chip.h);
+        ctx.strokeRect(chip.x, chip.y, chip.w, chip.h);
+
+        ctx.beginPath();
+        ctx.arc(chip.x + 10, chip.y + chip.h / 2, 4, -Math.PI / 2, Math.PI / 2);
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
+        ctx.fill();
+
+        ctx.font = '10px JetBrains Mono';
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.45)';
+        ctx.fillText(chip.label, chip.x + 12, chip.y + chip.h / 2 + 3);
+
+        const pinGap = chip.w / (chip.pins + 1);
+        for (let p = 1; p <= chip.pins; p++) {
+          const px = chip.x + p * pinGap;
+          ctx.beginPath();
+          ctx.moveTo(px, chip.y);
+          ctx.lineTo(px, chip.y - 7);
+          ctx.moveTo(px, chip.y + chip.h);
+          ctx.lineTo(px, chip.y + chip.h + 7);
+          ctx.stroke();
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let gate of logicGates) gate.draw();
+      drawChips();
+      for (let trace of traces) trace.draw();
+      for (let pulse of pulses) {
+        pulse.update();
+        pulse.draw();
+      }
+
+      if (mouse.x > 0) {
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 80, 0, Math.PI * 2);
+        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, 80);
+        grad.addColorStop(0, 'rgba(0, 212, 255, 0.22)');
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+
+    // AI Career & Free LLM Integration Engine
+    const systemPrompt = `You are the personal AI Assistant for Dogga Hema Prasad, an ECE (AIoT) student at MRIIRS specializing in RISC-V Hardware Security, VLSI Design, and Edge AI.
+Portfolio Details:
+- Ongoing Research: Sanctioned Research Project 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026-2028).
+- Patents: 1 Utility Patent (Gesture Pen HCI Interface) and 2 Design Patents (Autonomous Smart Shopping Cart, Lighting Shrub).
+- Research Paper: IEEE Xplore publication on Gesture-Based Pen HCI Interfaces.
+- Projects: AI Fruit Sorting (Jetson Nano + PLC), IoT Agriculture Boat, Prenatal Health Monitor, Safety Tracker.
+- Skills: RISC-V ISA, Verilog HDL, Vivado, Cadence Virtuoso, Quartus Prime, Python, C, PLC (GX Works3), ThingSpeak Cloud, AWS IoT, MQTT.
+- Contact: doggahemant@gmail.com, +91 7569330584.
+Instructions:
+Answer questions professionally and concisely. If asked technical questions (e.g., Mealy vs Moore, Setup & Hold time, Verilog, FSMs, Computer Architecture), explain them clearly and accurately.`;
+
+    const aiKnowledge = {
+      mealy_moore: "In Finite State Machines (FSMs):\n\n• Moore Machine: Outputs depend SOLELY on the current state. Outputs are synchronous with the clock.\n\n• Mealy Machine: Outputs depend on BOTH the current state AND inputs. Outputs can change asynchronously immediately when inputs change.",
+      setup_hold: "Timing Constraints in Digital Circuits:\n\n• Setup Time (T_setup): Minimum time data must be stable BEFORE the active clock edge.\n• Hold Time (T_hold): Minimum time data must remain stable AFTER the active clock edge.\nViolations cause metastability.",
+      riscv: "Hema Prasad is conducting funded research on 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026–2028), developing hardware crypto modules and side-channel countermeasures on RISC-V cores."
+    };
+
+    function toggleAIChat() {
+      const modal = document.getElementById('aiModal');
+      modal.classList.toggle('active');
+    }
+
+    function askQuestion(questionText) {
+      document.getElementById('aiInput').value = questionText;
+      sendUserMessage();
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') sendUserMessage();
+    }
+
+    async function sendUserMessage() {
+      const input = document.getElementById('aiInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBody = document.getElementById('aiChatBody');
+
+      const userDiv = document.createElement('div');
+      userDiv.className = 'ai-msg ai-msg-user';
+      userDiv.innerText = text;
+      chatBody.appendChild(userDiv);
+
+      input.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      const botDiv = document.createElement('div');
+      botDiv.className = 'ai-msg ai-msg-bot';
+      botDiv.innerText = 'Thinking...';
+      chatBody.appendChild(botDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      try {
+        if (window.puter && puter.ai) {
+          const response = await puter.ai.chat(
+            `${systemPrompt}\n\nUser Question: ${text}`
+          );
+          botDiv.innerText = response.message ? response.message.content : response;
+          chatBody.scrollTop = chatBody.scrollHeight;
+          return;
+        }
+      } catch (err) {
+        console.warn('Puter AI fallback triggered:', err);
+      }
+
+      const q = text.toLowerCase();
+      let fallbackReply = `Regarding "${text}": Hema Prasad is an ECE undergraduate at MRIIRS specializing in RISC-V Hardware Security (sanctioned ₹1,00,000 grant), Edge AI with Jetson Nano, and VLSI. Feel free to contact him directly at doggahemant@gmail.com or via WhatsApp!`;
+
+      if (q.includes('mealy') || q.includes('moor') || q.includes('melay') || q.includes('moore')) {
+        fallbackReply = aiKnowledge.mealy_moore;
+      } else if (q.includes('setup') || q.includes('hold')) {
+        fallbackReply = aiKnowledge.setup_hold;
+      } else if (q.includes('risc') || q.includes('grant') || q.includes('security')) {
+        fallbackReply = aiKnowledge.riscv;
+      }
+
+      botDiv.innerText = fallbackReply;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  </script>
+</body>
+</html>
