@@ -40,7 +40,6 @@
       position: relative;
     }
 
-    /* Fullscreen Logic Gates & Circuit Background */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -57,7 +56,6 @@
       z-index: 1;
     }
 
-    /* Navigation */
     nav {
       position: fixed;
       top: 0;
@@ -113,7 +111,6 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Hero Section */
     .hero {
       min-height: 95vh;
       display: flex;
@@ -227,7 +224,6 @@
       transform: translateY(-2px);
     }
 
-    /* Profile Frame */
     .hero-photo-wrapper {
       position: relative;
       flex-shrink: 0;
@@ -387,7 +383,6 @@
       gap: 0.5rem;
     }
 
-    /* Floating Action Buttons */
     .floating-actions {
       position: fixed;
       bottom: 25px;
@@ -459,7 +454,6 @@
       transform: translateX(0);
     }
 
-    /* AI Assistant Modal */
     .ai-modal {
       position: fixed;
       bottom: 95px;
@@ -666,7 +660,6 @@
       </div>
     </header>
 
-    <!-- Research & Patents -->
     <section id="patents">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
@@ -711,7 +704,6 @@
       </div>
     </section>
 
-    <!-- Featured Projects -->
     <section id="projects">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
@@ -793,7 +785,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
@@ -850,7 +841,6 @@
       </div>
     </section>
 
-    <!-- Achievements -->
     <section id="achievements">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
@@ -882,7 +872,6 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
       <div class="container">
         <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
@@ -897,7 +886,6 @@
     </footer>
   </div>
 
-  <!-- Floating Buttons -->
   <div class="floating-actions">
     <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
@@ -909,7 +897,6 @@
     </button>
   </div>
 
-  <!-- AI Assistant Window -->
   <div class="ai-modal" id="aiModal">
     <div class="ai-header">
       <h4><i class="fas fa-microchip"></i> Hema's AI Assistant</h4>
@@ -917,7 +904,7 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad's AI assistant. Ask me anything about his technical background, RISC-V research, patents, or digital electronics concepts (Mealy vs Moore FSMs, Setup/Hold time, Verilog, etc.)!
+        Hello! I am Hema Prasad's AI assistant. Ask me anything about his technical background, RISC-V research, patents, or any engineering concepts (Mealy vs Moore FSMs, Setup/Hold time, Verilog, etc.)!
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('What is Mealy and Moore machine?')">Mealy vs Moore?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V project')">RISC-V Project?</span>
@@ -932,7 +919,6 @@
     </div>
   </div>
 
-  <!-- Logic Gates, IC Packages & Circuit Animation Engine -->
   <script>
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
@@ -1224,20 +1210,30 @@
     resize();
     animate();
 
-    // Comprehensive Technical & Career AI Knowledge Base
-    const aiKnowledge = {
-      mealy_moore: "In Finite State Machines (FSMs):\n\n• Moore Machine: Outputs depend SOLELY on the current state. State transitions occur on clock edges, and outputs are synchronous with the clock.\n\n• Mealy Machine: Outputs depend on BOTH the current state AND the current inputs. Outputs can change asynchronously whenever inputs change, often requiring fewer states than a Moore machine.",
-      setup_hold: "Timing Constraints in Digital Circuits:\n\n• Setup Time (T_setup): The minimum time duration before the clock edge during which the data input must remain stable.\n• Hold Time (T_hold): The minimum time duration after the clock edge during which the data input must remain stable.\nViolating either causes metastability.",
-      fsm: "A Finite State Machine (FSM) is a sequential digital circuit model consisting of a finite number of states, transition conditions, and outputs based on inputs and clock pulses (classified into Mealy and Moore machines).",
-      latch_flipflop: "• Latch: Level-sensitive storage element that updates output as long as the clock/enable is active.\n• Flip-Flop: Edge-triggered storage element that captures input only on the rising or falling edge of the clock signal.",
-      verilog: "Verilog is a Hardware Description Language (HDL) used to design, simulate, and synthesize digital circuits at behavioral, dataflow, and structural register-transfer levels (RTL).",
-      riscv: "• Research Work: Hema Prasad is actively researching 'Hardware Security Implementation on RISC-V Architecture' (Sanctioned Grant of ₹1,00,000, 2026–2028, MRIIRS).\n• Architecture: RISC-V is an open-standard Instruction Set Architecture (ISA) with a clean load-store modular architecture (RV32I/RV64I base).",
-      cloud: "Cloud & IoT Competencies:\n• Platforms: ThingSpeak Cloud, AWS IoT Core, Firebase\n• Telemetry: MQTT Brokers, REST APIs, WebSockets\n• Edge Hardware: ESP32, ESP8266, Jetson Nano.",
-      patents: "Hema Prasad holds 3 patent applications:\n1. Utility Patent: Wireless Pen HCI Interface (App: 459423-001)\n2. Design Patent: Autonomous Smart Shopping Cart (App: 202511118413)\n3. Design Patent: Lighting Shrub (App: 465417-001).",
-      projects: "Key Projects:\n• RISC-V Hardware Security Implementation (Funded Research Grant)\n• AI Fruit Sorting System (Nvidia Jetson Nano + Mitsubishi PLC)\n• Cloud-Connected Smart Agriculture Boat (ESP32-CAM + MQTT)\n• IoT Prenatal Maternal Health Cloud Monitor (ThingSpeak)\n• Mobile Safety Tracking System.",
-      skills: "Technical Skills:\n• Architecture & EDA: RISC-V ISA, Verilog HDL, Vivado, Cadence Virtuoso, Quartus Prime\n• Cloud & IoT: ThingSpeak, AWS IoT Core, MQTT, REST APIs, Firebase\n• Edge AI & Automation: Jetson Nano, Python, OpenCV, PLC Ladder Logic (GX Works3).",
-      contact: "Contact Details:\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400",
-      research: "Hema is an author on IEEE Xplore: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications' (Doc ID: 11400200)."
+    // Universal AI Assistant Engine
+    const systemPrompt = `You are the AI Assistant on Dogga Hema Prasad's portfolio.
+Hema's Background:
+- ECE (AIoT) student at MRIIRS specializing in RISC-V Hardware Security, VLSI Design, and Edge AI.
+- Sanctioned Research: 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026-2028).
+- Patents: 1 Utility Patent (Wireless Gesture Pen HCI) + 2 Design Patents (Autonomous Shopping Cart, Lighting Shrub).
+- Research Paper: IEEE Xplore publication on Gesture Pen Interfaces.
+- Projects: AI Fruit Sorting (Jetson Nano + PLC), IoT Agriculture Boat, Prenatal Health Monitor, Safety Tracker.
+- Skills: RISC-V ISA, Verilog HDL, Vivado, Cadence Virtuoso, Quartus Prime, Python, C, PLC (GX Works3), ThingSpeak, AWS IoT, MQTT.
+- Contact: doggahemant@gmail.com, +91 7569330584.
+
+Instructions:
+Answer ALL questions accurately and concisely.
+- For technical questions (Mealy vs Moore, Setup/Hold time, Verilog, flip-flops, FSM, logic gates, AI, etc.), explain the concept clearly.
+- For portfolio questions, highlight Hema's relevant work.`;
+
+    let chatHistory = [
+      { role: "system", content: systemPrompt }
+    ];
+
+    const localKnowledge = {
+      mealy_moore: "In Finite State Machines (FSMs):\n\n• Moore Machine: Outputs depend SOLELY on the current state. Outputs change synchronously on clock edges.\n\n• Mealy Machine: Outputs depend on BOTH the current state AND current inputs. Outputs can change asynchronously immediately when inputs change, often requiring fewer states.",
+      setup_hold: "Timing Constraints in Digital Design:\n\n• Setup Time (T_setup): Minimum time data must be stable BEFORE the active clock edge.\n• Hold Time (T_hold): Minimum time data must remain stable AFTER the active clock edge.\nViolating either results in metastability.",
+      riscv: "Hema Prasad is conducting funded research on 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026–2028), focusing on hardware cryptography modules, side-channel attack countermeasures, and security extensions on the RISC-V ISA."
     };
 
     function toggleAIChat() {
@@ -1254,65 +1250,71 @@
       if (e.key === 'Enter') sendUserMessage();
     }
 
-    function sendUserMessage() {
+    async function sendUserMessage() {
       const input = document.getElementById('aiInput');
       const text = input.value.trim();
       if (!text) return;
 
       const chatBody = document.getElementById('aiChatBody');
 
-      // Append user message
+      // Append user message to UI
       const userDiv = document.createElement('div');
       userDiv.className = 'ai-msg ai-msg-user';
       userDiv.innerText = text;
       chatBody.appendChild(userDiv);
 
       input.value = '';
+      chatBody.scrollTop = chatBody.scrollHeight;
 
-      setTimeout(() => {
-        const botDiv = document.createElement('div');
-        botDiv.className = 'ai-msg ai-msg-bot';
+      // Loading bubble
+      const botDiv = document.createElement('div');
+      botDiv.className = 'ai-msg ai-msg-bot';
+      botDiv.innerText = 'Thinking...';
+      chatBody.appendChild(botDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
 
+      chatHistory.push({ role: "user", content: text });
+
+      let answered = false;
+
+      // Attempt Free LLM API Call
+      try {
+        const response = await fetch('https://text.pollinations.ai/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: chatHistory,
+            model: 'openai'
+          })
+        });
+
+        if (response.ok) {
+          const aiResponse = await response.text();
+          if (aiResponse && aiResponse.trim().length > 0) {
+            botDiv.innerText = aiResponse.trim();
+            chatHistory.push({ role: "assistant", content: aiResponse.trim() });
+            answered = true;
+          }
+        }
+      } catch (err) {
+        console.warn('Online LLM API issue, falling back to local engine:', err);
+      }
+
+      // Offline / Local Knowledge Fallback
+      if (!answered) {
         const q = text.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
-        let reply = "";
+        let fallbackReply = `Regarding "${text}": Hema Prasad is an ECE undergraduate at MRIIRS specializing in RISC-V Hardware Security (sanctioned ₹1,00,000 grant), Edge AI with Jetson Nano, and VLSI. Feel free to contact him directly at doggahemant@gmail.com or via WhatsApp (+91 7569330584)!`;
 
-        // 1. Digital Electronics & VLSI concepts (with typo matching)
         if (q.includes('mealy') || q.includes('moor') || q.includes('melay') || q.includes('moore')) {
-          reply = aiKnowledge.mealy_moore;
-        } else if (q.includes('setup') || q.includes('hold') || q.includes('metastability')) {
-          reply = aiKnowledge.setup_hold;
-        } else if (q.includes('latch') || q.includes('flip flop') || q.includes('flipflop')) {
-          reply = aiKnowledge.latch_flipflop;
-        } else if (q.includes('fsm') || q.includes('state machine') || q.includes('finite state')) {
-          reply = aiKnowledge.fsm;
-        } else if (q.includes('verilog') || q.includes('hdl') || q.includes('rtl')) {
-          reply = aiKnowledge.verilog;
-        }
-        // 2. Personal, Grants & Portfolio Data
-        else if (q.includes('risc') || q.includes('security') || q.includes('grant') || q.includes('fund')) {
-          reply = aiKnowledge.riscv;
-        } else if (q.includes('cloud') || q.includes('thingspeak') || q.includes('mqtt') || q.includes('aws') || q.includes('firebase')) {
-          reply = aiKnowledge.cloud;
-        } else if (q.includes('patent') || q.includes('ip') || q.includes('invention')) {
-          reply = aiKnowledge.patents;
-        } else if (q.includes('project') || q.includes('work') || q.includes('jetson') || q.includes('plc') || q.includes('boat')) {
-          reply = aiKnowledge.projects;
-        } else if (q.includes('skill') || q.includes('tool') || q.includes('software') || q.includes('language') || q.includes('eda')) {
-          reply = aiKnowledge.skills;
-        } else if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach')) {
-          reply = aiKnowledge.contact;
-        } else if (q.includes('research') || q.includes('paper') || q.includes('ieee') || q.includes('publication')) {
-          reply = aiKnowledge.research;
-        } else if (q.includes('hi') || q.includes('hello') || q.includes('hey')) {
-          reply = "Hello! I am Hema Prasad's technical assistant. Ask me anything about his RISC-V research, patents, or technical VLSI concepts (like Mealy vs Moore, Setup & Hold time, Verilog, etc.)!";
-        } else {
-          reply = `You asked: "${text}".\n\nI can answer questions regarding Hema Prasad's RISC-V research, patents, projects, and technical VLSI/hardware questions (Mealy/Moore FSMs, Setup/Hold time, Verilog RTL, Edge AI). Feel free to reach Hema directly on WhatsApp at +91 7569330584!`;
+          fallbackReply = localKnowledge.mealy_moore;
+        } else if (q.includes('setup') || q.includes('hold')) {
+          fallbackReply = localKnowledge.setup_hold;
+        } else if (q.includes('risc') || q.includes('grant') || q.includes('security')) {
+          fallbackReply = localKnowledge.riscv;
         }
 
-        botDiv.innerText = reply;
-        chatBody.appendChild(botDiv);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 300);
+        botDiv.innerText = fallbackReply;
+      }
 
       chatBody.scrollTop = chatBody.scrollHeight;
     }
