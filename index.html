@@ -11,9 +11,9 @@
   
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: #111827;
-      --card-border: #1f2937;
+      --bg: #070b14;
+      --card-bg: rgba(17, 24, 39, 0.85);
+      --card-border: rgba(56, 189, 248, 0.15);
       --primary: #38bdf8;
       --primary-hover: #0ea5e9;
       --text: #f3f4f6;
@@ -35,6 +35,25 @@
       color: var(--text);
       font-family: var(--font-sans);
       line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated Canvas Background */
+    #circuit-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Content Wrapper to sit above background */
+    .site-wrapper {
+      position: relative;
+      z-index: 1;
     }
 
     /* Navbar */
@@ -42,7 +61,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(11, 15, 25, 0.85);
+      background: rgba(7, 11, 20, 0.85);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--card-border);
       z-index: 1000;
@@ -91,14 +110,69 @@
 
     /* Hero */
     .hero {
-      min-height: 90vh;
+      min-height: 95vh;
       display: flex;
       align-items: center;
       padding-top: 5rem;
     }
 
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      width: 100%;
+    }
+
     .hero-content {
-      max-width: 750px;
+      flex: 1;
+      max-width: 650px;
+    }
+
+    /* Profile Photo Styling */
+    .hero-photo-wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 270px;
+      height: 270px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(16, 185, 129, 0.1) 60%, transparent 80%);
+      border-radius: 50%;
+      filter: blur(20px);
+      z-index: 0;
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .profile-img-container {
+      position: relative;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--primary), var(--accent), #6366f1);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+      z-index: 1;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #111827;
+      display: block;
+      border: 3px solid #070b14;
     }
 
     .badge {
@@ -114,7 +188,7 @@
     }
 
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 800;
       line-height: 1.15;
       margin-bottom: 1rem;
@@ -126,7 +200,7 @@
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       margin-bottom: 2rem;
     }
@@ -151,7 +225,7 @@
 
     .btn-primary {
       background: var(--primary);
-      color: #0b0f19;
+      color: #070b14;
     }
 
     .btn-primary:hover {
@@ -159,14 +233,15 @@
     }
 
     .btn-outline {
-      background: transparent;
+      background: rgba(17, 24, 39, 0.6);
       color: var(--text);
       border: 1px solid var(--card-border);
+      backdrop-filter: blur(8px);
     }
 
     .btn-outline:hover {
       background: var(--card-bg);
-      border-color: var(--text-muted);
+      border-color: var(--primary);
     }
 
     /* Section Headers */
@@ -196,6 +271,7 @@
       border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 1.75rem;
+      backdrop-filter: blur(8px);
       transition: transform 0.2s, border-color 0.2s;
     }
 
@@ -258,6 +334,7 @@
       border: 1px solid var(--card-border);
       border-radius: 12px;
       padding: 1.5rem;
+      backdrop-filter: blur(8px);
     }
 
     .skill-box h3 {
@@ -277,7 +354,15 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 850px) {
+      .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+      }
+      .hero-btns {
+        justify-content: center;
+      }
       .hero h1 { font-size: 2.2rem; }
       .nav-links { display: none; }
     }
@@ -285,219 +370,324 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">&lt;Dogga /&gt;</div>
-    <ul class="nav-links">
-      <li><a href="#patents">Patents</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#achievements">Awards</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- Animated Interactive Circuit / VLSI Canvas -->
+  <canvas id="circuit-bg"></canvas>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container hero-content">
-      <div class="badge">🚀 B.Tech ECE (AIoT) • VLSI & Embedded Systems</div>
-      <h1>Hi, I'm <span>Hema Prasad Dogga</span></h1>
-      <p>Results-oriented Electronics and Communication Engineering student focused on building innovative solutions across IoT, Embedded Robotics, Digital VLSI, and Deep Learning hardware.</p>
-      <div class="hero-btns">
-        <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" class="btn btn-primary">
-          <i class="fab fa-linkedin"></i> Connect on LinkedIn
-        </a>
-        <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-outline">
-          <i class="fab fa-github"></i> GitHub Profile
-        </a>
-        <a href="mailto:doggahemant@gmail.com" class="btn btn-outline">
-          <i class="fas fa-envelope"></i> Get in Touch
-        </a>
-      </div>
-    </div>
-  </header>
+  <div class="site-wrapper">
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">&lt;Dogga /&gt;</div>
+      <ul class="nav-links">
+        <li><a href="#patents">Patents</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#achievements">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
-  <!-- Research & Patents -->
-  <section id="patents">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-file-signature"></i> Research & Intellectual Property</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
-            <span class="tag">App: 459423-001</span>
-          </div>
-          <div class="card-meta">Utility Patent • Granted 2025</div>
-          <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
-            <span class="tag">App: 202511118413</span>
-          </div>
-          <div class="card-meta">Design Patent • Granted 2025</div>
-          <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and checkout integration.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Lighting Shrub</h3>
-            <span class="tag">App: 465417-001</span>
-          </div>
-          <div class="card-meta">Design Patent • Granted 2025</div>
-          <p class="card-desc">Innovative decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">IEEE Research Publication</h3>
-            <span class="tag">IEEE Xplore</span>
-          </div>
-          <div class="card-meta">Research Paper • Doc ID: 11400200</div>
-          <p class="card-desc">"A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications."</p>
-          <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View Paper &rarr;</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Key Projects -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
-      <div class="grid">
-        <div class="card">
-          <h3 class="card-title">AI Fruit Sorting System (PLC + Jetson Nano)</h3>
-          <div class="card-meta">Edge AI & Industrial Automation (2026)</div>
-          <p class="card-desc">Deep learning model deployed on Nvidia Jetson Nano coupled with industrial PLC for real-time fruit grading, defect detection, and pneumatic sorting.</p>
-          <div class="tag-list">
-            <span class="tag">Jetson Nano</span>
-            <span class="tag">PLC (GX Works3)</span>
-            <span class="tag">Python</span>
-            <span class="tag">Computer Vision</span>
+    <!-- Hero Section with Photo -->
+    <header class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge">🚀 B.Tech ECE (AIoT) • VLSI & Embedded Systems</div>
+          <h1>Hi, I'm <span>Hema Prasad Dogga</span></h1>
+          <p>Results-oriented Electronics and Communication Engineering student focused on building innovative solutions across IoT, Embedded Robotics, Digital VLSI, and Deep Learning hardware.</p>
+          <div class="hero-btns">
+            <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" class="btn btn-primary">
+              <i class="fab fa-linkedin"></i> Connect on LinkedIn
+            </a>
+            <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-outline">
+              <i class="fab fa-github"></i> GitHub Profile
+            </a>
+            <a href="mailto:doggahemant@gmail.com" class="btn btn-outline">
+              <i class="fas fa-envelope"></i> Get in Touch
+            </a>
           </div>
         </div>
 
-        <div class="card">
-          <h3 class="card-title">Smart Agriculture Boat</h3>
-          <div class="card-meta">AgriTech & Remote Telemetry (2024)</div>
-          <p class="card-desc">IoT-enabled remote surveillance boat powered by ESP32 CAM for water-body parameter monitoring and agricultural irrigation inspection.</p>
-          <div class="tag-list">
-            <span class="tag">ESP32-CAM</span>
-            <span class="tag">IoT Protocols</span>
-            <span class="tag">C++ / Arduino</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 class="card-title">IoT Prenatal Health Monitor</h3>
-          <div class="card-meta">Healthcare IoT (2024)</div>
-          <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics for maternal and fetal wellness.</p>
-          <div class="tag-list">
-            <span class="tag">Sensors</span>
-            <span class="tag">ESP8266</span>
-            <span class="tag">Telemetry</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 class="card-title">Mobile Safety Tracking System</h3>
-          <div class="card-meta">Embedded Security (2024)</div>
-          <p class="card-desc">Compact safety system featuring real-time location streaming and emergency trigger alerts over Wi-Fi networks.</p>
-          <div class="tag-list">
-            <span class="tag">ESP32</span>
-            <span class="tag">GPS/Wi-Fi</span>
-            <span class="tag">IoT</span>
+        <div class="hero-photo-wrapper">
+          <div class="profile-glow"></div>
+          <div class="profile-img-container">
+            <!-- Loads your profile photo automatically from your GitHub profile -->
+            <img src="https://github.com/Hemanth-5400.png" alt="Hema Prasad Dogga" class="profile-img" />
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Skills -->
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
-      <div class="skills-grid">
-        <div class="skill-box">
-          <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
-          <div class="tag-list">
-            <span class="tag">Circuit Designing</span>
-            <span class="tag">Zero PCB Designing</span>
-            <span class="tag">ESP32 / ESP8266</span>
-            <span class="tag">Arduino</span>
-            <span class="tag">Proteus</span>
-            <span class="tag">Tinkercad</span>
+    <!-- Research & Patents -->
+    <section id="patents">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-file-signature"></i> Research & Intellectual Property</h2>
+        <div class="grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
+              <span class="tag">App: 459423-001</span>
+            </div>
+            <div class="card-meta">Utility Patent • Granted 2025</div>
+            <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
           </div>
-        </div>
 
-        <div class="skill-box">
-          <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
-          <div class="tag-list">
-            <span class="tag">Vivado</span>
-            <span class="tag">Quartus Prime</span>
-            <span class="tag">Cadence Virtuoso</span>
-            <span class="tag">GX Works3</span>
-            <span class="tag">MATLAB</span>
-            <span class="tag">Fusion 360</span>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
+              <span class="tag">App: 202511118413</span>
+            </div>
+            <div class="card-meta">Design Patent • Granted 2025</div>
+            <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and checkout integration.</p>
           </div>
-        </div>
 
-        <div class="skill-box">
-          <h3><i class="fas fa-terminal"></i> Languages & Frameworks</h3>
-          <div class="tag-list">
-            <span class="tag">Verilog HDL</span>
-            <span class="tag">Python</span>
-            <span class="tag">C / Embedded C</span>
-            <span class="tag">PLC Ladder Logic</span>
-            <span class="tag">Linux</span>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Lighting Shrub</h3>
+              <span class="tag">App: 465417-001</span>
+            </div>
+            <div class="card-meta">Design Patent • Granted 2025</div>
+            <p class="card-desc">Innovative decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">IEEE Research Publication</h3>
+              <span class="tag">IEEE Xplore</span>
+            </div>
+            <div class="card-meta">Research Paper • Doc ID: 11400200</div>
+            <p class="card-desc">"A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications."</p>
+            <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View Paper &rarr;</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Awards -->
-  <section id="achievements">
-    <div class="container">
-      <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
-      <div class="grid">
-        <div class="card">
-          <h3 class="card-title">6th Mitsubishi Electric Cup</h3>
-          <div class="card-meta">National Level • Feb 2026</div>
-          <p class="card-desc">Received National Appreciation Award for engineering automation model implementation.</p>
-        </div>
+    <!-- Key Projects -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
+        <div class="grid">
+          <div class="card">
+            <h3 class="card-title">AI Fruit Sorting System (PLC + Jetson Nano)</h3>
+            <div class="card-meta">Edge AI & Industrial Automation (2026)</div>
+            <p class="card-desc">Deep learning model deployed on Nvidia Jetson Nano coupled with industrial PLC for real-time fruit grading, defect detection, and pneumatic sorting.</p>
+            <div class="tag-list">
+              <span class="tag">Jetson Nano</span>
+              <span class="tag">PLC (GX Works3)</span>
+              <span class="tag">Python</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+          </div>
 
-        <div class="card">
-          <h3 class="card-title">INNOSKILL 2025 (Srijan)</h3>
-          <div class="card-meta">2nd Prize • April 2025</div>
-          <p class="card-desc">Awarded second prize for hardware prototype innovation at the annual institute festival.</p>
-        </div>
+          <div class="card">
+            <h3 class="card-title">Smart Agriculture Boat</h3>
+            <div class="card-meta">AgriTech & Remote Telemetry (2024)</div>
+            <p class="card-desc">IoT-enabled remote surveillance boat powered by ESP32 CAM for water-body parameter monitoring and agricultural irrigation inspection.</p>
+            <div class="tag-list">
+              <span class="tag">ESP32-CAM</span>
+              <span class="tag">IoT Protocols</span>
+              <span class="tag">C++ / Arduino</span>
+            </div>
+          </div>
 
-        <div class="card">
-          <h3 class="card-title">Health Tech Innovation (CHI)</h3>
-          <div class="card-meta">1st Prize • April 2024</div>
-          <p class="card-desc">Won first place for developing the IoT-based prenatal maternal healthcare monitoring system.</p>
-        </div>
+          <div class="card">
+            <h3 class="card-title">IoT Prenatal Health Monitor</h3>
+            <div class="card-meta">Healthcare IoT (2024)</div>
+            <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics for maternal and fetal wellness.</p>
+            <div class="tag-list">
+              <span class="tag">Sensors</span>
+              <span class="tag">ESP8266</span>
+              <span class="tag">Telemetry</span>
+            </div>
+          </div>
 
-        <div class="card">
-          <h3 class="card-title">Echiesta2k24 Tri-Victory</h3>
-          <div class="card-meta">Echelon Institute of Technology • Nov 2024</div>
-          <p class="card-desc">1st Prize in Ideathon, 1st Prize in Line Following Robot Race, and 2nd Prize in Arduino Project Battle.</p>
+          <div class="card">
+            <h3 class="card-title">Mobile Safety Tracking System</h3>
+            <div class="card-meta">Embedded Security (2024)</div>
+            <p class="card-desc">Compact safety system featuring real-time location tracking and emergency trigger alerts over Wi-Fi networks.</p>
+            <div class="tag-list">
+              <span class="tag">ESP32</span>
+              <span class="tag">GPS/Wi-Fi</span>
+              <span class="tag">IoT</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer / Contact -->
-  <footer id="contact">
-    <div class="container">
-      <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
-      <p style="margin-bottom: 1.5rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
-      <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Hema Prasad Dogga. Hosted with GitHub Pages.</p>
-    </div>
-  </footer>
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
+            <div class="tag-list">
+              <span class="tag">Circuit Designing</span>
+              <span class="tag">Zero PCB Designing</span>
+              <span class="tag">ESP32 / ESP8266</span>
+              <span class="tag">Arduino</span>
+              <span class="tag">Proteus</span>
+              <span class="tag">Tinkercad</span>
+            </div>
+          </div>
 
+          <div class="skill-box">
+            <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
+            <div class="tag-list">
+              <span class="tag">Vivado</span>
+              <span class="tag">Quartus Prime</span>
+              <span class="tag">Cadence Virtuoso</span>
+              <span class="tag">GX Works3</span>
+              <span class="tag">MATLAB</span>
+              <span class="tag">Fusion 360</span>
+            </div>
+          </div>
+
+          <div class="skill-box">
+            <h3><i class="fas fa-terminal"></i> Languages & Frameworks</h3>
+            <div class="tag-list">
+              <span class="tag">Verilog HDL</span>
+              <span class="tag">Python</span>
+              <span class="tag">C / Embedded C</span>
+              <span class="tag">PLC Ladder Logic</span>
+              <span class="tag">Linux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section id="achievements">
+      <div class="container">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
+        <div class="grid">
+          <div class="card">
+            <h3 class="card-title">6th Mitsubishi Electric Cup</h3>
+            <div class="card-meta">National Level • Feb 2026</div>
+            <p class="card-desc">Received National Appreciation Award for engineering automation model implementation.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">INNOSKILL 2025 (Srijan)</h3>
+            <div class="card-meta">2nd Prize • April 2025</div>
+            <p class="card-desc">Awarded second prize for hardware prototype innovation at the annual institute festival.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Health Tech Innovation (CHI)</h3>
+            <div class="card-meta">1st Prize • April 2024</div>
+            <p class="card-desc">Won first place for developing the IoT-based prenatal maternal healthcare monitoring system.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title">Echiesta2k24 Tri-Victory</h3>
+            <div class="card-meta">Echelon Institute of Technology • Nov 2024</div>
+            <p class="card-desc">1st Prize in Ideathon, 1st Prize in Line Following Robot Race, and 2nd Prize in Arduino Project Battle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+      <div class="container">
+        <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
+        <p style="margin-bottom: 1.5rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Hema Prasad Dogga. Hosted with GitHub Pages.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Background Animated Circuit & Node Script -->
+  <script>
+    const canvas = document.getElementById('circuit-bg');
+    const ctx = canvas.getContext('2d');
+
+    let nodes = [];
+    const maxDistance = 140;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initNodes();
+    }
+
+    class Node {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.7;
+        this.vy = (Math.random() - 0.5) * 0.7;
+        this.radius = Math.random() * 2 + 1.5;
+        this.isPulse = Math.random() > 0.85;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.isPulse ? '#10b981' : '#38bdf8';
+        ctx.shadowBlur = this.isPulse ? 8 : 4;
+        ctx.shadowColor = ctx.fillStyle;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    function initNodes() {
+      nodes = [];
+      const nodeCount = Math.floor((canvas.width * canvas.height) / 13000);
+      for (let i = 0; i < nodeCount; i++) {
+        nodes.push(new Node());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].update();
+        nodes[i].draw();
+
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDistance) {
+            const alpha = 1 - dist / maxDistance;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            
+            // PCB circuit style 90-degree trace path
+            if (i % 2 === 0) {
+              ctx.lineTo(nodes[i].x, nodes[j].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+            } else {
+              ctx.lineTo(nodes[j].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+            }
+            
+            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha * 0.18})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    animate();
+  </script>
 </body>
 </html>
