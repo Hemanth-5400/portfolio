@@ -40,7 +40,7 @@
       position: relative;
     }
 
-    /* Fullscreen Logic Gates & Circuit Background */
+    /* Fullscreen Circuit Canvas */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -227,7 +227,6 @@
       transform: translateY(-2px);
     }
 
-    /* Profile Frame */
     .hero-photo-wrapper {
       position: relative;
       flex-shrink: 0;
@@ -387,7 +386,7 @@
       gap: 0.5rem;
     }
 
-    /* Floating Action Buttons */
+    /* Floating Actions */
     .floating-actions {
       position: fixed;
       bottom: 25px;
@@ -667,7 +666,6 @@
       </div>
     </header>
 
-    <!-- Research & Patents -->
     <section id="patents">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
@@ -712,7 +710,6 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
@@ -794,7 +791,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
@@ -851,7 +847,6 @@
       </div>
     </section>
 
-    <!-- Achievements -->
     <section id="achievements">
       <div class="container">
         <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
@@ -883,7 +878,6 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
       <div class="container">
         <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
@@ -898,7 +892,6 @@
     </footer>
   </div>
 
-  <!-- Floating Buttons -->
   <div class="floating-actions">
     <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
@@ -910,32 +903,32 @@
     </button>
   </div>
 
-  <!-- Universal AI Assistant Window -->
   <div class="ai-modal" id="aiModal">
     <div class="ai-header">
-      <h4><i class="fas fa-robot"></i> Hema's AI Assistant</h4>
+      <h4><i class="fas fa-microchip"></i> Hema's Portfolio AI</h4>
       <button class="ai-close" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad's AI assistant. Ask me anything — whether it's about Hema's research and projects, or any technical question (e.g. Mealy vs Moore, Setup & Hold times, Verilog, coding, or math)!
+        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me anything about his sanctioned RISC-V research grant, patents, IEEE publication, engineering projects, skills, or contact info!
         <div class="ai-quick-replies">
-          <span class="quick-chip" onclick="askQuestion('What is the difference between Mealy and Moore machine?')">Mealy vs Moore?</span>
-          <span class="quick-chip" onclick="askQuestion('What is setup and hold time in digital circuits?')">Setup & Hold Time?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your background')">About Hema?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Grant?</span>
           <span class="quick-chip" onclick="askQuestion('What patents do you have?')">Patents?</span>
+          <span class="quick-chip" onclick="askQuestion('What are your top projects?')">Top Projects?</span>
+          <span class="quick-chip" onclick="askQuestion('What are your technical skills?')">Skills?</span>
+          <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
         </div>
       </div>
     </div>
     <div class="ai-footer">
-      <input type="text" id="aiInput" class="ai-input" placeholder="Ask any question..." onkeypress="handleKeyPress(event)" />
+      <input type="text" id="aiInput" class="ai-input" placeholder="Ask about Hema's work..." onkeypress="handleKeyPress(event)" />
       <button class="ai-send" onclick="sendUserMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
 
-  <!-- Background Logic Canvas & Universal AI Engine -->
   <script>
-    // Canvas Logic Gates Engine
+    // Canvas Background Animation
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -1226,23 +1219,58 @@
     resize();
     animate();
 
-    // Universal AI Chat Engine (Answers ANY technical, general, or portfolio question)
-    const systemPrompt = `You are the intelligent AI Assistant on Dogga Hema Prasad's portfolio.
-You are capable of answering ANY question asked by the user, including:
-1. Technical questions (Digital VLSI, Verilog, RISC-V, Mealy/Moore FSMs, Setup/Hold timing, Edge AI, Python, C++, Arduino, DSP, etc.) — provide clear, complete, and accurate explanations.
-2. Coding & problem solving — provide clean code snippets and logic.
-3. Questions about Hema Prasad:
-   - Undergraduate in ECE (AIoT) at MRIIRS.
-   - Ongoing Research: Sanctioned Research Project 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026-2028).
-   - Patents: 1 Utility Patent (Wireless Pen HCI) + 2 Design Patents (Autonomous Shopping Cart, Lighting Shrub).
-   - Publications: IEEE Xplore review paper on Gesture Pen HCI Interfaces.
-   - Skills: RISC-V ISA, Verilog HDL, Vivado, Cadence Virtuoso, Quartus Prime, Jetson Nano, Mitsubishi PLC (GX Works3), ThingSpeak Cloud, AWS IoT, MQTT.
-   - Contact: doggahemant@gmail.com, WhatsApp: +91 7569330584.
-Answer politely, concisely, and helpfully to whatever the user asks.`;
+    // Specific & Dynamic Portfolio Query Engine
+    function getPortfolioAnswer(rawText) {
+      const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
-    let chatHistory = [
-      { role: "system", content: systemPrompt }
-    ];
+      // 1. Background / Bio / About Hema
+      if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
+        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents in Smart Retail & CleanTech).\n• Published IEEE author on Gesture-based Pen Interfaces.\n• National Appreciation Award Winner @ 6th Mitsubishi Electric Cup.";
+      }
+
+      // 2. RISC-V & Research Grant Details
+      if (q.includes('risc') || q.includes('grant') || q.includes('fund') || q.includes('security') || q.includes('research')) {
+        return "RISC-V Hardware Security Research Project:\n\n• Grant & Support: Sanctioned with ₹1,00,000 internal research funding by MRIIRS Research Board (24-month duration, 2026–2028).\n• Scope: Implementing hardware root-of-trust cryptographic acceleration blocks, physical side-channel attack mitigations, and custom security extensions on open-source RISC-V processor cores.\n• EDA & Emulation: Built using Verilog HDL and verified via Xilinx Vivado.";
+      }
+
+      // 3. Patents / Intellectual Property
+      if (q.includes('patent') || q.includes('ip') || q.includes('invention') || q.includes('utility') || q.includes('design patent')) {
+        return "Hema Prasad's 3 Patent Applications:\n\n1. Utility Patent: Gesture-Based Wireless Pen Interface (App: 459423-001)\n   • Designed for seamless Human-Computer Interaction using multi-axis real-time gesture & motion classification.\n2. Design Patent: Autonomous Smart Shopping Cart (App: 202511118413)\n   • Embedded smart retail cart with integrated barcode scanning and cloud billing.\n3. Design Patent: Lighting Shrub (App: 465417-001)\n   • Aesthetic solar-assisted outdoor smart lighting architecture.";
+      }
+
+      // 4. Projects Showcase
+      if (q.includes('project') || q.includes('work') || q.includes('jetson') || q.includes('plc') || q.includes('boat') || q.includes('sorting') || q.includes('prenatal') || q.includes('tracker')) {
+        return "Featured Engineering Projects:\n\n1. Hardware Security on RISC-V ISA (Funded Research Grant 2026–2028)\n2. AI Industrial Fruit Sorting System (Nvidia Jetson Nano deep learning vision + Mitsubishi PLC GX Works3)\n3. Autonomous Agri-Telemetry Boat (ESP32-CAM + MQTT protocol)\n4. IoT Maternal Prenatal Health Telemetry (ThingSpeak Cloud API)\n5. Mobile Safety Tracking System (ESP32 GPS/Wi-Fi panic beacon)\n6. Smart Cloud Power Relay (Low-latency home automation via MQTT).";
+      }
+
+      // 5. Technical Skills & Tools
+      if (q.includes('skill') || q.includes('tool') || q.includes('software') || q.includes('language') || q.includes('verilog') || q.includes('eda') || q.includes('tech stack')) {
+        return "Technical Competencies:\n\n• Hardware & Architecture: RISC-V ISA, Verilog HDL, Circuit & Zero-PCB Design, ESP32, Arduino, Jetson Nano\n• EDA & Simulation: Xilinx Vivado, Cadence Virtuoso, Quartus Prime, Proteus, Tinkercad\n• Automation & AI: Mitsubishi PLC (GX Works3 Ladder Logic), Python, OpenCV\n• Cloud & Telemetry: ThingSpeak Cloud, AWS IoT Core, MQTT, REST APIs, Firebase, n8n.";
+      }
+
+      // 6. Publications & IEEE
+      if (q.includes('ieee') || q.includes('paper') || q.includes('publication') || q.includes('xplore') || q.includes('journal')) {
+        return "IEEE Xplore Publication:\n\n• Title: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications'\n• Document ID: 11400200\n• Topic: In-depth survey on sensor fusion techniques, embedded algorithms, and latency benchmarks in gesture-based HCI pens.";
+      }
+
+      // 7. Awards & Competitions
+      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('mitsubishi')) {
+        return "Major Achievements & Awards:\n\n• National Appreciation Award @ 6th Mitsubishi Electric Cup (Feb 2026)\n• 1st Prize @ Health Tech Innovation (CHI, MRIIRS, April 2024)\n• 2nd Prize @ INNOSKILL 2025 (Srijan Hardware Innovation)\n• Triple Victory @ Echiesta 2024 (1st in Ideathon, 1st in Line Follower Robot, 2nd in Arduino Project Battle).";
+      }
+
+      // 8. Contact & Socials
+      if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('connect')) {
+        return "Connect with Hema Prasad Dogga:\n\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400\n• Location: Faridabad, Haryana / Visakhapatnam, India.";
+      }
+
+      // 9. Greetings
+      if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('morning') || q.includes('evening')) {
+        return "Hello! I am Hema Prasad's portfolio AI assistant. Feel free to ask about his RISC-V research grant, patents, IEEE publication, projects, technical skills, or contact info!";
+      }
+
+      // Dynamic Context-Aware Response for Any Custom Input
+      return `Regarding "${rawText}":\n\nHema Prasad is an ECE (AIoT) undergraduate at MRIIRS with a ₹1,00,000 funded research grant in RISC-V Hardware Security, 3 patent applications, an IEEE publication, and expertise across Digital VLSI (Verilog/Vivado), Edge AI (Jetson Nano), and PLC automation.\n\nWould you like to explore his research, patents, specific projects, or contact details directly?`;
+    }
 
     function toggleAIChat() {
       const modal = document.getElementById('aiModal');
@@ -1258,7 +1286,7 @@ Answer politely, concisely, and helpfully to whatever the user asks.`;
       if (e.key === 'Enter') sendUserMessage();
     }
 
-    async function sendUserMessage() {
+    function sendUserMessage() {
       const input = document.getElementById('aiInput');
       const text = input.value.trim();
       if (!text) return;
@@ -1274,84 +1302,14 @@ Answer politely, concisely, and helpfully to whatever the user asks.`;
       input.value = '';
       chatBody.scrollTop = chatBody.scrollHeight;
 
-      // Thinking indicator
-      const botDiv = document.createElement('div');
-      botDiv.className = 'ai-msg ai-msg-bot';
-      botDiv.innerText = 'Thinking...';
-      chatBody.appendChild(botDiv);
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      chatHistory.push({ role: "user", content: text });
-
-      let answered = false;
-
-      // Primary AI call: Free Open LLM API
-      try {
-        const response = await fetch('https://text.pollinations.ai/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            messages: chatHistory,
-            model: 'openai',
-            seed: 42
-          })
-        });
-
-        if (response.ok) {
-          const aiResponse = await response.text();
-          if (aiResponse && aiResponse.trim().length > 0) {
-            botDiv.innerText = aiResponse.trim();
-            chatHistory.push({ role: "assistant", content: aiResponse.trim() });
-            answered = true;
-          }
-        }
-      } catch (err) {
-        console.warn('Pollinations primary call issue, trying fallback:', err);
-      }
-
-      // Secondary AI fallback
-      if (!answered) {
-        try {
-          const encodedPrompt = encodeURIComponent(`${systemPrompt}\n\nUser Question: ${text}`);
-          const fallbackRes = await fetch(`https://text.pollinations.ai/${encodedPrompt}`);
-          if (fallbackRes.ok) {
-            const fallbackText = await fallbackRes.text();
-            if (fallbackText && fallbackText.trim().length > 0) {
-              botDiv.innerText = fallbackText.trim();
-              chatHistory.push({ role: "assistant", content: fallbackText.trim() });
-              answered = true;
-            }
-          }
-        } catch (e2) {
-          console.warn('Secondary API issue:', e2);
-        }
-      }
-
-      // Local offline knowledge engine (guaranteed instant answer if offline)
-      if (!answered) {
-        const q = text.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
-        let reply = "";
-
-        if (q.includes('mealy') || q.includes('moor') || q.includes('melay') || q.includes('moore')) {
-          reply = "In Finite State Machines (FSMs):\n\n• Moore Machine: Output depends ONLY on the current state. State changes occur synchronously on clock edges.\n\n• Mealy Machine: Output depends on BOTH the current state AND current inputs. Outputs can change asynchronously immediately when inputs change, often using fewer states.";
-        } else if (q.includes('setup') || q.includes('hold') || q.includes('timing')) {
-          reply = "Timing Constraints in Digital ICs:\n\n• Setup Time (T_setup): Minimum time data must be stable BEFORE the clock edge.\n• Hold Time (T_hold): Minimum time data must remain stable AFTER the clock edge.\nViolating either results in metastability.";
-        } else if (q.includes('risc') || q.includes('grant') || q.includes('security')) {
-          reply = "Hema Prasad is leading sanctioned research on 'Hardware Security Implementation on RISC-V Architecture' (₹1,00,000 grant by MRIIRS, 2026–2028), developing side-channel resistant crypto primitives and custom security extensions.";
-        } else if (q.includes('patent') || q.includes('ip')) {
-          reply = "Hema holds 3 patent applications:\n1. Utility Patent: Gesture-Based Wireless Pen HCI Interface (App: 459423-001)\n2. Design Patent: Autonomous Smart Shopping Cart (App: 202511118413)\n3. Design Patent: Lighting Shrub (App: 465417-001).";
-        } else if (q.includes('project')) {
-          reply = "Key Projects:\n• RISC-V Hardware Security Core (Funded Grant)\n• AI Fruit Sorting System (Jetson Nano + Mitsubishi PLC)\n• IoT Agriculture Boat (ESP32-CAM + MQTT)\n• Prenatal Health Monitor (ThingSpeak Cloud)\n• Mobile Safety Tracker.";
-        } else if (q.includes('contact') || q.includes('whatsapp') || q.includes('email')) {
-          reply = "Contact Hema Prasad:\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287";
-        } else {
-          reply = `Here is the explanation for "${text}":\n\nThis is a great engineering question! If you'd like an in-depth discussion or code implementation, you can also reach Hema Prasad directly via WhatsApp (+91 7569330584) or email (doggahemant@gmail.com).`;
-        }
-
-        botDiv.innerText = reply;
-      }
-
-      chatBody.scrollTop = chatBody.scrollHeight;
+      // Bot thinking & direct response
+      setTimeout(() => {
+        const botDiv = document.createElement('div');
+        botDiv.className = 'ai-msg ai-msg-bot';
+        botDiv.innerText = getPortfolioAnswer(text);
+        chatBody.appendChild(botDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 250);
     }
   </script>
 </body>
