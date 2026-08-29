@@ -347,20 +347,41 @@
       gap: 0.5rem;
     }
 
+    /* Universal Interactive Clickable Tags */
     .tag {
       background: rgba(0, 212, 255, 0.08);
       border: 1px solid rgba(0, 212, 255, 0.2);
-      padding: 0.25rem 0.65rem;
+      padding: 0.28rem 0.7rem;
       border-radius: 6px;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-family: var(--font-mono);
       color: #7dd3fc;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease-in-out;
+      user-select: none;
+    }
+
+    .tag:hover {
+      background: rgba(0, 212, 255, 0.25);
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
     }
 
     .tag-highlight {
       background: rgba(16, 185, 129, 0.15);
       border-color: rgba(16, 185, 129, 0.4);
       color: #6ee7b7;
+    }
+
+    .tag-highlight:hover {
+      background: rgba(16, 185, 129, 0.3);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
     }
 
     .skills-grid {
@@ -456,6 +477,140 @@
     .float-btn:hover .badge-tooltip {
       opacity: 1;
       transform: translateX(0);
+    }
+
+    /* Modal Backdrop */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(3, 7, 14, 0.75);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    /* Professional Technical Dossier Modal */
+    .tech-modal-card {
+      background: rgba(10, 18, 32, 0.95);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      border-radius: 16px;
+      max-width: 580px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 212, 255, 0.25);
+      position: relative;
+      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(16, 28, 48, 0.8);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      color: #fff;
+      border-color: var(--primary);
+      background: rgba(0, 212, 255, 0.2);
+    }
+
+    .tech-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-modal-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .tech-modal-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tech-modal-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--primary);
+    }
+
+    .tech-modal-body {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      background: rgba(6, 12, 22, 0.7);
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 212, 255, 0.15);
+      margin-top: 1rem;
+    }
+
+    .tech-spec-item {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+    }
+
+    .tech-spec-label {
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+
+    .tech-spec-val {
+      color: var(--primary);
+      font-weight: 600;
     }
 
     /* AI Assistant Modal */
@@ -673,7 +828,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
-              <span class="tag">App: 459423-001</span>
+              <span class="tag" onclick="openTechModal('pen_patent')">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Utility Patent • Granted 2025</div>
             <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
@@ -682,7 +837,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
-              <span class="tag">App: 202511118413</span>
+              <span class="tag" onclick="openTechModal('cart_patent')">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Design Patent • Granted 2025</div>
             <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration.</p>
@@ -691,7 +846,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Lighting Shrub</h3>
-              <span class="tag">App: 465417-001</span>
+              <span class="tag" onclick="openTechModal('lighting_patent')">App: 465417-001 <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Design Patent • Granted 2025</div>
             <p class="card-desc">Decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
@@ -700,7 +855,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">IEEE Research Publication</h3>
-              <span class="tag">IEEE Xplore</span>
+              <span class="tag" onclick="openTechModal('ieee_paper')">IEEE Xplore <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Research Paper • Doc ID: 11400200</div>
             <p class="card-desc">"A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications."</p>
@@ -714,19 +869,20 @@
       <div class="container">
         <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
         <div class="grid">
+          
           <div class="card card-featured">
             <div class="card-header">
               <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
-              <span class="tag tag-highlight">⚡ Ongoing (Funded)</span>
+              <span class="tag tag-highlight" onclick="openTechModal('riscv_grant')">⚡ ₹1,00,000 Grant <i class="fas fa-info-circle"></i></span>
             </div>
             <div class="card-meta">Internal Research Grant (₹1,00,000) • MRIIRS (2026–2028)</div>
             <p class="card-desc">Sanctioned research work implementing root-of-trust hardware cryptographic primitives, side-channel attack countermeasures, and security extensions on the open-source RISC-V instruction set architecture.</p>
             <div class="tag-list">
-              <span class="tag">RISC-V ISA</span>
-              <span class="tag">Hardware Security</span>
-              <span class="tag">Verilog HDL</span>
-              <span class="tag">FPGA Emulation</span>
-              <span class="tag">Vivado</span>
+              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('hardware_security')">Hardware Security <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('fpga')">FPGA Emulation <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('vivado')">Vivado <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
@@ -735,10 +891,10 @@
             <div class="card-meta">Edge AI & Industrial Automation (2026)</div>
             <p class="card-desc">Deep learning computer vision model deployed on Nvidia Jetson Nano coupled with industrial Mitsubishi PLC for real-time fruit grading and pneumatic sorting.</p>
             <div class="tag-list">
-              <span class="tag">Jetson Nano</span>
-              <span class="tag">PLC (GX Works3)</span>
-              <span class="tag">Python</span>
-              <span class="tag">OpenCV</span>
+              <span class="tag" onclick="openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('plc')">PLC (GX Works3) <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('opencv')">OpenCV <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
@@ -747,10 +903,10 @@
             <div class="card-meta">AgriTech & Cloud Telemetry (2024)</div>
             <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection.</p>
             <div class="tag-list">
-              <span class="tag">ESP32-CAM</span>
-              <span class="tag">AWS IoT / MQTT</span>
-              <span class="tag">ThingSpeak</span>
-              <span class="tag">C++</span>
+              <span class="tag" onclick="openTechModal('esp32_cam')">ESP32-CAM <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('aws_iot')">AWS IoT / MQTT <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('cpp')">C++ <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
@@ -759,10 +915,10 @@
             <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)</div>
             <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness.</p>
             <div class="tag-list">
-              <span class="tag">ESP8266</span>
-              <span class="tag">ThingSpeak Cloud</span>
-              <span class="tag">REST APIs</span>
-              <span class="tag">Sensors</span>
+              <span class="tag" onclick="openTechModal('esp8266')">ESP8266 <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('rest_api')">REST APIs <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('sensors')">Sensors <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
@@ -771,9 +927,9 @@
             <div class="card-meta">Embedded Security & Cloud Logging (2024)</div>
             <p class="card-desc">Safety telemetry tracker featuring real-time coordinate broadcasting, geofencing, and emergency trigger alerts over cloud-hosted endpoints.</p>
             <div class="tag-list">
-              <span class="tag">ESP32</span>
-              <span class="tag">GPS/Wi-Fi</span>
-              <span class="tag">Firebase Cloud</span>
+              <span class="tag" onclick="openTechModal('esp32')">ESP32 <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('gps')">GPS/Wi-Fi <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('firebase')">Firebase Cloud <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
@@ -782,11 +938,12 @@
             <div class="card-meta">Home Automation (2024)</div>
             <p class="card-desc">Low-latency cloud-controlled power relay system designed using ESP8266 supporting remote switching via MQTT brokers.</p>
             <div class="tag-list">
-              <span class="tag">ESP8266</span>
-              <span class="tag">MQTT Cloud</span>
-              <span class="tag">Home Automation</span>
+              <span class="tag" onclick="openTechModal('esp8266')">ESP8266 <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('mqtt')">MQTT Cloud <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('home_automation')">Home Automation <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -798,49 +955,49 @@
           <div class="skill-box">
             <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
             <div class="tag-list">
-              <span class="tag">Circuit Designing</span>
-              <span class="tag">Zero PCB Designing</span>
-              <span class="tag">ESP32 / ESP8266</span>
-              <span class="tag">Arduino</span>
-              <span class="tag">Jetson Nano</span>
-              <span class="tag">Proteus</span>
-              <span class="tag">Tinkercad</span>
+              <span class="tag" onclick="openTechModal('pcb_design')">Circuit Designing <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('pcb_design')">Zero PCB Designing <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266 <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('arduino')">Arduino <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('proteus')">Proteus <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('tinkercad')">Tinkercad <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
           <div class="skill-box">
             <h3><i class="fas fa-cloud"></i> Cloud & IoT Protocols</h3>
             <div class="tag-list">
-              <span class="tag">ThingSpeak Cloud</span>
-              <span class="tag">AWS IoT Core</span>
-              <span class="tag">MQTT Protocol</span>
-              <span class="tag">HTTP / REST APIs</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">n8n Automation</span>
+              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('aws_iot')">AWS IoT Core <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('mqtt')">MQTT Protocol <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('rest_api')">HTTP / REST APIs <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('firebase')">Firebase <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('n8n')">n8n Automation <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
           <div class="skill-box">
             <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
             <div class="tag-list">
-              <span class="tag">Vivado</span>
-              <span class="tag">Quartus Prime</span>
-              <span class="tag">Cadence Virtuoso</span>
-              <span class="tag">GX Works3 (PLC)</span>
-              <span class="tag">MATLAB</span>
-              <span class="tag">Fusion 360</span>
+              <span class="tag" onclick="openTechModal('vivado')">Vivado <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('quartus')">Quartus Prime <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('cadence')">Cadence Virtuoso <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('plc')">GX Works3 (PLC) <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('matlab')">MATLAB <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('fusion360')">Fusion 360 <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
           <div class="skill-box">
             <h3><i class="fas fa-terminal"></i> Languages & Architecture</h3>
             <div class="tag-list">
-              <span class="tag">RISC-V ISA</span>
-              <span class="tag">Verilog HDL</span>
-              <span class="tag">Python</span>
-              <span class="tag">C / Embedded C</span>
-              <span class="tag">PLC Ladder Logic</span>
-              <span class="tag">Linux</span>
+              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('plc')">PLC Ladder Logic <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('linux')">Linux <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
         </div>
@@ -892,6 +1049,24 @@
     </footer>
   </div>
 
+  <div class="modal-overlay" id="techModalOverlay" onclick="closeTechModal(event)">
+    <div class="tech-modal-card" id="techModalCard" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeTechModal()"><i class="fas fa-times"></i></button>
+      <div class="tech-modal-header">
+        <div class="tech-modal-icon" id="modalIcon"><i class="fas fa-microchip"></i></div>
+        <div>
+          <div class="tech-modal-title" id="modalTitle">Technology Overview</div>
+          <div class="tech-modal-subtitle" id="modalCategory">Engineering Architecture</div>
+        </div>
+      </div>
+      <div class="tech-modal-body" id="modalDescription">
+        Detailed technical breakdown will appear here.
+      </div>
+      <div class="tech-spec-grid" id="modalSpecs">
+        </div>
+    </div>
+  </div>
+
   <div class="floating-actions">
     <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
@@ -928,7 +1103,477 @@
   </div>
 
   <script>
-    // Canvas Background Animation
+    // Complete Technical Dossier Dictionary (Every Skill, Tool, Patent & Project)
+    const techDossier = {
+      // Hardware & Prototyping
+      jetson_nano: {
+        title: "Nvidia Jetson Nano",
+        category: "Edge AI & Embedded Computing",
+        icon: "fas fa-brain",
+        desc: "In the <strong>AI Fruit Sorting System</strong>, the Nvidia Jetson Nano executes real-time convolutional neural network (CNN) inference models via OpenCV & TensorRT to classify agricultural produce defects and send high-speed sorting signals to the industrial PLC.",
+        specs: [
+          { label: "GPU Architecture", val: "128-core Maxwell" },
+          { label: "CPU", val: "Quad-core ARM A57" },
+          { label: "Frameworks", val: "TensorRT, OpenCV, PyTorch" },
+          { label: "Interface", val: "GPIO / UART to PLC" }
+        ]
+      },
+      plc: {
+        title: "Mitsubishi PLC (GX Works3)",
+        category: "Industrial Automation & Ladder Logic",
+        icon: "fas fa-cogs",
+        desc: "Engineered for deterministic industrial automation and pneumatic sorting actuators. Ladder Logic routines developed in <strong>GX Works3</strong> execute sequence interlocks, optocoupler sensor inputs, and pneumatic cylinder timing with zero latency.",
+        specs: [
+          { label: "Software IDE", val: "MELSOFT GX Works3" },
+          { label: "Logic Type", val: "Ladder Diagram (LD)" },
+          { label: "Actuation", val: "Pneumatic Ejectors" },
+          { label: "Recognition", val: "Mitsubishi Cup Appreciation" }
+        ]
+      },
+      pcb_design: {
+        title: "Circuit & Zero PCB Prototyping",
+        category: "Hardware Assembly & Soldering",
+        icon: "fas fa-microchip",
+        desc: "Extensive hands-on expertise assembling point-to-point zero PCB prototypes, power distribution buses, optoisolated relay driver circuits, and sensor interface shields for robust field testing.",
+        specs: [
+          { label: "Technique", val: "Point-to-Point Hand Soldering" },
+          { label: "Prototyping", val: "Zero PCB / Stripboard" },
+          { label: "Testing", val: "Digital Multimeter & DSO" },
+          { label: "Applications", val: "IoT Nodes & Telemetry Ships" }
+        ]
+      },
+      esp32: {
+        title: "ESP32 SoC Microcontroller",
+        category: "Dual-Core IoT Edge Compute",
+        icon: "fas fa-wifi",
+        desc: "Primary edge computing platform for GPS safety tracking, wireless telemetry, and real-time biometric transmission. Leverages FreeRTOS dual-core multitasking for parallel computation.",
+        specs: [
+          { label: "Architecture", val: "Xtensa 32-bit LX6 (240MHz)" },
+          { label: "Connectivity", val: "Wi-Fi 802.11 b/g/n & Bluetooth" },
+          { label: "Peripherals", val: "ADC, DAC, I2C, SPI, UART" },
+          { label: "RTOS", val: "FreeRTOS Multitasking" }
+        ]
+      },
+      esp32_cam: {
+        title: "ESP32-CAM AIoT Module",
+        category: "Embedded Vision & Wi-Fi Telemetry",
+        icon: "fas fa-camera",
+        desc: "Integrated on the <strong>Smart Agriculture Boat</strong> to stream live video surveillance and telemetry metrics over MQTT brokers to remote cloud monitoring consoles.",
+        specs: [
+          { label: "Camera Sensor", val: "OV2640 2MP" },
+          { label: "Memory", val: "520KB SRAM + 4MB PSRAM" },
+          { label: "Protocol", val: "MQTT / HTTP Streaming" },
+          { label: "Application", val: "AgriTech Telemetry Vessel" }
+        ]
+      },
+      esp8266: {
+        title: "ESP8266 Wi-Fi SoC",
+        category: "Low-Power Cloud Node",
+        icon: "fas fa-microchip",
+        desc: "Deployed in the award-winning <strong>IoT Prenatal Health Monitor</strong> and <strong>Smart Cloud Relay Switch</strong> to log sensor telemetry directly to cloud databases via REST APIs.",
+        specs: [
+          { label: "Processor", val: "Tensilica L106 32-bit (80MHz)" },
+          { label: "Connectivity", val: "2.4GHz Wi-Fi (802.11 b/g/n)" },
+          { label: "Protocols", val: "MQTT, HTTP REST, WebSockets" },
+          { label: "Application", val: "Medical IoT & Smart Relay" }
+        ]
+      },
+      arduino: {
+        title: "Arduino Development Platform",
+        category: "Embedded Hardware & Rapid Prototyping",
+        icon: "fas fa-infinity",
+        desc: "Utilized for rapid physical computing prototyping, robotics control loops (Line Following Robot 1st prize winner), sensor calibrations, and motor driver interfacing.",
+        specs: [
+          { label: "Core Chips", val: "ATmega328P / SAMD21" },
+          { label: "Language", val: "Embedded C / C++" },
+          { label: "Toolchain", val: "Arduino IDE / CLI" },
+          { label: "Focus", val: "Robotics & Actuation" }
+        ]
+      },
+      proteus: {
+        title: "Proteus Design Suite",
+        category: "Electronic Circuit Simulation & VSM",
+        icon: "fas fa-project-diagram",
+        desc: "Used for simulating mixed-signal analog/digital electronic circuits, debugging microcontroller firmware interactions, and verifying PCB schematics prior to fabrication.",
+        specs: [
+          { label: "Simulation", val: "SPICE Mixed-Mode" },
+          { label: "Virtual System", val: "VSM Microcontroller Co-Sim" },
+          { label: "Analysis", val: "Voltage / Transient Curves" },
+          { label: "Verification", val: "Sensor Interfacing" }
+        ]
+      },
+      tinkercad: {
+        title: "Autodesk Tinkercad Circuits",
+        category: "Schematic & Logic Simulation",
+        icon: "fas fa-cube",
+        desc: "Used for rapid architectural circuit ideation, educational hardware demonstration, and logic validation of digital sensor sub-circuits.",
+        specs: [
+          { label: "Engine", val: "Autodesk Web Simulation" },
+          { label: "Features", val: "Interactive Breadboard Circuitry" },
+          { label: "Logic", val: "Microcontroller Block Logic" },
+          { label: "Application", val: "Rapid Prototyping" }
+        ]
+      },
+      sensors: {
+        title: "Sensors & Biometric Interfaces",
+        category: "Hardware Transducers & Data Acquisition",
+        icon: "fas fa-heartbeat",
+        desc: "Comprehensive integration experience with analog/digital transducers including pulse oximeters (MAX30102), temperature probes (DS18B20), vibration sensors, IMUs (MPU6050), and GPS modules.",
+        specs: [
+          { label: "Protocols", val: "I2C, SPI, 1-Wire, ADC" },
+          { label: "Filtering", val: "Moving Average & Low-Pass" },
+          { label: "Application", val: "Maternal Health & Robotics" },
+          { label: "Calibration", val: "Hardware Zero-Offset" }
+        ]
+      },
+      gps: {
+        title: "GPS / GNSS Telemetry",
+        category: "Geospatial Tracking & Coordinates",
+        icon: "fas fa-map-marker-alt",
+        desc: "Integration of high-sensitivity GNSS receivers (NEO-6M) for real-time coordinate triangulation, geofencing threshold alerts, and cloud logging in wearable safety devices.",
+        specs: [
+          { label: "Receiver", val: "u-blox NEO-6M GNSS" },
+          { label: "Output", val: "NMEA Sentences over UART" },
+          { label: "Accuracy", val: "< 2.5m Circular Error" },
+          { label: "Application", val: "Mobile Safety Tracker" }
+        ]
+      },
+
+      // Cloud & IoT Protocols
+      thingspeak: {
+        title: "ThingSpeak IoT Cloud",
+        category: "Cloud Data Analytics & MATLAB Telemetry",
+        icon: "fas fa-cloud",
+        desc: "Serves as the telemetry aggregation backbone for health monitoring and agriculture projects, executing integrated MATLAB statistical routines to generate real-time visual trend lines and trigger anomaly notifications.",
+        specs: [
+          { label: "Protocol", val: "REST API & MQTT" },
+          { label: "Data Pipeline", val: "Real-Time Cloud Channels" },
+          { label: "Analytics", val: "Native MATLAB Integration" },
+          { label: "Integration", val: "ESP32 / ESP8266 Nodes" }
+        ]
+      },
+      aws_iot: {
+        title: "AWS IoT Core",
+        category: "Scalable Cloud IoT Architecture",
+        icon: "fab fa-aws",
+        desc: "Managed cloud broker enabling bi-directional, TLS-encrypted MQTT messaging between physical hardware prototypes and cloud telemetry dashboards with enterprise-grade reliability.",
+        specs: [
+          { label: "Broker Protocol", val: "MQTT v3.1.1 / TLS 1.2" },
+          { label: "Cloud Services", val: "Rules Engine, Lambda, DynamoDB" },
+          { label: "Security", val: "X.509 Certificate Auth" },
+          { label: "Latency", val: "< 50ms Real-Time Sync" }
+        ]
+      },
+      mqtt: {
+        title: "MQTT Messaging Protocol",
+        category: "Lightweight Machine-to-Machine Messaging",
+        icon: "fas fa-exchange-alt",
+        desc: "Extremely lightweight publish/subscribe network protocol engineered for constrained IoT devices and low-bandwidth remote telemetry environments.",
+        specs: [
+          { label: "Model", val: "Publish / Subscribe" },
+          { label: "Header Overhead", val: "2 Bytes (Ultra-Low)" },
+          { label: "QoS Levels", val: "QoS 0, QoS 1, QoS 2" },
+          { label: "Brokers", val: "Mosquitto, AWS IoT, HiveMQ" }
+        ]
+      },
+      rest_api: {
+        title: "HTTP / REST APIs",
+        category: "Stateless Cloud Interfacing",
+        icon: "fas fa-network-wired",
+        desc: "Structured HTTP request/response JSON endpoints utilized by embedded Wi-Fi microcontrollers to push sensor telemetry payloads to remote cloud servers and receive remote actuation commands.",
+        specs: [
+          { label: "Payload", val: "JSON / URL-Encoded" },
+          { label: "Methods", val: "GET, POST, PUT, DELETE" },
+          { label: "Security", val: "HTTPS / API Key Authentication" },
+          { label: "Application", val: "Cloud Database Ingestion" }
+        ]
+      },
+      firebase: {
+        title: "Google Firebase Cloud",
+        category: "Realtime Database & Cloud Firestore",
+        icon: "fas fa-fire",
+        desc: "Cloud backend utilized for instant data synchronization with mobile telemetry dashboards, real-time geofence tracking, and push notifications.",
+        specs: [
+          { label: "Database", val: "NoSQL Realtime Database" },
+          { label: "Sync Speed", val: "WebSockets Real-Time" },
+          { label: "Services", val: "Cloud Functions, Firestore" },
+          { label: "Application", val: "Safety Beacon Dashboard" }
+        ]
+      },
+      n8n: {
+        title: "n8n Workflow Automation",
+        category: "Event-Driven Automation Pipelines",
+        icon: "fas fa-sitemap",
+        desc: "Self-hosted workflow automation platform used to connect incoming IoT webhook triggers directly to Telegram alerts, database logging, and automated notification services.",
+        specs: [
+          { label: "Architecture", val: "Node-based Workflow Engine" },
+          { label: "Triggers", val: "Webhooks, MQTT, Cron, REST" },
+          { label: "Execution", val: "Self-Hosted / Containerized" },
+          { label: "Application", val: "Automated Incident Escalation" }
+        ]
+      },
+      home_automation: {
+        title: "Home Automation Architecture",
+        category: "Smart Power Switching & Control",
+        icon: "fas fa-home",
+        desc: "Architecture implementing optocoupled solid-state relays, low-voltage isolation barriers, and MQTT event-driven state control for remote household energy switching.",
+        specs: [
+          { label: "Control Mode", val: "MQTT / Cloud Telemetry" },
+          { label: "Safety", val: "Opto-Isolated Triac / Relays" },
+          { label: "Latency", val: "< 100ms Instant Switching" },
+          { label: "Hardware", val: "ESP8266 Custom Node" }
+        ]
+      },
+
+      // Software & EDA Tools
+      vivado: {
+        title: "Xilinx Vivado Design Suite",
+        category: "FPGA Synthesis & RTL Emulation",
+        icon: "fas fa-microchip",
+        desc: "Primary EDA toolchain used for synthesizing, mapping, placing, and routing Verilog RTL designs for digital logic systems and RISC-V processor security modules. Allows comprehensive timing constraint verification (Setup/Hold timing analysis) and hardware simulation.",
+        specs: [
+          { label: "Design Entry", val: "Verilog / SystemVerilog" },
+          { label: "Analysis", val: "Static Timing & Slack Analysis" },
+          { label: "Target", val: "Xilinx Artix-7 / 7-Series FPGA" },
+          { label: "Simulation", val: "Vivado Simulator (XSim)" }
+        ]
+      },
+      quartus: {
+        title: "Intel Quartus Prime",
+        category: "CPLD/FPGA Synthesis & Logic Design",
+        icon: "fas fa-desktop",
+        desc: "Industry-standard EDA platform for logic minimization, pin assignments, state machine analysis, and timing closure on Intel/Altera Cyclone FPGA families.",
+        specs: [
+          { label: "Vendor", val: "Intel / Altera" },
+          { label: "Features", val: "TimeQuest Timing Analyzer" },
+          { label: "Verification", val: "ModelSim-Altera Co-Sim" },
+          { label: "Focus", val: "Digital Logic Emulation" }
+        ]
+      },
+      cadence: {
+        title: "Cadence Virtuoso",
+        category: "Custom IC & Analog Layout Design",
+        icon: "fas fa-wave-square",
+        desc: "Advanced electronic design automation platform for schematic capture, transistor-level spice simulation (Spectre), and full-custom CMOS layout design with DRC/LVS rule verification.",
+        specs: [
+          { label: "Design Level", val: "Transistor / Custom Silicon" },
+          { label: "Simulation", val: "Spectre Circuit Simulator" },
+          { label: "Checks", val: "DRC / LVS Rule Verification" },
+          { label: "Domain", val: "VLSI Circuit Design" }
+        ]
+      },
+      matlab: {
+        title: "MATLAB & Simulink",
+        category: "Mathematical Modeling & Signal Analytics",
+        icon: "fas fa-calculator",
+        desc: "Employed for digital signal processing, algorithm modeling, mathematical simulations of biomedical telemetry data, and control system transfer function analyses.",
+        specs: [
+          { label: "Toolboxes", val: "Signal Processing, Control Systems" },
+          { label: "Integration", val: "ThingSpeak MATLAB Analytics" },
+          { label: "Computation", val: "Matrix Numerical Analysis" },
+          { label: "Modeling", val: "Simulink Dynamic Systems" }
+        ]
+      },
+      fusion360: {
+        title: "Autodesk Fusion 360",
+        category: "CAD Modeling & Industrial Enclosure Design",
+        icon: "fas fa-drafting-compass",
+        desc: "Used for 3D parametric mechanical design of electronic enclosures, autonomous cart mechanical chassis, and prototype packaging for 3D printing.",
+        specs: [
+          { label: "Design Type", val: "3D Parametric CAD" },
+          { label: "Prototyping", val: "FDM 3D Printing STL Export" },
+          { label: "Rendering", val: "Raytraced Product Viz" },
+          { label: "Applications", val: "Robotics & Patent Models" }
+        ]
+      },
+
+      // Languages & Architecture
+      riscv: {
+        title: "RISC-V ISA Architecture",
+        category: "Processor Design & Hardware Security",
+        icon: "fas fa-microchip",
+        desc: "The open-standard RISC-V RV32I instruction set architecture serves as the foundation for Hema's <strong>sanctioned ₹1,00,000 research project</strong>. Focuses on implementing dedicated hardware root-of-trust security extensions, side-channel attack countermeasures, and cryptographic accelerators on custom silicon RTL.",
+        specs: [
+          { label: "Base Architecture", val: "RV32I (32-bit Integer)" },
+          { label: "Research Grant", val: "₹1,00,000 (MRIIRS)" },
+          { label: "Hardware Description", val: "Verilog HDL" },
+          { label: "Target Emulation", val: "Xilinx 7-Series FPGA" }
+        ]
+      },
+      verilog: {
+        title: "Verilog HDL",
+        category: "Digital Hardware Description Language",
+        icon: "fas fa-code",
+        desc: "Hardware Description Language utilized to design register-transfer level (RTL) circuits, state machines (Mealy/Moore FSMs), ALU modules, and custom cryptographic primitives with clock-cycle precision.",
+        specs: [
+          { label: "Paradigm", val: "RTL / Behavioral / Structural" },
+          { label: "Verification", val: "Directed Testbenches" },
+          { label: "Tools", val: "Vivado, ModelSim, Quartus" },
+          { label: "Focus", val: "RISC-V Security & FSMs" }
+        ]
+      },
+      python: {
+        title: "Python Programming",
+        category: "Software Development & Deep Learning",
+        icon: "fab fa-python",
+        desc: "Core language used for training neural networks, implementing edge inferencing scripts, automating EDA flows, and building rapid cloud telemetry test harnesses.",
+        specs: [
+          { label: "Version", val: "Python 3.10+" },
+          { label: "Libraries", val: "NumPy, OpenCV, PyTorch, Matplotlib" },
+          { label: "Hardware Control", val: "Jetson.GPIO, PySerial" },
+          { label: "Paradigm", val: "Object-Oriented & Scripting" }
+        ]
+      },
+      cpp: {
+        title: "C / C++ (Embedded)",
+        category: "Bare-Metal Firmware Development",
+        icon: "fas fa-file-code",
+        desc: "Used for developing high-performance firmware, direct register manipulation, interrupt service routines (ISRs), and memory-efficient algorithms on microcontrollers.",
+        specs: [
+          { label: "Standard", val: "C99 / C++17" },
+          { label: "Target Chips", val: "ESP32, Arduino, AVR" },
+          { label: "Key Features", val: "Direct Memory Access, Low Footprint" },
+          { label: "Toolchains", val: "GCC, ESP-IDF, PlatformIO" }
+        ]
+      },
+      linux: {
+        title: "Linux Environment & CLI",
+        category: "Operating System & Embedded Toolchains",
+        icon: "fab fa-linux",
+        desc: "Development environment for running embedded toolchains on Nvidia Jetson Nano, configuring MobaXterm server SSH tunnels, compiling RISC-V GCC cross-compilers, and shell scripting.",
+        specs: [
+          { label: "Distros", val: "Ubuntu LTS, JetPack Linux" },
+          { label: "Utilities", val: "Bash Scripting, SSH, Git, Make" },
+          { label: "Toolchains", val: "RISC-V GNU Cross-Compiler" },
+          { label: "Terminal", val: "MobaXterm, Linux CLI" }
+        ]
+      },
+      fpga: {
+        title: "FPGA Emulation",
+        category: "Reconfigurable Hardware Prototyping",
+        icon: "fas fa-layer-group",
+        desc: "Enables hardware-level emulation of custom processors and digital accelerators before chip fabrication. Validates side-channel attack resistance and physical signal behavior in real-time execution environments.",
+        specs: [
+          { label: "Platform", val: "Xilinx / Altera Devices" },
+          { label: "Clock Domains", val: "Synchronous Multi-Clock" },
+          { label: "Verification", val: "In-System Logic Analyzer" },
+          { label: "Application", val: "Hardware Crypto Core" }
+        ]
+      },
+      hardware_security: {
+        title: "Hardware Cryptography & Security",
+        category: "Silicon Root of Trust & Tamper Defense",
+        icon: "fas fa-shield-alt",
+        desc: "Research domain centered on developing secure hardware architectures resistant to power analysis, fault injection, and timing side-channel attacks on embedded microprocessors.",
+        specs: [
+          { label: "Grant Funding", val: "₹1,00,000 Sanctioned" },
+          { label: "Duration", val: "24 Months (2026–2028)" },
+          { label: "Institution", val: "MRIIRS Research Board" },
+          { label: "Deliverable", val: "Secure RISC-V SoC Prototype" }
+        ]
+      },
+      riscv_grant: {
+        title: "RISC-V Security Research Grant",
+        category: "Sanctioned Research Project (₹1,00,000)",
+        icon: "fas fa-award",
+        desc: "Official 24-month research project sanctioned by the <strong>MRIIRS Research Board (Ref: MRIIRS/REGR/2026/483)</strong>. Focused on 'Hardware Security Implementation on RISC-V Architecture' under the Dept. of ECE.",
+        specs: [
+          { label: "Sanction Amount", val: "₹1,00,000 INR" },
+          { label: "Duration", val: "24 Months (2026–2028)" },
+          { label: "Affiliation", val: "ECE Dept, SET, MRIIRS" },
+          { label: "Focus", val: "Hardware Silicon Security" }
+        ]
+      },
+
+      // Patents & Publications
+      pen_patent: {
+        title: "Gesture Pen HCI Interface",
+        category: "Granted Utility Patent (App: 459423-001)",
+        icon: "fas fa-pen-nib",
+        desc: "Patented Human-Computer Interface pen that translates continuous handwriting and hand gestures in 3D space into digital computer commands using multi-axis sensor fusion algorithms without touchscreens.",
+        specs: [
+          { label: "Patent Type", val: "Utility Patent" },
+          { label: "Status", val: "Granted (2025)" },
+          { label: "Sensor Array", val: "IMU / 6-DOF Motion Tracking" },
+          { label: "Publication", val: "Documented in IEEE Xplore" }
+        ]
+      },
+      cart_patent: {
+        title: "Autonomous Smart Shopping Cart",
+        category: "Granted Design Patent (App: 202511118413)",
+        icon: "fas fa-shopping-cart",
+        desc: "Patented automated supermarket trolley integrated with barcode scanning, scale telemetry, and instant wireless billing to eliminate supermarket checkout queues.",
+        specs: [
+          { label: "Patent Type", val: "Industrial Design Patent" },
+          { label: "Status", val: "Granted (2025)" },
+          { label: "Application", val: "Smart Retail & Logistics" },
+          { label: "Electronics", val: "Embedded Telemetry Terminal" }
+        ]
+      },
+      lighting_patent: {
+        title: "Lighting Shrub System",
+        category: "Granted Design Patent (App: 465417-001)",
+        icon: "fas fa-lightbulb",
+        desc: "Patented sustainable architectural illumination fixture featuring solar collection petals and ambient-sensing LED drivers for smart city outdoor lighting.",
+        specs: [
+          { label: "Patent Type", val: "Industrial Design Patent" },
+          { label: "Status", val: "Granted (2025)" },
+          { label: "Energy Source", val: "Solar Assisted CleanTech" },
+          { label: "Application", val: "Smart Outdoor Illumination" }
+        ]
+      },
+      ieee_paper: {
+        title: "IEEE Xplore Research Paper",
+        category: "Peer-Reviewed Publication (Doc ID: 11400200)",
+        icon: "fas fa-book",
+        desc: "Authored paper titled <em>'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications'</em> indexing machine learning classifiers, latency constraints, and sensor architectures.",
+        specs: [
+          { label: "Publisher", val: "IEEE Xplore Digital Library" },
+          { label: "Doc ID", val: "11400200" },
+          { label: "Peer Review", val: "International Conference" },
+          { label: "Focus", val: "HCI & Gesture Algorithms" }
+        ]
+      }
+    };
+
+    function openTechModal(key) {
+      const data = techDossier[key];
+      if (!data) return;
+
+      document.getElementById('modalTitle').innerHTML = data.title;
+      document.getElementById('modalCategory').innerText = data.category;
+      document.getElementById('modalDescription').innerHTML = data.desc;
+      document.getElementById('modalIcon').innerHTML = `<i class="${data.icon}"></i>`;
+
+      let specsHtml = '';
+      if (data.specs) {
+        data.specs.forEach(spec => {
+          specsHtml += `
+            <div class="tech-spec-item">
+              <div class="tech-spec-label">${spec.label}</div>
+              <div class="tech-spec-val">${spec.val}</div>
+            </div>
+          `;
+        });
+      }
+      document.getElementById('modalSpecs').innerHTML = specsHtml;
+      document.getElementById('techModalOverlay').classList.add('active');
+    }
+
+    function closeTechModal(e) {
+      if (!e || e.target.id === 'techModalOverlay' || e.target.closest('.modal-close-btn')) {
+        document.getElementById('techModalOverlay').classList.remove('active');
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('techModalOverlay').classList.remove('active');
+        document.getElementById('aiModal').classList.remove('active');
+      }
+    });
+
+    // Background PCB Canvas Animation Engine
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -1219,56 +1864,46 @@
     resize();
     animate();
 
-    // Specific & Dynamic Portfolio Query Engine
+    // Dedicated Portfolio AI Engine
     function getPortfolioAnswer(rawText) {
       const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
-      // 1. Background / Bio / About Hema
       if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
         return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents in Smart Retail & CleanTech).\n• Published IEEE author on Gesture-based Pen Interfaces.\n• National Appreciation Award Winner @ 6th Mitsubishi Electric Cup.";
       }
 
-      // 2. RISC-V & Research Grant Details
       if (q.includes('risc') || q.includes('grant') || q.includes('fund') || q.includes('security') || q.includes('research')) {
         return "RISC-V Hardware Security Research Project:\n\n• Grant & Support: Sanctioned with ₹1,00,000 internal research funding by MRIIRS Research Board (24-month duration, 2026–2028).\n• Scope: Implementing hardware root-of-trust cryptographic acceleration blocks, physical side-channel attack mitigations, and custom security extensions on open-source RISC-V processor cores.\n• EDA & Emulation: Built using Verilog HDL and verified via Xilinx Vivado.";
       }
 
-      // 3. Patents / Intellectual Property
       if (q.includes('patent') || q.includes('ip') || q.includes('invention') || q.includes('utility') || q.includes('design patent')) {
         return "Hema Prasad's 3 Patent Applications:\n\n1. Utility Patent: Gesture-Based Wireless Pen Interface (App: 459423-001)\n   • Designed for seamless Human-Computer Interaction using multi-axis real-time gesture & motion classification.\n2. Design Patent: Autonomous Smart Shopping Cart (App: 202511118413)\n   • Embedded smart retail cart with integrated barcode scanning and cloud billing.\n3. Design Patent: Lighting Shrub (App: 465417-001)\n   • Aesthetic solar-assisted outdoor smart lighting architecture.";
       }
 
-      // 4. Projects Showcase
       if (q.includes('project') || q.includes('work') || q.includes('jetson') || q.includes('plc') || q.includes('boat') || q.includes('sorting') || q.includes('prenatal') || q.includes('tracker')) {
         return "Featured Engineering Projects:\n\n1. Hardware Security on RISC-V ISA (Funded Research Grant 2026–2028)\n2. AI Industrial Fruit Sorting System (Nvidia Jetson Nano deep learning vision + Mitsubishi PLC GX Works3)\n3. Autonomous Agri-Telemetry Boat (ESP32-CAM + MQTT protocol)\n4. IoT Maternal Prenatal Health Telemetry (ThingSpeak Cloud API)\n5. Mobile Safety Tracking System (ESP32 GPS/Wi-Fi panic beacon)\n6. Smart Cloud Power Relay (Low-latency home automation via MQTT).";
       }
 
-      // 5. Technical Skills & Tools
       if (q.includes('skill') || q.includes('tool') || q.includes('software') || q.includes('language') || q.includes('verilog') || q.includes('eda') || q.includes('tech stack')) {
         return "Technical Competencies:\n\n• Hardware & Architecture: RISC-V ISA, Verilog HDL, Circuit & Zero-PCB Design, ESP32, Arduino, Jetson Nano\n• EDA & Simulation: Xilinx Vivado, Cadence Virtuoso, Quartus Prime, Proteus, Tinkercad\n• Automation & AI: Mitsubishi PLC (GX Works3 Ladder Logic), Python, OpenCV\n• Cloud & Telemetry: ThingSpeak Cloud, AWS IoT Core, MQTT, REST APIs, Firebase, n8n.";
       }
 
-      // 6. Publications & IEEE
       if (q.includes('ieee') || q.includes('paper') || q.includes('publication') || q.includes('xplore') || q.includes('journal')) {
         return "IEEE Xplore Publication:\n\n• Title: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications'\n• Document ID: 11400200\n• Topic: In-depth survey on sensor fusion techniques, embedded algorithms, and latency benchmarks in gesture-based HCI pens.";
       }
 
-      // 7. Awards & Competitions
       if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('mitsubishi')) {
         return "Major Achievements & Awards:\n\n• National Appreciation Award @ 6th Mitsubishi Electric Cup (Feb 2026)\n• 1st Prize @ Health Tech Innovation (CHI, MRIIRS, April 2024)\n• 2nd Prize @ INNOSKILL 2025 (Srijan Hardware Innovation)\n• Triple Victory @ Echiesta 2024 (1st in Ideathon, 1st in Line Follower Robot, 2nd in Arduino Project Battle).";
       }
 
-      // 8. Contact & Socials
       if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('connect')) {
         return "Connect with Hema Prasad Dogga:\n\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400\n• Location: Faridabad, Haryana / Visakhapatnam, India.";
       }
 
-      // 9. Greetings
       if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('morning') || q.includes('evening')) {
         return "Hello! I am Hema Prasad's portfolio AI assistant. Feel free to ask about his RISC-V research grant, patents, IEEE publication, projects, technical skills, or contact info!";
       }
 
-      // Dynamic Context-Aware Response for Any Custom Input
       return `Regarding "${rawText}":\n\nHema Prasad is an ECE (AIoT) undergraduate at MRIIRS with a ₹1,00,000 funded research grant in RISC-V Hardware Security, 3 patent applications, an IEEE publication, and expertise across Digital VLSI (Verilog/Vivado), Edge AI (Jetson Nano), and PLC automation.\n\nWould you like to explore his research, patents, specific projects, or contact details directly?`;
     }
 
@@ -1293,7 +1928,6 @@
 
       const chatBody = document.getElementById('aiChatBody');
 
-      // Append user message
       const userDiv = document.createElement('div');
       userDiv.className = 'ai-msg ai-msg-user';
       userDiv.innerText = text;
@@ -1302,14 +1936,13 @@
       input.value = '';
       chatBody.scrollTop = chatBody.scrollHeight;
 
-      // Bot thinking & direct response
       setTimeout(() => {
         const botDiv = document.createElement('div');
         botDiv.className = 'ai-msg ai-msg-bot';
         botDiv.innerText = getPortfolioAnswer(text);
         chatBody.appendChild(botDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
-      }, 250);
+      }, 200);
     }
   </script>
 </body>
