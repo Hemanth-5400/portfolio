@@ -650,9 +650,9 @@
       position: fixed;
       bottom: 95px;
       right: 25px;
-      width: 400px;
+      width: 420px;
       max-width: calc(100vw - 40px);
-      height: 520px;
+      height: 540px;
       background: rgba(9, 15, 28, 0.98);
       border: 1px solid var(--card-border);
       border-radius: 16px;
@@ -711,12 +711,25 @@
     }
 
     .ai-msg {
-      padding: 0.7rem 0.95rem;
+      padding: 0.75rem 1rem;
       border-radius: 10px;
       max-width: 90%;
-      line-height: 1.5;
-      white-space: pre-wrap;
+      line-height: 1.55;
       word-break: break-word;
+    }
+
+    .ai-msg p {
+      margin-bottom: 0.5rem;
+    }
+    .ai-msg p:last-child {
+      margin-bottom: 0;
+    }
+    .ai-msg ul, .ai-msg ol {
+      margin-left: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .ai-msg strong {
+      color: #fff;
     }
 
     .ai-msg-bot {
@@ -869,7 +882,7 @@
               <span class="tag">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Utility Patent • Granted 2025</div>
-            <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
+            <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('cart_patent')">
@@ -878,7 +891,7 @@
               <span class="tag">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
             </div>
             <div class="card-meta">Design Patent • Granted 2025</div>
-            <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration.</p>
+            <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('lighting_patent')">
@@ -895,9 +908,9 @@
               <h3 class="card-title">4th IEEE DELCON 2025 Presentation</h3>
               <span class="tag">PID: 174 <i class="fas fa-external-link-alt"></i></span>
             </div>
-            <div class="card-meta">IEEE Delhi Section • Jamia Millia Islamia (2025)</div>
-            <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications" at IEEE DELCON 2025.</p>
-            <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" onclick="event.stopPropagation()" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View on IEEE Xplore &rarr;</a>
+            <div class="card-meta">IEEE Delhi Section • Jamia Millia Islamia (2025)[cite: 7]</div>
+            <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications" at IEEE DELCON 2025[cite: 7].</p>
+            <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" onclick="event.stopPropagation()" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View on IEEE Xplore &rarr;[cite: 13]</a>
           </div>
         </div>
       </div>
@@ -938,8 +951,8 @@
 
           <div class="card reveal" onclick="openTechModal('jetson_nano')">
             <h3 class="card-title">AI Fruit Sorting System (Mitsubishi PLC + Jetson Nano)</h3>
-            <div class="card-meta">Team AGRISORT AI • 6th Mitsubishi Electric Cup (2026)</div>
-            <p class="card-desc">Edge AI deep learning computer vision model executed on Nvidia Jetson Nano, interfacing directly with a Mitsubishi PLC (GX Works3) for high-speed pneumatic industrial fruit sorting.</p>
+            <div class="card-meta">Team AGRISORT AI • 6th Mitsubishi Electric Cup (2026)[cite: 8, 13]</div>
+            <p class="card-desc">Edge AI deep learning computer vision model executed on Nvidia Jetson Nano, interfacing directly with a Mitsubishi PLC (GX Works3) for high-speed pneumatic industrial fruit sorting[cite: 8, 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('plc')">PLC (GX Works3) <i class="fas fa-search-plus"></i></span>
@@ -950,8 +963,8 @@
 
           <div class="card reveal" onclick="openTechModal('esp32_cam')">
             <h3 class="card-title">Cloud-Connected Smart Agriculture Boat</h3>
-            <div class="card-meta">AgriTech & Cloud Telemetry (2024)</div>
-            <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection.</p>
+            <div class="card-meta">AgriTech & Cloud Telemetry (2024)[cite: 13]</div>
+            <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection[cite: 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('esp32_cam')">ESP32-CAM <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('aws_iot')">AWS IoT / MQTT <i class="fas fa-search-plus"></i></span>
@@ -962,8 +975,8 @@
 
           <div class="card reveal" onclick="openTechModal('esp8266')">
             <h3 class="card-title">IoT Prenatal Health Cloud Monitor</h3>
-            <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)</div>
-            <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness.</p>
+            <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)[cite: 13]</div>
+            <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness[cite: 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('esp8266')">ESP8266 <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
@@ -974,8 +987,8 @@
 
           <div class="card reveal" onclick="openTechModal('arduino')">
             <h3 class="card-title">Autonomous Line Follower Robot (Flash UNO)</h3>
-            <div class="card-meta">RoboRush 1.0 & Echiesta 2K24 Award Winner</div>
-            <p class="card-desc">High-precision differential drive autonomous robot using IR sensor arrays, customized PID control loops, and high-torque geared DC motors.</p>
+            <div class="card-meta">RoboRush 1.0 & Echiesta 2K24 Award Winner[cite: 1, 5, 6, 13]</div>
+            <p class="card-desc">High-precision differential drive autonomous robot using IR sensor arrays, customized PID control loops, and high-torque geared DC motors[cite: 1, 6].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Platform <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">IR Sensor Array <i class="fas fa-search-plus"></i></span>
@@ -1010,10 +1023,10 @@
           <div class="card reveal" onclick="openTechModal('verilog')">
             <div class="card-header">
               <h3 class="card-title">VLSI Design & Verification Intern</h3>
-              <span class="tag">ID: EW/INTRN129</span>
+              <span class="tag">ID: EW/INTRN129[cite: 12]</span>
             </div>
-            <div class="card-meta">Engineers World Limited • June 2026 – July 2026</div>
-            <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
+            <div class="card-meta">Engineers World Limited • June 2026 – July 2026[cite: 12]</div>
+            <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks[cite: 12].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">Vivado</span>
@@ -1024,10 +1037,10 @@
           <div class="card reveal" onclick="openTechModal('verilog')">
             <div class="card-header">
               <h3 class="card-title">VLSI Design & Verification Intern</h3>
-              <span class="tag">ID: EW/INTRN56</span>
+              <span class="tag">ID: EW/INTRN56[cite: 10, 11]</span>
             </div>
-            <div class="card-meta">Engineer's World Private Limited • June 2025 – July 2025</div>
-            <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, and logic minimization for specialized digital processing sub-circuits.</p>
+            <div class="card-meta">Engineer's World Private Limited • June 2025 – July 2025[cite: 10, 11]</div>
+            <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, and logic minimization for specialized digital processing sub-circuits[cite: 10, 11, 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">EDA Tools</span>
@@ -1038,10 +1051,10 @@
           <div class="card reveal" onclick="openTechModal('pcb_design')">
             <div class="card-header">
               <h3 class="card-title">Engineering Intern</h3>
-              <span class="tag">Core Electrical</span>
+              <span class="tag">Core Electrical[cite: 13]</span>
             </div>
-            <div class="card-meta">Parmod Electricals • June 2024 – July 2024</div>
-            <p class="card-desc">Hands-on industrial electrical engineering training covering MCB & PLC manufacturing, control panel circuitry, power distribution, and component troubleshooting.</p>
+            <div class="card-meta">Parmod Electricals • June 2024 – July 2024[cite: 10, 13]</div>
+            <p class="card-desc">Hands-on industrial electrical engineering training covering MCB & PLC manufacturing, control panel circuitry, power distribution, and component troubleshooting[cite: 10, 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('pcb_design')">Control Wiring</span>
               <span class="tag">Power Systems</span>
@@ -1061,9 +1074,9 @@
           <div class="card reveal" onclick="openTechModal('fpga')">
             <div class="card-header">
               <h3 class="card-title">Learning FPGA Development</h3>
-              <span class="tag">LinkedIn Learning</span>
+              <span class="tag">LinkedIn Learning[cite: 13]</span>
             </div>
-            <div class="card-meta">Completed January 2025</div>
+            <div class="card-meta">Completed January 2025[cite: 13]</div>
             <p class="card-desc">Architecture of Field Programmable Gate Arrays, HDL design entry, logic synthesis, timing closure, and hardware configuration.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('fpga')">FPGA Architecture</span>
@@ -1074,9 +1087,9 @@
           <div class="card reveal" onclick="openTechModal('hardware_security')">
             <div class="card-header">
               <h3 class="card-title">Electronics Foundation: Semiconductor Devices</h3>
-              <span class="tag">LinkedIn Learning</span>
+              <span class="tag">LinkedIn Learning[cite: 13]</span>
             </div>
-            <div class="card-meta">Completed March 2025</div>
+            <div class="card-meta">Completed March 2025[cite: 13]</div>
             <p class="card-desc">Physics and operation of semiconductor junctions, PN diodes, BJTs, MOSFET switches, and integrated circuit transistor sizing.</p>
             <div class="tag-list">
               <span class="tag">Semiconductors</span>
@@ -1087,9 +1100,9 @@
           <div class="card reveal" onclick="openTechModal('mqtt')">
             <div class="card-header">
               <h3 class="card-title">IoT Foundation: Low Power Wireless Networking</h3>
-              <span class="tag">LinkedIn Learning</span>
+              <span class="tag">LinkedIn Learning[cite: 13]</span>
             </div>
-            <div class="card-meta">Completed December 2024</div>
+            <div class="card-meta">Completed December 2024[cite: 13]</div>
             <p class="card-desc">Low-power RF topologies, mesh networking protocols, BLE, LPWAN, and energy-budget optimization in remote wireless nodes.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('mqtt')">Low Power RF</span>
@@ -1100,10 +1113,10 @@
           <div class="card reveal" onclick="openTechModal('python')">
             <div class="card-header">
               <h3 class="card-title">Raspberry Pi 4 using Python Programming</h3>
-              <span class="tag">Udemy</span>
+              <span class="tag">Udemy[cite: 13]</span>
             </div>
-            <div class="card-meta">Completed March 2025</div>
-            <p class="card-desc">Linux SBC configuration, Python GPIO automation, hardware sensor interfacing, and camera video stream processing.</p>
+            <div class="card-meta">Completed March 2025[cite: 13]</div>
+            <p class="card-desc">Linux SBC configuration, Python GPIO automation, hardware sensor interfacing, and camera video stream processing[cite: 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('linux')">Raspberry Pi</span>
@@ -1113,10 +1126,10 @@
           <div class="card reveal" onclick="openTechModal('arduino')">
             <div class="card-header">
               <h3 class="card-title">Hands on Arduino</h3>
-              <span class="tag">Udemy</span>
+              <span class="tag">Udemy[cite: 13]</span>
             </div>
-            <div class="card-meta">Completed April 2024</div>
-            <p class="card-desc">Physical computing, microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, and sensory feedback loops.</p>
+            <div class="card-meta">Completed April 2024[cite: 13]</div>
+            <p class="card-desc">Physical computing, microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, and sensory feedback loops[cite: 13].</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C</span>
@@ -1211,44 +1224,44 @@
 
           <div class="card reveal" onclick="openTechModal('arduino')">
             <h3 class="card-title">1st Prize – ROBO (Line Followers)</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Awarded 1st place in the autonomous Line Follower Robotics competition representing MRIIRS.</p>
+            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)[cite: 1, 13]</div>
+            <p class="card-desc">Awarded 1st place in the autonomous Line Follower Robotics competition representing MRIIRS[cite: 1, 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pen_patent')">
             <h3 class="card-title">1st Prize – Ideathon</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Secured 1st place for presenting innovative embedded engineering concepts and product architectures.</p>
+            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)[cite: 13]</div>
+            <p class="card-desc">Secured 1st place for presenting innovative embedded engineering concepts and product architectures[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
             <h3 class="card-title">2nd Prize – Arduino Project Battle</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Secured 2nd position in the competitive Arduino hardware & circuit prototyping battle.</p>
+            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)[cite: 3, 13]</div>
+            <p class="card-desc">Secured 2nd position in the competitive Arduino hardware & circuit prototyping battle[cite: 3, 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('plc')">
             <h3 class="card-title">6th Mitsubishi Electric Cup (MECA 2026)</h3>
-            <div class="card-meta">National Finalist (Team AGRISORT AI) • MIT-WPU Pune (Feb 2026)</div>
-            <p class="card-desc">Recognized for participation in the National Level Factory Automation Finals with the AI Fruit Sorting System.</p>
+            <div class="card-meta">National Finalist (Team AGRISORT AI) • MIT-WPU Pune (Feb 2026)[cite: 8, 13]</div>
+            <p class="card-desc">Recognized for participation in the National Level Factory Automation Finals with the AI Fruit Sorting System[cite: 8, 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pcb_design')">
             <h3 class="card-title">2nd Prize (Srijan Competition) – INNOSKILL 2025</h3>
-            <div class="card-meta">Annual Tech Fest MRIIRS • April 2025</div>
-            <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation exhibition.</p>
+            <div class="card-meta">Annual Tech Fest MRIIRS • April 2025[cite: 13]</div>
+            <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation exhibition[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('esp8266')">
             <h3 class="card-title">1st Prize – Health Tech Innovation (CHI)</h3>
-            <div class="card-meta">Centre for Health Innovation, MRIIRS • April 2024</div>
-            <p class="card-desc">Awarded 1st prize for designing and developing the IoT Prenatal Monitoring System.</p>
+            <div class="card-meta">Centre for Health Innovation, MRIIRS • April 2024[cite: 13]</div>
+            <p class="card-desc">Awarded 1st prize for designing and developing the IoT Prenatal Monitoring System[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
             <h3 class="card-title">Consolation Prize – RoboRush 1.0</h3>
-            <div class="card-meta">K.R. Mangalam University (Team Flash UNO) • April 2025</div>
-            <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON.</p>
+            <div class="card-meta">K.R. Mangalam University (Team Flash UNO) • April 2025[cite: 5, 6]</div>
+            <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON[cite: 5, 6].</p>
           </div>
 
         </div>
@@ -1266,7 +1279,7 @@
               <span class="tag tag-highlight">2023 – 2027</span>
             </div>
             <div class="card-meta">Manav Rachna International Institute of Research and Studies (MRIIRS)</div>
-            <p class="card-desc">Specialized curriculum in Electronics & Communication Engineering with AIoT focus.</p>
+            <p class="card-desc">Specialized curriculum in Electronics & Communication Engineering with AIoT focus[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('sasi_edu')">
@@ -1274,8 +1287,8 @@
               <h3 class="card-title">Senior Secondary Education (12th)</h3>
               <span class="tag">Completed</span>
             </div>
-            <div class="card-meta">SASI Educational Institutes, Visakhapatnam (2021 – 2023)</div>
-            <p class="card-desc">Major coursework in Mathematics, Physics, and Chemistry (MPC stream).</p>
+            <div class="card-meta">SASI Educational Institutes, Visakhapatnam (2021 – 2023)[cite: 13]</div>
+            <p class="card-desc">Major coursework in Mathematics, Physics, and Chemistry (MPC stream)[cite: 13].</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('school_edu')">
@@ -1283,8 +1296,8 @@
               <h3 class="card-title">Secondary Education (10th)</h3>
               <span class="tag">Completed</span>
             </div>
-            <div class="card-meta">Chalapathi Public School, Visakhapatnam (2021)</div>
-            <p class="card-desc">Foundational excellence with focused distinction in science and mathematics.</p>
+            <div class="card-meta">Chalapathi Public School, Visakhapatnam (2021)[cite: 13]</div>
+            <p class="card-desc">Foundational excellence with focused distinction in science and mathematics[cite: 13].</p>
           </div>
 
         </div>
@@ -1294,11 +1307,11 @@
     <footer id="contact">
       <div class="container reveal">
         <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad</h3>
-        <p style="margin-bottom: 1rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
+        <p style="margin-bottom: 1rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584[cite: 13]</p>
         <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.2rem;">
           <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary); font-size: 1.3rem;"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.3rem;"><i class="fab fa-github"></i></a>
+          <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary); font-size: 1.3rem;"><i class="fab fa-linkedin"></i>[cite: 13]</a>
+          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.3rem;"><i class="fab fa-github"></i>[cite: 13]</a>
         </div>
         <p style="font-size: 0.8rem; color: var(--primary);">&copy; 2026 Hema Prasad. Hosted on GitHub Pages.</p>
       </div>
@@ -1341,19 +1354,21 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad's personal portfolio assistant. Ask me about his Maven Silicon Design Verification training, Electrobits Club technical core role, RISC-V research grant, certifications, internships, patents, or contact details!
+        <p>Hello! I am Hema Prasad's portfolio AI assistant.</p>
+        <p>You can ask me about his <strong>Maven Silicon Design Verification training</strong>, <strong>Electrobits Club leadership</strong>, <strong>₹1,00,000 RISC-V Research Grant</strong>, <strong>Patents</strong>, <strong>Projects</strong>, or <strong>Internships</strong>!</p>
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('Tell me about your Maven Silicon verification training')">Maven Silicon?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your role in Electrobits Club')">Electrobits Club?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your certifications')">Certifications?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Grant?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
+          <span class="quick-chip" onclick="askQuestion('What are your top projects?')">Top Projects?</span>
+          <span class="quick-chip" onclick="askQuestion('What patents do you have?')">Patents?</span>
           <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
         </div>
       </div>
     </div>
     <div class="ai-footer">
-      <input type="text" id="aiInput" class="ai-input" placeholder="Ask about Hema's work..." onkeypress="handleKeyPress(event)" />
+      <input type="text" id="aiInput" class="ai-input" placeholder="Ask about Hema's work, skills, or research..." onkeypress="handleKeyPress(event)" />
       <button class="ai-send" onclick="sendUserMessage()"><i class="fas fa-paper-plane"></i></button>
     </div>
   </div>
@@ -2221,59 +2236,150 @@
     resize();
     animate();
 
-    // Dedicated Portfolio AI Engine
+    // Comprehensive Portfolio AI Engine
     function getPortfolioAnswer(rawText) {
       const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
-      if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
-        return "Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) student at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Main Technical Member of the Electrobits Club (ECE Dept, MRIIRS).\n• Design Verification Engineering Trainee at Maven Silicon (SystemVerilog / UVM).\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents).\n• Author & Presenter at 4th IEEE DELCON 2025.\n• 1st Prize Winner in Line Follower Robotics & Ideathon @ Echiesta 2K24.\n• Dual VLSI Intern at Engineers World Limited (2025 & 2026).";
+      // Greetings
+      if (/^(hi|hello|hey|greetings|hola|good morning|good evening)/i.test(q.trim())) {
+        return `<p>Hello! I am Hema Prasad's personal AI portfolio assistant.</p>
+                <p>Feel free to ask about his <strong>VLSI Verification training</strong>, <strong>RISC-V research grant</strong>, <strong>Electrobits Club role</strong>, <strong>Patents</strong>, <strong>Internships</strong>, or <strong>Projects</strong>!</p>`;
       }
 
-      if (q.includes('electrobit') || q.includes('club') || q.includes('member') || q.includes('leadership')) {
-        return "Electrobits Club (ECE Dept, MRIIRS):\n\n• Role: Main Technical Member\n• Focus: Driving technical innovation, organizing hardware prototyping hackathons, conducting hands-on embedded systems/robotics workshops, and mentoring student projects across the department.";
+      // Maven Silicon & Verification
+      if (q.includes('maven') || q.includes('silicon') || q.includes('uvm') || q.includes('systemverilog') || q.includes('verification') || q.includes('dv') || q.includes('testbench')) {
+        return `<p><strong>Design Verification Training at Maven Silicon (2026):</strong></p>
+                <ul>
+                  <li><strong>Core Focus:</strong> Advanced digital verification using <strong>SystemVerilog</strong> and <strong>UVM (Universal Verification Methodology)</strong>.</li>
+                  <li><strong>Key Methodologies:</strong> Constrained Random Verification (CRV), SystemVerilog Assertions (SVA), Functional Coverage, and Transaction-Level Modeling (TLM 2.0).</li>
+                  <li><strong>Tools & Flows:</strong> ModelSim/QuestaSim, testbench architecting, sequence item creation, scoreboarding, and driver/monitor protocol compliance.</li>
+                </ul>`;
       }
 
-      if (q.includes('maven') || q.includes('silicon') || q.includes('uvm') || q.includes('systemverilog') || q.includes('verification')) {
-        return "Maven Silicon Design Verification Training:\n\n• Training: Advanced Design Verification Engineering on SystemVerilog and UVM.\n• Focus Areas: Object-Oriented Verification (OOP), Transaction-Level Modeling (TLM), Constrained Random Stimulus (CRV), Functional Coverage & Assertions (SVA).\n• Applications: Building scalable, reusable verification components for complex SoCs and RISC-V processors.";
+      // Electrobits Club
+      if (q.includes('electrobit') || q.includes('club') || q.includes('lead') || q.includes('member') || q.includes('role')) {
+        return `<p><strong>Electrobits Club (ECE Department, MRIIRS):</strong></p>
+                <ul>
+                  <li><strong>Role:</strong> Main Technical Member</li>
+                  <li><strong>Responsibilities:</strong> Leading departmental technical workshops, mentoring students in robotics and embedded prototyping, organizing circuit hackathons, and managing technical events.</li>
+                </ul>`;
       }
 
-      if (q.includes('certif') || q.includes('course') || q.includes('linkedin') || q.includes('udemy')) {
-        return "Certifications & Upskilling:\n\n1. LinkedIn Learning: Learning FPGA Development (Jan 2025)\n2. LinkedIn Learning: Electronics Foundation: Semiconductor Devices (March 2025)\n3. LinkedIn Learning: IoT Foundation: Low Power Wireless Networking (Dec 2024)\n4. Udemy: Raspberry Pi 4 using Python Programming (March 2025)\n5. Udemy: Hands on Arduino (April 2024).";
+      // RISC-V Research Grant
+      if (q.includes('risc') || q.includes('grant') || q.includes('fund') || q.includes('research') || q.includes('security') || q.includes('100000') || q.includes('1 lakh')) {
+        return `<p><strong>Sanctioned Research Grant (₹1,00,000 INR):</strong></p>
+                <ul>
+                  <li><strong>Title:</strong> Hardware Security Implementation on RISC-V Architecture</li>
+                  <li><strong>Authority:</strong> Sanctioned by MRIIRS Research Board (Ref: MRIIRS/REGR/2026/483) for a 24-month duration (2026–2028).</li>
+                  <li><strong>Technical Scope:</strong> Implementing silicon root-of-trust cryptographic primitives, side-channel attack countermeasures, and custom hardware security extensions on open-source RISC-V RV32I processor RTL using Verilog HDL and Xilinx Vivado FPGA synthesis.</li>
+                </ul>`;
       }
 
-      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('echiesta') || q.includes('echalon') || q.includes('mitsubishi')) {
-        return "Verified Honors & Competition Achievements:\n\n1. Echiesta-2K24 (Echelon Institute of Tech):\n   • 1st Prize in ROBO Line Followers\n   • 1st Prize in Ideathon\n   • 2nd Prize in Arduino Project Battle\n2. 6th Mitsubishi Electric Cup (MECA 2026, MIT-WPU Pune):\n   • National Finalist with Team AGRISORT AI\n3. INNOSKILL 2025 (MRIIRS):\n   • 2nd Prize in Srijan Innovation Competition\n4. Health Tech Innovation (CHI, MRIIRS):\n   • 1st Prize for IoT Prenatal Monitoring System (April 2024)\n5. RoboRush 1.0 (K.R. Mangalam University):\n   • Consolation Prize with Team Flash UNO.";
+      // Patents
+      if (q.includes('patent') || q.includes('ip') || q.includes('invention') || q.includes('utility') || q.includes('shopping cart') || q.includes('pen')) {
+        return `<p><strong>Intellectual Property & Patents:</strong></p>
+                <ol>
+                  <li><strong>Utility Patent (Granted 2025 | App: 459423-001):</strong> Gesture-Based Wireless Pen Interface for Human-Computer Interaction using multi-axis inertial sensing and real-time motion classification.</li>
+                  <li><strong>Design Patent (Granted 2025 | App: 202511118413):</strong> Autonomous Smart Shopping Cart with embedded barcode scanning and wireless cloud checkout.</li>
+                  <li><strong>Design Patent (Granted 2025 | App: 465417-001):</strong> Lighting Shrub — an aesthetic solar-assisted smart outdoor illumination system.</li>
+                </ol>`;
       }
 
-      if (q.includes('intern') || q.includes('experience') || q.includes('work') || q.includes('company') || q.includes('engineers world')) {
-        return "Professional Internship Experience:\n\n1. VLSI Design & Verification Intern @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129):\n   • Digital ASIC verification flows, SystemVerilog/Verilog RTL simulation, and functional coverage.\n\n2. VLSI Design & Verification Intern @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56):\n   • RTL coding, digital circuit synthesis, and testbench validation.\n\n3. Engineering Intern @ Parmod Electricals (June–July 2024):\n   • Industrial core electrical training covering MCB & PLC manufacturing and panel wiring.";
+      // IEEE Publication
+      if (q.includes('ieee') || q.includes('delcon') || q.includes('paper') || q.includes('publication') || q.includes('xplore') || q.includes('conference')) {
+        return `<p><strong>IEEE Conference Presentation:</strong></p>
+                <ul>
+                  <li><strong>Conference:</strong> 4th IEEE DELCON 2025 (Jamia Millia Islamia, technically sponsored by IEEE Delhi Section).</li>
+                  <li><strong>Paper Title:</strong> <em>"A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications"</em> (PID: 174).</li>
+                  <li><strong>Indexed:</strong> Available in the IEEE Xplore Digital Library.</li>
+                </ul>`;
       }
 
-      if (q.includes('clock') || q.includes('bluetooth') || q.includes('max7219') || q.includes('matrix') || q.includes('hc05') || q.includes('display')) {
-        return "Bluetooth Digital Clock & Dynamic Notice Board:\n\n• Hardware Stack: Cascaded MAX7219 8x8 LED Matrix modules, Arduino Nano, and HC-05 Bluetooth transceiver.\n• Features: Displays synchronized real-time clock data and dynamically scrolls custom text broadcasted from a smartphone Bluetooth terminal application.\n• Firmware: Modular Embedded C++ using SPI protocols.";
+      // Internships
+      if (q.includes('intern') || q.includes('experience') || q.includes('engineers world') || q.includes('parmod') || q.includes('work')) {
+        return `<p><strong>Professional Experience & Internships:</strong></p>
+                <ul>
+                  <li><strong>VLSI Design & Verification Intern</strong> @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129): Digital ASIC verification flows, RTL simulation in SystemVerilog/Verilog, and functional coverage analysis.</li>
+                  <li><strong>VLSI Design & Verification Intern</strong> @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56): RTL coding, logic synthesis, and testbench validation for digital sub-circuits.</li>
+                  <li><strong>Engineering Intern</strong> @ Parmod Electricals (June–July 2024): Hands-on training in MCB/PLC manufacturing, industrial control panel wiring, and power systems.</li>
+                </ul>`;
       }
 
-      if (q.includes('risc') || q.includes('grant') || q.includes('fund') || q.includes('security') || q.includes('research')) {
-        return "RISC-V Hardware Security Research Project:\n\n• Grant & Support: Sanctioned with ₹1,00,000 internal research grant by MRIIRS Research Board (24-month duration, 2026–2028).\n• Scope: Implementing hardware root-of-trust cryptographic accelerators, side-channel attack countermeasures, and custom security extensions on open-source RISC-V processor cores.\n• EDA & Emulation: Designed in Verilog HDL and verified using Xilinx Vivado.";
+      // Projects
+      if (q.includes('project') || q.includes('clock') || q.includes('bluetooth') || q.includes('sorting') || q.includes('jetson') || q.includes('boat') || q.includes('prenatal') || q.includes('max7219')) {
+        return `<p><strong>Key Engineering Projects:</strong></p>
+                <ul>
+                  <li><strong>Bluetooth Smart Digital Clock & Dynamic Notice Display:</strong> Cascaded MAX7219 LED matrix driven by Arduino Nano with real-time text broadcast via HC-05 Bluetooth.</li>
+                  <li><strong>AI Fruit Sorting System:</strong> Edge AI CNN inference on Nvidia Jetson Nano coupled with Mitsubishi PLC (GX Works3) for high-speed pneumatic sorting.</li>
+                  <li><strong>Hardware Security on RISC-V:</strong> Sanctioned ₹1,00,000 research project on FPGA-based crypto accelerators and side-channel defense.</li>
+                  <li><strong>Cloud-Connected Smart Agriculture Boat:</strong> Telemetry inspection vessel using ESP32-CAM over AWS IoT Core/MQTT.</li>
+                  <li><strong>IoT Prenatal Health Cloud Monitor:</strong> Real-time BPM and body telemetry streaming to ThingSpeak cloud.</li>
+                  <li><strong>Autonomous Line Follower Robot:</strong> PID-tuned high-speed differential drive robot (Echiesta 2K24 1st prize winner).</li>
+                </ul>`;
       }
 
-      if (q.includes('patent') || q.includes('ip') || q.includes('invention') || q.includes('utility') || q.includes('design patent')) {
-        return "Hema Prasad's 3 Patent Applications:\n\n1. Utility Patent: Gesture-Based Wireless Pen Interface (App: 459423-001)\n2. Design Patent: Autonomous Smart Shopping Cart (App: 202511118413)\n3. Design Patent: Lighting Shrub (App: 465417-001)";
+      // Awards
+      if (q.includes('award') || q.includes('achievement') || q.includes('prize') || q.includes('win') || q.includes('competition') || q.includes('echiesta') || q.includes('mitsubishi') || q.includes('innoskill') || q.includes('roborush')) {
+        return `<p><strong>Awards & Competition Honors:</strong></p>
+                <ul>
+                  <li><strong>1st Prize – Line Follower Robot</strong> @ Echiesta-2K24 (Echelon Institute of Technology)[cite: 1, 13].</li>
+                  <li><strong>1st Prize – Ideathon</strong> @ Echiesta-2K24[cite: 13].</li>
+                  <li><strong>2nd Prize – Arduino Project Battle</strong> @ Echiesta-2K24[cite: 3, 13].</li>
+                  <li><strong>National Finalist</strong> @ 6th Mitsubishi Electric Cup (MECA 2026, MIT-WPU Pune with Team AGRISORT AI)[cite: 8, 13].</li>
+                  <li><strong>1st Prize</strong> @ Health Tech Innovation (Centre for Health Innovation, MRIIRS)[cite: 13].</li>
+                  <li><strong>2nd Prize (Srijan)</strong> @ INNOSKILL 2025 Annual Tech Fest[cite: 13].</li>
+                  <li><strong>Consolation Prize</strong> @ RoboRush 1.0 (K.R. Mangalam University with Team Flash UNO)[cite: 5, 6].</li>
+                </ul>`;
       }
 
-      if (q.includes('ieee') || q.includes('paper') || q.includes('delcon') || q.includes('publication') || q.includes('xplore')) {
-        return "IEEE Presentation & Publication:\n\n• Conference: 4th IEEE DELCON 2025 (Jamia Millia Islamia, technically sponsored by IEEE Delhi Section)\n• Paper Title: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications' (PID: 174)\n• Indexed in: IEEE Xplore Digital Library.";
+      // Certifications
+      if (q.includes('certif') || q.includes('course') || q.includes('linkedin') || q.includes('udemy') || q.includes('training')) {
+        return `<p><strong>Professional Certifications:</strong></p>
+                <ul>
+                  <li><strong>LinkedIn Learning:</strong> Learning FPGA Development (Jan 2025)[cite: 13]</li>
+                  <li><strong>LinkedIn Learning:</strong> Electronics Foundation: Semiconductor Devices (March 2025)[cite: 13]</li>
+                  <li><strong>LinkedIn Learning:</strong> IoT Foundation: Low Power Wireless Networking (Dec 2024)[cite: 13]</li>
+                  <li><strong>Udemy:</strong> Raspberry Pi 4 using Python Programming (March 2025)[cite: 13]</li>
+                  <li><strong>Udemy:</strong> Hands on Arduino (April 2024)[cite: 13]</li>
+                </ul>`;
       }
 
-      if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('btech')) {
-        return "Education Details:\n\n• B.Tech in ECE (AIoT): MRIIRS, Faridabad (2023–2027)\n• Senior Secondary (12th): SASI Educational Institutes, Visakhapatnam (2021–2023)\n• Secondary (10th): Chalapathi Public School, Visakhapatnam (2021).";
+      // Skills
+      if (q.includes('skill') || q.includes('tech stack') || q.includes('tools') || q.includes('languages') || q.includes('hardware')) {
+        return `<p><strong>Technical Skill Set:</strong></p>
+                <ul>
+                  <li><strong>VLSI & Verification:</strong> SystemVerilog, UVM, Verilog HDL, RTL Design, Testbenches, Functional Coverage.</li>
+                  <li><strong>EDA & Simulation Tools:</strong> Xilinx Vivado, Intel Quartus Prime, Cadence Virtuoso, Proteus, Tinkercad.</li>
+                  <li><strong>Embedded & IoT:</strong> ESP32/ESP8266, Arduino Nano/Uno, MAX7219, HC-05, Sensors (I2C/SPI/UART), FreeRTOS.</li>
+                  <li><strong>Cloud & Automation:</strong> AWS IoT Core, MQTT, ThingSpeak, Firebase, Mitsubishi PLC (GX Works3), Python, OpenCV.</li>
+                </ul>`;
       }
 
-      if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach')) {
-        return "Connect with Hema Prasad:\n\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400\n• Location: Faridabad, Haryana / Visakhapatnam, India.";
+      // Education
+      if (q.includes('education') || q.includes('college') || q.includes('university') || q.includes('btech') || q.includes('school')) {
+        return `<p><strong>Academic Background:</strong></p>
+                <ul>
+                  <li><strong>B.Tech in ECE (AIoT):</strong> Manav Rachna International Institute of Research and Studies (2023–2027)[cite: 13].</li>
+                  <li><strong>Senior Secondary Education (12th):</strong> SASI Educational Institutes, Visakhapatnam (MPC Stream, 2021–2023)[cite: 13].</li>
+                  <li><strong>Secondary Education (10th):</strong> Chalapathi Public School, Visakhapatnam (2021)[cite: 13].</li>
+                </ul>`;
       }
 
-      return `Regarding "${rawText}":\n\nHema Prasad is an ECE undergraduate at MRIIRS, Main Technical Member of the Electrobits Club, and Design Verification trainee at Maven Silicon. He holds a ₹1,00,000 RISC-V research grant, 3 patents, and dual VLSI internships at Engineers World.\n\nWould you like to explore his club technical role, verification training, research, or contact details?`;
+      // Contact & Hire
+      if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('github') || q.includes('linkedin') || q.includes('hire') || q.includes('reach')) {
+        return `<p><strong>Get in Touch with Hema Prasad:</strong></p>
+                <ul>
+                  <li><strong>Email:</strong> <a href="mailto:doggahemant@gmail.com" style="color: var(--primary);">doggahemant@gmail.com</a>[cite: 13]</li>
+                  <li><strong>WhatsApp / Phone:</strong> <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp);">+91 7569330584</a>[cite: 13]</li>
+                  <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary);">linkedin.com/in/dogga-hema-prasad-a3525287</a>[cite: 13]</li>
+                  <li><strong>GitHub:</strong> <a href="https://github.com/Hemanth-5400" target="_blank" style="color: #fff;">github.com/Hemanth-5400</a>[cite: 13]</li>
+                </ul>`;
+      }
+
+      // Fallback
+      return `<p>Hema Prasad is an Electronics and Communication Engineering undergraduate at MRIIRS, specializing in <strong>Design Verification (SystemVerilog/UVM)</strong> at Maven Silicon, and serving as the <strong>Main Technical Member of the Electrobits Club</strong>.</p>
+              <p>He is the Principal Investigator for a <strong>₹1,00,000 RISC-V Hardware Security Research Grant</strong>, holds <strong>3 patents</strong>, and has completed two VLSI internships at Engineers World.</p>
+              <p>Would you like to know more about his <strong>verification skills</strong>, <strong>projects</strong>, <strong>research grant</strong>, or <strong>contact info</strong>?</p>`;
     }
 
     function toggleAIChat() {
@@ -2308,10 +2414,10 @@
       setTimeout(() => {
         const botDiv = document.createElement('div');
         botDiv.className = 'ai-msg ai-msg-bot';
-        botDiv.innerText = getPortfolioAnswer(text);
+        botDiv.innerHTML = getPortfolioAnswer(text);
         chatBody.appendChild(botDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
-      }, 200);
+      }, 150);
     }
   </script>
 </body>
