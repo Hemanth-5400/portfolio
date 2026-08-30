@@ -113,7 +113,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Smooth Scroll Transition Engine */
+    /* Scroll Animation Reveal Engine */
     .reveal {
       opacity: 0;
       transform: translateY(35px);
@@ -987,16 +987,31 @@
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Professional Experience & Internships</h2>
         <div class="grid">
+          
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">VLSI Design & Verification Intern</h3>
+              <span class="tag">ID: EW/INTRN129</span>
+            </div>
+            <div class="card-meta">Engineers World Limited • June 2026 – July 2026</div>
+            <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
+              <span class="tag" onclick="openTechModal('vivado')">Synthesis & Vivado</span>
+              <span class="tag">RTL Verification</span>
+            </div>
+          </div>
+
           <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">VLSI Design & Verification Intern</h3>
               <span class="tag">ID: EW/INTRN56</span>
             </div>
             <div class="card-meta">Engineer's World Private Limited • June 2025 – July 2025</div>
-            <p class="card-desc">Engaged in digital VLSI design, Verilog RTL modeling, testbench automation, and simulation validation workflows for custom digital sub-circuits.</p>
+            <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, and logic minimization for specialized digital processing sub-circuits.</p>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="openTechModal('vivado')">Synthesis</span>
+              <span class="tag" onclick="openTechModal('vivado')">EDA Tools</span>
               <span class="tag">Digital Logic</span>
             </div>
           </div>
@@ -1014,6 +1029,7 @@
               <span class="tag">Industrial Assembly</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1182,11 +1198,11 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me about his sanctioned RISC-V research grant, MAX7219 Bluetooth clock, Echiesta 2K24 wins, internships, patents, IEEE papers, or contact details!
+        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me about his sanctioned RISC-V research grant, MAX7219 Bluetooth clock, Echiesta 2K24 wins, VLSI internships at Engineers World, patents, IEEE papers, or contact details!
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('Tell me about your background')">About Hema?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your awards and competitions')">Awards?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your awards and competitions')">Awards?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Grant?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your MAX7219 Bluetooth clock project')">Bluetooth Clock?</span>
           <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
@@ -1510,7 +1526,7 @@
         specs: [
           { label: "Paradigm", val: "RTL / Behavioral / Structural" },
           { label: "Verification", val: "Directed Testbenches" },
-          { label: "Experience", val: "Engineer's World VLSI Intern" },
+          { label: "Industry Practice", val: "Engineers World (2025 & 2026 Intern)" },
           { label: "Focus", val: "RISC-V Security & RTL Design" }
         ]
       },
@@ -1983,15 +1999,15 @@
       const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
       if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
-        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents).\n• Author & Presenter at 4th IEEE DELCON 2025.\n• 1st Prize Winner in Line Follower Robotics & 2nd Prize in Arduino Project Battle @ Echiesta 2K24.\n• National Finalist @ 6th Mitsubishi Electric Cup (Team AGRISORT AI).\n• VLSI Intern at Engineer's World Pvt Ltd.";
+        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents).\n• Author & Presenter at 4th IEEE DELCON 2025.\n• 1st Prize Winner in Line Follower Robotics & 2nd Prize in Arduino Project Battle @ Echiesta 2K24.\n• National Finalist @ 6th Mitsubishi Electric Cup (Team AGRISORT AI).\n• Dual VLSI Intern at Engineers World Limited (2025 & 2026).";
       }
 
       if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('echiesta') || q.includes('echalon') || q.includes('roborush') || q.includes('mitsubishi')) {
         return "Verified Honors & Competition Achievements:\n\n1. Echiesta-2K24 (Echelon Institute of Tech):\n   • 1st Prize in ROBO Line Followers\n   • 2nd Prize in Arduino Project Battle\n2. 6th Mitsubishi Electric Cup (MECA 2026, MIT-WPU Pune):\n   • National Finalist with Team AGRISORT AI\n3. RoboRush 1.0 (K.R. Mangalam University):\n   • Consolation Prize with Team Flash UNO\n4. IEEE ICAICCIT 2024 (MRIIRS):\n   • Student Coordinator Certificate of Appreciation\n5. INNOSKILL 2026 (MRIIRS):\n   • Certificate of Appreciation in 'Build a Circuit'\n6. Arduino Days 2024 Hackathon (MRIIRS & Makerbazar):\n   • Official Participation Certificate.";
       }
 
-      if (q.includes('intern') || q.includes('experience') || q.includes('work') || q.includes('company')) {
-        return "Internship Experience:\n\n1. VLSI Design and Verification Intern @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56):\n   • Worked on digital logic design, Verilog RTL coding, and testbench verification.\n\n2. Engineering Intern @ Parmod Electricals (June–July 2024):\n   • Industrial training on electrical control panels, circuit wiring, and troubleshooting.";
+      if (q.includes('intern') || q.includes('experience') || q.includes('work') || q.includes('company') || q.includes('engineers world')) {
+        return "Professional Internship Experience:\n\n1. VLSI Design & Verification Intern @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129):\n   • Digital ASIC verification flows, SystemVerilog/Verilog RTL simulation, and functional coverage.\n\n2. VLSI Design & Verification Intern @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56):\n   • RTL coding, digital circuit synthesis, and testbench validation.\n\n3. Engineering Intern @ Parmod Electricals (June–July 2024):\n   • Industrial training on electrical control panels, circuit wiring, and troubleshooting.";
       }
 
       if (q.includes('clock') || q.includes('bluetooth') || q.includes('max7219') || q.includes('matrix') || q.includes('hc05') || q.includes('display')) {
@@ -2014,7 +2030,7 @@
         return "Connect with Hema Prasad Dogga:\n\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400\n• Location: Faridabad, Haryana / Visakhapatnam, India.";
       }
 
-      return `Regarding "${rawText}":\n\nHema Prasad is an ECE undergraduate at MRIIRS with a ₹1,00,000 sanctioned RISC-V research grant, 3 patents, an IEEE DELCON presentation, VLSI internship experience at Engineer's World, and multiple national robotics championships.\n\nWould you like to explore his research, projects, awards, or contact details directly?`;
+      return `Regarding "${rawText}":\n\nHema Prasad is an ECE undergraduate at MRIIRS with a ₹1,00,000 sanctioned RISC-V research grant, 3 patents, an IEEE DELCON presentation, two VLSI Design & Verification internships at Engineers World, and multiple national robotics championships.\n\nWould you like to explore his research, projects, awards, or contact details directly?`;
     }
 
     function toggleAIChat() {
