@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hema Prasad Dogga | ECE, RISC-V & AIoT Portfolio</title>
+  <title>Hema Prasad Dogga | ECE, RISC-V & VLSI Verification Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,9 +11,9 @@
   
   <style>
     :root {
-      --bg: #060a12;
-      --card-bg: rgba(10, 17, 30, 0.88);
-      --card-border: rgba(0, 212, 255, 0.22);
+      --bg: #050811;
+      --card-bg: rgba(9, 15, 28, 0.85);
+      --card-border: rgba(0, 212, 255, 0.18);
       --primary: #00d4ff;
       --primary-glow: #38bdf8;
       --accent: #10b981;
@@ -40,7 +40,7 @@
       position: relative;
     }
 
-    /* Fullscreen Background Circuit Canvas */
+    /* Subdued Background Circuit Canvas */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -49,7 +49,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 65% 35%, #0d1b2f 0%, #060a12 100%);
+      background: radial-gradient(circle at 65% 35%, #081220 0%, #050811 100%);
     }
 
     .site-wrapper {
@@ -62,9 +62,9 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(6, 10, 18, 0.85);
+      background: rgba(5, 8, 17, 0.85);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 212, 255, 0.12);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -77,7 +77,7 @@
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--primary);
-      text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -116,7 +116,7 @@
     /* Scroll Animation Reveal Engine */
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
+      transform: translateY(30px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
@@ -151,15 +151,15 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(0, 212, 255, 0.1);
+      background: rgba(0, 212, 255, 0.08);
       color: var(--primary);
-      border: 1px solid rgba(0, 212, 255, 0.35);
+      border: 1px solid rgba(0, 212, 255, 0.3);
       padding: 0.4rem 1.1rem;
       border-radius: 999px;
       font-size: 0.85rem;
       font-family: var(--font-mono);
       margin-bottom: 1.5rem;
-      box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
     }
 
     .hero h1 {
@@ -174,7 +174,7 @@
       background: linear-gradient(135deg, #00d4ff 0%, #38bdf8 50%, #10b981 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
+      text-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
     }
 
     .hero p {
@@ -206,50 +206,50 @@
     .btn-primary {
       background: linear-gradient(135deg, #00d4ff, #0284c7);
       color: #060a12;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+      box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 28px rgba(0, 212, 255, 0.7);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.5);
       transform: translateY(-2px);
     }
 
     .btn-github {
-      background: rgba(30, 41, 59, 0.85);
+      background: rgba(30, 41, 59, 0.8);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .btn-github:hover {
       background: rgba(51, 65, 85, 0.95);
       border-color: #fff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
 
     .btn-outline {
-      background: rgba(10, 17, 30, 0.75);
+      background: rgba(10, 17, 30, 0.7);
       color: var(--text);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(8px);
     }
 
     .btn-outline:hover {
-      background: rgba(16, 28, 48, 0.95);
+      background: rgba(16, 28, 48, 0.9);
       border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(0, 212, 255, 0.25);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
       transform: translateY(-2px);
     }
 
     .btn-ai {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(0, 212, 255, 0.2));
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 212, 255, 0.15));
       border: 1px solid var(--accent);
       color: var(--text);
     }
 
     .btn-ai:hover {
-      background: rgba(16, 185, 129, 0.35);
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+      background: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
       transform: translateY(-2px);
     }
 
@@ -265,7 +265,7 @@
       transform: translate(-50%, -50%);
       width: 290px;
       height: 290px;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.45) 0%, rgba(16, 185, 129, 0.2) 50%, transparent 75%);
+      background: radial-gradient(circle, rgba(0, 212, 255, 0.35) 0%, rgba(16, 185, 129, 0.15) 50%, transparent 75%);
       border-radius: 50%;
       filter: blur(25px);
       z-index: 0;
@@ -273,8 +273,8 @@
     }
 
     @keyframes pulseGlow {
-      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
-      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
+      0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.4; }
+      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
     }
 
     .profile-img-container {
@@ -284,7 +284,7 @@
       border-radius: 50%;
       padding: 5px;
       background: linear-gradient(135deg, #00d4ff 0%, #34d399 100%);
-      box-shadow: 0 0 35px rgba(0, 212, 255, 0.45);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
       z-index: 1;
     }
 
@@ -310,7 +310,7 @@
     .section-title i {
       color: var(--primary);
       font-size: 1.4rem;
-      text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+      text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
     }
 
     .grid {
@@ -330,15 +330,15 @@
     }
 
     .card-featured {
-      border-color: rgba(0, 212, 255, 0.5);
-      background: linear-gradient(180deg, rgba(16, 28, 48, 0.95), rgba(10, 17, 30, 0.9));
-      box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
+      border-color: rgba(0, 212, 255, 0.45);
+      background: linear-gradient(180deg, rgba(14, 24, 42, 0.95), rgba(9, 15, 28, 0.9));
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: rgba(0, 212, 255, 0.6);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.55);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 212, 255, 0.15);
     }
 
     .card-header {
@@ -374,8 +374,8 @@
     }
 
     .tag {
-      background: rgba(0, 212, 255, 0.08);
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      background: rgba(0, 212, 255, 0.06);
+      border: 1px solid rgba(0, 212, 255, 0.18);
       padding: 0.28rem 0.7rem;
       border-radius: 6px;
       font-size: 0.78rem;
@@ -390,23 +390,23 @@
     }
 
     .tag:hover {
-      background: rgba(0, 212, 255, 0.25);
+      background: rgba(0, 212, 255, 0.2);
       border-color: var(--primary);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(0, 212, 255, 0.35);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .tag-highlight {
-      background: rgba(16, 185, 129, 0.15);
-      border-color: rgba(16, 185, 129, 0.4);
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
       color: #6ee7b7;
     }
 
     .tag-highlight:hover {
-      background: rgba(16, 185, 129, 0.3);
+      background: rgba(16, 185, 129, 0.25);
       border-color: var(--accent);
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
     }
 
     .skills-grid {
@@ -425,7 +425,7 @@
     }
 
     .skill-box:hover {
-      border-color: rgba(0, 212, 255, 0.5);
+      border-color: rgba(0, 212, 255, 0.4);
       transform: translateY(-4px);
     }
 
@@ -438,7 +438,7 @@
       gap: 0.5rem;
     }
 
-    /* Floating Actions */
+    /* Floating Action Buttons */
     .floating-actions {
       position: fixed;
       bottom: 25px;
@@ -472,20 +472,20 @@
 
     .float-whatsapp {
       background: var(--whatsapp);
-      box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+      box-shadow: 0 0 16px rgba(37, 211, 102, 0.4);
     }
 
     .float-whatsapp:hover {
-      box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+      box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
     }
 
     .float-ai {
       background: linear-gradient(135deg, #00d4ff, #0284c7);
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 16px rgba(0, 212, 255, 0.4);
     }
 
     .float-ai:hover {
-      box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
     }
 
     .badge-tooltip {
@@ -533,12 +533,12 @@
 
     .tech-modal-card {
       background: rgba(10, 18, 32, 0.95);
-      border: 1px solid rgba(0, 212, 255, 0.35);
+      border: 1px solid rgba(0, 212, 255, 0.3);
       border-radius: 16px;
       max-width: 580px;
       width: 100%;
       padding: 2rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 212, 255, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 212, 255, 0.2);
       position: relative;
       animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -587,8 +587,8 @@
       width: 48px;
       height: 48px;
       border-radius: 10px;
-      background: rgba(0, 212, 255, 0.12);
-      border: 1px solid rgba(0, 212, 255, 0.3);
+      background: rgba(0, 212, 255, 0.1);
+      border: 1px solid rgba(0, 212, 255, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -651,11 +651,11 @@
       width: 400px;
       max-width: calc(100vw - 40px);
       height: 520px;
-      background: rgba(10, 17, 30, 0.97);
+      background: rgba(9, 15, 28, 0.98);
       border: 1px solid var(--card-border);
       border-radius: 16px;
       backdrop-filter: blur(20px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 212, 255, 0.25);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 212, 255, 0.2);
       z-index: 1060;
       display: none;
       flex-direction: column;
@@ -718,15 +718,15 @@
     }
 
     .ai-msg-bot {
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.25);
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.2);
       align-self: flex-start;
       color: #e2e8f0;
     }
 
     .ai-msg-user {
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid rgba(16, 185, 129, 0.35);
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.3);
       align-self: flex-end;
       color: #f0fdf4;
     }
@@ -739,8 +739,8 @@
     }
 
     .quick-chip {
-      background: rgba(0, 212, 255, 0.08);
-      border: 1px solid rgba(0, 212, 255, 0.25);
+      background: rgba(0, 212, 255, 0.06);
+      border: 1px solid rgba(0, 212, 255, 0.2);
       color: var(--primary);
       padding: 0.25rem 0.65rem;
       border-radius: 12px;
@@ -750,7 +750,7 @@
     }
 
     .quick-chip:hover {
-      background: rgba(0, 212, 255, 0.25);
+      background: rgba(0, 212, 255, 0.2);
     }
 
     .ai-footer {
@@ -817,9 +817,11 @@
       <ul class="nav-links">
         <li><a href="#patents">Patents & Papers</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Internships</a></li>
+        <li><a href="#experience">Experience & Training</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#achievements">Awards</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -827,9 +829,9 @@
     <header class="hero">
       <div class="container hero-container">
         <div class="hero-content reveal">
-          <div class="badge"><i class="fas fa-bolt"></i> B.Tech ECE (AIoT) • Hardware Security & VLSI</div>
+          <div class="badge"><i class="fas fa-bolt"></i> B.Tech ECE (AIoT) • RISC-V Hardware Security & VLSI Verification</div>
           <h1>Hi, I'm <span>Hema Prasad Dogga.</span></h1>
-          <p>Electronics and Communication Engineering innovator specialized in RISC-V Hardware Security, Edge AI & Industrial Automation, Digital VLSI, and Cloud-Connected AIoT Systems.</p>
+          <p>Electronics and Communication Engineering innovator specialized in Design Verification (SV/UVM), RISC-V Hardware Security, Industrial Automation (PLC), and Cloud-Connected AIoT Systems.</p>
           <div class="hero-btns">
             <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-github">
               <i class="fab fa-github"></i> GitHub Profile
@@ -985,9 +987,24 @@
 
     <section id="experience">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Professional Experience & Internships</h2>
+        <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Experience & Professional Training</h2>
         <div class="grid">
           
+          <div class="card card-featured reveal">
+            <div class="card-header">
+              <h3 class="card-title">Design Verification Engineering Trainee</h3>
+              <span class="tag tag-highlight" onclick="openTechModal('maven_silicon')">Advanced VLSI</span>
+            </div>
+            <div class="card-meta">Maven Silicon • Professional Training (2026)</div>
+            <p class="card-desc">Specialized training in advanced digital verification methodologies: SystemVerilog for verification, Universal Verification Methodology (UVM), constrained random verification, functional coverage, and assertion-based verification (SVA).</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog</span>
+              <span class="tag" onclick="openTechModal('uvm')">UVM</span>
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
+              <span class="tag">Functional Coverage</span>
+            </div>
+          </div>
+
           <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">VLSI Design & Verification Intern</h3>
@@ -997,7 +1014,7 @@
             <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="openTechModal('vivado')">Synthesis & Vivado</span>
+              <span class="tag" onclick="openTechModal('vivado')">Vivado</span>
               <span class="tag">RTL Verification</span>
             </div>
           </div>
@@ -1019,14 +1036,88 @@
           <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">Engineering Intern</h3>
-              <span class="tag">Industrial Training</span>
+              <span class="tag">Core Electrical</span>
             </div>
             <div class="card-meta">Parmod Electricals • June 2024 – July 2024</div>
-            <p class="card-desc">Hands-on industrial electrical engineering training covering control panel circuitry, power distribution architectures, and component troubleshooting.</p>
+            <p class="card-desc">Hands-on industrial electrical engineering training covering MCB & PLC manufacturing, control panel circuitry, power distribution, and component troubleshooting.</p>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('pcb_design')">Control Wiring</span>
               <span class="tag">Power Systems</span>
-              <span class="tag">Industrial Assembly</span>
+              <span class="tag">MCB & PLC Core</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <h2 class="section-title reveal"><i class="fas fa-graduation-cap"></i> Certifications & Upskilling</h2>
+        <div class="grid">
+          
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">Learning FPGA Development</h3>
+              <span class="tag">LinkedIn Learning</span>
+            </div>
+            <div class="card-meta">Completed January 2025</div>
+            <p class="card-desc">Architecture of Field Programmable Gate Arrays, HDL design entry, logic synthesis, timing closure, and hardware configuration.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('fpga')">FPGA Architecture</span>
+              <span class="tag" onclick="openTechModal('verilog')">HDL Synthesis</span>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">Electronics Foundation: Semiconductor Devices</h3>
+              <span class="tag">LinkedIn Learning</span>
+            </div>
+            <div class="card-meta">Completed March 2025</div>
+            <p class="card-desc">Physics and operation of semiconductor junctions, PN diodes, BJTs, MOSFET switches, and integrated circuit transistor sizing.</p>
+            <div class="tag-list">
+              <span class="tag">Semiconductors</span>
+              <span class="tag">MOSFET / BJT</span>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">IoT Foundation: Low Power Wireless Networking</h3>
+              <span class="tag">LinkedIn Learning</span>
+            </div>
+            <div class="card-meta">Completed December 2024</div>
+            <p class="card-desc">Low-power RF topologies, mesh networking protocols, BLE, LPWAN, and energy-budget optimization in remote wireless nodes.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('mqtt')">Low Power RF</span>
+              <span class="tag">Wireless Mesh</span>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">Raspberry Pi 4 using Python Programming</h3>
+              <span class="tag">Udemy</span>
+            </div>
+            <div class="card-meta">Completed March 2025</div>
+            <p class="card-desc">Linux SBC configuration, Python GPIO automation, hardware sensor interfacing, and camera video stream processing.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('python')">Python</span>
+              <span class="tag" onclick="openTechModal('linux')">Raspberry Pi</span>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-header">
+              <h3 class="card-title">Hands on Arduino</h3>
+              <span class="tag">Udemy</span>
+            </div>
+            <div class="card-meta">Completed April 2024</div>
+            <p class="card-desc">Physical computing, microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, and sensory feedback loops.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('arduino')">Arduino</span>
+              <span class="tag" onclick="openTechModal('cpp')">Embedded C</span>
             </div>
           </div>
 
@@ -1077,14 +1168,14 @@
           </div>
 
           <div class="skill-box reveal">
-            <h3><i class="fas fa-terminal"></i> Languages & Architecture</h3>
+            <h3><i class="fas fa-terminal"></i> Languages & Verification</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('uvm')">UVM <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++ <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('plc')">PLC Ladder Logic <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('linux')">Linux <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
         </div>
@@ -1109,6 +1200,12 @@
           </div>
 
           <div class="card reveal">
+            <h3 class="card-title">1st Prize – Ideathon</h3>
+            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
+            <p class="card-desc">Secured 1st place for presenting innovative embedded engineering concepts and product architectures.</p>
+          </div>
+
+          <div class="card reveal">
             <h3 class="card-title">2nd Prize – Arduino Project Battle</h3>
             <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
             <p class="card-desc">Secured 2nd position in the competitive Arduino hardware & circuit prototyping battle.</p>
@@ -1121,27 +1218,57 @@
           </div>
 
           <div class="card reveal">
+            <h3 class="card-title">2nd Prize (Srijan Competition) – INNOSKILL 2025</h3>
+            <div class="card-meta">Annual Tech Fest MRIIRS • April 2025</div>
+            <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation exhibition.</p>
+          </div>
+
+          <div class="card reveal">
+            <h3 class="card-title">1st Prize – Health Tech Innovation (CHI)</h3>
+            <div class="card-meta">Centre for Health Innovation, MRIIRS • April 2024</div>
+            <p class="card-desc">Awarded 1st prize for designing and developing the IoT Prenatal Monitoring System.</p>
+          </div>
+
+          <div class="card reveal">
             <h3 class="card-title">Consolation Prize – RoboRush 1.0</h3>
             <div class="card-meta">K.R. Mangalam University (Team Flash UNO) • April 2025</div>
             <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON.</p>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title reveal"><i class="fas fa-user-graduate"></i> Academic Background</h2>
+        <div class="grid">
+          
           <div class="card reveal">
-            <h3 class="card-title">Certificate of Appreciation – INNOSKILL 2026</h3>
-            <div class="card-meta">Annual Tech Fest MRIIRS • April 2026</div>
-            <p class="card-desc">Recognized in the "Build a Circuit" event under the Drift & Design engineering vertical.</p>
+            <div class="card-header">
+              <h3 class="card-title">B.Tech in ECE (AIoT)</h3>
+              <span class="tag tag-highlight">2023 – 2027</span>
+            </div>
+            <div class="card-meta">Manav Rachna International Institute of Research and Studies (MRIIRS)</div>
+            <p class="card-desc">Specialized curriculum in Electronics & Communication Engineering with AIoT focus. CGPA: 6.69 / 10.0.</p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Student Coordinator – IEEE ICAICCIT 2024</h3>
-            <div class="card-meta">IEEE Delhi Section (Record No: 64383) • Nov 2024</div>
-            <p class="card-desc">Certificate of appreciation for leadership and organization during the 2nd International Conference on Advances in Computation, Communication and IT.</p>
+            <div class="card-header">
+              <h3 class="card-title">Senior Secondary Education (12th)</h3>
+              <span class="tag">94.6%</span>
+            </div>
+            <div class="card-meta">SASI Educational Institutes, Visakhapatnam (2021 – 2023)</div>
+            <p class="card-desc">Major coursework in Mathematics, Physics, and Chemistry (MPC stream).</p>
           </div>
 
           <div class="card reveal">
-            <h3 class="card-title">Arduino Days 2024 Hackathon</h3>
-            <div class="card-meta">MRIIRS & Makerbazar • March 2024</div>
-            <p class="card-desc">Certificate of participation awarded by the Director of MRIIC for innovative embedded hardware development.</p>
+            <div class="card-header">
+              <h3 class="card-title">Secondary Education (10th)</h3>
+              <span class="tag">99.0%</span>
+            </div>
+            <div class="card-meta">Chalapathi Public School, Visakhapatnam (2021)</div>
+            <p class="card-desc">High academic achievement with foundational distinction in science and mathematics.</p>
           </div>
 
         </div>
@@ -1198,13 +1325,13 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me about his sanctioned RISC-V research grant, MAX7219 Bluetooth clock, Echiesta 2K24 wins, VLSI internships at Engineers World, patents, IEEE papers, or contact details!
+        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me about his Maven Silicon Design Verification training, RISC-V research grant, MAX7219 Bluetooth clock, certifications, internships, patents, or contact details!
         <div class="ai-quick-replies">
-          <span class="quick-chip" onclick="askQuestion('Tell me about your background')">About Hema?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your Maven Silicon verification training')">Maven Silicon?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your certifications')">Certifications?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your awards and competitions')">Awards?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Grant?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your MAX7219 Bluetooth clock project')">Bluetooth Clock?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your awards and competitions')">Awards?</span>
           <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
         </div>
       </div>
@@ -1218,6 +1345,42 @@
   <script>
     // Complete Technical Dossier Dictionary
     const techDossier = {
+      maven_silicon: {
+        title: "Maven Silicon VLSI Training",
+        category: "Design Verification Engineering (DV)",
+        icon: "fas fa-microchip",
+        desc: "Advanced industry-standard training on Design Verification methodologies. Focuses on architecting modular verification environments using SystemVerilog and UVM, constrained random testing, functional coverage, and interface protocol verification.",
+        specs: [
+          { label: "Core Methodology", val: "UVM 1.2 / SystemVerilog" },
+          { label: "Verification", val: "CRV, SVA & Functional Coverage" },
+          { label: "RTL Modeling", val: "Verilog HDL & SystemVerilog" },
+          { label: "Simulation", val: "QuestaSim / VCS / ModelSim" }
+        ]
+      },
+      systemverilog: {
+        title: "SystemVerilog (IEEE 1800)",
+        category: "Hardware Description & Verification Language",
+        icon: "fas fa-code",
+        desc: "Object-oriented language used for building verification testbenches, transaction-level modeling (TLM), constrained random stimulus generators, and SystemVerilog Assertions (SVA).",
+        specs: [
+          { label: "Paradigm", val: "OOP (Classes, Inheritance, Polymorphism)" },
+          { label: "Constructs", val: "Interfaces, Clocking Blocks, Modports" },
+          { label: "Verification", val: "Constraint Solvers & Coverage Groups" },
+          { label: "Application", val: "UVM Testbench Architecture" }
+        ]
+      },
+      uvm: {
+        title: "Universal Verification Methodology (UVM)",
+        category: "Standardized Verification Architecture",
+        icon: "fas fa-cubes",
+        desc: "Standardized modular verification environment framework utilizing UVM base classes (uvm_driver, uvm_monitor, uvm_scoreboard, uvm_sequencer) for scalable ASIC/SoC verification.",
+        specs: [
+          { label: "Standard", val: "Accellera / IEEE 1800.2" },
+          { label: "Architecture", val: "TLM 2.0 Communication Ports" },
+          { label: "Phases", val: "Build, Connect, Run, Check" },
+          { label: "Domain", val: "Digital VLSI Verification" }
+        ]
+      },
       max7219: {
         title: "MAX7219 Dot Matrix Display Driver",
         category: "Serial Interfaced LED Matrix Driver",
@@ -1234,7 +1397,7 @@
         title: "HC-05 Bluetooth Module",
         category: "Wireless Serial Communication (UART)",
         icon: "fab fa-bluetooth-b",
-        desc: "Full-duplex Bluetooth SPP (Serial Port Protocol) module utilized to establish a wireless bridge between a smartphone Bluetooth terminal application and the Arduino Nano, updating display text dynamically.",
+        desc: "Full-duplex Bluetooth SPP module utilized to establish a wireless bridge between a smartphone Bluetooth terminal application and the Arduino Nano, updating display text dynamically.",
         specs: [
           { label: "Protocol", val: "Bluetooth v2.0+EDR" },
           { label: "Baud Rate", val: "9600 bps (Configurable)" },
@@ -1525,8 +1688,8 @@
         desc: "Hardware Description Language utilized to design register-transfer level (RTL) circuits, state machines (Mealy/Moore FSMs), ALU modules, and custom cryptographic primitives.",
         specs: [
           { label: "Paradigm", val: "RTL / Behavioral / Structural" },
-          { label: "Verification", val: "Directed Testbenches" },
-          { label: "Industry Practice", val: "Engineers World (2025 & 2026 Intern)" },
+          { label: "Verification", val: "Directed Testbenches & SystemVerilog" },
+          { label: "Industry Practice", val: "Engineers World & Maven Silicon" },
           { label: "Focus", val: "RISC-V Security & RTL Design" }
         ]
       },
@@ -1703,7 +1866,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // Background Canvas Circuit Visualizer
+    // Refined Subdued Background Canvas Visualizer
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -1725,32 +1888,32 @@
         this.x = x;
         this.y = y;
         this.type = type;
-        this.w = 42;
-        this.h = 30;
+        this.w = 38;
+        this.h = 26;
       }
 
       draw() {
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.28)';
-        ctx.lineWidth = 1.4;
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.13)';
+        ctx.lineWidth = 1.1;
 
         const { x, y, w, h } = this;
 
         ctx.beginPath();
-        ctx.moveTo(x - 12, y - h / 3);
+        ctx.moveTo(x - 10, y - h / 3);
         ctx.lineTo(x, y - h / 3);
         if (this.type !== 'NOT') {
-          ctx.moveTo(x - 12, y + h / 3);
+          ctx.moveTo(x - 10, y + h / 3);
           ctx.lineTo(x, y + h / 3);
         }
         ctx.moveTo(x + w, y);
-        ctx.lineTo(x + w + 12, y);
+        ctx.lineTo(x + w + 10, y);
         ctx.stroke();
 
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.2)';
         ctx.beginPath();
-        ctx.arc(x - 12, y - h / 3, 2, 0, Math.PI * 2);
-        if (this.type !== 'NOT') ctx.arc(x - 12, y + h / 3, 2, 0, Math.PI * 2);
-        ctx.arc(x + w + 12, y, 2, 0, Math.PI * 2);
+        ctx.arc(x - 10, y - h / 3, 1.5, 0, Math.PI * 2);
+        if (this.type !== 'NOT') ctx.arc(x - 10, y + h / 3, 1.5, 0, Math.PI * 2);
+        ctx.arc(x + w + 10, y, 1.5, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.beginPath();
@@ -1772,8 +1935,8 @@
           ctx.lineTo(x, y + h / 2);
           ctx.closePath();
         } else if (this.type === 'XOR') {
-          ctx.moveTo(x - 6, y - h / 2);
-          ctx.quadraticCurveTo(x + w * 0.2 - 6, y, x - 6, y + h / 2);
+          ctx.moveTo(x - 5, y - h / 2);
+          ctx.quadraticCurveTo(x + w * 0.2 - 5, y, x - 5, y + h / 2);
           ctx.stroke();
           ctx.beginPath();
           ctx.moveTo(x, y - h / 2);
@@ -1782,21 +1945,21 @@
           ctx.quadraticCurveTo(x + w * 0.25, y, x, y - h / 2);
           ctx.closePath();
         }
-        ctx.fillStyle = 'rgba(7, 15, 28, 0.9)';
+        ctx.fillStyle = 'rgba(5, 10, 20, 0.9)';
         ctx.fill();
         ctx.stroke();
 
         if (this.type === 'NOT' || this.type === 'NAND' || this.type === 'NOR') {
           ctx.beginPath();
-          ctx.arc(x + w + 3, y, 3, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(7, 15, 28, 0.9)';
+          ctx.arc(x + w + 2.5, y, 2.5, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(5, 10, 20, 0.9)';
           ctx.fill();
           ctx.stroke();
         }
 
-        ctx.font = '9px JetBrains Mono';
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.5)';
-        ctx.fillText(this.type, x + 6, y + 3);
+        ctx.font = '8px JetBrains Mono';
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.25)';
+        ctx.fillText(this.type, x + 5, y + 3);
       }
     }
 
@@ -1833,14 +1996,14 @@
         for (let i = 1; i < this.points.length; i++) {
           ctx.lineTo(this.points[i].x, this.points[i].y);
         }
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.14)';
-        ctx.lineWidth = 1.3;
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.08)';
+        ctx.lineWidth = 1.1;
         ctx.stroke();
 
         for (let pt of this.points) {
           ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 212, 255, 0.35)';
+          ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.18)';
           ctx.fill();
         }
       }
@@ -1851,8 +2014,8 @@
         this.trace = trace;
         this.currentSegment = 0;
         this.progress = 0;
-        this.speed = 0.012 + Math.random() * 0.018;
-        this.color = Math.random() > 0.35 ? '#00d4ff' : '#10b981';
+        this.speed = 0.009 + Math.random() * 0.012;
+        this.color = Math.random() > 0.4 ? 'rgba(0, 212, 255, 0.45)' : 'rgba(16, 185, 129, 0.45)';
       }
 
       update() {
@@ -1875,9 +2038,9 @@
         const y = p1.y + (p2.y - p1.y) * this.progress;
 
         ctx.beginPath();
-        ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+        ctx.arc(x, y, 2.2, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 6;
         ctx.shadowColor = this.color;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -1891,7 +2054,7 @@
       pulses = [];
 
       const gateTypes = ['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XOR'];
-      const gateCount = Math.floor((width * height) / 75000) + 6;
+      const gateCount = Math.floor((width * height) / 90000) + 4;
 
       for (let i = 0; i < gateCount; i++) {
         const x = Math.random() * (width - 140) + 70;
@@ -1899,24 +2062,24 @@
         const type = gateTypes[Math.floor(Math.random() * gateTypes.length)];
         logicGates.push(new LogicGate(x, y, type));
 
-        const trace = new CircuitTrace(x + 54, y);
+        const trace = new CircuitTrace(x + 48, y);
         traces.push(trace);
         pulses.push(new CircuitPulse(trace));
       }
 
-      const chipCount = Math.floor((width * height) / 180000) + 2;
+      const chipCount = Math.floor((width * height) / 220000) + 2;
       for (let i = 0; i < chipCount; i++) {
         icChips.push({
           x: Math.random() * (width - 150) + 75,
           y: Math.random() * (height - 150) + 75,
-          w: 80 + Math.random() * 40,
-          h: 60 + Math.random() * 30,
-          label: i % 2 === 0 ? 'RISC-V_RV32I' : 'MAX7219_CTRL',
-          pins: 6
+          w: 75 + Math.random() * 35,
+          h: 55 + Math.random() * 25,
+          label: i % 2 === 0 ? 'RISC-V_RV32I' : 'UVM_TOP',
+          pins: 5
         });
       }
 
-      const extraTraces = Math.floor((width * height) / 35000) + 6;
+      const extraTraces = Math.floor((width * height) / 45000) + 4;
       for (let i = 0; i < extraTraces; i++) {
         const startX = Math.floor((Math.random() * width) / 40) * 40;
         const startY = Math.floor((Math.random() * height) / 40) * 40;
@@ -1928,29 +2091,29 @@
 
     function drawChips() {
       for (let chip of icChips) {
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.16)';
-        ctx.lineWidth = 1.2;
-        ctx.fillStyle = 'rgba(6, 12, 22, 0.85)';
+        ctx.strokeStyle = 'rgba(0, 212, 255, 0.1)';
+        ctx.lineWidth = 1;
+        ctx.fillStyle = 'rgba(5, 9, 18, 0.85)';
         ctx.fillRect(chip.x, chip.y, chip.w, chip.h);
         ctx.strokeRect(chip.x, chip.y, chip.w, chip.h);
 
         ctx.beginPath();
-        ctx.arc(chip.x + 10, chip.y + chip.h / 2, 4, -Math.PI / 2, Math.PI / 2);
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
+        ctx.arc(chip.x + 8, chip.y + chip.h / 2, 3.5, -Math.PI / 2, Math.PI / 2);
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
         ctx.fill();
 
-        ctx.font = '10px JetBrains Mono';
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.45)';
-        ctx.fillText(chip.label, chip.x + 12, chip.y + chip.h / 2 + 3);
+        ctx.font = '9px JetBrains Mono';
+        ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
+        ctx.fillText(chip.label, chip.x + 10, chip.y + chip.h / 2 + 3);
 
         const pinGap = chip.w / (chip.pins + 1);
         for (let p = 1; p <= chip.pins; p++) {
           const px = chip.x + p * pinGap;
           ctx.beginPath();
           ctx.moveTo(px, chip.y);
-          ctx.lineTo(px, chip.y - 7);
+          ctx.lineTo(px, chip.y - 5);
           ctx.moveTo(px, chip.y + chip.h);
-          ctx.lineTo(px, chip.y + chip.h + 7);
+          ctx.lineTo(px, chip.y + chip.h + 5);
           ctx.stroke();
         }
       }
@@ -1969,9 +2132,9 @@
 
       if (mouse.x > 0) {
         ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 80, 0, Math.PI * 2);
-        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, 80);
-        grad.addColorStop(0, 'rgba(0, 212, 255, 0.22)');
+        ctx.arc(mouse.x, mouse.y, 65, 0, Math.PI * 2);
+        const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, 65);
+        grad.addColorStop(0, 'rgba(0, 212, 255, 0.08)');
         grad.addColorStop(1, 'transparent');
         ctx.fillStyle = grad;
         ctx.fill();
@@ -1999,15 +2162,23 @@
       const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
       if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
-        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents).\n• Author & Presenter at 4th IEEE DELCON 2025.\n• 1st Prize Winner in Line Follower Robotics & 2nd Prize in Arduino Project Battle @ Echiesta 2K24.\n• National Finalist @ 6th Mitsubishi Electric Cup (Team AGRISORT AI).\n• Dual VLSI Intern at Engineers World Limited (2025 & 2026).";
+        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) student at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Design Verification Engineering Trainee at Maven Silicon (SystemVerilog / UVM).\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents).\n• Author & Presenter at 4th IEEE DELCON 2025.\n• 1st Prize Winner in Line Follower Robotics & Ideathon @ Echiesta 2K24.\n• Dual VLSI Intern at Engineers World Limited (2025 & 2026).";
       }
 
-      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('echiesta') || q.includes('echalon') || q.includes('roborush') || q.includes('mitsubishi')) {
-        return "Verified Honors & Competition Achievements:\n\n1. Echiesta-2K24 (Echelon Institute of Tech):\n   • 1st Prize in ROBO Line Followers\n   • 2nd Prize in Arduino Project Battle\n2. 6th Mitsubishi Electric Cup (MECA 2026, MIT-WPU Pune):\n   • National Finalist with Team AGRISORT AI\n3. RoboRush 1.0 (K.R. Mangalam University):\n   • Consolation Prize with Team Flash UNO\n4. IEEE ICAICCIT 2024 (MRIIRS):\n   • Student Coordinator Certificate of Appreciation\n5. INNOSKILL 2026 (MRIIRS):\n   • Certificate of Appreciation in 'Build a Circuit'\n6. Arduino Days 2024 Hackathon (MRIIRS & Makerbazar):\n   • Official Participation Certificate.";
+      if (q.includes('maven') || q.includes('silicon') || q.includes('uvm') || q.includes('systemverilog') || q.includes('verification')) {
+        return "Maven Silicon Design Verification Training:\n\n• Training: Advanced Design Verification Engineering on SystemVerilog and UVM.\n• Focus Areas: Object-Oriented Verification (OOP), Transaction-Level Modeling (TLM), Constrained Random Stimulus (CRV), Functional Coverage & Assertions (SVA).\n• Applications: Building scalable, reusable verification components for complex SoCs and RISC-V processors.";
+      }
+
+      if (q.includes('certif') || q.includes('course') || q.includes('linkedin') || q.includes('udemy')) {
+        return "Certifications & Upskilling:\n\n1. LinkedIn Learning: Learning FPGA Development (Jan 2025)\n2. LinkedIn Learning: Electronics Foundation: Semiconductor Devices (March 2025)\n3. LinkedIn Learning: IoT Foundation: Low Power Wireless Networking (Dec 2024)\n4. Udemy: Raspberry Pi 4 using Python Programming (March 2025)\n5. Udemy: Hands on Arduino (April 2024).";
+      }
+
+      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('echiesta') || q.includes('echalon') || q.includes('mitsubishi')) {
+        return "Verified Honors & Competition Achievements:\n\n1. Echiesta-2K24 (Echelon Institute of Tech):\n   • 1st Prize in ROBO Line Followers\n   • 1st Prize in Ideathon\n   • 2nd Prize in Arduino Project Battle\n2. 6th Mitsubishi Electric Cup (MECA 2026, MIT-WPU Pune):\n   • National Finalist with Team AGRISORT AI\n3. INNOSKILL 2025 (MRIIRS):\n   • 2nd Prize in Srijan Innovation Competition\n4. Health Tech Innovation (CHI, MRIIRS):\n   • 1st Prize for IoT Prenatal Monitoring System (April 2024)\n5. RoboRush 1.0 (K.R. Mangalam University):\n   • Consolation Prize with Team Flash UNO.";
       }
 
       if (q.includes('intern') || q.includes('experience') || q.includes('work') || q.includes('company') || q.includes('engineers world')) {
-        return "Professional Internship Experience:\n\n1. VLSI Design & Verification Intern @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129):\n   • Digital ASIC verification flows, SystemVerilog/Verilog RTL simulation, and functional coverage.\n\n2. VLSI Design & Verification Intern @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56):\n   • RTL coding, digital circuit synthesis, and testbench validation.\n\n3. Engineering Intern @ Parmod Electricals (June–July 2024):\n   • Industrial training on electrical control panels, circuit wiring, and troubleshooting.";
+        return "Professional Internship Experience:\n\n1. VLSI Design & Verification Intern @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129):\n   • Digital ASIC verification flows, SystemVerilog/Verilog RTL simulation, and functional coverage.\n\n2. VLSI Design & Verification Intern @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56):\n   • RTL coding, digital circuit synthesis, and testbench validation.\n\n3. Engineering Intern @ Parmod Electricals (June–July 2024):\n   • Industrial core electrical training covering MCB & PLC manufacturing and panel wiring.";
       }
 
       if (q.includes('clock') || q.includes('bluetooth') || q.includes('max7219') || q.includes('matrix') || q.includes('hc05') || q.includes('display')) {
@@ -2026,11 +2197,15 @@
         return "IEEE Presentation & Publication:\n\n• Conference: 4th IEEE DELCON 2025 (Jamia Millia Islamia, technically sponsored by IEEE Delhi Section)\n• Paper Title: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications' (PID: 174)\n• Indexed in: IEEE Xplore Digital Library.";
       }
 
+      if (q.includes('education') || q.includes('college') || q.includes('school') || q.includes('btech') || q.includes('cgpa')) {
+        return "Education Details:\n\n• B.Tech in ECE (AIoT): MRIIRS, Faridabad (2023–2027) | CGPA: 6.69\n• Senior Secondary (12th): SASI Educational Institutes, Visakhapatnam (2021–2023) | 94.6%\n• Secondary (10th): Chalapathi Public School, Visakhapatnam (2021) | 99.0%.";
+      }
+
       if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach')) {
         return "Connect with Hema Prasad Dogga:\n\n• Email: doggahemant@gmail.com\n• WhatsApp / Phone: +91 7569330584\n• LinkedIn: linkedin.com/in/dogga-hema-prasad-a3525287\n• GitHub: github.com/Hemanth-5400\n• Location: Faridabad, Haryana / Visakhapatnam, India.";
       }
 
-      return `Regarding "${rawText}":\n\nHema Prasad is an ECE undergraduate at MRIIRS with a ₹1,00,000 sanctioned RISC-V research grant, 3 patents, an IEEE DELCON presentation, two VLSI Design & Verification internships at Engineers World, and multiple national robotics championships.\n\nWould you like to explore his research, projects, awards, or contact details directly?`;
+      return `Regarding "${rawText}":\n\nHema Prasad is an ECE undergraduate at MRIIRS currently taking Design Verification training at Maven Silicon (SystemVerilog/UVM). He holds a ₹1,00,000 RISC-V research grant, 3 patents, an IEEE DELCON presentation, and dual VLSI internships at Engineers World.\n\nWould you like to explore his verification training, research, certifications, or contact details?`;
     }
 
     function toggleAIChat() {
