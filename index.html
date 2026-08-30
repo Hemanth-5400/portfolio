@@ -17,6 +17,7 @@
       --primary: #00d4ff;
       --primary-glow: #38bdf8;
       --accent: #10b981;
+      --github: #e2e8f0;
       --whatsapp: #25d366;
       --text: #f0f6fc;
       --text-muted: #8b9bb4;
@@ -113,6 +114,19 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    /* Scroll Animation Reveal Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* Hero Section */
     .hero {
       min-height: 95vh;
@@ -172,15 +186,15 @@
 
     .hero-btns {
       display: flex;
-      gap: 1rem;
+      gap: 0.85rem;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 0.8rem 1.6rem;
+      padding: 0.8rem 1.4rem;
       border-radius: 8px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -198,6 +212,19 @@
 
     .btn-primary:hover {
       box-shadow: 0 0 28px rgba(0, 212, 255, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .btn-github {
+      background: rgba(30, 41, 59, 0.85);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-github:hover {
+      background: rgba(51, 65, 85, 0.95);
+      border-color: #fff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
     }
 
@@ -347,7 +374,6 @@
       gap: 0.5rem;
     }
 
-    /* Universal Interactive Clickable Tags */
     .tag {
       background: rgba(0, 212, 255, 0.08);
       border: 1px solid rgba(0, 212, 255, 0.2);
@@ -396,6 +422,12 @@
       border-radius: 12px;
       padding: 1.6rem;
       backdrop-filter: blur(12px);
+      transition: all 0.25s ease-in-out;
+    }
+
+    .skill-box:hover {
+      border-color: rgba(0, 212, 255, 0.5);
+      transform: translateY(-4px);
     }
 
     .skill-box h3 {
@@ -500,7 +532,7 @@
       display: flex;
     }
 
-    /* Professional Technical Dossier Modal */
+    /* Technical Dossier Modal */
     .tech-modal-card {
       background: rgba(10, 18, 32, 0.95);
       border: 1px solid rgba(0, 212, 255, 0.35);
@@ -795,11 +827,14 @@
 
     <header class="hero">
       <div class="container hero-container">
-        <div class="hero-content">
+        <div class="hero-content reveal">
           <div class="badge"><i class="fas fa-bolt"></i> B.Tech ECE (AIoT) • Hardware Security & VLSI</div>
           <h1>Hi, I'm <span>Hema Prasad Dogga.</span></h1>
-          <p>Results-oriented Electronics and Communication Engineering student focused on building innovative solutions across RISC-V Hardware Security, Cloud-Connected AIoT, Industrial PLC Automation, and Digital VLSI.</p>
+          <p>Electronics and Communication Engineering innovator specialized in RISC-V Hardware Security, Edge AI & Industrial Automation, Digital VLSI, and Cloud-Connected AIoT Systems.</p>
           <div class="hero-btns">
+            <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-github">
+              <i class="fab fa-github"></i> GitHub Profile
+            </a>
             <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" class="btn btn-primary">
               <i class="fab fa-linkedin"></i> Connect on LinkedIn
             </a>
@@ -812,7 +847,7 @@
           </div>
         </div>
 
-        <div class="hero-photo-wrapper">
+        <div class="hero-photo-wrapper reveal">
           <div class="profile-glow"></div>
           <div class="profile-img-container">
             <img src="hemanth.jpeg" alt="Hema Prasad Dogga" class="profile-img" onerror="this.src='https://github.com/Hemanth-5400.png';" />
@@ -823,9 +858,9 @@
 
     <section id="patents">
       <div class="container">
-        <h2 class="section-title"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
+        <h2 class="section-title reveal"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
         <div class="grid">
-          <div class="card">
+          <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
               <span class="tag" onclick="openTechModal('pen_patent')">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
@@ -834,7 +869,7 @@
             <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
               <span class="tag" onclick="openTechModal('cart_patent')">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
@@ -843,7 +878,7 @@
             <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">Lighting Shrub</h3>
               <span class="tag" onclick="openTechModal('lighting_patent')">App: 465417-001 <i class="fas fa-external-link-alt"></i></span>
@@ -852,7 +887,7 @@
             <p class="card-desc">Decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-header">
               <h3 class="card-title">IEEE Research Publication</h3>
               <span class="tag" onclick="openTechModal('ieee_paper')">IEEE Xplore <i class="fas fa-external-link-alt"></i></span>
@@ -867,10 +902,10 @@
 
     <section id="projects">
       <div class="container">
-        <h2 class="section-title"><i class="fas fa-microchip"></i> Featured Projects</h2>
+        <h2 class="section-title reveal"><i class="fas fa-microchip"></i> Featured Projects</h2>
         <div class="grid">
           
-          <div class="card card-featured">
+          <div class="card card-featured reveal">
             <div class="card-header">
               <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
               <span class="tag tag-highlight" onclick="openTechModal('riscv_grant')">⚡ ₹1,00,000 Grant <i class="fas fa-info-circle"></i></span>
@@ -886,7 +921,19 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
+            <h3 class="card-title">Bluetooth Smart Digital Clock & Dynamic Notice Display</h3>
+            <div class="card-meta">Embedded Systems & Wireless Control (2024–2025)</div>
+            <p class="card-desc">Real-time digital clock and dynamic text display using cascaded MAX7219 8x8 LED matrix modules driven by an Arduino Nano. Allows seamless live text broadcasting and clock synchronization from an Android Bluetooth terminal application via an HC-05 module.</p>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('max7219')">MAX7219 Matrix <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('arduino')">Arduino Nano <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('hc05')">HC-05 Bluetooth <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('cpp')">Embedded C++ <i class="fas fa-search-plus"></i></span>
+            </div>
+          </div>
+
+          <div class="card reveal">
             <h3 class="card-title">AI Fruit Sorting System (PLC + Jetson Nano)</h3>
             <div class="card-meta">Edge AI & Industrial Automation (2026)</div>
             <p class="card-desc">Deep learning computer vision model deployed on Nvidia Jetson Nano coupled with industrial Mitsubishi PLC for real-time fruit grading and pneumatic sorting.</p>
@@ -898,7 +945,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">Cloud-Connected Smart Agriculture Boat</h3>
             <div class="card-meta">AgriTech & Cloud Telemetry (2024)</div>
             <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection.</p>
@@ -910,7 +957,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">IoT Prenatal Health Cloud Monitor</h3>
             <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)</div>
             <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness.</p>
@@ -922,7 +969,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">Mobile Safety Cloud Tracking System</h3>
             <div class="card-meta">Embedded Security & Cloud Logging (2024)</div>
             <p class="card-desc">Safety telemetry tracker featuring real-time coordinate broadcasting, geofencing, and emergency trigger alerts over cloud-hosted endpoints.</p>
@@ -933,7 +980,7 @@
             </div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">Smart Cloud Relay Switch</h3>
             <div class="card-meta">Home Automation (2024)</div>
             <p class="card-desc">Low-latency cloud-controlled power relay system designed using ESP8266 supporting remote switching via MQTT brokers.</p>
@@ -950,22 +997,23 @@
 
     <section id="skills">
       <div class="container">
-        <h2 class="section-title"><i class="fas fa-tools"></i> Technical Expertise</h2>
+        <h2 class="section-title reveal"><i class="fas fa-tools"></i> Technical Expertise</h2>
         <div class="skills-grid">
-          <div class="skill-box">
+          <div class="skill-box reveal">
             <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('pcb_design')">Circuit Designing <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('pcb_design')">Zero PCB Designing <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266 <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('arduino')">Arduino <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('arduino')">Arduino Nano / Uno <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('max7219')">MAX7219 Display <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('proteus')">Proteus <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('tinkercad')">Tinkercad <i class="fas fa-search-plus"></i></span>
             </div>
           </div>
 
-          <div class="skill-box">
+          <div class="skill-box reveal">
             <h3><i class="fas fa-cloud"></i> Cloud & IoT Protocols</h3>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
@@ -977,7 +1025,7 @@
             </div>
           </div>
 
-          <div class="skill-box">
+          <div class="skill-box reveal">
             <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('vivado')">Vivado <i class="fas fa-search-plus"></i></span>
@@ -989,13 +1037,13 @@
             </div>
           </div>
 
-          <div class="skill-box">
+          <div class="skill-box reveal">
             <h3><i class="fas fa-terminal"></i> Languages & Architecture</h3>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++ <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('plc')">PLC Ladder Logic <i class="fas fa-search-plus"></i></span>
               <span class="tag" onclick="openTechModal('linux')">Linux <i class="fas fa-search-plus"></i></span>
             </div>
@@ -1006,43 +1054,49 @@
 
     <section id="achievements">
       <div class="container">
-        <h2 class="section-title"><i class="fas fa-trophy"></i> Key Achievements</h2>
+        <h2 class="section-title reveal"><i class="fas fa-trophy"></i> Key Achievements & Awards</h2>
         <div class="grid">
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">₹1,00,000 Research Grant Sanction</h3>
             <div class="card-meta">MRIIRS Research Board • July 2026</div>
-            <p class="card-desc">Sanctioned research funding for 24-month project on "Hardware Security Implementation on RISC-V Architecture".</p>
+            <p class="card-desc">Sanctioned research funding for 24-month project on "Hardware Security Implementation on RISC-V Architecture" under the Department of ECE.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">6th Mitsubishi Electric Cup</h3>
-            <div class="card-meta">National Level • Feb 2026</div>
-            <p class="card-desc">Awarded National Appreciation for engineering automation model implementation.</p>
+            <div class="card-meta">National Level Competition • Feb 2026</div>
+            <p class="card-desc">Awarded National Appreciation for the AI-powered industrial fruit classification and sorting automation system.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
+            <h3 class="card-title">Echalon 2K24 – Triple Distinction</h3>
+            <div class="card-meta">National Tech Fest • 2024</div>
+            <p class="card-desc">Achieved <strong>1st Prize in Ideathon</strong>, <strong>1st Prize in Autonomous Line Follower Robot</strong>, and <strong>2nd Prize in Arduino Project Battle</strong>.</p>
+          </div>
+
+          <div class="card reveal">
             <h3 class="card-title">INNOSKILL 2025 (Srijan)</h3>
             <div class="card-meta">2nd Prize • April 2025</div>
-            <p class="card-desc">Hardware prototype innovation award at the annual institute festival.</p>
+            <p class="card-desc">Hardware prototype innovation award at the annual MRIIRS institute innovation festival.</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3 class="card-title">Health Tech Innovation (CHI)</h3>
             <div class="card-meta">1st Prize • April 2024</div>
-            <p class="card-desc">1st place for developing the IoT-based maternal healthcare monitoring system.</p>
+            <p class="card-desc">1st place for designing and prototyping the IoT-based prenatal maternal healthcare telemetry monitor.</p>
           </div>
         </div>
       </div>
     </section>
 
     <footer id="contact">
-      <div class="container">
+      <div class="container reveal">
         <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad Dogga</h3>
         <p style="margin-bottom: 1rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
-        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1rem;">
-          <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary); font-size: 1.2rem;"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.2rem;">
+          <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://linkedin.com/in/dogga-hema-prasad-a3525287" target="_blank" style="color: var(--primary); font-size: 1.3rem;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.3rem;"><i class="fab fa-github"></i></a>
         </div>
         <p style="font-size: 0.8rem; color: var(--primary);">&copy; 2026 Hema Prasad Dogga. Hosted on GitHub Pages.</p>
       </div>
@@ -1085,12 +1139,12 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me anything about his sanctioned RISC-V research grant, patents, IEEE publication, engineering projects, skills, or contact info!
+        Hello! I am Hema Prasad Dogga's personal portfolio assistant. Ask me anything about his sanctioned RISC-V research grant, MAX7219 Bluetooth clock, patents, IEEE publication, engineering projects, skills, or contact info!
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('Tell me about your background')">About Hema?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Grant?</span>
           <span class="quick-chip" onclick="askQuestion('What patents do you have?')">Patents?</span>
-          <span class="quick-chip" onclick="askQuestion('What are your top projects?')">Top Projects?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your MAX7219 Bluetooth clock project')">Bluetooth Clock?</span>
           <span class="quick-chip" onclick="askQuestion('What are your technical skills?')">Skills?</span>
           <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
         </div>
@@ -1103,9 +1157,32 @@
   </div>
 
   <script>
-    // Complete Technical Dossier Dictionary (Every Skill, Tool, Patent & Project)
+    // Complete Technical Dossier Dictionary
     const techDossier = {
-      // Hardware & Prototyping
+      max7219: {
+        title: "MAX7219 Dot Matrix Display Driver",
+        category: "Serial Interfaced LED Display Driver",
+        icon: "fas fa-border-all",
+        desc: "Compact, serial input/output common-cathode display driver that interfaces microcontrollers to 8-digit 7-segment LED displays or 8x8 dot matrix displays. In Hema's project, cascaded MAX7219 modules provide real-time clock rendering and smooth horizontal text scrolling.",
+        specs: [
+          { label: "Interface", val: "SPI / 3-Wire Serial" },
+          { label: "Operating Voltage", val: "4.0V - 5.5V" },
+          { label: "Scan Rate", val: "800Hz Multiplexing" },
+          { label: "Application", val: "Dynamic Text & Clock Display" }
+        ]
+      },
+      hc05: {
+        title: "HC-05 Bluetooth Module",
+        category: "Wireless Serial Communication (UART)",
+        icon: "fab fa-bluetooth-b",
+        desc: "Full-duplex Bluetooth SPP (Serial Port Protocol) module utilized to establish a wireless bridge between a smartphone Bluetooth terminal application and the Arduino Nano, updating display text on-the-fly.",
+        specs: [
+          { label: "Protocol", val: "Bluetooth v2.0+EDR" },
+          { label: "Baud Rate", val: "9600 bps (Configurable)" },
+          { label: "Range", val: "Up to 10 Meters" },
+          { label: "Interface", val: "UART (Tx/Rx)" }
+        ]
+      },
       jetson_nano: {
         title: "Nvidia Jetson Nano",
         category: "Edge AI & Embedded Computing",
@@ -1182,12 +1259,12 @@
         title: "Arduino Development Platform",
         category: "Embedded Hardware & Rapid Prototyping",
         icon: "fas fa-infinity",
-        desc: "Utilized for rapid physical computing prototyping, robotics control loops (Line Following Robot 1st prize winner), sensor calibrations, and motor driver interfacing.",
+        desc: "Utilized for physical computing prototypes, robotics control loops (Line Following Robot 1st prize winner), MAX7219 matrix displays, and sensor calibrations.",
         specs: [
           { label: "Core Chips", val: "ATmega328P / SAMD21" },
           { label: "Language", val: "Embedded C / C++" },
           { label: "Toolchain", val: "Arduino IDE / CLI" },
-          { label: "Focus", val: "Robotics & Actuation" }
+          { label: "Focus", val: "Robotics & Display Actuation" }
         ]
       },
       proteus: {
@@ -1238,8 +1315,6 @@
           { label: "Application", val: "Mobile Safety Tracker" }
         ]
       },
-
-      // Cloud & IoT Protocols
       thingspeak: {
         title: "ThingSpeak IoT Cloud",
         category: "Cloud Data Analytics & MATLAB Telemetry",
@@ -1256,7 +1331,7 @@
         title: "AWS IoT Core",
         category: "Scalable Cloud IoT Architecture",
         icon: "fab fa-aws",
-        desc: "Managed cloud broker enabling bi-directional, TLS-encrypted MQTT messaging between physical hardware prototypes and cloud telemetry dashboards with enterprise-grade reliability.",
+        desc: "Managed cloud broker enabling bi-directional, TLS-encrypted MQTT messaging between physical hardware prototypes and cloud telemetry dashboards.",
         specs: [
           { label: "Broker Protocol", val: "MQTT v3.1.1 / TLS 1.2" },
           { label: "Cloud Services", val: "Rules Engine, Lambda, DynamoDB" },
@@ -1280,7 +1355,7 @@
         title: "HTTP / REST APIs",
         category: "Stateless Cloud Interfacing",
         icon: "fas fa-network-wired",
-        desc: "Structured HTTP request/response JSON endpoints utilized by embedded Wi-Fi microcontrollers to push sensor telemetry payloads to remote cloud servers and receive remote actuation commands.",
+        desc: "Structured HTTP request/response JSON endpoints utilized by embedded Wi-Fi microcontrollers to push sensor telemetry payloads to remote cloud servers.",
         specs: [
           { label: "Payload", val: "JSON / URL-Encoded" },
           { label: "Methods", val: "GET, POST, PUT, DELETE" },
@@ -1324,13 +1399,11 @@
           { label: "Hardware", val: "ESP8266 Custom Node" }
         ]
       },
-
-      // Software & EDA Tools
       vivado: {
         title: "Xilinx Vivado Design Suite",
         category: "FPGA Synthesis & RTL Emulation",
         icon: "fas fa-microchip",
-        desc: "Primary EDA toolchain used for synthesizing, mapping, placing, and routing Verilog RTL designs for digital logic systems and RISC-V processor security modules. Allows comprehensive timing constraint verification (Setup/Hold timing analysis) and hardware simulation.",
+        desc: "Primary EDA toolchain used for synthesizing, mapping, placing, and routing Verilog RTL designs for digital logic systems and RISC-V processor security modules.",
         specs: [
           { label: "Design Entry", val: "Verilog / SystemVerilog" },
           { label: "Analysis", val: "Static Timing & Slack Analysis" },
@@ -1354,7 +1427,7 @@
         title: "Cadence Virtuoso",
         category: "Custom IC & Analog Layout Design",
         icon: "fas fa-wave-square",
-        desc: "Advanced electronic design automation platform for schematic capture, transistor-level spice simulation (Spectre), and full-custom CMOS layout design with DRC/LVS rule verification.",
+        desc: "Advanced electronic design automation platform for schematic capture, transistor-level spice simulation (Spectre), and full-custom CMOS layout design.",
         specs: [
           { label: "Design Level", val: "Transistor / Custom Silicon" },
           { label: "Simulation", val: "Spectre Circuit Simulator" },
@@ -1386,13 +1459,11 @@
           { label: "Applications", val: "Robotics & Patent Models" }
         ]
       },
-
-      // Languages & Architecture
       riscv: {
         title: "RISC-V ISA Architecture",
         category: "Processor Design & Hardware Security",
         icon: "fas fa-microchip",
-        desc: "The open-standard RISC-V RV32I instruction set architecture serves as the foundation for Hema's <strong>sanctioned ₹1,00,000 research project</strong>. Focuses on implementing dedicated hardware root-of-trust security extensions, side-channel attack countermeasures, and cryptographic accelerators on custom silicon RTL.",
+        desc: "The open-standard RISC-V RV32I instruction set architecture serves as the foundation for Hema's <strong>sanctioned ₹1,00,000 research project</strong>. Focuses on implementing dedicated hardware root-of-trust security extensions and side-channel countermeasures.",
         specs: [
           { label: "Base Architecture", val: "RV32I (32-bit Integer)" },
           { label: "Research Grant", val: "₹1,00,000 (MRIIRS)" },
@@ -1404,7 +1475,7 @@
         title: "Verilog HDL",
         category: "Digital Hardware Description Language",
         icon: "fas fa-code",
-        desc: "Hardware Description Language utilized to design register-transfer level (RTL) circuits, state machines (Mealy/Moore FSMs), ALU modules, and custom cryptographic primitives with clock-cycle precision.",
+        desc: "Hardware Description Language utilized to design register-transfer level (RTL) circuits, state machines (Mealy/Moore FSMs), ALU modules, and custom cryptographic primitives.",
         specs: [
           { label: "Paradigm", val: "RTL / Behavioral / Structural" },
           { label: "Verification", val: "Directed Testbenches" },
@@ -1428,12 +1499,12 @@
         title: "C / C++ (Embedded)",
         category: "Bare-Metal Firmware Development",
         icon: "fas fa-file-code",
-        desc: "Used for developing high-performance firmware, direct register manipulation, interrupt service routines (ISRs), and memory-efficient algorithms on microcontrollers.",
+        desc: "Used for developing high-performance firmware, direct register manipulation, interrupt service routines (ISRs), and display drivers on microcontrollers.",
         specs: [
           { label: "Standard", val: "C99 / C++17" },
-          { label: "Target Chips", val: "ESP32, Arduino, AVR" },
+          { label: "Target Chips", val: "ESP32, Arduino Nano/Uno, AVR" },
           { label: "Key Features", val: "Direct Memory Access, Low Footprint" },
-          { label: "Toolchains", val: "GCC, ESP-IDF, PlatformIO" }
+          { label: "Toolchains", val: "GCC, ESP-IDF, PlatformIO, Arduino CLI" }
         ]
       },
       linux: {
@@ -1452,7 +1523,7 @@
         title: "FPGA Emulation",
         category: "Reconfigurable Hardware Prototyping",
         icon: "fas fa-layer-group",
-        desc: "Enables hardware-level emulation of custom processors and digital accelerators before chip fabrication. Validates side-channel attack resistance and physical signal behavior in real-time execution environments.",
+        desc: "Enables hardware-level emulation of custom processors and digital accelerators before chip fabrication. Validates side-channel attack resistance in real-time execution environments.",
         specs: [
           { label: "Platform", val: "Xilinx / Altera Devices" },
           { label: "Clock Domains", val: "Synchronous Multi-Clock" },
@@ -1484,8 +1555,6 @@
           { label: "Focus", val: "Hardware Silicon Security" }
         ]
       },
-
-      // Patents & Publications
       pen_patent: {
         title: "Gesture Pen HCI Interface",
         category: "Granted Utility Patent (App: 459423-001)",
@@ -1572,6 +1641,20 @@
         document.getElementById('aiModal').classList.remove('active');
       }
     });
+
+    // Scroll Reveal Intersection Observer Engine
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // Background PCB Canvas Animation Engine
     const canvas = document.getElementById('pcb-canvas');
@@ -1781,7 +1864,7 @@
           y: Math.random() * (height - 150) + 75,
           w: 80 + Math.random() * 40,
           h: 60 + Math.random() * 30,
-          label: i % 2 === 0 ? 'RISC-V_RV32I' : 'FPGA_SEC',
+          label: i % 2 === 0 ? 'RISC-V_RV32I' : 'MAX7219_CTRL',
           pins: 6
         });
       }
@@ -1869,7 +1952,11 @@
       const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
 
       if (q.includes('about') || q.includes('who is') || q.includes('who are') || q.includes('background') || q.includes('intro') || q.includes('profile') || q.includes('yourself')) {
-        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents in Smart Retail & CleanTech).\n• Published IEEE author on Gesture-based Pen Interfaces.\n• National Appreciation Award Winner @ 6th Mitsubishi Electric Cup.";
+        return "Dogga Hema Prasad is an Electronics and Communication Engineering (ECE - AIoT) undergraduate at Manav Rachna International Institute of Research and Studies (MRIIRS).\n\nKey Highlights:\n• Principal Investigator on a ₹1,00,000 sanctioned research grant for 'Hardware Security Implementation on RISC-V Architecture' (2026–2028).\n• Holds 3 Patent Applications (1 Utility in Gesture Pen HCI + 2 Design Patents in Smart Retail & CleanTech).\n• Published IEEE author on Gesture-based Pen Interfaces.\n• National Appreciation Award Winner @ 6th Mitsubishi Electric Cup & Triple Award Winner @ Echalon 2K24.";
+      }
+
+      if (q.includes('clock') || q.includes('bluetooth') || q.includes('max7219') || q.includes('matrix') || q.includes('hc05') || q.includes('display')) {
+        return "Bluetooth Digital Clock & Dynamic Notice Board:\n\n• Components: MAX7219 8x8 LED Matrix cascade, Arduino Nano, and HC-05 Bluetooth Module.\n• Functionality: Displays live real-time clock and wirelessly renders customized text messages broadcasted directly from an Android smartphone Bluetooth terminal app.\n• Code: Written in Embedded C++ with modular SPI display buffering.";
       }
 
       if (q.includes('risc') || q.includes('grant') || q.includes('fund') || q.includes('security') || q.includes('research')) {
@@ -1881,19 +1968,19 @@
       }
 
       if (q.includes('project') || q.includes('work') || q.includes('jetson') || q.includes('plc') || q.includes('boat') || q.includes('sorting') || q.includes('prenatal') || q.includes('tracker')) {
-        return "Featured Engineering Projects:\n\n1. Hardware Security on RISC-V ISA (Funded Research Grant 2026–2028)\n2. AI Industrial Fruit Sorting System (Nvidia Jetson Nano deep learning vision + Mitsubishi PLC GX Works3)\n3. Autonomous Agri-Telemetry Boat (ESP32-CAM + MQTT protocol)\n4. IoT Maternal Prenatal Health Telemetry (ThingSpeak Cloud API)\n5. Mobile Safety Tracking System (ESP32 GPS/Wi-Fi panic beacon)\n6. Smart Cloud Power Relay (Low-latency home automation via MQTT).";
+        return "Featured Engineering Projects:\n\n1. Hardware Security on RISC-V ISA (Funded Research Grant 2026–2028)\n2. Bluetooth Smart Digital Clock & Notice Board (MAX7219 + Arduino + HC-05)\n3. AI Industrial Fruit Sorting System (Nvidia Jetson Nano deep learning vision + Mitsubishi PLC GX Works3)\n4. Autonomous Agri-Telemetry Boat (ESP32-CAM + MQTT protocol)\n5. IoT Maternal Prenatal Health Telemetry (ThingSpeak Cloud API)\n6. Mobile Safety Tracking System (ESP32 GPS/Wi-Fi panic beacon)\n7. Smart Cloud Power Relay (Low-latency home automation via MQTT).";
       }
 
       if (q.includes('skill') || q.includes('tool') || q.includes('software') || q.includes('language') || q.includes('verilog') || q.includes('eda') || q.includes('tech stack')) {
-        return "Technical Competencies:\n\n• Hardware & Architecture: RISC-V ISA, Verilog HDL, Circuit & Zero-PCB Design, ESP32, Arduino, Jetson Nano\n• EDA & Simulation: Xilinx Vivado, Cadence Virtuoso, Quartus Prime, Proteus, Tinkercad\n• Automation & AI: Mitsubishi PLC (GX Works3 Ladder Logic), Python, OpenCV\n• Cloud & Telemetry: ThingSpeak Cloud, AWS IoT Core, MQTT, REST APIs, Firebase, n8n.";
+        return "Technical Competencies:\n\n• Hardware & Architecture: RISC-V ISA, Verilog HDL, MAX7219, HC-05, ESP32, Arduino, Jetson Nano, Zero-PCB Design\n• EDA & Simulation: Xilinx Vivado, Cadence Virtuoso, Quartus Prime, Proteus, Tinkercad\n• Automation & AI: Mitsubishi PLC (GX Works3 Ladder Logic), Python, OpenCV\n• Cloud & Telemetry: ThingSpeak Cloud, AWS IoT Core, MQTT, REST APIs, Firebase, n8n.";
       }
 
       if (q.includes('ieee') || q.includes('paper') || q.includes('publication') || q.includes('xplore') || q.includes('journal')) {
         return "IEEE Xplore Publication:\n\n• Title: 'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications'\n• Document ID: 11400200\n• Topic: In-depth survey on sensor fusion techniques, embedded algorithms, and latency benchmarks in gesture-based HCI pens.";
       }
 
-      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('mitsubishi')) {
-        return "Major Achievements & Awards:\n\n• National Appreciation Award @ 6th Mitsubishi Electric Cup (Feb 2026)\n• 1st Prize @ Health Tech Innovation (CHI, MRIIRS, April 2024)\n• 2nd Prize @ INNOSKILL 2025 (Srijan Hardware Innovation)\n• Triple Victory @ Echiesta 2024 (1st in Ideathon, 1st in Line Follower Robot, 2nd in Arduino Project Battle).";
+      if (q.includes('award') || q.includes('achievement') || q.includes('competition') || q.includes('prize') || q.includes('mitsubishi') || q.includes('echalon') || q.includes('echiesta')) {
+        return "Major Achievements & Awards:\n\n• National Appreciation Award @ 6th Mitsubishi Electric Cup (Feb 2026)\n• Triple Distinction @ Echalon 2K24 (1st in Ideathon, 1st in Line Follower Robot, 2nd in Arduino Project Battle)\n• 1st Prize @ Health Tech Innovation (CHI, MRIIRS, April 2024)\n• 2nd Prize @ INNOSKILL 2025 (Srijan Hardware Innovation).";
       }
 
       if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('whatsapp') || q.includes('hire') || q.includes('reach') || q.includes('connect')) {
@@ -1901,10 +1988,10 @@
       }
 
       if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('morning') || q.includes('evening')) {
-        return "Hello! I am Hema Prasad's portfolio AI assistant. Feel free to ask about his RISC-V research grant, patents, IEEE publication, projects, technical skills, or contact info!";
+        return "Hello! I am Hema Prasad's portfolio AI assistant. Feel free to ask about his RISC-V research grant, MAX7219 Bluetooth clock, patents, IEEE publication, projects, technical skills, or contact info!";
       }
 
-      return `Regarding "${rawText}":\n\nHema Prasad is an ECE (AIoT) undergraduate at MRIIRS with a ₹1,00,000 funded research grant in RISC-V Hardware Security, 3 patent applications, an IEEE publication, and expertise across Digital VLSI (Verilog/Vivado), Edge AI (Jetson Nano), and PLC automation.\n\nWould you like to explore his research, patents, specific projects, or contact details directly?`;
+      return `Regarding "${rawText}":\n\nHema Prasad is an ECE (AIoT) undergraduate at MRIIRS with a ₹1,00,000 funded research grant in RISC-V Hardware Security, 3 patent applications, an IEEE publication, and projects across MAX7219 Bluetooth systems, Digital VLSI (Verilog/Vivado), Edge AI (Jetson Nano), and PLC automation.\n\nWould you like to explore his research, patents, specific projects, or contact details directly?`;
     }
 
     function toggleAIChat() {
