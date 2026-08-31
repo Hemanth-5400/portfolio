@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hema Prasad | Silicon & Embedded Systems Engineer</title>
+  <title>Hema Prasad | Silicon Architecture & Verification Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
-      --bg: #050811;
-      --card-bg: rgba(9, 15, 28, 0.85);
-      --card-border: rgba(0, 212, 255, 0.18);
-      --primary: #00d4ff;
-      --primary-glow: #38bdf8;
-      --accent: #10b981;
-      --whatsapp: #25d366;
-      --text: #f0f6fc;
-      --text-muted: #8b9bb4;
-      --font-sans: 'Inter', sans-serif;
+      --bg: #030712;
+      --bg-alt: #0b1329;
+      --card-bg: rgba(13, 23, 48, 0.72);
+      --card-border: rgba(56, 189, 248, 0.16);
+      --card-hover-border: rgba(56, 189, 248, 0.45);
+      --primary: #38bdf8;
+      --primary-light: #7dd3fc;
+      --primary-glow: rgba(56, 189, 248, 0.28);
+      --accent: #34d399;
+      --accent-glow: rgba(52, 211, 153, 0.25);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
+      --radius: 14px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -35,12 +40,12 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Subdued Background Circuit Canvas */
+    /* Interactive Mesh Background Canvas */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -49,7 +54,7 @@
       height: 100vh;
       z-index: 0;
       pointer-events: none;
-      background: radial-gradient(circle at 65% 35%, #081220 0%, #050811 100%);
+      background: radial-gradient(circle at 75% 20%, #0f1d38 0%, #030712 100%);
     }
 
     .site-wrapper {
@@ -57,68 +62,100 @@
       z-index: 1;
     }
 
-    /* Navigation */
+    /* Glassmorphic Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(5, 8, 17, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 212, 255, 0.12);
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--card-border);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 10%;
+      padding: 1rem 8%;
     }
 
     .logo {
       font-family: var(--font-mono);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--primary);
-      text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+      text-shadow: 0 0 12px var(--primary-glow);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      letter-spacing: -0.01em;
+      gap: 0.6rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.9); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 6px var(--accent)); }
+      100% { transform: scale(0.9); opacity: 0.7; }
     }
 
     .nav-links {
       display: flex;
-      gap: 1.75rem;
+      gap: 2rem;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      transition: all 0.2s;
+      transition: var(--transition);
+      position: relative;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
-      text-shadow: 0 0 8px var(--primary);
+      color: var(--primary-light);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
     section {
-      padding: 5.5rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     /* Scroll Animation Reveal Engine */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
@@ -129,7 +166,7 @@
 
     /* Hero Section */
     .hero {
-      min-height: 95vh;
+      min-height: 96vh;
       display: flex;
       align-items: center;
       padding-top: 5rem;
@@ -139,124 +176,129 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 3.5rem;
+      gap: 4rem;
       width: 100%;
     }
 
     .hero-content {
-      flex: 1;
-      max-width: 650px;
+      flex: 1.2;
+      max-width: 680px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(0, 212, 255, 0.08);
+      background: rgba(56, 189, 248, 0.08);
       color: var(--primary);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      padding: 0.4rem 1.1rem;
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      padding: 0.45rem 1.2rem;
       border-radius: 999px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-family: var(--font-mono);
       margin-bottom: 1.5rem;
-      box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.08);
     }
 
     .hero h1 {
-      font-size: 3.3rem;
+      font-size: 3.6rem;
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 1.4rem;
+      letter-spacing: -0.03em;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #00d4ff 0%, #38bdf8 50%, #10b981 100%);
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #34d399 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
     }
 
     .hero-btns {
       display: flex;
-      gap: 0.85rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 0.8rem 1.4rem;
-      border-radius: 8px;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
       font-weight: 600;
       font-size: 0.92rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       cursor: pointer;
-      border: none;
-      transition: all 0.25s ease-in-out;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      font-family: var(--font-sans);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #00d4ff, #0284c7);
-      color: #060a12;
-      box-shadow: 0 0 16px rgba(0, 212, 255, 0.3);
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      color: #030712;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 24px rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.6);
       transform: translateY(-2px);
     }
 
     .btn-github {
-      background: rgba(30, 41, 59, 0.8);
+      background: rgba(30, 41, 59, 0.7);
       color: #fff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
     }
 
     .btn-github:hover {
-      background: rgba(51, 65, 85, 0.95);
-      border-color: #fff;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+      background: rgba(51, 65, 85, 0.9);
+      border-color: rgba(255, 255, 255, 0.3);
       transform: translateY(-2px);
     }
 
     .btn-outline {
-      background: rgba(10, 17, 30, 0.7);
+      background: rgba(13, 23, 48, 0.6);
       color: var(--text);
-      border: 1px solid var(--card-border);
+      border-color: var(--card-border);
       backdrop-filter: blur(8px);
     }
 
     .btn-outline:hover {
-      background: rgba(16, 28, 48, 0.9);
+      background: rgba(19, 34, 68, 0.85);
       border-color: var(--primary);
-      box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
       transform: translateY(-2px);
     }
 
     .btn-ai {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(0, 212, 255, 0.15));
-      border: 1px solid var(--accent);
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(56, 189, 248, 0.12));
+      border-color: rgba(52, 211, 153, 0.3);
       color: var(--text);
     }
 
     .btn-ai:hover {
-      background: rgba(16, 185, 129, 0.3);
-      box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+      background: rgba(52, 211, 153, 0.22);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
       transform: translateY(-2px);
     }
 
+    /* Photo Frame with Ambient Aura */
     .hero-photo-wrapper {
       position: relative;
-      flex-shrink: 0;
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
     }
 
     .profile-glow {
@@ -264,28 +306,28 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 290px;
-      height: 290px;
-      background: radial-gradient(circle, rgba(0, 212, 255, 0.35) 0%, rgba(16, 185, 129, 0.15) 50%, transparent 75%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(52, 211, 153, 0.1) 50%, transparent 70%);
       border-radius: 50%;
-      filter: blur(25px);
+      filter: blur(35px);
       z-index: 0;
-      animation: pulseGlow 4s ease-in-out infinite alternate;
+      animation: pulseGlow 5s ease-in-out infinite alternate;
     }
 
     @keyframes pulseGlow {
       0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.4; }
-      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
+      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.85; }
     }
 
     .profile-img-container {
       position: relative;
-      width: 250px;
-      height: 250px;
+      width: 270px;
+      height: 270px;
       border-radius: 50%;
-      padding: 5px;
-      background: linear-gradient(135deg, #00d4ff 0%, #34d399 100%);
-      box-shadow: 0 0 25px rgba(0, 212, 255, 0.35);
+      padding: 4px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.8) 0%, rgba(52, 211, 153, 0.8) 100%);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.25);
       z-index: 1;
     }
 
@@ -294,79 +336,91 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      background: #060a12;
+      background: #030712;
       display: block;
-      border: 3px solid #060a12;
+      border: 3px solid #030712;
     }
 
     .section-title {
-      font-size: 1.85rem;
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.8rem;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
+      letter-spacing: -0.02em;
     }
 
     .section-title i {
       color: var(--primary);
-      font-size: 1.4rem;
-      text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+      font-size: 1.5rem;
+      text-shadow: 0 0 12px var(--primary-glow);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.6rem;
     }
 
+    /* Modern Glass Card */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      backdrop-filter: blur(12px);
-      transition: all 0.25s ease-in-out;
+      border-radius: var(--radius);
+      padding: 1.9rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: var(--transition);
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       cursor: pointer;
     }
 
     .card-featured {
-      border-color: rgba(0, 212, 255, 0.45);
-      background: linear-gradient(180deg, rgba(14, 24, 42, 0.95), rgba(9, 15, 28, 0.9));
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+      border-color: rgba(56, 189, 248, 0.38);
+      background: linear-gradient(180deg, rgba(17, 30, 60, 0.88), rgba(9, 16, 33, 0.82));
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.08);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: rgba(0, 212, 255, 0.55);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 212, 255, 0.15);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.18);
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+      gap: 0.8rem;
     }
 
     .card-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--text);
+      line-height: 1.35;
     }
 
     .card-meta {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+      margin-bottom: 1.4rem;
+      font-weight: 400;
     }
 
     .tag-list {
@@ -376,92 +430,93 @@
     }
 
     .tag {
-      background: rgba(0, 212, 255, 0.06);
-      border: 1px solid rgba(0, 212, 255, 0.18);
-      padding: 0.28rem 0.7rem;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.32rem 0.75rem;
       border-radius: 6px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-family: var(--font-mono);
-      color: #7dd3fc;
+      color: var(--primary-light);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      transition: all 0.2s ease-in-out;
+      transition: var(--transition);
       user-select: none;
     }
 
     .tag:hover {
-      background: rgba(0, 212, 255, 0.2);
+      background: rgba(56, 189, 248, 0.22);
       border-color: var(--primary);
       color: #fff;
       transform: translateY(-2px);
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
     }
 
     .tag-highlight {
-      background: rgba(16, 185, 129, 0.12);
-      border-color: rgba(16, 185, 129, 0.35);
+      background: rgba(52, 211, 153, 0.1);
+      border-color: rgba(52, 211, 153, 0.35);
       color: #6ee7b7;
     }
 
     .tag-highlight:hover {
-      background: rgba(16, 185, 129, 0.25);
+      background: rgba(52, 211, 153, 0.25);
       border-color: var(--accent);
-      box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
 
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
 
     .skill-box {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.6rem;
-      backdrop-filter: blur(12px);
-      transition: all 0.25s ease-in-out;
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      backdrop-filter: blur(14px);
+      transition: var(--transition);
     }
 
     .skill-box:hover {
-      border-color: rgba(0, 212, 255, 0.4);
+      border-color: rgba(56, 189, 248, 0.45);
       transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
     }
 
     .skill-box h3 {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--primary);
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.3rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     /* Floating Action Buttons */
     .floating-actions {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 28px;
+      right: 28px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 14px;
       z-index: 1050;
     }
 
     .float-btn {
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       border: none;
       transition: transform 0.25s, box-shadow 0.25s;
@@ -474,37 +529,38 @@
 
     .float-whatsapp {
       background: var(--whatsapp);
-      box-shadow: 0 0 16px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
     }
 
     .float-whatsapp:hover {
-      box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
+      box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
     }
 
     .float-ai {
-      background: linear-gradient(135deg, #00d4ff, #0284c7);
-      box-shadow: 0 0 16px rgba(0, 212, 255, 0.4);
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.45);
     }
 
     .float-ai:hover {
-      box-shadow: 0 0 25px rgba(0, 212, 255, 0.7);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.8);
     }
 
     .badge-tooltip {
       position: absolute;
-      right: 70px;
-      background: rgba(10, 17, 30, 0.95);
+      right: 68px;
+      background: rgba(11, 19, 41, 0.95);
       border: 1px solid var(--card-border);
       color: var(--text);
       font-size: 0.78rem;
       font-family: var(--font-mono);
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 6px;
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
       transform: translateX(10px);
       transition: all 0.2s ease;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     }
 
     .float-btn:hover .badge-tooltip {
@@ -519,8 +575,9 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(3, 7, 14, 0.75);
-      backdrop-filter: blur(12px);
+      background: rgba(3, 7, 18, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 2000;
       display: none;
       align-items: center;
@@ -534,13 +591,13 @@
     }
 
     .tech-modal-card {
-      background: rgba(10, 18, 32, 0.95);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      border-radius: 16px;
-      max-width: 580px;
+      background: rgba(11, 19, 41, 0.96);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 18px;
+      max-width: 600px;
       width: 100%;
-      padding: 2rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 212, 255, 0.2);
+      padding: 2.2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.2);
       position: relative;
       animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -557,79 +614,79 @@
 
     .modal-close-btn {
       position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      background: rgba(16, 28, 48, 0.8);
+      top: 1.4rem;
+      right: 1.4rem;
+      background: rgba(19, 34, 68, 0.8);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: var(--transition);
     }
 
     .modal-close-btn:hover {
       color: #fff;
       border-color: var(--primary);
-      background: rgba(0, 212, 255, 0.2);
+      background: rgba(56, 189, 248, 0.25);
     }
 
     .tech-modal-header {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 1.25rem;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
     }
 
     .tech-modal-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.25);
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--primary);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
     }
 
     .tech-modal-title {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--text);
     }
 
     .tech-modal-subtitle {
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: var(--primary);
     }
 
     .tech-modal-body {
       color: #cbd5e1;
-      font-size: 0.94rem;
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
+      font-size: 0.96rem;
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
     }
 
     .tech-spec-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      background: rgba(6, 12, 22, 0.7);
-      padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 212, 255, 0.15);
+      gap: 0.85rem;
+      background: rgba(5, 10, 24, 0.7);
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(56, 189, 248, 0.16);
       margin-top: 1rem;
     }
 
     .tech-spec-item {
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       font-family: var(--font-mono);
     }
 
@@ -637,11 +694,12 @@
       color: var(--text-muted);
       font-size: 0.72rem;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
       margin-bottom: 0.2rem;
     }
 
     .tech-spec-val {
-      color: var(--primary);
+      color: var(--primary-light);
       font-weight: 600;
     }
 
@@ -649,15 +707,16 @@
     .ai-modal {
       position: fixed;
       bottom: 95px;
-      right: 25px;
-      width: 420px;
+      right: 28px;
+      width: 440px;
       max-width: calc(100vw - 40px);
-      height: 540px;
-      background: rgba(9, 15, 28, 0.98);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 212, 255, 0.2);
+      height: 560px;
+      background: rgba(11, 19, 41, 0.98);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 18px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(56, 189, 248, 0.25);
       z-index: 1060;
       display: none;
       flex-direction: column;
@@ -675,8 +734,8 @@
     }
 
     .ai-header {
-      padding: 1rem 1.25rem;
-      background: rgba(16, 28, 48, 0.85);
+      padding: 1.1rem 1.4rem;
+      background: rgba(19, 34, 68, 0.85);
       border-bottom: 1px solid var(--card-border);
       display: flex;
       justify-content: space-between;
@@ -684,11 +743,11 @@
     }
 
     .ai-header h4 {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: var(--primary);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       font-family: var(--font-mono);
     }
 
@@ -697,51 +756,47 @@
       border: none;
       color: var(--text-muted);
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      transition: var(--transition);
+    }
+
+    .ai-close:hover {
+      color: #fff;
     }
 
     .ai-body {
       flex: 1;
-      padding: 1rem;
+      padding: 1.2rem;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      font-size: 0.88rem;
+      gap: 0.9rem;
+      font-size: 0.9rem;
     }
 
     .ai-msg {
-      padding: 0.75rem 1rem;
-      border-radius: 10px;
-      max-width: 90%;
+      padding: 0.85rem 1.1rem;
+      border-radius: 12px;
+      max-width: 88%;
       line-height: 1.55;
       word-break: break-word;
     }
 
-    .ai-msg p {
-      margin-bottom: 0.5rem;
-    }
-    .ai-msg p:last-child {
-      margin-bottom: 0;
-    }
-    .ai-msg ul, .ai-msg ol {
-      margin-left: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .ai-msg strong {
-      color: #fff;
-    }
+    .ai-msg p { margin-bottom: 0.5rem; }
+    .ai-msg p:last-child { margin-bottom: 0; }
+    .ai-msg ul, .ai-msg ol { margin-left: 1.2rem; margin-bottom: 0.5rem; }
+    .ai-msg strong { color: #fff; }
 
     .ai-msg-bot {
-      background: rgba(0, 212, 255, 0.08);
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.22);
       align-self: flex-start;
       color: #e2e8f0;
     }
 
     .ai-msg-user {
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: rgba(52, 211, 153, 0.18);
+      border: 1px solid rgba(52, 211, 153, 0.35);
       align-self: flex-end;
       color: #f0fdf4;
     }
@@ -749,42 +804,45 @@
     .ai-quick-replies {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.6rem;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
     }
 
     .quick-chip {
-      background: rgba(0, 212, 255, 0.06);
-      border: 1px solid rgba(0, 212, 255, 0.2);
-      color: var(--primary);
-      padding: 0.25rem 0.65rem;
-      border-radius: 12px;
-      font-size: 0.75rem;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: var(--primary-light);
+      padding: 0.3rem 0.75rem;
+      border-radius: 14px;
+      font-size: 0.76rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: var(--transition);
+      font-family: var(--font-mono);
     }
 
     .quick-chip:hover {
-      background: rgba(0, 212, 255, 0.2);
+      background: rgba(56, 189, 248, 0.25);
+      color: #fff;
     }
 
     .ai-footer {
-      padding: 0.75rem;
+      padding: 0.9rem;
       border-top: 1px solid var(--card-border);
       display: flex;
-      gap: 0.5rem;
-      background: rgba(6, 10, 18, 0.6);
+      gap: 0.6rem;
+      background: rgba(5, 10, 24, 0.6);
     }
 
     .ai-input {
       flex: 1;
-      background: rgba(16, 28, 48, 0.7);
+      background: rgba(19, 34, 68, 0.7);
       border: 1px solid var(--card-border);
-      padding: 0.55rem 0.85rem;
+      padding: 0.65rem 0.95rem;
       border-radius: 8px;
       color: #fff;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       outline: none;
+      transition: var(--transition);
     }
 
     .ai-input:focus {
@@ -794,30 +852,35 @@
     .ai-send {
       background: var(--primary);
       border: none;
-      color: #060a12;
-      padding: 0.55rem 0.95rem;
+      color: #030712;
+      padding: 0.65rem 1.1rem;
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .ai-send:hover {
+      background: var(--primary-light);
     }
 
     footer {
-      padding: 3.5rem 0;
+      padding: 4rem 0;
       text-align: center;
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .hero-container {
         flex-direction: column-reverse;
         text-align: center;
-        gap: 2rem;
+        gap: 2.5rem;
       }
       .hero-btns {
         justify-content: center;
       }
-      .hero h1 { font-size: 2.2rem; }
+      .hero h1 { font-size: 2.5rem; }
       .nav-links { display: none; }
     }
   </style>
@@ -828,37 +891,40 @@
 
   <div class="site-wrapper">
     <nav>
-      <div class="logo"><i class="fas fa-microchip"></i> Hema Prasad | Silicon & Embedded Systems</div>
+      <div class="logo">
+        <div class="logo-pulse"></div>
+        <span>Hema Prasad | Silicon Architecture & Verification</span>
+      </div>
       <ul class="nav-links">
-        <li><a href="#patents">Patents & Papers</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience & Training</a></li>
+        <li><a href="#patents">Research & IP</a></li>
+        <li><a href="#projects">Engineering</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#achievements">Awards</a></li>
+        <li><a href="#skills">Competencies</a></li>
+        <li><a href="#achievements">Honors</a></li>
         <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Connect</a></li>
       </ul>
     </nav>
 
     <header class="hero">
       <div class="container hero-container">
         <div class="hero-content reveal">
-          <div class="badge"><i class="fas fa-bolt"></i> B.Tech ECE (AIoT) • RISC-V Hardware Security & VLSI Verification</div>
-          <h1>Hi, I'm <span>Hema Prasad.</span></h1>
-          <p>Electronics and Communication Engineering innovator specialized in Design Verification (SV/UVM), RISC-V Hardware Security, Industrial Automation (PLC), and Cloud-Connected AIoT Systems.</p>
+          <div class="badge"><i class="fas fa-microchip"></i> VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</div>
+          <h1>Architecting <span>Resilient Silicon</span> & Intelligent Hardware</h1>
+          <p>Electronics and Communication Engineer specializing in Design Verification (SystemVerilog/UVM), Hardware Root-of-Trust Cryptography for open-source RISC-V architectures, Industrial PLC Automation, and Edge AI Systems.</p>
           <div class="hero-btns">
-            <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-github">
-              <i class="fab fa-github"></i> GitHub Profile
-            </a>
             <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" class="btn btn-primary">
-              <i class="fab fa-linkedin"></i> Connect on LinkedIn
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/Hemanth-5400" target="_blank" class="btn btn-github">
+              <i class="fab fa-github"></i> GitHub
             </a>
             <button class="btn btn-ai" onclick="toggleAIChat()">
-              <i class="fas fa-robot"></i> Ask AI Assistant
+              <i class="fas fa-robot"></i> Interactive AI
             </button>
             <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" class="btn btn-outline">
-              <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp Direct
+              <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp
             </a>
           </div>
         </div>
@@ -874,43 +940,70 @@
 
     <section id="patents">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-certificate"></i> Research & Intellectual Property</h2>
+        <h2 class="section-title reveal"><i class="fas fa-certificate"></i> Research Publications & Intellectual Property</h2>
         <div class="grid">
           <div class="card reveal" onclick="openTechModal('pen_patent')">
-            <div class="card-header">
-              <h3 class="card-title">Wireless Pen HCI Interface (Utility Patent)</h3>
-              <span class="tag">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Gesture-Based Wireless Pen Interface (Utility Patent)</h3>
+                <span class="tag">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
+              </div>
+              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <p class="card-desc">Patented Human-Computer Interaction interface capturing 3D spatial motion with multi-axis sensor fusion algorithms to generate digital inputs without touch displays.</p>
             </div>
-            <div class="card-meta">Utility Patent • Granted 2025</div>
-            <p class="card-desc">Gesture-Based Wireless Pen Interface designed for seamless Human-Computer Interaction using real-time motion and gesture detection.</p>
+            <div class="tag-list">
+              <span class="tag">HCI Interface</span>
+              <span class="tag">6-DOF Tracking</span>
+              <span class="tag">IMU Fusion</span>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('cart_patent')">
-            <div class="card-header">
-              <h3 class="card-title">Autonomous Smart Shopping Cart</h3>
-              <span class="tag">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Autonomous Smart Shopping Cart (Design Patent)</h3>
+                <span class="tag">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
+              </div>
+              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <p class="card-desc">Automated retail supermarket architecture integrating optical barcode recognition, mass telemetry, and instant cloud-linked checkout protocols.</p>
             </div>
-            <div class="card-meta">Design Patent • Granted 2025</div>
-            <p class="card-desc">Industrial design and embedded architecture for smart automated retail carts with automatic scanning and cloud checkout integration.</p>
+            <div class="tag-list">
+              <span class="tag">Smart Retail</span>
+              <span class="tag">Embedded Systems</span>
+              <span class="tag">Cloud Billing</span>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('lighting_patent')">
-            <div class="card-header">
-              <h3 class="card-title">Lighting Shrub</h3>
-              <span class="tag">App: 465417-001 <i class="fas fa-external-link-alt"></i></span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Lighting Shrub System (Design Patent)</h3>
+                <span class="tag">App: 465417-001 <i class="fas fa-external-link-alt"></i></span>
+              </div>
+              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <p class="card-desc">Architectural outdoor smart luminaire architecture engineered with biomimetic solar collection petals and ambient-sensing LED driving stages.</p>
             </div>
-            <div class="card-meta">Design Patent • Granted 2025</div>
-            <p class="card-desc">Decorative and solar-assisted smart lighting architecture designed for sustainable outdoor illumination.</p>
+            <div class="tag-list">
+              <span class="tag">CleanTech</span>
+              <span class="tag">Solar Energy</span>
+              <span class="tag">Smart Cities</span>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('ieee_paper')">
-            <div class="card-header">
-              <h3 class="card-title">4th IEEE DELCON 2025 Presentation</h3>
-              <span class="tag">PID: 174 <i class="fas fa-external-link-alt"></i></span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">4th IEEE DELCON 2025 Presentation</h3>
+                <span class="tag">PID: 174 <i class="fas fa-external-link-alt"></i></span>
+              </div>
+              <div class="card-meta"><i class="fas fa-file-alt"></i> Peer-Reviewed • IEEE Delhi Section (2025)</div>
+              <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications" at Jamia Millia Islamia.</p>
             </div>
-            <div class="card-meta">IEEE Delhi Section • Jamia Millia Islamia (2025)</div>
-            <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications" at IEEE DELCON 2025.</p>
-            <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" onclick="event.stopPropagation()" style="color: var(--primary); font-size: 0.85rem; text-decoration: none;">View on IEEE Xplore &rarr;</a>
+            <div class="tag-list">
+              <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" onclick="event.stopPropagation()" class="tag tag-highlight">
+                View on IEEE Xplore &rarr;
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -918,81 +1011,106 @@
 
     <section id="projects">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-microchip"></i> Featured Projects</h2>
+        <h2 class="section-title reveal"><i class="fas fa-microchip"></i> Featured Engineering Projects</h2>
         <div class="grid">
           
           <div class="card card-featured reveal" onclick="openTechModal('riscv_grant')">
-            <div class="card-header">
-              <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
-              <span class="tag tag-highlight">⚡ ₹1,00,000 Grant <i class="fas fa-info-circle"></i></span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
+                <span class="tag tag-highlight">⚡ ₹1,00,000 Grant <i class="fas fa-shield-alt"></i></span>
+              </div>
+              <div class="card-meta"><i class="fas fa-university"></i> Sanctioned Research Project • MRIIRS (2026–2028)</div>
+              <p class="card-desc">Principal Investigator designing hardware root-of-trust cryptographic accelerators, physical side-channel attack countermeasures, and security extensions on the open-source RISC-V RV32I ISA.</p>
             </div>
-            <div class="card-meta">Sanctioned Research Grant (₹1,00,000) • MRIIRS (2026–2028)</div>
-            <p class="card-desc">Sanctioned 24-month research implementing root-of-trust hardware cryptographic primitives, side-channel attack mitigations, and custom security extensions on the open-source RISC-V ISA.</p>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('hardware_security')">Hardware Security <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('fpga')">FPGA Emulation <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">Vivado <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('riscv')">RISC-V ISA</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('hardware_security')">Hardware Security</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('fpga')">FPGA Emulation</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">Vivado</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('max7219')">
-            <h3 class="card-title">Bluetooth Smart Digital Clock & Dynamic Notice Display</h3>
-            <div class="card-meta">Embedded Systems & Wireless Display (2024–2025)</div>
-            <p class="card-desc">Cascaded MAX7219 8x8 LED matrix display driven by an Arduino Nano. Wirelessly updates live real-time clock parameters and streams mobile keyboard inputs over Bluetooth (HC-05).</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Bluetooth Smart Digital Clock & Notice Display</h3>
+                <span class="tag">Embedded Systems</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-clock"></i> Wireless Hardware • 2024–2025</div>
+              <p class="card-desc">Cascaded MAX7219 8x8 LED matrix display driven by an Arduino Nano with SPI communication. Receives live real-time clock telemetry and broadcasts custom mobile text via HC-05 Bluetooth.</p>
+            </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('max7219')">MAX7219 Matrix <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Nano <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('hc05')">HC-05 Bluetooth <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C++ <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('max7219')">MAX7219 Driver</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Nano</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('hc05')">HC-05 UART</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C++</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('jetson_nano')">
-            <h3 class="card-title">AI Fruit Sorting System (Mitsubishi PLC + Jetson Nano)</h3>
-            <div class="card-meta">Team AGRISORT AI • 6th Mitsubishi Electric Cup (2026)</div>
-            <p class="card-desc">Edge AI deep learning computer vision model executed on Nvidia Jetson Nano, interfacing directly with a Mitsubishi PLC (GX Works3) for high-speed pneumatic industrial fruit sorting.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">AI Fruit Sorting System (Mitsubishi PLC + Jetson Nano)</h3>
+                <span class="tag">National Finalist</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-industry"></i> 6th Mitsubishi Electric Cup • 2026</div>
+              <p class="card-desc">Edge AI CNN inference model running on Nvidia Jetson Nano coupled directly with industrial Mitsubishi PLC (GX Works3) for high-speed pneumatic industrial fruit grading and sorting.</p>
+            </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('plc')">PLC (GX Works3) <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('opencv')">OpenCV <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('jetson_nano')">Jetson Nano</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('plc')">Mitsubishi PLC</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python / OpenCV</span>
+              <span class="tag">Pneumatics</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('esp32_cam')">
-            <h3 class="card-title">Cloud-Connected Smart Agriculture Boat</h3>
-            <div class="card-meta">AgriTech & Cloud Telemetry (2024)</div>
-            <p class="card-desc">IoT-enabled remote surveillance vessel powered by ESP32 CAM streaming video and telemetry data directly to cloud dashboards for water parameter inspection.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Cloud-Connected Smart Agriculture Telemetry Boat</h3>
+                <span class="tag">AgriTech IoT</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-ship"></i> Autonomous Vehicle • 2024</div>
+              <p class="card-desc">IoT-enabled aquatic inspection vessel powered by ESP32-CAM streaming real-time video surveillance and water quality sensor telemetry over AWS IoT Core and MQTT brokers.</p>
+            </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp32_cam')">ESP32-CAM <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('aws_iot')">AWS IoT / MQTT <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">ThingSpeak <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">C++ <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp32_cam')">ESP32-CAM</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('aws_iot')">AWS IoT Core</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">ThingSpeak</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('esp8266')">
-            <h3 class="card-title">IoT Prenatal Health Cloud Monitor</h3>
-            <div class="card-meta">Healthcare IoT & Cloud Telemetry (2024)</div>
-            <p class="card-desc">Remote telemetry monitoring system tracking BPM, vibration, and body temperature metrics, streaming live data to cloud servers for maternal wellness.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">IoT Prenatal Maternal Health Telemetry Monitor</h3>
+                <span class="tag tag-highlight">1st Prize Winner</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-heartbeat"></i> HealthTech Innovation • 2024</div>
+              <p class="card-desc">Wearable healthcare telemetry monitor tracking BPM, fetal vibration patterns, and maternal body temperature, pushing live telemetry to cloud databases via REST APIs.</p>
+            </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp8266')">ESP8266 <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('rest_api')">REST APIs <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">Sensors <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp8266')">ESP8266</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">Cloud API</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">Biometrics</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
-            <h3 class="card-title">Autonomous Line Follower Robot (Flash UNO)</h3>
-            <div class="card-meta">RoboRush 1.0 & Echiesta 2K24 Award Winner</div>
-            <p class="card-desc">High-precision differential drive autonomous robot using IR sensor arrays, customized PID control loops, and high-torque geared DC motors.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Autonomous Line Follower Robot (Flash UNO)</h3>
+                <span class="tag tag-highlight">1st Prize Winner</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-robot"></i> Echiesta 2K24 & RoboRush 1.0</div>
+              <p class="card-desc">High-speed differential drive autonomous robotics platform utilizing high-density IR reflectance arrays, tuned PID feedback control, and geared DC motor drives.</p>
+            </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Platform <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">IR Sensor Array <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">PID Control <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Core</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">IR Sensor Array</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">PID Control</span>
             </div>
           </div>
 
@@ -1002,31 +1120,35 @@
 
     <section id="experience">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Experience & Professional Training</h2>
+        <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Experience & Specialized Training</h2>
         <div class="grid">
           
           <div class="card card-featured reveal" onclick="openTechModal('maven_silicon')">
-            <div class="card-header">
-              <h3 class="card-title">Design Verification Engineering Trainee</h3>
-              <span class="tag tag-highlight">Advanced VLSI</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Design Verification Engineering Trainee</h3>
+                <span class="tag tag-highlight">Advanced DV</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-microchip"></i> Maven Silicon • 2026</div>
+              <p class="card-desc">Comprehensive training in functional ASIC verification: SystemVerilog Object-Oriented Programming (OOP), Universal Verification Methodology (UVM), Constrained Random Verification (CRV), SystemVerilog Assertions (SVA), and Functional Coverage metrics.</p>
             </div>
-            <div class="card-meta">Maven Silicon • Professional Training (2026)</div>
-            <p class="card-desc">Specialized training in advanced digital verification methodologies: SystemVerilog for verification, Universal Verification Methodology (UVM), constrained random verification, functional coverage, and assertion-based verification (SVA).</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('systemverilog')">SystemVerilog</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('uvm')">UVM</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('uvm')">UVM 1.2</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag">Functional Coverage</span>
+              <span class="tag">TLM 2.0</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('verilog')">
-            <div class="card-header">
-              <h3 class="card-title">VLSI Design & Verification Intern</h3>
-              <span class="tag">ID: EW/INTRN129</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">VLSI Design & Verification Intern</h3>
+                <span class="tag">ID: EW/INTRN129</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-building"></i> Engineers World Limited • June 2026 – July 2026</div>
+              <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
             </div>
-            <div class="card-meta">Engineers World Limited • June 2026 – July 2026</div>
-            <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">Vivado</span>
@@ -1035,30 +1157,34 @@
           </div>
 
           <div class="card reveal" onclick="openTechModal('verilog')">
-            <div class="card-header">
-              <h3 class="card-title">VLSI Design & Verification Intern</h3>
-              <span class="tag">ID: EW/INTRN56</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">VLSI Design & Verification Intern</h3>
+                <span class="tag">ID: EW/INTRN56</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-building"></i> Engineer's World Private Limited • June 2025 – July 2025</div>
+              <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, logic minimization, and gate-level verification for specialized digital sub-circuits.</p>
             </div>
-            <div class="card-meta">Engineer's World Private Limited • June 2025 – July 2025</div>
-            <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, and logic minimization for specialized digital processing sub-circuits.</p>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">EDA Tools</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">RTL Coding</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">EDA Toolchains</span>
               <span class="tag">Digital Logic</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pcb_design')">
-            <div class="card-header">
-              <h3 class="card-title">Engineering Intern</h3>
-              <span class="tag">Core Electrical</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Engineering Intern</h3>
+                <span class="tag">Core Electrical</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-bolt"></i> Parmod Electricals • June 2024 – July 2024</div>
+              <p class="card-desc">Industrial core electrical engineering training covering MCB & PLC manufacturing, industrial control panel wiring, power distribution networks, and hardware troubleshooting.</p>
             </div>
-            <div class="card-meta">Parmod Electricals • June 2024 – July 2024</div>
-            <p class="card-desc">Hands-on industrial electrical engineering training covering MCB & PLC manufacturing, control panel circuitry, power distribution, and component troubleshooting.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('pcb_design')">Control Wiring</span>
               <span class="tag">Power Systems</span>
-              <span class="tag">MCB & PLC Core</span>
+              <span class="tag">Industrial Assembly</span>
             </div>
           </div>
 
@@ -1068,16 +1194,18 @@
 
     <section id="certifications">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-graduation-cap"></i> Certifications & Upskilling</h2>
+        <h2 class="section-title reveal"><i class="fas fa-graduation-cap"></i> Professional Certifications</h2>
         <div class="grid">
           
           <div class="card reveal" onclick="openTechModal('fpga')">
-            <div class="card-header">
-              <h3 class="card-title">Learning FPGA Development</h3>
-              <span class="tag">LinkedIn Learning</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Learning FPGA Development</h3>
+                <span class="tag">LinkedIn Learning</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed January 2025</div>
+              <p class="card-desc">FPGA hardware architectures, Look-Up Table (LUT) mapping, HDL synthesis flows, timing closure, and bitstream configuration.</p>
             </div>
-            <div class="card-meta">Completed January 2025</div>
-            <p class="card-desc">Architecture of Field Programmable Gate Arrays, HDL design entry, logic synthesis, timing closure, and hardware configuration.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('fpga')">FPGA Architecture</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">HDL Synthesis</span>
@@ -1085,53 +1213,61 @@
           </div>
 
           <div class="card reveal" onclick="openTechModal('hardware_security')">
-            <div class="card-header">
-              <h3 class="card-title">Electronics Foundation: Semiconductor Devices</h3>
-              <span class="tag">LinkedIn Learning</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Electronics Foundation: Semiconductor Devices</h3>
+                <span class="tag">LinkedIn Learning</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed March 2025</div>
+              <p class="card-desc">Semiconductor physics, PN junction theory, BJT/MOSFET switching characteristics, and integrated circuit transistor sizing.</p>
             </div>
-            <div class="card-meta">Completed March 2025</div>
-            <p class="card-desc">Physics and operation of semiconductor junctions, PN diodes, BJTs, MOSFET switches, and integrated circuit transistor sizing.</p>
             <div class="tag-list">
               <span class="tag">Semiconductors</span>
-              <span class="tag">MOSFET / BJT</span>
+              <span class="tag">MOSFET Sizing</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('mqtt')">
-            <div class="card-header">
-              <h3 class="card-title">IoT Foundation: Low Power Wireless Networking</h3>
-              <span class="tag">LinkedIn Learning</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">IoT Foundation: Low Power Wireless Networking</h3>
+                <span class="tag">LinkedIn Learning</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed December 2024</div>
+              <p class="card-desc">Low-power RF wireless topologies, mesh networks, BLE, LPWAN, and power-budget minimization for autonomous sensor nodes.</p>
             </div>
-            <div class="card-meta">Completed December 2024</div>
-            <p class="card-desc">Low-power RF topologies, mesh networking protocols, BLE, LPWAN, and energy-budget optimization in remote wireless nodes.</p>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('mqtt')">Low Power RF</span>
-              <span class="tag">Wireless Mesh</span>
+              <span class="tag">Mesh Protocols</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('python')">
-            <div class="card-header">
-              <h3 class="card-title">Raspberry Pi 4 using Python Programming</h3>
-              <span class="tag">Udemy</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Raspberry Pi 4 using Python Programming</h3>
+                <span class="tag">Udemy</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed March 2025</div>
+              <p class="card-desc">Embedded Linux SBC environment setup, Python GPIO hardware interfacing, peripheral buses (I2C/SPI), and video streaming.</p>
             </div>
-            <div class="card-meta">Completed March 2025</div>
-            <p class="card-desc">Linux SBC configuration, Python GPIO automation, hardware sensor interfacing, and camera video stream processing.</p>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('linux')">Raspberry Pi</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python 3</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('linux')">Embedded Linux</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
-            <div class="card-header">
-              <h3 class="card-title">Hands on Arduino</h3>
-              <span class="tag">Udemy</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Hands on Arduino</h3>
+                <span class="tag">Udemy</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed April 2024</div>
+              <p class="card-desc">Microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, sensor calibration, and embedded C firmware.</p>
             </div>
-            <div class="card-meta">Completed April 2024</div>
-            <p class="card-desc">Physical computing, microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, and sensory feedback loops.</p>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Core</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C</span>
             </div>
           </div>
@@ -1142,55 +1278,55 @@
 
     <section id="skills">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-tools"></i> Technical Expertise</h2>
+        <h2 class="section-title reveal"><i class="fas fa-tools"></i> Technical Competencies</h2>
         <div class="skills-grid">
           <div class="skill-box reveal">
-            <h3><i class="fas fa-layer-group"></i> Hardware & Prototyping</h3>
+            <h3><i class="fas fa-microchip"></i> Hardware & Prototyping</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('pcb_design')">Circuit Designing <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('pcb_design')">Zero PCB Designing <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266 <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('arduino')">Arduino Nano / Uno <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('max7219')">MAX7219 Matrix <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('jetson_nano')">Jetson Nano <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('proteus')">Proteus <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('tinkercad')">Tinkercad <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('pcb_design')">Circuit Designing</span>
+              <span class="tag" onclick="openTechModal('pcb_design')">Zero PCB Prototyping</span>
+              <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266</span>
+              <span class="tag" onclick="openTechModal('arduino')">Arduino Nano / Uno</span>
+              <span class="tag" onclick="openTechModal('max7219')">MAX7219 Driver</span>
+              <span class="tag" onclick="openTechModal('jetson_nano')">Nvidia Jetson Nano</span>
+              <span class="tag" onclick="openTechModal('proteus')">Proteus VSM</span>
+              <span class="tag" onclick="openTechModal('tinkercad')">Tinkercad</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
             <h3><i class="fas fa-cloud"></i> Cloud & IoT Protocols</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('aws_iot')">AWS IoT Core <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('mqtt')">MQTT Protocol <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('rest_api')">HTTP / REST APIs <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('firebase')">Firebase <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('n8n')">n8n Automation <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud</span>
+              <span class="tag" onclick="openTechModal('aws_iot')">AWS IoT Core</span>
+              <span class="tag" onclick="openTechModal('mqtt')">MQTT Protocol</span>
+              <span class="tag" onclick="openTechModal('rest_api')">HTTP / REST APIs</span>
+              <span class="tag" onclick="openTechModal('firebase')">Firebase Realtime DB</span>
+              <span class="tag" onclick="openTechModal('n8n')">n8n Automation</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
-            <h3><i class="fas fa-laptop-code"></i> Software & EDA Tools</h3>
+            <h3><i class="fas fa-laptop-code"></i> EDA Software & Synthesis</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('vivado')">Vivado <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('quartus')">Quartus Prime <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('cadence')">Cadence Virtuoso <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('plc')">GX Works3 (PLC) <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('matlab')">MATLAB <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('fusion360')">Fusion 360 <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('vivado')">Xilinx Vivado</span>
+              <span class="tag" onclick="openTechModal('quartus')">Intel Quartus Prime</span>
+              <span class="tag" onclick="openTechModal('cadence')">Cadence Virtuoso</span>
+              <span class="tag" onclick="openTechModal('plc')">GX Works3 (PLC)</span>
+              <span class="tag" onclick="openTechModal('matlab')">MATLAB & Simulink</span>
+              <span class="tag" onclick="openTechModal('fusion360')">Autodesk Fusion 360</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
             <h3><i class="fas fa-terminal"></i> Languages & Verification</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('uvm')">UVM <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('python')">Python <i class="fas fa-search-plus"></i></span>
-              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++ <i class="fas fa-search-plus"></i></span>
+              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog (IEEE 1800)</span>
+              <span class="tag" onclick="openTechModal('uvm')">UVM 1.2 Architecture</span>
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
+              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA (RV32I)</span>
+              <span class="tag" onclick="openTechModal('python')">Python 3</span>
+              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++</span>
             </div>
           </div>
         </div>
@@ -1199,69 +1335,106 @@
 
     <section id="achievements">
       <div class="container">
-        <h2 class="section-title reveal"><i class="fas fa-trophy"></i> Certified Achievements & Leadership</h2>
+        <h2 class="section-title reveal"><i class="fas fa-trophy"></i> Certified Honors & Leadership</h2>
         <div class="grid">
           
-          <div class="card reveal" onclick="openTechModal('riscv_grant')">
-            <h3 class="card-title">₹1,00,000 Research Grant Sanction</h3>
-            <div class="card-meta">MRIIRS Research Board • July 2026</div>
-            <p class="card-desc">Sanctioned research grant for 24-month project on "Hardware Security Implementation on RISC-V Architecture" under the Department of ECE.</p>
+          <div class="card card-featured reveal" onclick="openTechModal('riscv_grant')">
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">₹1,00,000 Research Grant Sanction</h3>
+                <span class="tag tag-highlight">Principal Investigator</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-award"></i> MRIIRS Research Board • July 2026</div>
+              <p class="card-desc">Sanctioned research grant for 24-month project on "Hardware Security Implementation on RISC-V Architecture" under the Department of ECE.</p>
+            </div>
           </div>
 
           <div class="card card-featured reveal" onclick="openTechModal('electrobits')">
-            <div class="card-header">
-              <h3 class="card-title">Main Technical Member – Electrobits Club</h3>
-              <span class="tag tag-highlight">Technical Core</span>
-            </div>
-            <div class="card-meta">ECE Department • MRIIRS</div>
-            <p class="card-desc">Core technical member driving hardware hackathons, robotics workshops, circuit design competitions, and technical mentoring across the department.</p>
-            <div class="tag-list">
-              <span class="tag">Club Technical Core</span>
-              <span class="tag">Robotics Mentorship</span>
-              <span class="tag">Circuit Hackathons</span>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Main Technical Member – Electrobits Club</h3>
+                <span class="tag tag-highlight">Technical Core</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-users-cog"></i> ECE Department • MRIIRS</div>
+              <p class="card-desc">Core technical lead managing departmental robotics workshops, circuit design hackathons, and mentoring junior engineers in embedded prototyping.</p>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
-            <h3 class="card-title">1st Prize – ROBO (Line Followers)</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Awarded 1st place in the autonomous Line Follower Robotics competition representing MRIIRS.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">1st Prize – ROBO (Line Followers)</h3>
+                <span class="tag tag-highlight">National Tech Fest</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-trophy"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
+              <p class="card-desc">Awarded 1st place in the national autonomous Line Follower Robotics competition representing MRIIRS.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pen_patent')">
-            <h3 class="card-title">1st Prize – Ideathon</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Secured 1st place for presenting innovative embedded engineering concepts and product architectures.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">1st Prize – Ideathon</h3>
+                <span class="tag tag-highlight">Innovation Winner</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-trophy"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
+              <p class="card-desc">Secured 1st place for presenting novel human-computer interaction hardware and embedded interface architectures.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
-            <h3 class="card-title">2nd Prize – Arduino Project Battle</h3>
-            <div class="card-meta">Echiesta-2K24 • Echelon Institute of Technology (Nov 2024)</div>
-            <p class="card-desc">Secured 2nd position in the competitive Arduino hardware & circuit prototyping battle.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">2nd Prize – Arduino Project Battle</h3>
+                <span class="tag">Hardware Prototyping</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-medal"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
+              <p class="card-desc">Secured 2nd position in the competitive real-time Arduino hardware and rapid circuit prototyping battle.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('plc')">
-            <h3 class="card-title">6th Mitsubishi Electric Cup (MECA 2026)</h3>
-            <div class="card-meta">National Finalist (Team AGRISORT AI) • MIT-WPU Pune (Feb 2026)</div>
-            <p class="card-desc">Recognized for participation in the National Level Factory Automation Finals with the AI Fruit Sorting System.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">6th Mitsubishi Electric Cup (MECA 2026)</h3>
+                <span class="tag">National Finalist</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-cogs"></i> Factory Automation Finals • MIT-WPU Pune</div>
+              <p class="card-desc">National Appreciation Finalist with Team AGRISORT AI for developing an industrial AI-driven pneumatic sorting system.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pcb_design')">
-            <h3 class="card-title">2nd Prize (Srijan Competition) – INNOSKILL 2025</h3>
-            <div class="card-meta">Annual Tech Fest MRIIRS • April 2025</div>
-            <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation exhibition.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">2nd Prize (Srijan Competition) – INNOSKILL 2025</h3>
+                <span class="tag">Institute Award</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-medal"></i> Annual Tech Fest MRIIRS • April 2025</div>
+              <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation and product prototype competition.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('esp8266')">
-            <h3 class="card-title">1st Prize – Health Tech Innovation (CHI)</h3>
-            <div class="card-meta">Centre for Health Innovation, MRIIRS • April 2024</div>
-            <p class="card-desc">Awarded 1st prize for designing and developing the IoT Prenatal Monitoring System.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">1st Prize – Health Tech Innovation (CHI)</h3>
+                <span class="tag tag-highlight">Healthcare Tech</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-trophy"></i> Centre for Health Innovation, MRIIRS • April 2024</div>
+              <p class="card-desc">Awarded 1st prize for designing and validating the IoT Maternal & Fetal Health Telemetry Monitoring System.</p>
+            </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('arduino')">
-            <h3 class="card-title">Consolation Prize – RoboRush 1.0</h3>
-            <div class="card-meta">K.R. Mangalam University (Team Flash UNO) • April 2025</div>
-            <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON.</p>
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Consolation Prize – RoboRush 1.0</h3>
+                <span class="tag">Robotics Contest</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-award"></i> K.R. Mangalam University • April 2025</div>
+              <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON.</p>
+            </div>
           </div>
 
         </div>
@@ -1278,26 +1451,26 @@
               <h3 class="card-title">B.Tech in ECE (AIoT)</h3>
               <span class="tag tag-highlight">2023 – 2027</span>
             </div>
-            <div class="card-meta">Manav Rachna International Institute of Research and Studies (MRIIRS)</div>
-            <p class="card-desc">Specialized curriculum in Electronics & Communication Engineering with AIoT focus.</p>
+            <div class="card-meta"><i class="fas fa-graduation-cap"></i> Manav Rachna International Institute of Research and Studies</div>
+            <p class="card-desc">Comprehensive undergraduate program in Electronics & Communication Engineering specialized in AIoT, embedded systems, VLSI architectures, and signal telemetry.</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('sasi_edu')">
             <div class="card-header">
               <h3 class="card-title">Senior Secondary Education (12th)</h3>
-              <span class="tag">Completed</span>
+              <span class="tag">Higher Secondary</span>
             </div>
-            <div class="card-meta">SASI Educational Institutes, Visakhapatnam (2021 – 2023)</div>
-            <p class="card-desc">Major coursework in Mathematics, Physics, and Chemistry (MPC stream).</p>
+            <div class="card-meta"><i class="fas fa-school"></i> SASI Educational Institutes, Visakhapatnam</div>
+            <p class="card-desc">Pre-engineering coursework emphasizing advanced Mathematics, Physics, and Chemistry (MPC stream).</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('school_edu')">
             <div class="card-header">
               <h3 class="card-title">Secondary Education (10th)</h3>
-              <span class="tag">Completed</span>
+              <span class="tag">Matriculation</span>
             </div>
-            <div class="card-meta">Chalapathi Public School, Visakhapatnam (2021)</div>
-            <p class="card-desc">Foundational excellence with focused distinction in science and mathematics.</p>
+            <div class="card-meta"><i class="fas fa-book-reader"></i> Chalapathi Public School, Visakhapatnam</div>
+            <p class="card-desc">Foundational academic excellence with distinction in scientific and mathematical fundamentals.</p>
           </div>
 
         </div>
@@ -1306,14 +1479,14 @@
 
     <footer id="contact">
       <div class="container reveal">
-        <h3 style="color: var(--text); margin-bottom: 0.5rem;">Hema Prasad</h3>
-        <p style="margin-bottom: 1rem;">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
-        <div style="margin-bottom: 1.5rem; display: flex; justify-content: center; gap: 1.2rem;">
-          <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.3rem;"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" style="color: var(--primary); font-size: 1.3rem;"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.3rem;"><i class="fab fa-github"></i></a>
+        <h3 style="color: var(--text); margin-bottom: 0.6rem; font-size: 1.4rem;">Hema Prasad</h3>
+        <p style="margin-bottom: 1.4rem; color: var(--text-muted);">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
+        <div style="margin-bottom: 2rem; display: flex; justify-content: center; gap: 1.5rem;">
+          <a href="https://wa.me/917569330584" target="_blank" style="color: var(--whatsapp); font-size: 1.4rem;"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" style="color: var(--primary); font-size: 1.4rem;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/Hemanth-5400" target="_blank" style="color: var(--text); font-size: 1.4rem;"><i class="fab fa-github"></i></a>
         </div>
-        <p style="font-size: 0.8rem; color: var(--primary);">&copy; 2026 Hema Prasad. Hosted on GitHub Pages.</p>
+        <p style="font-size: 0.82rem; color: var(--primary); font-family: var(--font-mono);">&copy; 2026 Hema Prasad. Built with Clean Semantic Architecture.</p>
       </div>
     </footer>
   </div>
@@ -1339,11 +1512,11 @@
   <div class="floating-actions">
     <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" class="float-btn float-whatsapp" title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
-      <span class="badge-tooltip">Chat with Hema Prasad</span>
+      <span class="badge-tooltip">WhatsApp Direct</span>
     </a>
     <button class="float-btn float-ai" onclick="toggleAIChat()" title="AI Portfolio Assistant">
       <i class="fas fa-robot"></i>
-      <span class="badge-tooltip">Ask AI Assistant</span>
+      <span class="badge-tooltip">Interactive Portfolio AI</span>
     </button>
   </div>
 
@@ -1354,8 +1527,8 @@
     </div>
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
-        <p>Hello! I am Hema Prasad's portfolio AI assistant.</p>
-        <p>You can ask me about his <strong>Maven Silicon Design Verification training</strong>, <strong>Electrobits Club leadership</strong>, <strong>₹1,00,000 RISC-V Research Grant</strong>, <strong>Patents</strong>, <strong>Projects</strong>, or <strong>Internships</strong>!</p>
+        <p>Hello! I am Hema Prasad's portfolio AI collaborator.</p>
+        <p>Feel free to ask about his <strong>Maven Silicon Design Verification training</strong>, <strong>Electrobits Club leadership</strong>, <strong>₹1,00,000 RISC-V Research Grant</strong>, <strong>Patents</strong>, <strong>Projects</strong>, or <strong>Internships</strong>!</p>
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('Tell me about your Maven Silicon verification training')">Maven Silicon?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your role in Electrobits Club')">Electrobits Club?</span>
@@ -1972,7 +2145,7 @@
       }
 
       draw() {
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.13)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.12)';
         ctx.lineWidth = 1.1;
 
         const { x, y, w, h } = this;
@@ -1988,7 +2161,7 @@
         ctx.lineTo(x + w + 10, y);
         ctx.stroke();
 
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.2)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
         ctx.beginPath();
         ctx.arc(x - 10, y - h / 3, 1.5, 0, Math.PI * 2);
         if (this.type !== 'NOT') ctx.arc(x - 10, y + h / 3, 1.5, 0, Math.PI * 2);
@@ -2037,7 +2210,7 @@
         }
 
         ctx.font = '8px JetBrains Mono';
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.25)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.22)';
         ctx.fillText(this.type, x + 5, y + 3);
       }
     }
@@ -2075,14 +2248,14 @@
         for (let i = 1; i < this.points.length; i++) {
           ctx.lineTo(this.points[i].x, this.points[i].y);
         }
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.08)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.07)';
         ctx.lineWidth = 1.1;
         ctx.stroke();
 
         for (let pt of this.points) {
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(0, 212, 255, 0.18)';
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.16)';
           ctx.fill();
         }
       }
@@ -2094,7 +2267,7 @@
         this.currentSegment = 0;
         this.progress = 0;
         this.speed = 0.009 + Math.random() * 0.012;
-        this.color = Math.random() > 0.4 ? 'rgba(0, 212, 255, 0.45)' : 'rgba(16, 185, 129, 0.45)';
+        this.color = Math.random() > 0.4 ? 'rgba(56, 189, 248, 0.4)' : 'rgba(52, 211, 153, 0.4)';
       }
 
       update() {
@@ -2170,7 +2343,7 @@
 
     function drawChips() {
       for (let chip of icChips) {
-        ctx.strokeStyle = 'rgba(0, 212, 255, 0.1)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.1)';
         ctx.lineWidth = 1;
         ctx.fillStyle = 'rgba(5, 9, 18, 0.85)';
         ctx.fillRect(chip.x, chip.y, chip.w, chip.h);
@@ -2178,11 +2351,11 @@
 
         ctx.beginPath();
         ctx.arc(chip.x + 8, chip.y + chip.h / 2, 3.5, -Math.PI / 2, Math.PI / 2);
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.15)';
         ctx.fill();
 
         ctx.font = '9px JetBrains Mono';
-        ctx.fillStyle = 'rgba(0, 212, 255, 0.3)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
         ctx.fillText(chip.label, chip.x + 10, chip.y + chip.h / 2 + 3);
 
         const pinGap = chip.w / (chip.pins + 1);
@@ -2213,7 +2386,7 @@
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 65, 0, Math.PI * 2);
         const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, 65);
-        grad.addColorStop(0, 'rgba(0, 212, 255, 0.08)');
+        grad.addColorStop(0, 'rgba(56, 189, 248, 0.08)');
         grad.addColorStop(1, 'transparent');
         ctx.fillStyle = grad;
         ctx.fill();
