@@ -11,18 +11,20 @@
   
   <style>
     :root {
-      --bg: #030409;
-      --bg-alt: #070a14;
-      --card-bg: rgba(10, 15, 30, 0.75);
-      --card-border: rgba(99, 102, 241, 0.2);
-      --card-hover-border: rgba(56, 189, 248, 0.55);
+      --bg: #020612;
+      --bg-alt: #050d24;
+      --card-bg: rgba(7, 16, 43, 0.76);
+      --card-border: rgba(56, 189, 248, 0.2);
+      --card-hover-border: rgba(56, 189, 248, 0.6);
+      
       --primary: #38bdf8;
       --primary-light: #7dd3fc;
-      --primary-glow: rgba(56, 189, 248, 0.3);
-      --secondary: #818cf8;
+      --primary-glow: rgba(56, 189, 248, 0.35);
+      --royal-navy: #1d4ed8;
       --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.25);
+      --accent-glow: rgba(16, 185, 129, 0.3);
       --badge-ongoing: #f59e0b;
+
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -49,6 +51,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Interactive Silicon PCB Canvas with high-contrast buses, nodes & live logic ICs */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -58,9 +61,9 @@
       z-index: 0;
       pointer-events: none;
       background: 
-        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, #030409 60%, #000000 100%);
+        radial-gradient(circle at 82% 24%, rgba(29, 78, 216, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 18% 75%, rgba(56, 189, 248, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, #020612 60%, #010309 100%);
     }
 
     .site-wrapper {
@@ -68,11 +71,12 @@
       z-index: 1;
     }
 
+    /* Glass Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(3, 4, 9, 0.85);
+      background: rgba(2, 6, 18, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--card-border);
@@ -135,7 +139,7 @@
       left: 0;
       width: 0%;
       height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      background: linear-gradient(90deg, var(--primary), var(--royal-navy));
       transition: var(--transition);
       border-radius: 2px;
     }
@@ -167,6 +171,7 @@
       transform: translateY(0);
     }
 
+    /* Hero Unit */
     .hero {
       min-height: 95vh;
       display: flex;
@@ -191,15 +196,15 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(99, 102, 241, 0.12);
+      background: rgba(56, 189, 248, 0.08);
       color: var(--primary-light);
-      border: 1px solid rgba(99, 102, 241, 0.35);
+      border: 1px solid rgba(56, 189, 248, 0.3);
       padding: 0.45rem 1.15rem;
       border-radius: 999px;
       font-size: 0.82rem;
       font-family: var(--font-mono);
       margin-bottom: 1.5rem;
-      box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.12);
     }
 
     .hero h1 {
@@ -223,10 +228,12 @@
       font-weight: 400;
     }
 
+    /* Main Page Action Buttons (WhatsApp & Interactive AI Swapped) */
     .hero-btns {
       display: flex;
       gap: 0.9rem;
       flex-wrap: wrap;
+      align-items: center;
     }
 
     .btn {
@@ -245,13 +252,14 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      color: #030409;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      color: #020612;
+      font-weight: 700;
+      box-shadow: 0 0 22px rgba(56, 189, 248, 0.4);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 28px rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.65);
       transform: translateY(-2px);
     }
 
@@ -267,31 +275,34 @@
       transform: translateY(-2px);
     }
 
-    .btn-outline {
-      background: rgba(10, 15, 30, 0.6);
+    /* Swapped: WhatsApp placed before Interactive AI */
+    .btn-whatsapp {
+      background: rgba(37, 211, 102, 0.14);
+      border-color: rgba(37, 211, 102, 0.4);
       color: var(--text);
-      border-color: var(--card-border);
-      backdrop-filter: blur(8px);
     }
 
-    .btn-outline:hover {
-      background: rgba(19, 34, 68, 0.85);
-      border-color: var(--primary);
+    .btn-whatsapp:hover {
+      background: rgba(37, 211, 102, 0.25);
+      border-color: var(--whatsapp);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
       transform: translateY(-2px);
     }
 
     .btn-ai {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(56, 189, 248, 0.15));
-      border-color: rgba(16, 185, 129, 0.35);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(29, 78, 216, 0.35));
+      border-color: rgba(56, 189, 248, 0.38);
       color: var(--text);
     }
 
     .btn-ai:hover {
-      background: rgba(16, 185, 129, 0.25);
-      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.25);
+      border-color: var(--primary);
+      box-shadow: 0 0 22px var(--primary-glow);
       transform: translateY(-2px);
     }
 
+    /* Professional Executive Portrait Frame */
     .hero-photo-wrapper {
       position: relative;
       flex: 0.85;
@@ -303,21 +314,21 @@
     .orbit-ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
       pointer-events: none;
     }
 
     .orbit-1 {
       width: 340px;
       height: 340px;
-      animation: spinClockwise 25s linear infinite;
+      animation: spinClockwise 26s linear infinite;
     }
 
     .orbit-2 {
-      width: 390px;
-      height: 390px;
-      border-color: rgba(129, 140, 248, 0.2);
-      animation: spinCounter 35s linear infinite;
+      width: 395px;
+      height: 395px;
+      border-color: rgba(29, 78, 216, 0.35);
+      animation: spinCounter 36s linear infinite;
     }
 
     @keyframes spinClockwise {
@@ -334,9 +345,9 @@
       position: absolute;
       width: 320px;
       height: 320px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(99, 102, 241, 0.2) 45%, transparent 70%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(29, 78, 216, 0.25) 50%, transparent 72%);
       border-radius: 50%;
-      filter: blur(40px);
+      filter: blur(42px);
       z-index: 0;
       animation: pulseGlow 5s ease-in-out infinite alternate;
     }
@@ -348,12 +359,12 @@
 
     .profile-img-container {
       position: relative;
-      width: 275px;
-      height: 275px;
+      width: 280px;
+      height: 280px;
       border-radius: 50%;
       padding: 5px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(129, 140, 248, 0.8), rgba(16, 185, 129, 0.9));
-      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.7), 0 0 30px var(--primary-glow);
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(29, 78, 216, 0.85), rgba(16, 185, 129, 0.9));
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.8), 0 0 35px var(--primary-glow);
       z-index: 1;
     }
 
@@ -362,9 +373,9 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      background: #030409;
+      background: #020612;
       display: block;
-      border: 3px solid #030409;
+      border: 3px solid #020612;
     }
 
     .section-title {
@@ -383,7 +394,7 @@
       text-shadow: 0 0 12px var(--primary-glow);
     }
 
-    /* Single Clean Grid Layout for all sections */
+    /* Grid Layout */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -394,7 +405,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: var(--radius);
-      padding: 1.8rem;
+      padding: 1.85rem;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       transition: var(--transition);
@@ -413,16 +424,16 @@
 
     .card-ongoing {
       border-color: rgba(245, 158, 11, 0.45);
-      background: linear-gradient(180deg, rgba(32, 22, 10, 0.75), rgba(10, 15, 30, 0.85));
+      background: linear-gradient(180deg, rgba(32, 22, 10, 0.78), rgba(7, 16, 43, 0.85));
     }
 
     .card-ongoing:hover {
-      border-color: rgba(245, 158, 11, 0.85);
+      border-color: rgba(245, 158, 11, 0.9);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(245, 158, 11, 0.35);
     }
 
     .card-featured {
-      border-color: rgba(56, 189, 248, 0.4);
+      border-color: rgba(56, 189, 248, 0.38);
       background: linear-gradient(180deg, rgba(14, 25, 55, 0.85), rgba(7, 10, 20, 0.85));
     }
 
@@ -540,11 +551,18 @@
       gap: 0.6rem;
     }
 
-    /* Floating Utilities */
-    .float-ai-trigger {
+    /* Floating Side-by-Side Floating Widget (WhatsApp Left, AI Right) */
+    .floating-corner-dock {
       position: fixed;
       bottom: 28px;
       right: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 1050;
+    }
+
+    .float-dock-btn {
       width: 54px;
       height: 54px;
       border-radius: 50%;
@@ -552,48 +570,42 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      font-size: 1.45rem;
       cursor: pointer;
       border: none;
-      background: linear-gradient(135deg, #38bdf8, #6366f1);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
-      z-index: 1050;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    .float-ai-trigger:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.8);
-    }
-
-    .float-whatsapp-trigger {
-      position: fixed;
-      bottom: 28px;
-      left: 28px;
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 1.55rem;
       text-decoration: none;
-      background: var(--whatsapp);
-      box-shadow: 0 0 25px rgba(37, 211, 102, 0.45);
-      z-index: 1050;
       transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
     }
 
-    .float-whatsapp-trigger:hover {
+    .float-dock-btn:hover {
       transform: scale(1.1);
+    }
+
+    /* Swapped order in dock: WhatsApp first, AI second */
+    .dock-whatsapp {
+      background: var(--whatsapp);
+      font-size: 1.55rem;
+      box-shadow: 0 0 25px rgba(37, 211, 102, 0.45);
+    }
+
+    .dock-whatsapp:hover {
       box-shadow: 0 0 35px rgba(37, 211, 102, 0.8);
     }
 
-    .badge-tooltip-right {
+    .dock-ai {
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      font-size: 1.45rem;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+    }
+
+    .dock-ai:hover {
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.8);
+    }
+
+    .dock-tooltip {
       position: absolute;
-      right: 66px;
-      background: rgba(11, 19, 41, 0.96);
+      bottom: 66px;
+      background: rgba(7, 16, 43, 0.96);
       border: 1px solid var(--card-border);
       color: var(--text);
       font-size: 0.78rem;
@@ -603,37 +615,14 @@
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
-      transform: translateX(10px);
+      transform: translateY(8px);
       transition: all 0.2s ease;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
     }
 
-    .float-ai-trigger:hover .badge-tooltip-right {
+    .float-dock-btn:hover .dock-tooltip {
       opacity: 1;
-      transform: translateX(0);
-    }
-
-    .badge-tooltip-left {
-      position: absolute;
-      left: 66px;
-      background: rgba(11, 19, 41, 0.96);
-      border: 1px solid var(--card-border);
-      color: var(--text);
-      font-size: 0.78rem;
-      font-family: var(--font-mono);
-      padding: 5px 12px;
-      border-radius: 6px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: all 0.2s ease;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-    }
-
-    .float-whatsapp-trigger:hover .badge-tooltip-left {
-      opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
     /* Modal Styling */
@@ -643,7 +632,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(3, 4, 9, 0.86);
+      background: rgba(2, 6, 18, 0.86);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       z-index: 2000;
@@ -658,7 +647,7 @@
     }
 
     .tech-modal-card {
-      background: rgba(11, 15, 30, 0.98);
+      background: rgba(7, 16, 43, 0.98);
       border: 1px solid rgba(56, 189, 248, 0.4);
       border-radius: 20px;
       max-width: 600px;
@@ -740,7 +729,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.85rem;
-      background: rgba(5, 8, 18, 0.8);
+      background: rgba(4, 9, 26, 0.85);
       padding: 1.2rem;
       border-radius: 12px;
       border: 1px solid rgba(56, 189, 248, 0.16);
@@ -767,12 +756,12 @@
     /* AI Modal */
     .ai-modal {
       position: fixed;
-      bottom: 92px;
+      bottom: 96px;
       right: 28px;
       width: 440px;
       max-width: calc(100vw - 40px);
       height: 560px;
-      background: rgba(10, 15, 30, 0.98);
+      background: rgba(7, 16, 43, 0.98);
       border: 1px solid rgba(56, 189, 248, 0.4);
       border-radius: 20px;
       backdrop-filter: blur(24px);
@@ -877,7 +866,7 @@
       border-top: 1px solid var(--card-border);
       display: flex;
       gap: 0.6rem;
-      background: rgba(5, 8, 18, 0.7);
+      background: rgba(4, 9, 26, 0.85);
     }
 
     .ai-input {
@@ -899,7 +888,7 @@
     .ai-send {
       background: var(--primary);
       border: none;
-      color: #030409;
+      color: #020612;
       padding: 0.65rem 1.1rem;
       border-radius: 8px;
       cursor: pointer;
@@ -953,19 +942,23 @@
           <div class="badge"><i class="fas fa-microchip"></i> VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</div>
           <h1>Architecting <span>Resilient Silicon</span> & Intelligent Hardware</h1>
           <p>Electronics and Communication Engineer specializing in Design Verification (SystemVerilog/UVM), Hardware Root-of-Trust Cryptography for open-source RISC-V architectures, Industrial PLC Automation, and Edge AI Systems.</p>
-          <div class="hero-btns">
-            <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://github.com/Hemanth-5400" target="_blank" rel="noopener noreferrer" class="btn btn-github">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <button class="btn btn-ai" onclick="toggleAIChat()">
-              <i class="fas fa-robot"></i> Interactive AI
-            </button>
-            <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-              <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp
-            </a>
+          
+          <div class="hero-action-clusters">
+            <!-- Buttons with WhatsApp & Interactive AI swapped -->
+            <div class="hero-btns">
+              <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="fab fa-linkedin"></i> LinkedIn
+              </a>
+              <a href="https://github.com/Hemanth-5400" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+              <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp
+              </a>
+              <button class="btn btn-ai" onclick="toggleAIChat()">
+                <i class="fas fa-robot"></i> Interactive AI
+              </button>
+            </div>
           </div>
         </div>
 
@@ -1052,7 +1045,7 @@
       </div>
     </section>
 
-    <!-- Engineering Projects (Unified Grid with Ongoing Highlighted) -->
+    <!-- Engineering Projects -->
     <section id="projects">
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-microchip"></i> Featured Engineering Projects</h2>
@@ -1162,13 +1155,13 @@
       </div>
     </section>
 
-    <!-- Experience & Specialized Training (Unified Grid with Ongoing Highlighted) -->
+    <!-- Experience & Specialized Training -->
     <section id="experience">
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-briefcase"></i> Experience & Specialized Training</h2>
         <div class="grid">
           
-          <!-- Ongoing Training Card -->
+          <!-- Ongoing Maven Silicon Training Card marked -->
           <div class="card card-ongoing reveal" onclick="openTechModal('maven_silicon')">
             <div>
               <div class="card-header">
@@ -1486,7 +1479,7 @@
       </div>
     </section>
 
-    <!-- Academic Background -->
+    <!-- Education -->
     <section id="education">
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-user-graduate"></i> Academic Background</h2>
@@ -1535,6 +1528,7 @@
     </footer>
   </div>
 
+  <!-- Tech Dossier Detail Modal -->
   <div class="modal-overlay" id="techModalOverlay" onclick="closeTechModal(event)">
     <div class="tech-modal-card" id="techModalCard" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closeTechModal()"><i class="fas fa-times"></i></button>
@@ -1550,18 +1544,17 @@
     </div>
   </div>
 
-  <!-- Repositioned Floating Controls -->
-  <!-- WhatsApp Direct Button (Bottom Left) -->
-  <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" rel="noopener noreferrer" class="float-whatsapp-trigger" title="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="badge-tooltip-left">WhatsApp Direct</span>
-  </a>
-
-  <!-- AI Assistant Button (Bottom Right) -->
-  <button class="float-ai-trigger" onclick="toggleAIChat()" title="AI Portfolio Assistant">
-    <i class="fas fa-robot"></i>
-    <span class="badge-tooltip-right">Portfolio AI</span>
-  </button>
+  <!-- Swapped Floating Controls Dock on Bottom Right (WhatsApp first, Interactive AI second) -->
+  <div class="floating-corner-dock">
+    <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" rel="noopener noreferrer" class="float-dock-btn dock-whatsapp" title="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+      <span class="dock-tooltip">WhatsApp Direct</span>
+    </a>
+    <button class="float-dock-btn dock-ai" onclick="toggleAIChat()" title="AI Portfolio Assistant">
+      <i class="fas fa-robot"></i>
+      <span class="dock-tooltip">Interactive AI</span>
+    </button>
+  </div>
 
   <div class="ai-modal" id="aiModal">
     <div class="ai-header">
@@ -2147,10 +2140,11 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+    // High-Density Silicon PCB Canvas Engine (Buses, Micro-ICs, Logic Traces)
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let traces = [], logicGates = [], pulses = [];
+    let traces = [], logicGates = [], chipNodes = [], pulses = [];
     let mouse = { x: -1000, y: -1000 };
 
     function resize() {
@@ -2164,13 +2158,13 @@
         this.x = x;
         this.y = y;
         this.type = type;
-        this.w = 38;
+        this.w = 36;
         this.h = 24;
       }
 
       draw() {
-        ctx.strokeStyle = 'rgba(99, 102, 241, 0.15)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.22)';
+        ctx.lineWidth = 1.1;
         const { x, y, w, h } = this;
 
         ctx.beginPath();
@@ -2184,13 +2178,44 @@
         ctx.lineTo(x, y + h / 2);
         ctx.lineTo(x, y - h / 2);
         ctx.closePath();
-        ctx.fillStyle = 'rgba(3, 4, 9, 0.9)';
+        ctx.fillStyle = 'rgba(2, 6, 18, 0.92)';
         ctx.fill();
         ctx.stroke();
 
         ctx.font = '8px JetBrains Mono';
-        ctx.fillStyle = 'rgba(56, 189, 248, 0.3)';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
         ctx.fillText(this.type, x + 4, y + 3);
+      }
+    }
+
+    class ChipMicroBlock {
+      constructor(x, y, label) {
+        this.x = x;
+        this.y = y;
+        this.w = 60;
+        this.h = 36;
+        this.label = label;
+      }
+
+      draw() {
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.18)';
+        ctx.lineWidth = 1;
+        ctx.fillStyle = 'rgba(5, 13, 36, 0.9)';
+        ctx.fillRect(this.x, this.y, this.w, this.h);
+        ctx.strokeRect(this.x, this.y, this.w, this.h);
+
+        // Pin Connectors
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.3)';
+        for (let i = 8; i < this.w; i += 12) {
+          ctx.beginPath();
+          ctx.moveTo(this.x + i, this.y); ctx.lineTo(this.x + i, this.y - 4);
+          ctx.moveTo(this.x + i, this.y + this.h); ctx.lineTo(this.x + i, this.y + this.h + 4);
+          ctx.stroke();
+        }
+
+        ctx.font = '8px JetBrains Mono';
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.5)';
+        ctx.fillText(this.label, this.x + 8, this.y + 22);
       }
     }
 
@@ -2212,9 +2237,17 @@
         for (let i = 1; i < this.points.length; i++) {
           ctx.lineTo(this.points[i].x, this.points[i].y);
         }
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.08)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.1)';
         ctx.lineWidth = 1.1;
         ctx.stroke();
+
+        // Terminal solder vias
+        for (let pt of this.points) {
+          ctx.beginPath();
+          ctx.arc(pt.x, pt.y, 1.8, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+          ctx.fill();
+        }
       }
     }
 
@@ -2223,8 +2256,8 @@
         this.trace = trace;
         this.seg = 0;
         this.progress = 0;
-        this.speed = 0.009 + Math.random() * 0.01;
-        this.color = Math.random() > 0.5 ? 'rgba(56, 189, 248, 0.5)' : 'rgba(129, 140, 248, 0.5)';
+        this.speed = 0.009 + Math.random() * 0.012;
+        this.color = Math.random() > 0.5 ? 'rgba(56, 189, 248, 0.65)' : 'rgba(29, 78, 216, 0.75)';
       }
 
       update() {
@@ -2244,16 +2277,20 @@
         const y = p1.y + (p2.y - p1.y) * this.progress;
 
         ctx.beginPath();
-        ctx.arc(x, y, 2, 0, Math.PI * 2);
+        ctx.arc(x, y, 2.2, 0, Math.PI * 2);
         ctx.fillStyle = this.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = this.color;
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
     }
 
     function buildDigitalBoard() {
-      traces = []; logicGates = []; pulses = [];
-      const gateCount = Math.floor((width * height) / 100000) + 4;
+      traces = []; logicGates = []; chipNodes = []; pulses = [];
+      const gateCount = Math.floor((width * height) / 95000) + 4;
       const types = ['AND', 'NAND', 'XOR', 'OR'];
+      const chips = ['RV32I', 'UVM_TOP', 'AXI4', 'PLL'];
 
       for (let i = 0; i < gateCount; i++) {
         const x = Math.random() * (width - 120) + 60;
@@ -2263,10 +2300,21 @@
         traces.push(trace);
         pulses.push(new CircuitPulse(trace));
       }
+
+      const chipCount = Math.floor((width * height) / 240000) + 2;
+      for (let i = 0; i < chipCount; i++) {
+        const cx = Math.random() * (width - 140) + 70;
+        const cy = Math.random() * (height - 140) + 70;
+        chipNodes.push(new ChipMicroBlock(cx, cy, chips[i % chips.length]));
+        const chipTrace = new CircuitTrace(cx + 60, cy + 18);
+        traces.push(chipTrace);
+        pulses.push(new CircuitPulse(chipTrace));
+      }
     }
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
+      for (let chip of chipNodes) chip.draw();
       for (let gate of logicGates) gate.draw();
       for (let trace of traces) trace.draw();
       for (let pulse of pulses) {
@@ -2278,7 +2326,7 @@
         ctx.beginPath();
         ctx.arc(mouse.x, mouse.y, 65, 0, Math.PI * 2);
         const grad = ctx.createRadialGradient(mouse.x, mouse.y, 5, mouse.x, mouse.y, 65);
-        grad.addColorStop(0, 'rgba(99, 102, 241, 0.12)');
+        grad.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
         grad.addColorStop(1, 'transparent');
         ctx.fillStyle = grad;
         ctx.fill();
