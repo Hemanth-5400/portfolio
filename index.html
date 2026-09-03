@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dogga Hema Prasad | Silicon Verification & Embedded Architect</title>
   
-  <!-- Open Graph Meta Tags for LinkedIn Link Preview Thumbnail -->
   <meta property="og:title" content="Dogga Hema Prasad | Silicon Verification & Embedded Architect" />
   <meta property="og:description" content="Portfolio of Dogga Hema Prasad - ECE Undergraduate, VLSI Design Verification Trainee, and Hardware Security Researcher." />
   <meta property="og:image" content="https://raw.githubusercontent.com/Hemanth-5400/portfolio/main/hemanth.jpeg" />
@@ -20,16 +19,16 @@
   <style>
     :root {
       --bg: #000103;
-      --card-bg: rgba(2, 6, 23, 0.85);
-      --card-border: rgba(56, 189, 248, 0.25);
-      --card-hover-border: rgba(56, 189, 248, 0.8);
+      --card-bg: rgba(2, 6, 23, 0.82);
+      --card-border: rgba(56, 189, 248, 0.22);
+      --card-hover-border: rgba(56, 189, 248, 0.75);
       
       --primary: #38bdf8;
       --primary-light: #7dd3fc;
-      --primary-glow: rgba(56, 189, 248, 0.45);
+      --primary-glow: rgba(56, 189, 248, 0.4);
       --royal-navy: #1d4ed8;
       --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.4);
+      --accent-glow: rgba(16, 185, 129, 0.35);
 
       --text: #f8fafc;
       --text-muted: #94a3b8;
@@ -57,7 +56,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Interactive 3D Touch-Interactive Cybernetic Circuit Canvas */
     #pcb-canvas {
       position: fixed;
       top: 0;
@@ -77,7 +75,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 1, 3, 0.9);
+      background: rgba(0, 1, 3, 0.88);
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
       border-bottom: 1px solid rgba(56, 189, 248, 0.15);
@@ -86,7 +84,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 7%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     }
 
     .logo {
@@ -94,7 +92,7 @@
       font-size: 1rem;
       font-weight: 700;
       color: var(--primary);
-      text-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+      text-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -175,7 +173,6 @@
       transform: translateY(0);
     }
 
-    /* Hero Unit */
     .hero {
       min-height: 95vh;
       display: flex;
@@ -2146,15 +2143,15 @@
     let mouse = { x: -1000, y: -1000 };
 
     const themes = {
-      hero: { color: '56, 189, 248', secondary: '29, 78, 216', accent: '16, 185, 129', label: 'RV32I_SOC' },
-      patents: { color: '16, 185, 129', secondary: '5, 150, 105', accent: '56, 189, 248', label: 'PATENT_IP' },
-      projects: { color: '245, 158, 11', secondary: '217, 119, 6', accent: '56, 189, 248', label: 'AI_EMBEDDED' },
-      experience: { color: '129, 140, 248', secondary: '99, 102, 241', accent: '16, 185, 129', label: 'ASIC_UVM' },
-      certifications: { color: '236, 72, 153', secondary: '219, 39, 119', accent: '56, 189, 248', label: 'VERIFIED' },
-      skills: { color: '6, 182, 212', secondary: '8, 145, 178', accent: '16, 185, 129', label: 'EDA_TOOLS' },
-      achievements: { color: '234, 179, 8', secondary: '202, 138, 4', accent: '245, 158, 11', label: 'HONORS_CORE' },
-      education: { color: '168, 85, 247', secondary: '147, 51, 234', accent: '56, 189, 248', label: 'MRIIRS_ECE' },
-      contact: { color: '56, 189, 248', secondary: '37, 99, 235', accent: '16, 185, 129', label: 'SECURE_LINK' }
+      hero: { color: '56, 189, 248', secondary: '29, 78, 216', accent: '16, 185, 129', label: 'PORTFOLIO' },
+      patents: { color: '16, 185, 129', secondary: '5, 150, 105', accent: '56, 189, 248', label: 'RESEARCH & IP' },
+      projects: { color: '245, 158, 11', secondary: '217, 119, 6', accent: '56, 189, 248', label: 'ENGINEERING' },
+      experience: { color: '129, 140, 248', secondary: '99, 102, 241', accent: '16, 185, 129', label: 'EXPERIENCE' },
+      certifications: { color: '236, 72, 153', secondary: '219, 39, 119', accent: '56, 189, 248', label: 'CERTIFICATIONS' },
+      skills: { color: '6, 182, 212', secondary: '8, 145, 178', accent: '16, 185, 129', label: 'COMPETENCIES' },
+      achievements: { color: '234, 179, 8', secondary: '202, 138, 4', accent: '245, 158, 11', label: 'HONORS' },
+      education: { color: '168, 85, 247', secondary: '147, 51, 234', accent: '56, 189, 248', label: 'EDUCATION' },
+      contact: { color: '56, 189, 248', secondary: '37, 99, 235', accent: '16, 185, 129', label: 'CONNECT' }
     };
 
     function resize() {
@@ -2167,7 +2164,7 @@
       constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.size = 130;
+        this.size = 140;
         this.pulseAngle = 0;
       }
       draw(th) {
@@ -2181,17 +2178,17 @@
         // Dark Metallic Microchip Body
         ctx.fillStyle = 'rgba(1, 4, 14, 0.98)';
         ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
-        ctx.strokeStyle = `rgba(${th.color}, 0.9)';`;
+        ctx.strokeStyle = `rgba(${th.color}, 0.9)`;
         ctx.lineWidth = 3;
         ctx.strokeRect(-this.size/2, -this.size/2, this.size, this.size);
 
         // Holographic Silicon Die lines
-        ctx.strokeStyle = `rgba(${th.accent}, 0.7)';`;
+        ctx.strokeStyle = `rgba(${th.accent}, 0.7)`;
         ctx.lineWidth = 1.2;
         ctx.strokeRect(-this.size/3, -this.size/3, this.size*2/3, this.size*2/3);
 
         // Glowing pins
-        ctx.strokeStyle = `rgba(${th.color}, 0.7)';`;
+        ctx.strokeStyle = `rgba(${th.color}, 0.7)`;
         ctx.lineWidth = 2.2;
         for (let i = -this.size/2 + 10; i < this.size/2; i += 12) {
           ctx.beginPath();
@@ -2202,8 +2199,8 @@
           ctx.stroke();
         }
 
-        ctx.font = 'bold 13px JetBrains Mono';
-        ctx.fillStyle = `rgba(${th.color}, 0.99)';`;
+        ctx.font = 'bold 14px JetBrains Mono';
+        ctx.fillStyle = `rgba(${th.color}, 0.99)`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(th.label, 0, 0);
@@ -2231,14 +2228,14 @@
         for (let i = 1; i < this.points.length; i++) {
           ctx.lineTo(this.points[i].x, this.points[i].y);
         }
-        ctx.strokeStyle = `rgba(${th.color}, 0.18)';`;
+        ctx.strokeStyle = `rgba(${th.color}, 0.18)`;
         ctx.lineWidth = 1.4;
         ctx.stroke();
 
         for (let pt of this.points) {
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, 2.4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${th.color}, 0.45)';`;
+          ctx.fillStyle = `rgba(${th.color}, 0.45)`;
           ctx.fill();
         }
       }
@@ -2270,9 +2267,9 @@
 
         ctx.beginPath();
         ctx.arc(x, y, 3.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${th.accent}, 0.99)';`;
+        ctx.fillStyle = `rgba(${th.accent}, 0.99)`;
         ctx.shadowBlur = 18;
-        ctx.shadowColor = `rgba(${th.accent}, 0.98)';`;
+        ctx.shadowColor = `rgba(${th.accent}, 0.98)`;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
