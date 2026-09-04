@@ -18,23 +18,24 @@
   
   <style>
     :root {
-      --bg: #000103;
-      --card-bg: rgba(2, 6, 23, 0.82);
-      --card-border: rgba(56, 189, 248, 0.22);
-      --card-hover-border: rgba(56, 189, 248, 0.75);
+      /* Classic Engineering CAD Palette */
+      --bg: #050b14;
+      --card-bg: rgba(10, 18, 38, 0.75);
+      --card-border: rgba(0, 229, 255, 0.2);
+      --card-hover-border: rgba(0, 229, 255, 0.8);
       
-      --primary: #38bdf8;
-      --primary-light: #7dd3fc;
-      --primary-glow: rgba(56, 189, 248, 0.4);
+      --primary: #00e5ff;
+      --primary-light: #80f2ff;
+      --primary-glow: rgba(0, 229, 255, 0.4);
       --royal-navy: #1d4ed8;
-      --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.35);
+      --accent: #ffb300; /* Copper / Gold */
+      --accent-glow: rgba(255, 179, 0, 0.4);
 
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --radius: 18px;
+      --radius: 12px;
       --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       --whatsapp: #25d366;
     }
@@ -56,13 +57,51 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Cinematic Background Slideshow (VLSI / IoT Imagery) */
+    .bg-slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .bg-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: slideFade 24s infinite ease-in-out;
+    }
+
+    /* High-Quality Macro VLSI, PCB, and IoT Imagery */
+    .bg-slide:nth-child(1) { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=2000'); animation-delay: 0s; }
+    .bg-slide:nth-child(2) { background-image: url('https://images.unsplash.com/photo-1592503254549-ceb3a7a9cb25?auto=format&fit=crop&q=80&w=2000'); animation-delay: 8s; }
+    .bg-slide:nth-child(3) { background-image: url('https://images.unsplash.com/photo-1555664424-778a1e5e1b48?auto=format&fit=crop&q=80&w=2000'); animation-delay: 16s; }
+
+    @keyframes slideFade {
+      0% { opacity: 0; transform: scale(1.05); }
+      10% { opacity: 0.35; transform: scale(1); } /* Darkened for classic look */
+      33% { opacity: 0.35; transform: scale(1); }
+      43% { opacity: 0; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1.05); }
+    }
+
+    /* Cybernetic PCB Canvas Background Overlay */
     #pcb-canvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      z-index: 0;
+      z-index: -1;
       pointer-events: none;
     }
 
@@ -75,16 +114,16 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 1, 3, 0.88);
+      background: rgba(5, 11, 20, 0.85);
       backdrop-filter: blur(30px);
       -webkit-backdrop-filter: blur(30px);
-      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+      border-bottom: 1px solid rgba(0, 229, 255, 0.15);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 7%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
     }
 
     .logo {
@@ -92,7 +131,7 @@
       font-size: 1rem;
       font-weight: 700;
       color: var(--primary);
-      text-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -130,7 +169,7 @@
 
     .nav-links a:hover {
       color: var(--primary-light);
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+      text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
     }
 
     .nav-links a::after {
@@ -140,7 +179,7 @@
       left: 0;
       width: 0%;
       height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--royal-navy));
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       transition: var(--transition);
       border-radius: 2px;
     }
@@ -197,15 +236,15 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(56, 189, 248, 0.08);
+      background: rgba(0, 229, 255, 0.08);
       color: var(--primary-light);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      border: 1px solid rgba(0, 229, 255, 0.3);
       padding: 0.5rem 1.25rem;
       border-radius: 999px;
       font-size: 0.82rem;
       font-family: var(--font-mono);
       margin-bottom: 1.5rem;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
       backdrop-filter: blur(10px);
     }
 
@@ -218,10 +257,10 @@
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #38bdf8 0%, #34d399 40%, #818cf8 100%);
+      background: linear-gradient(135deg, #00e5ff 0%, #ffb300 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.45));
+      filter: drop-shadow(0 0 35px rgba(255, 179, 0, 0.35));
     }
 
     .hero p {
@@ -254,14 +293,14 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #38bdf8, #1d4ed8);
-      color: #000103;
+      background: linear-gradient(135deg, #00e5ff, #0088cc);
+      color: #000105;
       font-weight: 700;
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 45px rgba(56, 189, 248, 0.75);
+      box-shadow: 0 0 45px rgba(0, 229, 255, 0.75);
       transform: translateY(-3px);
     }
 
@@ -274,7 +313,7 @@
 
     .btn-github:hover {
       background: rgba(30, 41, 59, 0.95);
-      border-color: rgba(56, 189, 248, 0.5);
+      border-color: rgba(0, 229, 255, 0.5);
       transform: translateY(-3px);
     }
 
@@ -292,15 +331,15 @@
     }
 
     .btn-ai {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(29, 78, 216, 0.35));
-      border-color: rgba(56, 189, 248, 0.4);
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.12), rgba(255, 179, 0, 0.15));
+      border-color: rgba(0, 229, 255, 0.4);
       color: var(--text);
     }
 
     .btn-ai:hover {
-      background: rgba(56, 189, 248, 0.25);
-      border-color: var(--primary);
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+      background: rgba(0, 229, 255, 0.25);
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(255, 179, 0, 0.4);
       transform: translateY(-3px);
     }
 
@@ -315,7 +354,7 @@
     .orbit-ring {
       position: absolute;
       border-radius: 50%;
-      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border: 1px dashed rgba(0, 229, 255, 0.35);
       pointer-events: none;
     }
 
@@ -328,7 +367,7 @@
     .orbit-2 {
       width: 395px;
       height: 395px;
-      border-color: rgba(29, 78, 216, 0.35);
+      border-color: rgba(255, 179, 0, 0.35);
       animation: spinCounter 36s linear infinite;
     }
 
@@ -346,7 +385,7 @@
       position: absolute;
       width: 320px;
       height: 320px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(29, 78, 216, 0.25) 50%, transparent 75%);
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.35) 0%, rgba(255, 179, 0, 0.25) 50%, transparent 75%);
       border-radius: 50%;
       filter: blur(55px);
       z-index: 0;
@@ -364,8 +403,8 @@
       height: 280px;
       border-radius: 50%;
       padding: 5px;
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(29, 78, 216, 0.85), rgba(16, 185, 129, 0.95));
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(56, 189, 248, 0.45);
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.95), rgba(10, 18, 38, 0.85), rgba(255, 179, 0, 0.95));
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(0, 229, 255, 0.45);
       z-index: 1;
     }
 
@@ -374,9 +413,9 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      background: #000103;
+      background: var(--bg);
       display: block;
-      border: 3px solid #000103;
+      border: 3px solid var(--bg);
     }
 
     .section-title {
@@ -392,7 +431,7 @@
     .section-title i {
       color: var(--primary);
       font-size: 1.5rem;
-      text-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
+      text-shadow: 0 0 18px rgba(0, 229, 255, 0.6);
     }
 
     .grid {
@@ -420,22 +459,17 @@
     .card:hover {
       transform: translateY(-6px);
       border-color: var(--card-hover-border);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 40px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 229, 255, 0.35);
     }
 
     .card-ongoing {
-      border-color: rgba(245, 158, 11, 0.45);
-      background: linear-gradient(180deg, rgba(26, 18, 5, 0.92), rgba(2, 6, 23, 0.95));
+      border-color: rgba(255, 179, 0, 0.45);
+      background: linear-gradient(180deg, rgba(26, 18, 5, 0.92), rgba(10, 18, 38, 0.95));
     }
 
     .card-ongoing:hover {
-      border-color: rgba(245, 158, 11, 0.9);
-      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 40px rgba(245, 158, 11, 0.35);
-    }
-
-    .card-featured {
-      border-color: rgba(56, 189, 248, 0.4);
-      background: linear-gradient(180deg, rgba(6, 18, 48, 0.92), rgba(2, 6, 23, 0.95));
+      border-color: rgba(255, 179, 0, 0.9);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 179, 0, 0.35);
     }
 
     .card-header {
@@ -477,84 +511,24 @@
     }
 
     .tag {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: rgba(0, 229, 255, 0.05);
+      border: 1px solid rgba(0, 229, 255, 0.2);
       padding: 0.35rem 0.75rem;
       border-radius: 8px;
       font-size: 0.75rem;
       font-family: var(--font-mono);
       color: var(--primary-light);
+      transition: var(--transition);
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: var(--transition);
-      user-select: none;
-      text-decoration: none;
     }
 
-    .tag:hover {
-      background: rgba(56, 189, 248, 0.25);
-      border-color: var(--primary);
-      color: #fff;
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
-    }
-
-    .tag-ongoing {
-      background: rgba(245, 158, 11, 0.15);
-      border-color: rgba(245, 158, 11, 0.5);
-      color: #fbbf24;
-      font-weight: 600;
-    }
-
-    .tag-ongoing:hover {
-      background: rgba(245, 158, 11, 0.3);
-      border-color: #f59e0b;
+    .card:hover .tag {
+      border-color: rgba(0, 229, 255, 0.4);
+      background: rgba(0, 229, 255, 0.1);
       color: #fff;
     }
 
-    .tag-highlight {
-      background: rgba(16, 185, 129, 0.12);
-      border-color: rgba(16, 185, 129, 0.38);
-      color: #6ee7b7;
-    }
-
-    .tag-highlight:hover {
-      background: rgba(16, 185, 129, 0.25);
-      border-color: var(--accent);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.6rem;
-    }
-
-    .skill-box {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding: 1.9rem;
-      backdrop-filter: blur(18px);
-      transition: var(--transition);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
-    }
-
-    .skill-box:hover {
-      border-color: rgba(56, 189, 248, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(56, 189, 248, 0.3);
-    }
-
-    .skill-box h3 {
-      font-size: 1.08rem;
-      color: var(--primary);
-      margin-bottom: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
+    /* Floating Dock */
     .floating-corner-dock {
       position: fixed;
       bottom: 28px;
@@ -573,8 +547,9 @@
       align-items: center;
       justify-content: center;
       color: #fff;
+      background: rgba(10, 18, 38, 0.9);
+      border: 1px solid rgba(0, 229, 255, 0.3);
       cursor: pointer;
-      border: none;
       text-decoration: none;
       transition: transform 0.25s, box-shadow 0.25s;
       position: relative;
@@ -582,32 +557,37 @@
 
     .float-dock-btn:hover {
       transform: scale(1.12);
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
     }
 
     .dock-whatsapp {
-      background: var(--whatsapp);
-      font-size: 1.6rem;
-      box-shadow: 0 0 35px rgba(37, 211, 102, 0.5);
+      border-color: rgba(37, 211, 102, 0.5);
+      color: #25d366;
     }
 
     .dock-whatsapp:hover {
-      box-shadow: 0 0 50px rgba(37, 211, 102, 0.85);
+      background: #25d366;
+      color: #000;
+      box-shadow: 0 0 35px rgba(37, 211, 102, 0.6);
     }
 
     .dock-ai {
-      background: linear-gradient(135deg, #38bdf8, #1d4ed8);
-      font-size: 1.5rem;
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.55);
+      color: var(--accent);
+      border-color: rgba(255, 179, 0, 0.5);
     }
 
     .dock-ai:hover {
-      box-shadow: 0 0 50px rgba(56, 189, 248, 0.85);
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 35px rgba(255, 179, 0, 0.6);
     }
 
     .dock-tooltip {
       position: absolute;
       bottom: 68px;
-      background: rgba(2, 6, 23, 0.96);
+      background: rgba(10, 18, 38, 0.96);
       border: 1px solid var(--card-border);
       color: var(--text);
       font-size: 0.78rem;
@@ -627,13 +607,14 @@
       transform: translateY(0);
     }
 
+    /* Modal Styling */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 1, 3, 0.92);
+      background: rgba(0, 1, 5, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       z-index: 2000;
@@ -648,13 +629,13 @@
     }
 
     .tech-modal-card {
-      background: rgba(2, 6, 23, 0.99);
-      border: 1px solid rgba(56, 189, 248, 0.45);
+      background: rgba(10, 18, 38, 0.99);
+      border: 1px solid rgba(0, 229, 255, 0.45);
       border-radius: 20px;
       max-width: 600px;
       width: 100%;
       padding: 2.3rem;
-      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.98), 0 0 50px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.98), 0 0 50px rgba(0, 229, 255, 0.35);
       position: relative;
       animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -668,7 +649,7 @@
       position: absolute;
       top: 1.35rem;
       right: 1.35rem;
-      background: rgba(15, 28, 60, 0.9);
+      background: rgba(5, 11, 20, 0.9);
       border: 1px solid var(--card-border);
       color: var(--text-muted);
       width: 36px;
@@ -684,7 +665,7 @@
     .modal-close-btn:hover {
       color: #fff;
       border-color: var(--primary);
-      background: rgba(56, 189, 248, 0.3);
+      background: rgba(0, 229, 255, 0.3);
     }
 
     .tech-modal-header {
@@ -698,8 +679,8 @@
       width: 52px;
       height: 52px;
       border-radius: 12px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid rgba(0, 229, 255, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -707,53 +688,24 @@
       font-size: 1.6rem;
     }
 
-    .tech-modal-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .tech-modal-subtitle {
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--primary);
-    }
-
-    .tech-modal-body {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
+    .tech-modal-title { font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .tech-modal-subtitle { font-family: var(--font-mono); font-size: 0.82rem; color: var(--primary); }
+    .tech-modal-body { color: #cbd5e1; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
 
     .tech-spec-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.85rem;
-      background: rgba(0, 2, 6, 0.95);
+      background: rgba(0, 0, 0, 0.5);
       padding: 1.2rem;
       border-radius: 12px;
-      border: 1px solid rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(0, 229, 255, 0.18);
     }
 
-    .tech-spec-item {
-      font-size: 0.82rem;
-      font-family: var(--font-mono);
-    }
+    .tech-spec-label { color: var(--text-muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.2rem; }
+    .tech-spec-val { color: var(--primary-light); font-weight: 600; font-family: var(--font-mono); font-size: 0.82rem; }
 
-    .tech-spec-label {
-      color: var(--text-muted);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.2rem;
-    }
-
-    .tech-spec-val {
-      color: var(--primary-light);
-      font-weight: 600;
-    }
-
+    /* AI Modal */
     .ai-modal {
       position: fixed;
       bottom: 98px;
@@ -761,12 +713,11 @@
       width: 440px;
       max-width: calc(100vw - 40px);
       height: 560px;
-      background: rgba(2, 6, 23, 0.99);
-      border: 1px solid rgba(56, 189, 248, 0.45);
+      background: rgba(10, 18, 38, 0.99);
+      border: 1px solid rgba(0, 229, 255, 0.45);
       border-radius: 20px;
       backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 50px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.98), 0 0 50px rgba(0, 229, 255, 0.35);
       z-index: 1060;
       display: none;
       flex-direction: column;
@@ -774,13 +725,11 @@
       animation: modalSlide 0.28s ease;
     }
 
-    .ai-modal.active {
-      display: flex;
-    }
+    .ai-modal.active { display: flex; }
 
     .ai-header {
       padding: 1.1rem 1.4rem;
-      background: rgba(15, 28, 60, 0.9);
+      background: rgba(5, 11, 20, 0.9);
       border-bottom: 1px solid var(--card-border);
       display: flex;
       justify-content: space-between;
@@ -819,29 +768,23 @@
     .ai-msg ul, .ai-msg ol { margin-left: 1.2rem; margin-bottom: 0.5rem; }
 
     .ai-msg-bot {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.28);
       align-self: flex-start;
       color: #e2e8f0;
     }
 
     .ai-msg-user {
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.38);
+      background: rgba(255, 179, 0, 0.15);
+      border: 1px solid rgba(255, 179, 0, 0.35);
       align-self: flex-end;
-      color: #f0fdf4;
+      color: #fff;
     }
 
-    .ai-quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.7rem;
-    }
-
+    .ai-quick-replies { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.7rem; }
     .quick-chip {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.28);
       color: var(--primary-light);
       padding: 0.3rem 0.72rem;
       border-radius: 14px;
@@ -850,23 +793,19 @@
       transition: var(--transition);
       font-family: var(--font-mono);
     }
-
-    .quick-chip:hover {
-      background: rgba(56, 189, 248, 0.25);
-      color: #fff;
-    }
+    .quick-chip:hover { background: rgba(0, 229, 255, 0.25); color: #fff; }
 
     .ai-footer {
       padding: 0.9rem;
       border-top: 1px solid var(--card-border);
       display: flex;
       gap: 0.6rem;
-      background: rgba(0, 2, 6, 0.95);
+      background: rgba(5, 11, 20, 0.95);
     }
 
     .ai-input {
       flex: 1;
-      background: rgba(15, 28, 60, 0.8);
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--card-border);
       padding: 0.65rem 0.95rem;
       border-radius: 8px;
@@ -875,37 +814,23 @@
       outline: none;
       transition: var(--transition);
     }
-
-    .ai-input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
-    }
+    .ai-input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(0, 229, 255, 0.35); }
 
     .ai-send {
       background: var(--primary);
       border: none;
-      color: #000103;
+      color: #000105;
       padding: 0.65rem 1.1rem;
       border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
       transition: var(--transition);
     }
-
-    .ai-send:hover {
-      background: var(--primary-light);
-      box-shadow: 0 0 18px rgba(56, 189, 248, 0.6);
-    }
+    .ai-send:hover { background: var(--primary-light); box-shadow: 0 0 18px rgba(0, 229, 255, 0.6); }
 
     @media (max-width: 900px) {
-      .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 2.5rem;
-      }
-      .hero-btns {
-        justify-content: center;
-      }
+      .hero-container { flex-direction: column-reverse; text-align: center; gap: 2.5rem; }
+      .hero-btns { justify-content: center; }
       .hero h1 { font-size: 2.5rem; }
       .nav-links { display: none; }
     }
@@ -913,7 +838,14 @@
 </head>
 <body>
 
-  <!-- Interactive 3D Touch-Interactive Cybernetic Circuit Canvas -->
+  <!-- Cinematic Background Slideshow (VLSI / IoT / Chip Images) -->
+  <div class="bg-slideshow">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+  </div>
+
+  <!-- Classic Blueprint/Oscilloscope Interactive 3D Circuit Canvas -->
   <canvas id="pcb-canvas"></canvas>
 
   <div class="site-wrapper">
@@ -950,7 +882,7 @@
                 <i class="fab fa-github"></i> GitHub
               </a>
               <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp" style="color: var(--whatsapp);"></i> WhatsApp
+                <i class="fab fa-whatsapp"></i> WhatsApp
               </a>
               <button class="btn btn-ai" onclick="toggleAIChat()">
                 <i class="fas fa-robot"></i> Interactive AI
@@ -1540,13 +1472,11 @@
   </div>
 
   <div class="floating-corner-dock">
-    <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20am%20viewing%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity!" target="_blank" rel="noopener noreferrer" class="float-dock-btn dock-whatsapp" title="Chat on WhatsApp">
+    <a href="https://wa.me/917569330584" target="_blank" rel="noopener noreferrer" class="float-dock-btn dock-whatsapp" title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
-      <span class="dock-tooltip">WhatsApp Direct</span>
     </a>
     <button class="float-dock-btn dock-ai" onclick="toggleAIChat()" title="AI Portfolio Assistant">
       <i class="fas fa-robot"></i>
-      <span class="dock-tooltip">Interactive AI</span>
     </button>
   </div>
 
@@ -1566,7 +1496,6 @@
           <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
           <span class="quick-chip" onclick="askQuestion('What are your top projects?')">Top Projects?</span>
           <span class="quick-chip" onclick="askQuestion('What patents do you have?')">Patents?</span>
-          <span class="quick-chip" onclick="askQuestion('How can I contact Hema?')">Contact Info?</span>
         </div>
       </div>
     </div>
@@ -2134,328 +2063,176 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // High-End Animated 3D Microchip PCB Engine with interactive touch ripples and switching themes
+    /* =========================================
+       NEW PREMIUM BACKGROUND ANIMATION ENGINE
+       ========================================= */
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
-    let traces = [], chipNodes = [], pulses = [], ripples = [];
-    let currentTheme = 'hero';
+    let particles = [];
     let mouse = { x: -1000, y: -1000 };
-
+    
+    // Dynamic theme colors that change per section
     const themes = {
-      hero: { color: '56, 189, 248', secondary: '29, 78, 216', accent: '16, 185, 129', label: 'PORTFOLIO' },
-      patents: { color: '16, 185, 129', secondary: '5, 150, 105', accent: '56, 189, 248', label: 'RESEARCH & IP' },
-      projects: { color: '245, 158, 11', secondary: '217, 119, 6', accent: '56, 189, 248', label: 'ENGINEERING' },
-      experience: { color: '129, 140, 248', secondary: '99, 102, 241', accent: '16, 185, 129', label: 'EXPERIENCE' },
-      certifications: { color: '236, 72, 153', secondary: '219, 39, 119', accent: '56, 189, 248', label: 'CERTIFICATIONS' },
-      skills: { color: '6, 182, 212', secondary: '8, 145, 178', accent: '16, 185, 129', label: 'COMPETENCIES' },
-      achievements: { color: '234, 179, 8', secondary: '202, 138, 4', accent: '245, 158, 11', label: 'HONORS' },
-      education: { color: '168, 85, 247', secondary: '147, 51, 234', accent: '56, 189, 248', label: 'EDUCATION' },
-      contact: { color: '56, 189, 248', secondary: '37, 99, 235', accent: '16, 185, 129', label: 'CONNECT' }
+      hero: { primary: [0, 229, 255], secondary: [255, 179, 0] },
+      patents: { primary: [16, 185, 129], secondary: [20, 184, 166] },
+      projects: { primary: [245, 158, 11], secondary: [239, 68, 68] },
+      experience: { primary: [129, 140, 248], secondary: [99, 102, 241] },
+      certifications: { primary: [236, 72, 153], secondary: [168, 85, 247] },
+      skills: { primary: [6, 182, 212], secondary: [14, 165, 233] },
+      achievements: { primary: [250, 204, 21], secondary: [249, 115, 22] },
+      education: { primary: [168, 85, 247], secondary: [99, 102, 241] },
+      contact: { primary: [56, 189, 248], secondary: [34, 197, 94] }
     };
+    
+    let currentTheme = themes.hero;
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      buildBoard();
+    function resizeCanvas() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+      particles = Array.from(
+        { length: Math.min(100, Math.floor((width * height) / 12000)) },
+        () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.6,
+          vy: (Math.random() - 0.5) * 0.6,
+          radius: Math.random() * 2 + 0.8
+        })
+      );
     }
 
-    class CentralIC {
-      constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.size = 140;
-        this.pulseAngle = 0;
-      }
-      draw(th) {
-        this.pulseAngle += 0.03;
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        
-        ctx.shadowBlur = 50 + Math.sin(this.pulseAngle) * 20;
-        ctx.shadowColor = `rgba(${th.color}, 0.75)`;
-
-        // Dark Metallic Microchip Body
-        ctx.fillStyle = 'rgba(1, 4, 14, 0.98)';
-        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
-        ctx.strokeStyle = `rgba(${th.color}, 0.9)`;
-        ctx.lineWidth = 3;
-        ctx.strokeRect(-this.size/2, -this.size/2, this.size, this.size);
-
-        // Holographic Silicon Die lines
-        ctx.strokeStyle = `rgba(${th.accent}, 0.7)`;
-        ctx.lineWidth = 1.2;
-        ctx.strokeRect(-this.size/3, -this.size/3, this.size*2/3, this.size*2/3);
-
-        // Glowing pins
-        ctx.strokeStyle = `rgba(${th.color}, 0.7)`;
-        ctx.lineWidth = 2.2;
-        for (let i = -this.size/2 + 10; i < this.size/2; i += 12) {
-          ctx.beginPath();
-          ctx.moveTo(i, -this.size/2); ctx.lineTo(i, -this.size/2 - 16);
-          ctx.moveTo(i, this.size/2); ctx.lineTo(i, this.size/2 + 16);
-          ctx.moveTo(-this.size/2, i - 10); ctx.lineTo(-this.size/2 - 16, i - 10);
-          ctx.moveTo(this.size/2, i - 10); ctx.lineTo(this.size/2 + 16, i - 10);
-          ctx.stroke();
-        }
-
-        ctx.font = 'bold 14px JetBrains Mono';
-        ctx.fillStyle = `rgba(${th.color}, 0.99)`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(th.label, 0, 0);
-        
-        ctx.restore();
-      }
+    function rgba(color, alpha) {
+      return `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${alpha})`;
     }
 
-    class TraceLine {
-      constructor(startX, startY) {
-        this.points = [{ x: startX, y: startY }];
-        let curX = startX, curY = startY;
-        const segments = 5 + Math.floor(Math.random() * 3);
-        const step = 70 + Math.random() * 60;
-        for (let i = 0; i < segments; i++) {
-          if (Math.random() > 0.5) curX += (Math.random() > 0.5 ? step : -step);
-          else curY += (Math.random() > 0.5 ? step : -step);
-          this.points.push({ x: curX, y: curY });
-        }
-      }
+    function drawBackground() {
+      // Deep, smooth cinematic gradient
+      const gradient = ctx.createRadialGradient(
+        width * 0.5, height * 0.2, 20,
+        width * 0.5, height * 0.5, Math.max(width, height)
+      );
+      gradient.addColorStop(0, rgba(currentTheme.primary, 0.15));
+      gradient.addColorStop(0.45, rgba(currentTheme.secondary, 0.06));
+      gradient.addColorStop(1, "rgba(3, 7, 18, 0.98)");
 
-      draw(th) {
-        ctx.beginPath();
-        ctx.moveTo(this.points[0].x, this.points[0].y);
-        for (let i = 1; i < this.points.length; i++) {
-          ctx.lineTo(this.points[i].x, this.points[i].y);
-        }
-        ctx.strokeStyle = `rgba(${th.color}, 0.18)`;
-        ctx.lineWidth = 1.4;
-        ctx.stroke();
-
-        for (let pt of this.points) {
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, 2.4, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${th.color}, 0.45)`;
-          ctx.fill();
-        }
-      }
-    }
-
-    class CircuitPulse {
-      constructor(trace) {
-        this.trace = trace;
-        this.seg = 0;
-        this.progress = 0;
-        this.speed = 0.009 + Math.random() * 0.015;
-      }
-
-      update() {
-        this.progress += this.speed;
-        if (this.progress >= 1) {
-          this.progress = 0;
-          this.seg = (this.seg + 1) % (this.trace.points.length - 1);
-        }
-      }
-
-      draw(th) {
-        const p1 = this.trace.points[this.seg];
-        const p2 = this.trace.points[this.seg + 1];
-        if (!p1 || !p2) return;
-
-        const x = p1.x + (p2.x - p1.x) * this.progress;
-        const y = p1.y + (p2.y - p1.y) * this.progress;
-
-        ctx.beginPath();
-        ctx.arc(x, y, 3.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${th.accent}, 0.99)`;
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = `rgba(${th.accent}, 0.98)`;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    class TouchRipple {
-      constructor(x, y, color) {
-        this.x = x;
-        this.y = y;
-        this.radius = 10;
-        this.maxRadius = 130;
-        this.alpha = 0.8;
-        this.color = color;
-      }
-      update() {
-        this.radius += 3.5;
-        this.alpha -= 0.035;
-      }
-      draw() {
-        if (this.alpha <= 0) return;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${this.color}, ${this.alpha})`;
-        ctx.lineWidth = 2;
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = `rgba(${this.color}, ${this.alpha})`;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    function buildBoard() {
-      traces = []; chipNodes = []; pulses = [];
-      const traceCount = Math.floor((width * height) / 35000) + 20;
-      
-      chipNodes.push(new CentralIC(width / 2, height / 2));
-
-      for (let i = 0; i < traceCount; i++) {
-        const startX = Math.random() * width;
-        const startY = Math.random() * height;
-        const trace = new TraceLine(startX, startY);
-        traces.push(trace);
-        pulses.push(new CircuitPulse(trace));
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      const th = themes[currentTheme] || themes.hero;
-
-      // Immersive Dark 3D Circuit Vignette Background
-      const darkGrad = ctx.createRadialGradient(width/2, height/2, 40, width/2, height/2, Math.max(width, height) * 0.7);
-      darkGrad.addColorStop(0, `rgba(2, 10, 32, 0.97)`);
-      darkGrad.addColorStop(0.5, `rgba(0, 3, 10, 0.99)`);
-      darkGrad.addColorStop(1, '#000103');
-      ctx.fillStyle = darkGrad;
+      ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
-
-      for (let t of traces) t.draw(th);
-      for (let c of chipNodes) c.draw(th);
-      for (let p of pulses) {
-        p.update();
-        p.draw(th);
-      }
-
-      // Update and draw touch ripples
-      for (let i = ripples.length - 1; i >= 0; i--) {
-        ripples[i].update();
-        ripples[i].draw();
-        if (ripples[i].alpha <= 0) ripples.splice(i, 1);
-      }
-
-      if (mouse.x > 0) {
-        ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 190, 0, Math.PI * 2);
-        const spotGrad = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 190);
-        spotGrad.addColorStop(0, `rgba(${th.color}, 0.3)`);
-        spotGrad.addColorStop(1, 'transparent');
-        ctx.fillStyle = spotGrad;
-        ctx.fill();
-      }
-
-      requestAnimationFrame(animate);
     }
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const themeName = entry.target.getAttribute('data-theme');
-          if (themeName && themes[themeName]) {
-            currentTheme = themeName;
+    function drawParticles() {
+      // Mouse glow light
+      const glowRadius = 250;
+      const grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, glowRadius);
+      grad.addColorStop(0, rgba(currentTheme.primary, 0.08));
+      grad.addColorStop(0.6, rgba(currentTheme.secondary, 0.03));
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(mouse.x - glowRadius, mouse.y - glowRadius, glowRadius * 2, glowRadius * 2);
+
+      // Draw connections first (under particles)
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = rgba(currentTheme.primary, 0.15 * (1 - dist / 120));
+            ctx.lineWidth = 1;
+            ctx.stroke();
           }
         }
+      }
+
+      // Draw particles
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Bounce edges
+        if (p.x <= 0 || p.x >= width) p.vx *= -1;
+        if (p.y <= 0 || p.y >= height) p.vy *= -1;
+
+        // Draw dot
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = rgba(currentTheme.primary, 0.9);
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = rgba(currentTheme.primary, 0.8);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Connect to mouse
+        const mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+        if (mDist < 160) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = rgba(currentTheme.secondary, 0.4 * (1 - mDist / 160));
+          ctx.stroke();
+        }
       });
-    }, { threshold: 0.25 });
-
-    document.querySelectorAll('section, header').forEach(sec => sectionObserver.observe(sec));
-
-    window.addEventListener('mousemove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    window.addEventListener('click', (e) => {
-      const th = themes[currentTheme] || themes.hero;
-      ripples.push(new TouchRipple(e.clientX, e.clientY, th.accent));
-    });
-
-    window.addEventListener('mouseleave', () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
-    });
-
-    window.addEventListener('resize', resize);
-    resize();
-    animate();
-
-    function getPortfolioAnswer(rawText) {
-      const q = rawText.toLowerCase().replace(/[^a-z0-9 ]/g, " ");
-
-      if (/^(hi|hello|hey|greetings|hola|good morning|good evening)/i.test(q.trim())) {
-        return `<p>Hello! I am Dogga Hema Prasad's portfolio AI collaborator.</p>
-                <p>Feel free to ask about his <strong>ongoing Maven Silicon Design Verification training</strong>, <strong>ongoing ₹1,00,000 RISC-V Seed Grant</strong>, <strong>Electrobits Club leadership</strong>, <strong>Patents</strong>, or <strong>Internships</strong>!</p>`;
-      }
-
-      if (q.includes('maven') || q.includes('silicon') || q.includes('uvm') || q.includes('systemverilog') || q.includes('verification') || q.includes('dv') || q.includes('testbench')) {
-        return `<p><strong>Ongoing Design Verification Training at Maven Silicon (2026):</strong></p>
-                <ul>
-                  <li><strong>Status:</strong> Active Trainee (Batch WBRN 35).</li>
-                  <li><strong>Core Focus:</strong> Advanced digital verification using <strong>SystemVerilog</strong> and <strong>UVM (Universal Verification Methodology)</strong>.</li>
-                  <li><strong>Key Methodologies:</strong> Constrained Random Verification (CRV), SystemVerilog Assertions (SVA), Functional Coverage, and Transaction-Level Modeling (TLM 2.0).</li>
-                </ul>`;
-      }
-
-      if (q.includes('risc') || q.includes('grant') || q.includes('seed') || q.includes('fund') || q.includes('research') || q.includes('security') || q.includes('100000') || q.includes('1 lakh')) {
-        return `<p><strong>Active Sanctioned Seed Research Grant (₹1,00,000 INR):</strong></p>
-                <ul>
-                  <li><strong>Title:</strong> Hardware Security Implementation on RISC-V Architecture</li>
-                  <li><strong>Status:</strong> Ongoing 24-Month Seed Project (2026–2028).</li>
-                  <li><strong>Authority:</strong> Sanctioned by MRIIRS Research Board (Ref: MRIIRS/REGR/2026/483).</li>
-                  <li><strong>Scope:</strong> Silicon root-of-trust crypto accelerators, physical side-channel countermeasures, and custom security extensions on RISC-V RV32I RTL using Verilog HDL & Xilinx Vivado.</li>
-                </ul>`;
-      }
-
-      if (q.includes('electrobit') || q.includes('club') || q.includes('lead') || q.includes('member') || q.includes('role')) {
-        return `<p><strong>Electrobits Club (ECE Department, MRIIRS):</strong></p>
-                <ul>
-                  <li><strong>Role:</strong> Main Technical Member</li>
-                  <li><strong>Responsibilities:</strong> Departmental hardware hackathons, robotics mentoring, circuit design workshops, and student engineering training.</li>
-                </ul>`;
-      }
-
-      if (q.includes('patent') || q.includes('ip') || q.includes('invention') || q.includes('utility') || q.includes('shopping cart') || q.includes('pen')) {
-        return `<p><strong>Intellectual Property & Patents:</strong></p>
-                <ol>
-                  <li><strong>Utility Patent (Granted 2025 | App: 459423-001):</strong> Gesture-Based Wireless Pen Interface for Human-Computer Interaction using multi-axis sensor fusion.</li>
-                  <li><strong>Design Patent (Granted 2025 | App: 202511118413):</strong> Autonomous Smart Shopping Cart with embedded barcode scanning and wireless cloud checkout.</li>
-                  <li><strong>Design Patent (Granted 2025 | App: 465417-001):</strong> Lighting Shrub — aesthetic solar-assisted smart outdoor illumination system.</li>
-                </ol>`;
-      }
-
-      if (q.includes('intern') || q.includes('experience') || q.includes('engineers world') || q.includes('parmod') || q.includes('work')) {
-        return `<p><strong>Professional Experience & Internships:</strong></p>
-                <ul>
-                  <li><strong>VLSI Design & Verification Intern</strong> @ Engineers World Limited (June–July 2026 | ID: EW/INTRN129).</li>
-                  <li><strong>VLSI Design & Verification Intern</strong> @ Engineer's World Private Limited (June–July 2025 | ID: EW/INTRN56).</li>
-                  <li><strong>Engineering Intern</strong> @ Parmod Electricals (June–July 2024).</li>
-                </ul>`;
-      }
-
-      return `<p>Dogga Hema Prasad is an Electronics and Communication Engineering undergraduate at MRIIRS, currently undergoing <strong>Design Verification Training (SystemVerilog/UVM)</strong> at Maven Silicon, and serving as Principal Investigator on an active <strong>₹1,00,000 RISC-V Hardware Security Seed Grant</strong>.</p>
-              <p>Would you like to know more about his ongoing verification training, active seed grant, or project portfolio?</p>`;
     }
 
-    function toggleAIChat() {
-      const modal = document.getElementById('aiModal');
-      modal.classList.toggle('active');
+    function animateBackground() {
+      ctx.clearRect(0, 0, width, height);
+      drawBackground();
+      drawParticles();
+      requestAnimationFrame(animateBackground);
     }
 
-    function askQuestion(questionText) {
-      document.getElementById('aiInput').value = questionText;
+    // IntersectionObserver to change theme colors
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const themeKey = entry.target.dataset.theme;
+            if (themeKey && themes[themeKey]) {
+              currentTheme = themes[themeKey];
+            }
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    document.querySelectorAll("[data-theme]").forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    window.addEventListener("mousemove", event => {
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    // Initialize
+    resizeCanvas();
+    animateBackground();
+
+    /* =========================================
+       AI CHAT LOGIC
+       ========================================= */
+    function toggleAIChat() { document.getElementById('aiModal').classList.toggle('active'); }
+    function handleKeyPress(e) { if (e.key === 'Enter') sendUserMessage(); }
+
+    function askQuestion(text) {
+      document.getElementById('aiInput').value = text;
       sendUserMessage();
-    }
-
-    function handleKeyPress(e) {
-      if (e.key === 'Enter') sendUserMessage();
     }
 
     function sendUserMessage() {
@@ -2464,22 +2241,26 @@
       if (!text) return;
 
       const chatBody = document.getElementById('aiChatBody');
-
-      const userDiv = document.createElement('div');
-      userDiv.className = 'ai-msg ai-msg-user';
-      userDiv.innerText = text;
-      chatBody.appendChild(userDiv);
-
+      chatBody.innerHTML += `<div class="ai-msg ai-msg-user">${text}</div>`;
       input.value = '';
       chatBody.scrollTop = chatBody.scrollHeight;
 
       setTimeout(() => {
-        const botDiv = document.createElement('div');
-        botDiv.className = 'ai-msg ai-msg-bot';
-        botDiv.innerHTML = getPortfolioAnswer(text);
-        chatBody.appendChild(botDiv);
+        let reply = "Query acknowledged. For detailed information, please refer to the specific sections above or contact directly via LinkedIn.";
+        if (text.toLowerCase().includes('maven') || text.toLowerCase().includes('uvm')) {
+           reply = "Active Trainee at Maven Silicon (Batch WBRN 35). Focus: SystemVerilog, UVM 1.2, CRV, and SVA.";
+        } else if (text.toLowerCase().includes('risc') || text.toLowerCase().includes('grant')) {
+           reply = "Principal Investigator for a ₹1,00,000 sanctioned seed grant developing hardware root-of-trust architectures on RV32I RTL.";
+        } else if (text.toLowerCase().includes('patent')) {
+           reply = "I have 3 granted patents: Gesture Pen (Utility), Smart Cart (Design), and Lighting Shrub (Design).";
+        } else if (text.toLowerCase().includes('intern')) {
+           reply = "I completed VLSI verification internships at Engineers World Limited and Engineer's World, plus an industrial core electrical internship at Parmod Electricals.";
+        } else if (text.toLowerCase().includes('project')) {
+           reply = "My top projects include the AI Fruit Sorting System (MECA Finalist), RISC-V Hardware Security (Seed Grant), and IoT Prenatal Health Monitor (1st Prize).";
+        }
+        chatBody.innerHTML += `<div class="ai-msg ai-msg-bot">${reply}</div>`;
         chatBody.scrollTop = chatBody.scrollHeight;
-      }, 140);
+      }, 300);
     }
   </script>
 </body>
