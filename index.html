@@ -1264,6 +1264,16 @@
             </div>
           </div>
 
+          <div class="card card-ongoing reveal" onclick="openTechModal('amba_transformer')">
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">AMBA-Based On-Chip Data Transformation Engine</h3>
+                <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing Project</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-project-diagram"></i> Computer Architecture • On-Chip Data Processing</div>
+              <p class="card-desc">Designing an AMBA-based engine for on-chip data transformation using AXI4, AXI4-Lite, AXI4-Stream, AHB-Lite, and APB interfaces, with VALID/READY handshaking and protocol bridge concepts.</p>
+            </div>
+          </div>
           <div class="card reveal" onclick="openTechModal('esp8266')">
             <div>
               <div class="card-header">
@@ -1485,6 +1495,10 @@
               <span class="tag" onclick="openTechModal('rest_api')">HTTP / REST APIs</span>
               <span class="tag" onclick="openTechModal('firebase')">Firebase Realtime DB</span>
               <span class="tag" onclick="openTechModal('n8n')">n8n Automation</span>
+              <span class="tag" onclick="openTechModal('amba_protocols')">AMBA: AXI4 / AXI4-Lite / AXI4-Stream</span>
+              <span class="tag" onclick="openTechModal('amba_protocols')">AHB-Lite / APB</span>
+              <span class="tag" onclick="openTechModal('amba_protocols')">Crossbars & Protocol Bridges</span>
+              <span class="tag" onclick="openTechModal('amba_protocols')">VALID / READY Handshaking</span>
             </div>
           </div>
 
@@ -1497,6 +1511,9 @@
               <span class="tag" onclick="openTechModal('plc')">GX Works3 (PLC)</span>
               <span class="tag" onclick="openTechModal('matlab')">MATLAB & Simulink</span>
               <span class="tag" onclick="openTechModal('fusion360')">Autodesk Fusion 360</span>
+              <span class="tag" onclick="openTechModal('synopsys_dc')">Synopsys Design Compiler</span>
+              <span class="tag" onclick="openTechModal('modelsim')">ModelSim</span>
+              <span class="tag" onclick="openTechModal('questasim')">QuestaSim</span>
             </div>
           </div>
 
@@ -1507,8 +1524,17 @@
               <span class="tag" onclick="openTechModal('uvm')">UVM 1.2 Architecture</span>
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
               <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA (RV32I)</span>
+              <span class="tag" onclick="openTechModal('riscv')">RV32IM / Custom ISA</span>
+              <span class="tag" onclick="openTechModal('riscv')">5-Stage Pipeline</span>
+              <span class="tag" onclick="openTechModal('riscv')">Hazard Detection / Branch Prediction</span>
+              <span class="tag" onclick="openTechModal('riscv')">Root-of-Trust / Privilege Modes</span>
               <span class="tag" onclick="openTechModal('python')">Python 3</span>
               <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">SystemVerilog RTL</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">FSM Design</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Synthesizable RTL</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Testbenches / Timing Closure / CDC</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Low-Power RTL</span>
             </div>
           </div>
         </div>
@@ -2286,6 +2312,72 @@
           { label: "Status", val: "Granted (2025)" },
           { label: "Energy Source", val: "Solar Assisted CleanTech" },
           { label: "Application", val: "Smart Outdoor Illumination" }
+        ]
+      },
+      amba_transformer: {
+        title: "AMBA-Based On-Chip Data Transformation Engine",
+        category: "Ongoing Computer Architecture Project",
+        icon: "fas fa-project-diagram",
+        desc: "An ongoing project focused on transforming data on-chip through AMBA interfaces and understanding high-throughput, memory-mapped, and streaming communication paths.",
+        specs: [
+          { label: "Protocols", val: "AXI4, AXI4-Lite, AXI4-Stream, AHB-Lite, APB" },
+          { label: "Design Topics", val: "Crossbars, Protocol Bridges, VALID / READY" },
+          { label: "Focus", val: "On-Chip Data Transformation" },
+          { label: "Status", val: "Ongoing Project" }
+        ]
+      },
+      amba_protocols: {
+        title: "AMBA Protocols",
+        category: "On-Chip Interconnect & Data Movement",
+        icon: "fas fa-network-wired",
+        desc: "Working knowledge of AMBA communication protocols used for control, memory-mapped, and streaming data transfers between on-chip components.",
+        specs: [
+          { label: "Protocols", val: "AXI4, AXI4-Lite, AXI4-Stream" },
+          { label: "Additional", val: "AHB-Lite, APB" },
+          { label: "Architecture", val: "Crossbars & Protocol Bridges" },
+          { label: "Handshake", val: "VALID / READY" }
+        ]
+      },
+      rtl_design: {
+        title: "SystemVerilog RTL & Design",
+        category: "RTL Design and Verification",
+        icon: "fas fa-code",
+        desc: "Skills in writing synthesizable RTL, designing finite-state machines, building testbenches, and considering timing, clock-domain crossing, and low-power requirements.",
+        specs: [
+          { label: "RTL", val: "SystemVerilog RTL / Synthesizable RTL" },
+          { label: "Design", val: "FSM Design" },
+          { label: "Verification", val: "Testbenches" },
+          { label: "Implementation", val: "Timing Closure, CDC, Low-Power RTL" }
+        ]
+      },
+      synopsys_dc: {
+        title: "Synopsys Design Compiler",
+        category: "Logic Synthesis and Timing Analysis",
+        icon: "fas fa-microchip",
+        desc: "EDA tool for synthesizing RTL into optimized gate-level implementations while checking timing and design constraints.",
+        specs: [
+          { label: "Use", val: "RTL Synthesis" },
+          { label: "Focus", val: "Optimization and Constraints" }
+        ]
+      },
+      modelsim: {
+        title: "ModelSim",
+        category: "HDL Simulation",
+        icon: "fas fa-wave-square",
+        desc: "Simulation environment for checking Verilog and SystemVerilog RTL behavior through testbenches and waveforms.",
+        specs: [
+          { label: "Use", val: "RTL Simulation" },
+          { label: "Output", val: "Waveform-Based Debugging" }
+        ]
+      },
+      questasim: {
+        title: "QuestaSim",
+        category: "Advanced HDL Simulation and Verification",
+        icon: "fas fa-vial",
+        desc: "Simulation and verification tool for debugging SystemVerilog designs, testbenches, and protocol behavior.",
+        specs: [
+          { label: "Use", val: "SystemVerilog Verification" },
+          { label: "Focus", val: "Testbench and Protocol Debugging" }
         ]
       },
       ieee_paper: {
