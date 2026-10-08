@@ -60,7 +60,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Cinematic Multi-Image Slideshow Background */
+    /* ===== HD ELECTRONICS, PCB & VLSI CHIP BACKGROUNDS (3 IMAGES) ===== */
     .bg-slideshow {
       position: fixed;
       top: 0;
@@ -81,22 +81,31 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      filter: brightness(0.42) contrast(1.15);
-      animation: slideFade 40s infinite ease-in-out;
+      filter: brightness(0.38) contrast(1.2);
+      animation: slideFade 36s infinite ease-in-out;
     }
 
-    /* Embedded provided background images */
-    .bg-slide:nth-child(1) { background-image: url('image_d15764.jpg'); animation-delay: 0s;[cite: 2] }
-    .bg-slide:nth-child(2) { background-image: url('image_d1579a.png'); animation-delay: 8s;[cite: 3] }
-    .bg-slide:nth-child(3) { background-image: url('image_d157ba.png'); animation-delay: 16s;[cite: 4] }
-    .bg-slide:nth-child(4) { background-image: url('image_d157db.jpg'); animation-delay: 24s;[cite: 5] }
-    .bg-slide:nth-child(5) { background-image: url('image_d15f9e.jpg'); animation-delay: 32s;[cite: 11] }
+    /* 1. Complex Electronic PCB Printed Circuit Board Traces & Components */
+    .bg-slide:nth-child(1) {  
+      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');  
+      animation-delay: 0s;  
+    }
+    /* 2. Silicon Wafer & Semiconductor Microchip Die Manufacturing */
+    .bg-slide:nth-child(2) {  
+      background-image: url('https://images.unsplash.com/photo-1555617981-dac3880eac6e?q=80&w=2070&auto=format&fit=crop');  
+      animation-delay: 12s;  
+    }
+    /* 3. Microprocessor Semiconductor Die Architecture Up Close */
+    .bg-slide:nth-child(3) {  
+      background-image: url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=2070&auto=format&fit=crop');  
+      animation-delay: 24s;  
+    }
 
     @keyframes slideFade {
       0% { opacity: 0; transform: scale(1.04); }
-      6% { opacity: 0.75; transform: scale(1); }
-      22% { opacity: 0.75; transform: scale(1); }
-      28% { opacity: 0; transform: scale(1.04); }
+      8% { opacity: 0.78; transform: scale(1); }
+      28% { opacity: 0.78; transform: scale(1); }
+      36% { opacity: 0; transform: scale(1.04); }
       100% { opacity: 0; transform: scale(1.04); }
     }
 
@@ -1063,10 +1072,8 @@
 </head>
 <body>
 
-  <!-- Cinematic Circuit Slideshow Background -->
+  <!-- HD Electronics, PCB & VLSI Chip Background (3 Images) -->
   <div class="bg-slideshow">
-    <div class="bg-slide"></div>
-    <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
