@@ -61,6 +61,7 @@
     }
 
     /* ===== HD ELECTRONICS, PCB & VLSI CHIP BACKGROUNDS (3 IMAGES) ===== */
+    /* Using highly reliable Wikimedia Commons tech images to bypass adblocker/CORS blocks */
     .bg-slideshow {
       position: fixed;
       top: 0;
@@ -81,32 +82,32 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      filter: brightness(0.38) contrast(1.2);
+      filter: brightness(0.25) contrast(1.2);
       animation: slideFade 36s infinite ease-in-out;
     }
 
-    /* 1. Complex Electronic PCB Printed Circuit Board Traces & Components */
+    /* 1. Macro Printed Circuit Board */
     .bg-slide:nth-child(1) {  
-      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');  
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Printed_circuit_board.jpg/1920px-Printed_circuit_board.jpg');  
       animation-delay: 0s;  
     }
-    /* 2. Silicon Wafer & Semiconductor Microchip Die Manufacturing */
+    /* 2. Silicon Wafer */
     .bg-slide:nth-child(2) {  
-      background-image: url('https://images.unsplash.com/photo-1555617981-dac3880eac6e?q=80&w=2070&auto=format&fit=crop');  
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Wafer_2_Zoll_bis_8_Zoll.jpg/1920px-Wafer_2_Zoll_bis_8_Zoll.jpg');  
       animation-delay: 12s;  
     }
-    /* 3. Microprocessor Semiconductor Die Architecture Up Close */
+    /* 3. Semiconductor Die */
     .bg-slide:nth-child(3) {  
-      background-image: url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=2070&auto=format&fit=crop');  
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Silicon_chip_3d.png/1920px-Silicon_chip_3d.png');  
       animation-delay: 24s;  
     }
 
     @keyframes slideFade {
-      0% { opacity: 0; transform: scale(1.04); }
-      8% { opacity: 0.78; transform: scale(1); }
-      28% { opacity: 0.78; transform: scale(1); }
-      36% { opacity: 0; transform: scale(1.04); }
-      100% { opacity: 0; transform: scale(1.04); }
+      0% { opacity: 0; transform: scale(1.05); }
+      8% { opacity: 0.85; transform: scale(1); }
+      28% { opacity: 0.85; transform: scale(1); }
+      36% { opacity: 0; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1.05); }
     }
 
     /* Interactive Cursor-Reactive Circuit Canvas Overlay */
@@ -151,6 +152,13 @@
       align-items: center;
       gap: 0.6rem;
       text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .logo:hover {
+      color: #fff;
+      text-shadow: 0 0 25px rgba(0, 240, 255, 1);
+      transform: scale(1.02);
     }
 
     .logo-pulse {
@@ -182,7 +190,7 @@
       position: relative;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a:active {
       color: var(--primary-light);
       text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
     }
@@ -199,7 +207,7 @@
       border-radius: 2px;
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::after, .nav-links a:active::after {
       width: 100%;
     }
 
@@ -211,13 +219,14 @@
 
     section {
       padding: 6.5rem 0;
+      scroll-margin-top: 5rem; /* Ensures smooth scroll stops correctly below nav */
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       position: relative;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(30px);
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -260,6 +269,12 @@
       margin-bottom: 1.5rem;
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
       backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+    
+    .badge:hover {
+      transform: scale(1.03);
+      border-color: var(--primary);
     }
 
     .hero h1 {
@@ -303,8 +318,12 @@
       gap: 0.6rem;
       cursor: pointer;
       border: 1px solid transparent;
-      transition: var(--transition);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s;
       font-family: var(--font-sans);
+    }
+    
+    .btn:active {
+      transform: scale(0.95) !important;
     }
 
     .btn-primary {
@@ -463,13 +482,17 @@
       padding: 2rem;
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      transition: var(--transition);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       cursor: pointer;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+    }
+    
+    .card:active {
+      transform: scale(0.97) translateY(-2px);
     }
 
     .card:hover {
@@ -548,6 +571,11 @@
       color: var(--primary-light);
       transition: var(--transition);
       cursor: pointer;
+      display: inline-block;
+    }
+    
+    .tag:active {
+      transform: scale(0.92);
     }
 
     .card:hover .tag {
@@ -569,6 +597,13 @@
       padding: 1.8rem;
       backdrop-filter: blur(20px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.75);
+      transition: var(--transition);
+    }
+    
+    .skill-box:hover {
+      border-color: var(--card-hover-border);
+      box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 0 0 35px rgba(0, 240, 255, 0.3);
+      transform: translateY(-4px);
     }
 
     .skill-box h3 {
@@ -608,6 +643,8 @@
       border-radius: 6px;
       transition: all 0.2s;
     }
+    
+    .cat-btn:active { transform: scale(0.95); }
 
     .cat-btn.active-cat {
       background: rgba(0, 240, 255, 0.18);
@@ -634,6 +671,8 @@
       border-radius: 6px;
       transition: all 0.2s;
     }
+    
+    .gate-btn:active { transform: scale(0.92); }
 
     .gate-btn.active, .gate-btn:hover {
       background: var(--cyan);
@@ -671,8 +710,10 @@
       font-weight: 700;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
+    
+    .toggle-btn:active { transform: scale(0.88); }
 
     .toggle-btn.active {
       border-color: var(--green);
@@ -814,6 +855,8 @@
       transition: transform 0.25s, box-shadow 0.25s;
       position: relative;
     }
+    
+    .float-dock-btn:active { transform: scale(0.9); }
 
     .float-dock-btn:hover {
       transform: scale(1.12);
@@ -858,10 +901,13 @@
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .modal-overlay.active {
       display: flex;
+      opacity: 1;
     }
 
     .tech-modal-card {
@@ -873,12 +919,12 @@
       padding: 2.3rem;
       box-shadow: 0 35px 90px rgba(0, 0, 0, 0.98), 0 0 55px rgba(0, 240, 255, 0.4);
       position: relative;
-      animation: slideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes slideUp {
-      from { transform: translateY(24px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .modal-overlay.active .tech-modal-card {
+      transform: scale(1);
     }
 
     .modal-close-btn {
@@ -902,6 +948,7 @@
       color: #fff;
       border-color: var(--primary);
       background: rgba(0, 240, 255, 0.3);
+      transform: rotate(90deg);
     }
 
     .tech-modal-header {
@@ -957,9 +1004,16 @@
       display: none;
       flex-direction: column;
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .ai-modal.active { display: flex; }
+    .ai-modal.active { 
+      display: flex; 
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
 
     .ai-header {
       padding: 1.1rem 1.4rem;
@@ -995,6 +1049,12 @@
       max-width: 88%;
       line-height: 1.55;
       word-break: break-word;
+      animation: msgPop 0.3s ease;
+    }
+    
+    @keyframes msgPop {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .ai-msg p { margin-bottom: 0.5rem; }
@@ -1027,6 +1087,9 @@
       transition: var(--transition);
       font-family: var(--font-mono);
     }
+    
+    .quick-chip:active { transform: scale(0.9); }
+    
     .quick-chip:hover { background: rgba(0, 240, 255, 0.3); color: #fff; }
 
     .ai-footer {
@@ -1060,6 +1123,9 @@
       font-weight: 600;
       transition: var(--transition);
     }
+    
+    .ai-send:active { transform: scale(0.9); }
+    
     .ai-send:hover { background: var(--primary-light); box-shadow: 0 0 18px rgba(0, 240, 255, 0.7); }
 
     @media (max-width: 900px) {
@@ -1072,7 +1138,8 @@
 </head>
 <body>
 
-  <!-- HD Electronics, PCB & VLSI Chip Background (3 Images) -->
+  <!-- HD Electronics, PCB & VLSI Chip Background -->
+  <!-- Updated to highly robust Wikimedia Commons standard URLs to bypass CORS/Adblockers -->
   <div class="bg-slideshow">
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
@@ -1084,7 +1151,8 @@
 
   <div class="site-wrapper">
     <nav>
-      <a href="#" class="logo">
+      <!-- FIXED LOGO LINK: Navigates to the live portfolio portal -->
+      <a href="https://hemanth-5400.github.io/portfolio/" class="logo">
         <div class="logo-pulse"></div>
         <span>DOGGA HEMA PRASAD</span>
       </a>
@@ -1106,7 +1174,7 @@
         <div class="hero-content reveal">
           <div class="badge"><i class="fas fa-microchip"></i> VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</div>
           <h1>Architecting <span>Resilient Silicon</span> & Intelligent Hardware</h1>
-          <p>Electronics and Communication Engineer specializing in Design Verification (SystemVerilog/UVM), Hardware Root-of-Trust Cryptography for open-source RISC-V architectures, Industrial PLC Automation, and Edge AI Systems.</p>
+          <p>Electronics and Communication Engineering (AIoT) student specializing in Verilog RTL design, AMBA APB protocols, RISC-V architectures, functional verification, industrial automation, and edge AI systems.</p>
           
           <div class="hero-action-clusters">
             <div class="hero-btns">
@@ -1147,13 +1215,13 @@
                 <h3 class="card-title">Gesture-Based Wireless Pen Interface (Utility Patent)</h3>
                 <span class="tag">App: 459423-001 <i class="fas fa-external-link-alt"></i></span>
               </div>
-              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <div class="card-meta"><i class="fas fa-award"></i> Filed May 2025</div>
               <p class="card-desc">Patented Human-Computer Interaction interface capturing 3D spatial motion with multi-axis sensor fusion algorithms to generate digital inputs without touch displays.</p>
             </div>
             <div class="tag-list">
-              <span class="tag">HCI Interface</span>
-              <span class="tag">6-DOF Tracking</span>
-              <span class="tag">IMU Fusion</span>
+              <span class="tag" onclick="event.stopPropagation()">HCI Interface</span>
+              <span class="tag" onclick="event.stopPropagation()">6-DOF Tracking</span>
+              <span class="tag" onclick="event.stopPropagation()">IMU Fusion</span>
             </div>
           </div>
 
@@ -1163,13 +1231,13 @@
                 <h3 class="card-title">Autonomous Smart Shopping Cart (Design Patent)</h3>
                 <span class="tag">App: 202511118413 <i class="fas fa-external-link-alt"></i></span>
               </div>
-              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <div class="card-meta"><i class="fas fa-award"></i> Filed November 2025</div>
               <p class="card-desc">Automated retail supermarket architecture integrating optical barcode recognition, mass telemetry, and instant cloud-linked checkout protocols.</p>
             </div>
             <div class="tag-list">
-              <span class="tag">Smart Retail</span>
-              <span class="tag">Embedded Systems</span>
-              <span class="tag">Cloud Billing</span>
+              <span class="tag" onclick="event.stopPropagation()">Smart Retail</span>
+              <span class="tag" onclick="event.stopPropagation()">Embedded Systems</span>
+              <span class="tag" onclick="event.stopPropagation()">Cloud Billing</span>
             </div>
           </div>
 
@@ -1179,13 +1247,13 @@
                 <h3 class="card-title">Lighting Shrub System (Design Patent)</h3>
                 <span class="tag">App: 465417-001 <i class="fas fa-external-link-alt"></i></span>
               </div>
-              <div class="card-meta"><i class="fas fa-award"></i> Granted Patent • 2025</div>
+              <div class="card-meta"><i class="fas fa-award"></i> Filed July 2025</div>
               <p class="card-desc">Architectural outdoor smart luminaire architecture engineered with biomimetic solar collection petals and ambient-sensing LED driving stages.</p>
             </div>
             <div class="tag-list">
-              <span class="tag">CleanTech</span>
-              <span class="tag">Solar Energy</span>
-              <span class="tag">Smart Cities</span>
+              <span class="tag" onclick="event.stopPropagation()">CleanTech</span>
+              <span class="tag" onclick="event.stopPropagation()">Solar Energy</span>
+              <span class="tag" onclick="event.stopPropagation()">Smart Cities</span>
             </div>
           </div>
 
@@ -1193,15 +1261,30 @@
             <div>
               <div class="card-header">
                 <h3 class="card-title">4th IEEE DELCON 2025 Presentation</h3>
-                <span class="tag">PID: 174 <i class="fas fa-external-link-alt"></i></span>
+                <span class="tag">IEEE Xplore <i class="fas fa-external-link-alt"></i></span>
               </div>
               <div class="card-meta"><i class="fas fa-file-alt"></i> Peer-Reviewed • IEEE Delhi Section (2025)</div>
-              <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications" at Jamia Millia Islamia.</p>
+              <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications".</p>
             </div>
             <div class="tag-list">
               <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="tag tag-highlight">
                 View on IEEE Xplore &rarr;
               </a>
+            </div>
+          </div>
+
+          <div class="card reveal" onclick="openTechModal('research_note')">
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Research Note: Amdahl's Law</h3>
+                <span class="tag">MRIIRS • 2026</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-book"></i> Parallel Computing Theory</div>
+              <p class="card-desc">Theoretical Limits of Parallel Speedup in Multicore Computing, MRIIRS, September 2026.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag" onclick="event.stopPropagation()">Parallel Computing</span>
+              <span class="tag" onclick="event.stopPropagation()">Multicore Architecture</span>
             </div>
           </div>
         </div>
@@ -1217,13 +1300,13 @@
             <div>
               <div class="card-header">
                 <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
-                <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing • ₹1,00,000 Seed Grant</span>
+                <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing • Seed Research Grant</span>
               </div>
-              <div class="card-meta"><i class="fas fa-university"></i> Sanctioned Research Project • MRIIRS (2026–2028)</div>
-              <p class="card-desc">Principal Investigator designing hardware root-of-trust cryptographic accelerators, physical side-channel attack countermeasures, and security extensions on open-source RISC-V RV32I RTL.</p>
+              <div class="card-meta"><i class="fas fa-university"></i> Principal Investigator • MRIIRS (2026–Present)</div>
+              <p class="card-desc">Developing hardware root-of-trust security extensions and side-channel countermeasures on an open-source RISC-V RV32I RTL core, validated through FPGA emulation.</p>
             </div>
             <div class="tag-list">
-              <span class="tag tag-ongoing">Ongoing Research</span>
+              <span class="tag tag-ongoing" onclick="event.stopPropagation()">Ongoing Research</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('riscv')">RISC-V ISA</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('hardware_security')">Hardware Security</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
@@ -1231,95 +1314,67 @@
             </div>
           </div>
 
+          <div class="card reveal" onclick="openTechModal('amba_transformer')">
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">AMBA APB Data Transformation Unit (Verilog)</h3>
+                <span class="tag tag-highlight">September 2026</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-project-diagram"></i> Digital VLSI Design</div>
+              <p class="card-desc">Designed an APB-based on-chip data transformation unit supporting XOR, bit-reverse and half-word swap modes with register readback. Verified all 4 test cases in Icarus Verilog on EDA Playground.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag" onclick="event.stopPropagation()">AMBA APB</span>
+              <span class="tag" onclick="event.stopPropagation()">Verilog HDL</span>
+              <span class="tag" onclick="event.stopPropagation()">EDA Playground</span>
+            </div>
+          </div>
+
+          <div class="card reveal" onclick="openTechModal('verilog_miniprojects')">
+            <div>
+              <div class="card-header">
+                <h3 class="card-title">Verilog RTL Mini-Projects</h3>
+                <span class="tag">Digital Logic</span>
+              </div>
+              <div class="card-meta"><i class="fas fa-code"></i> RTL Design & Verification</div>
+              <p class="card-desc">Synchronous FIFO memory with functional verification testbench, AMBA APB protocol controller, and FSM-based smart traffic light controller with dedicated left-turn logic.</p>
+            </div>
+            <div class="tag-list">
+              <span class="tag" onclick="event.stopPropagation()">Synchronous FIFO</span>
+              <span class="tag" onclick="event.stopPropagation()">Traffic Controller</span>
+              <span class="tag" onclick="event.stopPropagation()">FSM Design</span>
+            </div>
+          </div>
+
           <div class="card reveal" onclick="openTechModal('jetson_nano')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">AI Fruit Sorting System (Mitsubishi PLC + Jetson Nano)</h3>
-                <span class="tag">National Finalist</span>
+                <h3 class="card-title">Deep Learning Based Automated Fruit Sorting System</h3>
+                <span class="tag tag-highlight">National Finalist</span>
               </div>
               <div class="card-meta"><i class="fas fa-industry"></i> 6th Mitsubishi Electric Cup • 2026</div>
-              <p class="card-desc">Edge AI CNN inference model running on Nvidia Jetson Nano coupled directly with industrial Mitsubishi PLC (GX Works3) for high-speed pneumatic industrial fruit grading and sorting.</p>
+              <p class="card-desc">Integrated Jetson Nano deep learning inference with Mitsubishi PLC control to build an automated sorting system.</p>
             </div>
             <div class="tag-list">
               <span class="tag" onclick="event.stopPropagation(); openTechModal('jetson_nano')">Jetson Nano</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('plc')">Mitsubishi PLC</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python / OpenCV</span>
-              <span class="tag">Pneumatics</span>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('max7219')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">Bluetooth Smart Digital Clock & Notice Display</h3>
-                <span class="tag">Embedded Systems</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-clock"></i> Wireless Hardware • 2024–2025</div>
-              <p class="card-desc">Cascaded MAX7219 8x8 LED matrix display driven by an Arduino Nano with SPI communication. Receives live real-time clock telemetry and broadcasts custom mobile text via HC-05 Bluetooth.</p>
-            </div>
-            <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('max7219')">MAX7219 Driver</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Nano</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('hc05')">HC-05 UART</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C++</span>
+              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python / Deep Learning</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('esp32_cam')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">Cloud-Connected Smart Agriculture Telemetry Boat</h3>
-                <span class="tag">AgriTech IoT</span>
+                <h3 class="card-title">IoT & Embedded Systems Projects</h3>
+                <span class="tag">IoT Solutions</span>
               </div>
-              <div class="card-meta"><i class="fas fa-ship"></i> Autonomous Vehicle • 2024</div>
-              <p class="card-desc">IoT-enabled aquatic inspection vessel powered by ESP32-CAM streaming real-time video surveillance and water quality sensor telemetry over AWS IoT Core and MQTT brokers.</p>
+              <div class="card-meta"><i class="fas fa-wifi"></i> Embedded Hardware • 2024–2025</div>
+              <p class="card-desc">IoT Smart Shopping Cart using ESP32 (2025), IoT Smart Boat for farmers using ESP32-CAM (2024), Prenatal Monitoring System, Mobile Safety Tracking System, and ESP8266 Smart Switch.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp32_cam')">ESP32-CAM</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('aws_iot')">AWS IoT Core</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">ThingSpeak</span>
-            </div>
-          </div>
-
-          <div class="card card-ongoing reveal" onclick="openTechModal('amba_transformer')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">AMBA-Based On-Chip Data Transformation Engine</h3>
-                <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing Project</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-project-diagram"></i> Computer Architecture • On-Chip Data Processing</div>
-              <p class="card-desc">Designing an AMBA-based engine for on-chip data transformation using AXI4, AXI4-Lite, AXI4-Stream, AHB-Lite, and APB interfaces, with VALID/READY handshaking and protocol bridge concepts.</p>
-            </div>
-          </div>
-          <div class="card reveal" onclick="openTechModal('esp8266')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">IoT Prenatal Maternal Health Telemetry Monitor</h3>
-                <span class="tag tag-highlight">1st Prize Winner</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-heartbeat"></i> HealthTech Innovation • 2024</div>
-              <p class="card-desc">Wearable healthcare telemetry monitor tracking BPM, fetal vibration patterns, and maternal body temperature, pushing live telemetry to cloud databases via REST APIs.</p>
-            </div>
-            <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('esp8266')">ESP8266</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('thingspeak')">Cloud API</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">Biometrics</span>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('arduino')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">Autonomous Line Follower Robot (Flash UNO)</h3>
-                <span class="tag tag-highlight">1st Prize Winner</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-robot"></i> Echiesta 2K24 & RoboRush 1.0</div>
-              <p class="card-desc">High-speed differential drive autonomous robotics platform utilizing high-density IR reflectance arrays, tuned PID feedback control, and geared DC motor drives.</p>
-            </div>
-            <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Core</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('sensors')">IR Sensor Array</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">PID Control</span>
+              <span class="tag" onclick="event.stopPropagation()">ESP32 / ESP8266</span>
+              <span class="tag" onclick="event.stopPropagation()">ESP32-CAM</span>
+              <span class="tag" onclick="event.stopPropagation()">Biometrics</span>
             </div>
           </div>
         </div>
@@ -1334,66 +1389,64 @@
           <div class="card card-ongoing reveal" onclick="openTechModal('maven_silicon')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">Design Verification Engineering Trainee</h3>
+                <h3 class="card-title">Design Verification Trainee</h3>
                 <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing Training • 2026</span>
               </div>
-              <div class="card-meta"><i class="fas fa-microchip"></i> Maven Silicon (Active Enrollment)</div>
-              <p class="card-desc">Comprehensive industry training in functional ASIC verification: SystemVerilog Object-Oriented Programming (OOP), Universal Verification Methodology (UVM), Constrained Random Verification (CRV), SystemVerilog Assertions (SVA), and Functional Coverage metrics.</p>
+              <div class="card-meta"><i class="fas fa-microchip"></i> Maven Silicon</div>
+              <p class="card-desc">Training in SystemVerilog, UVM 1.2, constrained-random verification, SystemVerilog Assertions (SVA) and functional coverage.</p>
             </div>
             <div class="tag-list">
-              <span class="tag tag-ongoing">Ongoing Training</span>
+              <span class="tag tag-ongoing" onclick="event.stopPropagation()">Ongoing Training</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('systemverilog')">SystemVerilog</span>
               <span class="tag" onclick="event.stopPropagation(); openTechModal('uvm')">UVM 1.2</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag">TLM 2.0</span>
+              <span class="tag" onclick="event.stopPropagation()">Coverage</span>
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('verilog')">
+          <div class="card reveal" onclick="openTechModal('maven_intern')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">VLSI Design & Verification Intern</h3>
-                <span class="tag">ID: EW/INTRN129</span>
+                <h3 class="card-title">VLSI Design and Verification Intern</h3>
+                <span class="tag">April 2026</span>
               </div>
-              <div class="card-meta"><i class="fas fa-building"></i> Engineers World Limited • June 2026 – July 2026</div>
-              <p class="card-desc">Advanced digital VLSI design, SystemVerilog/Verilog RTL modeling, simulation testbench development, and ASIC verification flows for complex digital logic blocks.</p>
+              <div class="card-meta"><i class="fas fa-building"></i> Maven Silicon (Remote)</div>
+              <p class="card-desc">Verified digital RTL design blocks using ASIC-style verification methodology and Verilog testbenches for every assigned module. Applied RTL design practices including blocking/non-blocking assignments, FSM coding styles, and synthesis guidelines.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">Vivado</span>
-              <span class="tag">RTL Verification</span>
+              <span class="tag" onclick="event.stopPropagation()">RTL Verification</span>
+              <span class="tag" onclick="event.stopPropagation()">Verilog Testbenches</span>
+              <span class="tag" onclick="event.stopPropagation()">FSM Coding</span>
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('verilog')">
+          <div class="card reveal" onclick="openTechModal('vlsi_basics_intern')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">VLSI Design & Verification Intern</h3>
-                <span class="tag">ID: EW/INTRN56</span>
+                <h3 class="card-title">Digital Electronics and VLSI Basics Intern</h3>
+                <span class="tag">June – August 2025</span>
               </div>
-              <div class="card-meta"><i class="fas fa-building"></i> Engineer's World Private Limited • June 2025 – July 2025</div>
-              <p class="card-desc">Hands-on register-transfer level (RTL) coding, functional simulation testbenches, logic minimization, and gate-level verification for specialized digital sub-circuits.</p>
+              <div class="card-meta"><i class="fas fa-laptop-code"></i> Engineering Training</div>
+              <p class="card-desc">Built foundations in digital logic design and VLSI through hands-on RTL training exercises.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">RTL Coding</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('vivado')">EDA Toolchains</span>
-              <span class="tag">Digital Logic</span>
+              <span class="tag" onclick="event.stopPropagation()">Digital Logic</span>
+              <span class="tag" onclick="event.stopPropagation()">RTL Training</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('pcb_design')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">Core Electrical Engineering Intern</h3>
+                <h3 class="card-title">MCB and PLC Manufacturing Intern</h3>
                 <span class="tag">Industrial</span>
               </div>
-              <div class="card-meta"><i class="fas fa-bolt"></i> Parmod Electricals • June 2024 – July 2024</div>
-              <p class="card-desc">Industrial core electrical engineering training covering MCB & PLC manufacturing, industrial control panel wiring, power distribution networks, and hardware troubleshooting.</p>
+              <div class="card-meta"><i class="fas fa-bolt"></i> Core Electrical Company • June – July 2024</div>
+              <p class="card-desc">Gained industrial control experience through PLC-based panel wiring and MCB manufacturing.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('pcb_design')">Control Wiring</span>
-              <span class="tag">Power Systems</span>
-              <span class="tag">Industrial Assembly</span>
+              <span class="tag" onclick="event.stopPropagation()">PLC Panel Wiring</span>
+              <span class="tag" onclick="event.stopPropagation()">MCB Manufacturing</span>
+              <span class="tag" onclick="event.stopPropagation()">Industrial Control</span>
             </div>
           </div>
         </div>
@@ -1410,12 +1463,12 @@
                 <h3 class="card-title">Learning FPGA Development</h3>
                 <span class="tag">LinkedIn Learning</span>
               </div>
-              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed January 2025</div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> January 2025</div>
               <p class="card-desc">FPGA hardware architectures, Look-Up Table (LUT) mapping, HDL synthesis flows, timing closure, and bitstream configuration.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('fpga')">FPGA Architecture</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('verilog')">HDL Synthesis</span>
+              <span class="tag" onclick="event.stopPropagation()">FPGA Architecture</span>
+              <span class="tag" onclick="event.stopPropagation()">HDL Synthesis</span>
             </div>
           </div>
 
@@ -1425,12 +1478,12 @@
                 <h3 class="card-title">Electronics Foundation: Semiconductor Devices</h3>
                 <span class="tag">LinkedIn Learning</span>
               </div>
-              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed March 2025</div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> March 2025</div>
               <p class="card-desc">Semiconductor physics, PN junction theory, BJT/MOSFET switching characteristics, and integrated circuit transistor sizing.</p>
             </div>
             <div class="tag-list">
-              <span class="tag">Semiconductors</span>
-              <span class="tag">MOSFET Sizing</span>
+              <span class="tag" onclick="event.stopPropagation()">Semiconductors</span>
+              <span class="tag" onclick="event.stopPropagation()">MOSFET Sizing</span>
             </div>
           </div>
 
@@ -1440,27 +1493,27 @@
                 <h3 class="card-title">IoT Foundation: Low Power Wireless Networking</h3>
                 <span class="tag">LinkedIn Learning</span>
               </div>
-              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed December 2024</div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> December 2024</div>
               <p class="card-desc">Low-power RF wireless topologies, mesh networks, BLE, LPWAN, and power-budget minimization for autonomous sensor nodes.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('mqtt')">Low Power RF</span>
-              <span class="tag">Mesh Protocols</span>
+              <span class="tag" onclick="event.stopPropagation()">Low Power RF</span>
+              <span class="tag" onclick="event.stopPropagation()">Mesh Protocols</span>
             </div>
           </div>
 
           <div class="card reveal" onclick="openTechModal('python')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">Raspberry Pi 4 using Python Programming</h3>
+                <h3 class="card-title">Raspberry Pi 4 using Python Programming Language</h3>
                 <span class="tag">Udemy</span>
               </div>
-              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed March 2025</div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> March 2025</div>
               <p class="card-desc">Embedded Linux SBC environment setup, Python GPIO hardware interfacing, peripheral buses (I2C/SPI), and video streaming.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('python')">Python 3</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('linux')">Embedded Linux</span>
+              <span class="tag" onclick="event.stopPropagation()">Python 3</span>
+              <span class="tag" onclick="event.stopPropagation()">Embedded Linux</span>
             </div>
           </div>
 
@@ -1470,12 +1523,12 @@
                 <h3 class="card-title">Hands on Arduino</h3>
                 <span class="tag">Udemy</span>
               </div>
-              <div class="card-meta"><i class="fas fa-calendar-check"></i> Completed April 2024</div>
+              <div class="card-meta"><i class="fas fa-calendar-check"></i> April 2024</div>
               <p class="card-desc">Microcontroller peripherals (ADC, PWM, Timers, Interrupts), actuator drivers, sensor calibration, and embedded C firmware.</p>
             </div>
             <div class="tag-list">
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('arduino')">Arduino Core</span>
-              <span class="tag" onclick="event.stopPropagation(); openTechModal('cpp')">Embedded C</span>
+              <span class="tag" onclick="event.stopPropagation()">Arduino Core</span>
+              <span class="tag" onclick="event.stopPropagation()">Embedded C</span>
             </div>
           </div>
         </div>
@@ -1487,68 +1540,90 @@
         <h2 class="section-title reveal"><i class="fas fa-tools"></i> Technical Competencies</h2>
         <div class="skills-grid">
           <div class="skill-box reveal">
-            <h3><i class="fas fa-microchip"></i> Hardware & Prototyping</h3>
+            <h3><i class="fas fa-code"></i> Hardware Description Languages</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('pcb_design')">Circuit Designing</span>
-              <span class="tag" onclick="openTechModal('pcb_design')">Zero PCB Prototyping</span>
-              <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266</span>
-              <span class="tag" onclick="openTechModal('arduino')">Arduino Nano / Uno</span>
-              <span class="tag" onclick="openTechModal('max7219')">MAX7219 Driver</span>
-              <span class="tag" onclick="openTechModal('jetson_nano')">Nvidia Jetson Nano</span>
-              <span class="tag" onclick="openTechModal('proteus')">Proteus VSM</span>
-              <span class="tag" onclick="openTechModal('tinkercad')">Tinkercad</span>
+              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
+              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
-            <h3><i class="fas fa-cloud"></i> Cloud & IoT Protocols</h3>
+            <h3><i class="fas fa-microchip"></i> RTL Design</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('thingspeak')">ThingSpeak Cloud</span>
-              <span class="tag" onclick="openTechModal('aws_iot')">AWS IoT Core</span>
-              <span class="tag" onclick="openTechModal('mqtt')">MQTT Protocol</span>
-              <span class="tag" onclick="openTechModal('rest_api')">HTTP / REST APIs</span>
-              <span class="tag" onclick="openTechModal('firebase')">Firebase Realtime DB</span>
-              <span class="tag" onclick="openTechModal('n8n')">n8n Automation</span>
-              <span class="tag" onclick="openTechModal('amba_protocols')">AMBA: AXI4 / AXI4-Lite / AXI4-Stream</span>
-              <span class="tag" onclick="openTechModal('amba_protocols')">AHB-Lite / APB</span>
-              <span class="tag" onclick="openTechModal('amba_protocols')">Crossbars & Protocol Bridges</span>
-              <span class="tag" onclick="openTechModal('amba_protocols')">VALID / READY Handshaking</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">FSM Design (Moore & Mealy)</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Blocking & Non-Blocking</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Generate Blocks</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Synthesis Guidelines</span>
+              <span class="tag" onclick="openTechModal('rtl_design')">Synchronous & Async Resets</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
-            <h3><i class="fas fa-laptop-code"></i> EDA Software & Synthesis</h3>
+            <h3><i class="fas fa-check-double"></i> Verification</h3>
             <div class="tag-list">
+              <span class="tag" onclick="openTechModal('verification')">Self-Checking Testbenches</span>
+              <span class="tag" onclick="openTechModal('verification')">Directed & Constrained-Random</span>
+              <span class="tag" onclick="openTechModal('verification')">Reference Models</span>
+              <span class="tag" onclick="openTechModal('verification')">Waveform Debugging</span>
+              <span class="tag" onclick="openTechModal('verification')">Functional Coverage</span>
+              <span class="tag" onclick="openTechModal('verification')">SystemVerilog Assertions</span>
+              <span class="tag" onclick="openTechModal('uvm')">UVM 1.2 (in training)</span>
+            </div>
+          </div>
+
+          <div class="skill-box reveal">
+            <h3><i class="fas fa-project-diagram"></i> Computer Architecture</h3>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA (RV32I)</span>
+              <span class="tag" onclick="openTechModal('riscv')">Datapath & Control Unit</span>
+              <span class="tag" onclick="openTechModal('riscv')">ALU & Register File</span>
+              <span class="tag" onclick="openTechModal('riscv')">Pipelining & Hazards</span>
+            </div>
+          </div>
+
+          <div class="skill-box reveal">
+            <h3><i class="fas fa-network-wired"></i> Protocols</h3>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('amba_protocols')">AMBA APB</span>
+              <span class="tag" onclick="openTechModal('amba_protocols')">I2C, SPI, UART</span>
+            </div>
+          </div>
+
+          <div class="skill-box reveal">
+            <h3><i class="fas fa-laptop-code"></i> EDA & Simulation Tools</h3>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('questasim')">QuestaSim</span>
+              <span class="tag" onclick="openTechModal('synopsys')">Synopsys VCS / Verdi / Design Compiler</span>
               <span class="tag" onclick="openTechModal('vivado')">Xilinx Vivado</span>
               <span class="tag" onclick="openTechModal('quartus')">Intel Quartus Prime</span>
               <span class="tag" onclick="openTechModal('cadence')">Cadence Virtuoso</span>
-              <span class="tag" onclick="openTechModal('plc')">GX Works3 (PLC)</span>
-              <span class="tag" onclick="openTechModal('matlab')">MATLAB & Simulink</span>
-              <span class="tag" onclick="openTechModal('fusion360')">Autodesk Fusion 360</span>
-              <span class="tag" onclick="openTechModal('synopsys_dc')">Synopsys Design Compiler</span>
-              <span class="tag" onclick="openTechModal('modelsim')">ModelSim</span>
-              <span class="tag" onclick="openTechModal('questasim')">QuestaSim</span>
+              <span class="tag" onclick="openTechModal('icarus')">Icarus Verilog & GTKWave</span>
+              <span class="tag" onclick="openTechModal('edaplayground')">EDA Playground</span>
+              <span class="tag" onclick="openTechModal('matlab')">MATLAB</span>
             </div>
           </div>
 
           <div class="skill-box reveal">
-            <h3><i class="fas fa-terminal"></i> Languages & Verification</h3>
+            <h3><i class="fas fa-terminal"></i> Programming</h3>
             <div class="tag-list">
-              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog (IEEE 1800)</span>
-              <span class="tag" onclick="openTechModal('uvm')">UVM 1.2 Architecture</span>
-              <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="openTechModal('riscv')">RISC-V ISA (RV32I)</span>
-              <span class="tag" onclick="openTechModal('riscv')">RV32IM / Custom ISA</span>
-              <span class="tag" onclick="openTechModal('riscv')">5-Stage Pipeline</span>
-              <span class="tag" onclick="openTechModal('riscv')">Hazard Detection / Branch Prediction</span>
-              <span class="tag" onclick="openTechModal('riscv')">Root-of-Trust / Privilege Modes</span>
-              <span class="tag" onclick="openTechModal('python')">Python 3</span>
-              <span class="tag" onclick="openTechModal('cpp')">C / Embedded C++</span>
-              <span class="tag" onclick="openTechModal('rtl_design')">SystemVerilog RTL</span>
-              <span class="tag" onclick="openTechModal('rtl_design')">FSM Design</span>
-              <span class="tag" onclick="openTechModal('rtl_design')">Synthesizable RTL</span>
-              <span class="tag" onclick="openTechModal('rtl_design')">Testbenches / Timing Closure / CDC</span>
-              <span class="tag" onclick="openTechModal('rtl_design')">Low-Power RTL</span>
+              <span class="tag" onclick="openTechModal('cpp')">C / C++ / Embedded C</span>
+              <span class="tag" onclick="openTechModal('python')">Python</span>
+              <span class="tag" onclick="openTechModal('plc')">PLC Ladder Logic</span>
+              <span class="tag" onclick="openTechModal('linux')">Linux</span>
+            </div>
+          </div>
+
+          <div class="skill-box reveal">
+            <h3><i class="fas fa-microchip"></i> Hardware & Design Tools</h3>
+            <div class="tag-list">
+              <span class="tag" onclick="openTechModal('arduino')">Arduino</span>
+              <span class="tag" onclick="openTechModal('esp32')">ESP32 / ESP8266</span>
+              <span class="tag" onclick="openTechModal('jetson_nano')">Jetson Nano</span>
+              <span class="tag" onclick="openTechModal('fpga')">FPGA Design</span>
+              <span class="tag" onclick="openTechModal('pcb_design')">PCB Design</span>
+              <span class="tag" onclick="openTechModal('proteus')">Proteus & Tinkercad</span>
+              <span class="tag" onclick="openTechModal('fusion360')">Fusion 360</span>
+              <span class="tag" onclick="openTechModal('plc')">GX Works3</span>
             </div>
           </div>
         </div>
@@ -1628,102 +1703,47 @@
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-trophy"></i> Certified Honors & Leadership</h2>
         <div class="grid">
-          <div class="card card-ongoing reveal" onclick="openTechModal('riscv_grant')">
+          <div class="card reveal" onclick="openTechModal('mitsubishi_award')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">₹1,00,000 Seed Research Grant Sanction</h3>
-                <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing Grant</span>
+                <h3 class="card-title">Appreciation Award, 6th Mitsubishi Electric Cup</h3>
+                <span class="tag tag-highlight">National Level</span>
               </div>
-              <div class="card-meta"><i class="fas fa-award"></i> MRIIRS Research Board • 2026–2028</div>
-              <p class="card-desc">Sanctioned seed research grant for 24-month project on "Hardware Security Implementation on RISC-V Architecture" under the Department of ECE.</p>
-            </div>
-          </div>
-
-          <div class="card card-featured reveal" onclick="openTechModal('electrobits')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">Main Technical Member – Electrobits Club</h3>
-                <span class="tag tag-highlight">Technical Core</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-users-cog"></i> ECE Department • MRIIRS</div>
-              <p class="card-desc">Core technical lead managing departmental robotics workshops, circuit design hackathons, and mentoring junior engineers in embedded prototyping.</p>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('arduino')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">1st Prize – ROBO (Line Followers)</h3>
-                <span class="tag tag-highlight">National Tech Fest</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-trophy"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
-              <p class="card-desc">Awarded 1st place in the national autonomous Line Follower Robotics competition representing MRIIRS.</p>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('pen_patent')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">1st Prize – Ideathon</h3>
-                <span class="tag tag-highlight">Innovation Winner</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-trophy"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
-              <p class="card-desc">Secured 1st place for presenting novel human-computer interaction hardware and embedded interface architectures.</p>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('arduino')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">2nd Prize – Arduino Project Battle</h3>
-                <span class="tag">Hardware Prototyping</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-medal"></i> Echiesta-2K24 • Echelon Institute of Technology</div>
-              <p class="card-desc">Secured 2nd position in the competitive real-time Arduino hardware and rapid circuit prototyping battle.</p>
-            </div>
-          </div>
-
-          <div class="card reveal" onclick="openTechModal('plc')">
-            <div>
-              <div class="card-header">
-                <h3 class="card-title">6th Mitsubishi Electric Cup (MECA 2026)</h3>
-                <span class="tag">National Finalist</span>
-              </div>
-              <div class="card-meta"><i class="fas fa-cogs"></i> Factory Automation Finals • MIT-WPU Pune</div>
+              <div class="card-meta"><i class="fas fa-trophy"></i> February 2026</div>
               <p class="card-desc">National Appreciation Finalist with Team AGRISORT AI for developing an industrial AI-driven pneumatic sorting system.</p>
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('pcb_design')">
+          <div class="card reveal" onclick="openTechModal('srijan_award')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">2nd Prize (Srijan Competition) – INNOSKILL 2025</h3>
-                <span class="tag">Institute Award</span>
+                <h3 class="card-title">Second Prize, Srijan Competition, INNOSKILL 2025</h3>
+                <span class="tag tag-highlight">April 2025</span>
               </div>
-              <div class="card-meta"><i class="fas fa-medal"></i> Annual Tech Fest MRIIRS • April 2025</div>
-              <p class="card-desc">Awarded 2nd Prize in the institute-wide hardware innovation and product prototype competition.</p>
+              <div class="card-meta"><i class="fas fa-medal"></i> INNOSKILL 2025</div>
+              <p class="card-desc">Awarded Second Prize in the institute-wide hardware innovation and product prototype competition.</p>
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('esp8266')">
+          <div class="card reveal" onclick="openTechModal('health_innovation')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">1st Prize – Health Tech Innovation (CHI)</h3>
-                <span class="tag tag-highlight">Healthcare Tech</span>
+                <h3 class="card-title">First Prize, Health Tech Innovation, CHI, MRIIRS</h3>
+                <span class="tag tag-highlight">April 2024</span>
               </div>
-              <div class="card-meta"><i class="fas fa-trophy"></i> Centre for Health Innovation, MRIIRS • April 2024</div>
-              <p class="card-desc">Awarded 1st prize for designing and validating the IoT Maternal & Fetal Health Telemetry Monitoring System.</p>
+              <div class="card-meta"><i class="fas fa-trophy"></i> Centre for Health Innovation, MRIIRS</div>
+              <p class="card-desc">Awarded First Prize for designing and validating the IoT Maternal & Fetal Health Telemetry Monitoring System.</p>
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('arduino')">
+          <div class="card reveal" onclick="openTechModal('echiesta_awards')">
             <div>
               <div class="card-header">
-                <h3 class="card-title">Consolation Prize – RoboRush 1.0</h3>
-                <span class="tag">Robotics Contest</span>
+                <h3 class="card-title">Echiesta 2K24 Awards</h3>
+                <span class="tag tag-highlight">November 2024</span>
               </div>
-              <div class="card-meta"><i class="fas fa-award"></i> K.R. Mangalam University • April 2025</div>
-              <p class="card-desc">Awarded prize in the Line Following Robotics competition organized in association with Milagrow & ISKCON.</p>
+              <div class="card-meta"><i class="fas fa-trophy"></i> Echelon Institute of Technology</div>
+              <p class="card-desc">Second Prize in Arduino Project Battle, First Prize in Line Following Robot Race, and First Prize in Ideathon.</p>
             </div>
           </div>
         </div>
@@ -1736,29 +1756,29 @@
         <div class="grid">
           <div class="card card-ongoing reveal" onclick="openTechModal('mriirs_edu')">
             <div class="card-header">
-              <h3 class="card-title">B.Tech in ECE (AIoT)</h3>
-              <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> Ongoing • 2023 – 2027</span>
+              <h3 class="card-title">Bachelor of Technology, Electronics and Communication Engineering (AIoT)</h3>
+              <span class="tag tag-ongoing"><i class="fas fa-spinner fa-spin"></i> 2023 – 2027</span>
             </div>
-            <div class="card-meta"><i class="fas fa-graduation-cap"></i> Manav Rachna International Institute of Research and Studies</div>
-            <p class="card-desc">Comprehensive undergraduate program in Electronics & Communication Engineering specialized in AIoT, embedded systems, VLSI architectures, and signal telemetry.</p>
+            <div class="card-meta"><i class="fas fa-graduation-cap"></i> Manav Rachna International Institute of Research and Studies, Faridabad, Haryana, India</div>
+            <p class="card-desc">Undergraduate program in Electronics and Communication Engineering (AIoT).</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('sasi_edu')">
             <div class="card-header">
-              <h3 class="card-title">Senior Secondary Education (12th)</h3>
-              <span class="tag">Higher Secondary</span>
+              <h3 class="card-title">Senior Secondary (Class XII)</h3>
+              <span class="tag">2021 – 2023</span>
             </div>
-            <div class="card-meta"><i class="fas fa-school"></i> SASI Educational Institutes, Visakhapatnam</div>
-            <p class="card-desc">Pre-engineering coursework emphasizing advanced Mathematics, Physics, and Chemistry (MPC stream).</p>
+            <div class="card-meta"><i class="fas fa-school"></i> SASI Educational Institutes, Visakhapatnam, Andhra Pradesh, India</div>
+            <p class="card-desc">Higher secondary education stream.</p>
           </div>
 
           <div class="card reveal" onclick="openTechModal('school_edu')">
             <div class="card-header">
-              <h3 class="card-title">Secondary Education (10th)</h3>
-              <span class="tag">Matriculation</span>
+              <h3 class="card-title">Secondary (Class X)</h3>
+              <span class="tag">2021</span>
             </div>
-            <div class="card-meta"><i class="fas fa-book-reader"></i> Chalapathi Public School, Visakhapatnam</div>
-            <p class="card-desc">Foundational academic excellence with distinction in scientific and mathematical fundamentals.</p>
+            <div class="card-meta"><i class="fas fa-book-reader"></i> Chalapathi Public School, Visakhapatnam, Andhra Pradesh, India</div>
+            <p class="card-desc">Secondary school certification.</p>
           </div>
         </div>
       </div>
@@ -1767,7 +1787,7 @@
     <footer id="contact" data-theme="contact">
       <div class="container reveal">
         <h3 style="color: var(--text); margin-bottom: 0.6rem; font-size: 1.4rem;">Dogga Hema Prasad</h3>
-        <p style="margin-bottom: 1.4rem; color: var(--text-muted);">Faridabad / Visakhapatnam • doggahemant@gmail.com • +91 7569330584</p>
+        <p style="margin-bottom: 1.4rem; color: var(--text-muted);">Visakhapatnam, India • doggahemant@gmail.com • +91 7569330584</p>
         <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
           <a href="https://wa.me/917569330584" target="_blank" rel="noopener noreferrer" style="color: var(--whatsapp); font-size: 1.4rem;"><i class="fab fa-whatsapp"></i></a>
           <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-size: 1.4rem;"><i class="fab fa-linkedin"></i></a>
@@ -1810,13 +1830,12 @@
     <div class="ai-body" id="aiChatBody">
       <div class="ai-msg ai-msg-bot">
         <p>Hello! I am Dogga Hema Prasad's portfolio AI collaborator.</p>
-        <p>Feel free to ask about his <strong>ongoing Maven Silicon Design Verification training</strong>, <strong>ongoing ₹1,00,000 RISC-V Seed Grant</strong>, <strong>Electrobits Club leadership</strong>, <strong>Patents</strong>, or <strong>Internships</strong>!</p>
+        <p>Feel free to ask about his <strong>Maven Silicon Design Verification training</strong>, <strong>RISC-V Seed Grant</strong>, <strong>AMBA APB projects</strong>, <strong>Patents</strong>, or <strong>Internships</strong>!</p>
         <div class="ai-quick-replies">
           <span class="quick-chip" onclick="askQuestion('Tell me about your Maven Silicon verification training')">Maven Silicon?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your role in Electrobits Club')">Electrobits Club?</span>
-          <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Seed Grant?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your AMBA APB Data Transformation Unit project')">AMBA APB Unit?</span>
+          <span class="quick-chip" onclick="askQuestion('Tell me about your RISC-V Hardware Security research')">RISC-V Research?</span>
           <span class="quick-chip" onclick="askQuestion('Tell me about your internships')">Internships?</span>
-          <span class="quick-chip" onclick="askQuestion('What are your top projects?')">Top Projects?</span>
           <span class="quick-chip" onclick="askQuestion('What patents do you have?')">Patents?</span>
         </div>
       </div>
@@ -1829,574 +1848,424 @@
 
   <script>
     const techDossier = {
-      electrobits: {
-        title: "Electrobits Club Technical Core",
-        category: "Department Leadership & Innovation",
-        icon: "fas fa-users-cog",
-        desc: "Main technical member within the Department of Electronics & Communication Engineering. Responsible for orchestrating departmental hardware hackathons, guiding junior engineers in microcontrollers and robotics prototyping, and conducting technical training sessions.",
-        specs: [
-          { label: "Department", val: "ECE, SET, MRIIRS" },
-          { label: "Role", val: "Main Technical Member" },
-          { label: "Key Focus", val: "Hardware Prototyping & Mentorship" },
-          { label: "Initiatives", val: "Robotics & Circuit Hackathons" }
-        ]
-      },
       mriirs_edu: {
-        title: "B.Tech in ECE (AIoT) [Ongoing]",
+        title: "B.Tech in ECE (AIoT)",
         category: "Undergraduate Engineering Degree",
         icon: "fas fa-user-graduate",
-        desc: "Pursuing Bachelor of Technology in Electronics and Communication Engineering with specialization in AIoT at Manav Rachna International Institute of Research and Studies (NAAC A++ Accredited University).",
+        desc: "Pursuing Bachelor of Technology in Electronics and Communication Engineering with specialization in AIoT at Manav Rachna International Institute of Research and Studies (2023–2027).",
         specs: [
-          { label: "Institution", val: "MRIIRS, Faridabad" },
-          { label: "Duration", val: "2023 – 2027 (Ongoing)" },
-          { label: "Specialization", val: "Artificial Intelligence of Things (AIoT)" },
-          { label: "Affiliation", val: "UGC / AICTE Approved" }
+          { label: "Institution", val: "MRIIRS, Faridabad, Haryana" },
+          { label: "Duration", val: "2023 – 2027" },
+          { label: "Specialization", val: "Electronics and Communication Engineering (AIoT)" }
         ]
       },
       sasi_edu: {
-        title: "Senior Secondary Education (12th)",
+        title: "Senior Secondary (Class XII)",
         category: "Higher Secondary Certificate",
         icon: "fas fa-school",
-        desc: "Completed intermediate education from SASI Educational Institutes with intensive study in Mathematics, Physics, and Chemistry (MPC stream).",
+        desc: "Completed senior secondary education at SASI Educational Institutes, Visakhapatnam (2021–2023).",
         specs: [
           { label: "Institution", val: "SASI Educational Institutes" },
           { label: "Location", val: "Visakhapatnam, Andhra Pradesh" },
-          { label: "Duration", val: "2021 – 2023" },
-          { label: "Stream", val: "MPC (Maths, Physics, Chem)" }
+          { label: "Duration", val: "2021 – 2023" }
         ]
       },
       school_edu: {
-        title: "Secondary School Education (10th)",
+        title: "Secondary (Class X)",
         category: "Secondary Education",
         icon: "fas fa-book-reader",
-        desc: "Completed secondary school certification from Chalapathi Public School with foundational excellence in scientific and mathematical disciplines.",
+        desc: "Completed secondary school certification from Chalapathi Public School, Visakhapatnam in 2021.",
         specs: [
           { label: "Institution", val: "Chalapathi Public School" },
           { label: "Location", val: "Visakhapatnam, Andhra Pradesh" },
-          { label: "Year of Passing", val: "2021" },
-          { label: "Focus", val: "Science & Mathematics" }
+          { label: "Year", val: "2021" }
         ]
       },
       maven_silicon: {
-        title: "Maven Silicon VLSI Training [Ongoing]",
+        title: "Design Verification Trainee, Maven Silicon",
         category: "Design Verification Engineering (DV)",
         icon: "fas fa-microchip",
-        desc: "Currently undertaking advanced industry-standard training on functional ASIC verification methodologies. Focuses on architecting modular verification environments using SystemVerilog and UVM, constrained random testing, functional coverage metrics, and interface protocol verification.",
+        desc: "Training in SystemVerilog, UVM 1.2, constrained-random verification, SystemVerilog Assertions (SVA) and functional coverage.",
         specs: [
-          { label: "Core Methodology", val: "UVM 1.2 / SystemVerilog" },
-          { label: "Verification", val: "CRV, SVA & Functional Coverage" },
-          { label: "RTL Modeling", val: "Verilog HDL & SystemVerilog" },
-          { label: "Status", val: "Active Trainee (2026)" }
+          { label: "Focus", val: "SystemVerilog & UVM 1.2" },
+          { label: "Verification", val: "CRV, SVA & Coverage" },
+          { label: "Status", val: "Ongoing" }
         ]
       },
-      systemverilog: {
-        title: "SystemVerilog (IEEE 1800)",
-        category: "Hardware Description & Verification Language",
-        icon: "fas fa-code",
-        desc: "Object-oriented language used for building verification testbenches, transaction-level modeling (TLM), constrained random stimulus generators, and SystemVerilog Assertions (SVA).",
+      maven_intern: {
+        title: "VLSI Design and Verification Intern, Maven Silicon",
+        category: "ASIC Verification",
+        icon: "fas fa-building",
+        desc: "Verified digital RTL design blocks using ASIC-style verification methodology and Verilog testbenches for every assigned module. Applied RTL design practices including blocking/non-blocking assignments, FSM coding styles, and synthesis guidelines.",
         specs: [
-          { label: "Paradigm", val: "OOP (Classes, Inheritance, Polymorphism)" },
-          { label: "Constructs", val: "Interfaces, Clocking Blocks, Modports" },
-          { label: "Verification", val: "Constraint Solvers & Coverage Groups" },
-          { label: "Application", val: "UVM Testbench Architecture" }
+          { label: "Period", val: "April 2026" },
+          { label: "Methodology", val: "ASIC-style verification & Verilog testbenches" }
         ]
       },
-      uvm: {
-        title: "Universal Verification Methodology (UVM)",
-        category: "Standardized Verification Architecture",
-        icon: "fas fa-cubes",
-        desc: "Standardized modular verification environment framework utilizing UVM base classes (uvm_driver, uvm_monitor, uvm_scoreboard, uvm_sequencer) for scalable ASIC/SoC verification.",
+      vlsi_basics_intern: {
+        title: "Digital Electronics and VLSI Basics Intern",
+        category: "RTL Training",
+        icon: "fas fa-laptop-code",
+        desc: "Built foundations in digital logic design and VLSI through hands-on RTL training exercises (June – August 2025).",
         specs: [
-          { label: "Standard", val: "Accellera / IEEE 1800.2" },
-          { label: "Architecture", val: "TLM 2.0 Communication Ports" },
-          { label: "Phases", val: "Build, Connect, Run, Check" },
-          { label: "Domain", val: "Digital VLSI Verification" }
-        ]
-      },
-      max7219: {
-        title: "MAX7219 Dot Matrix Display Driver",
-        category: "Serial Interfaced LED Matrix Driver",
-        icon: "fas fa-border-all",
-        desc: "Compact, serial input/output common-cathode display driver that interfaces microcontrollers to 8x8 dot matrix displays. In Hema's project, cascaded MAX7219 modules provide real-time clock rendering and live horizontal text scrolling from an Android Bluetooth terminal.",
-        specs: [
-          { label: "Interface", val: "SPI / 3-Wire Serial" },
-          { label: "Operating Voltage", val: "4.0V - 5.5V" },
-          { label: "Scan Rate", val: "800Hz Multiplexing" },
-          { label: "Application", val: "Dynamic Text & Clock Display" }
-        ]
-      },
-      hc05: {
-        title: "HC-05 Bluetooth Module",
-        category: "Wireless Serial Communication (UART)",
-        icon: "fab fa-bluetooth-b",
-        desc: "Full-duplex Bluetooth SPP module utilized to establish a wireless bridge between a smartphone Bluetooth terminal application and the Arduino Nano, updating display text dynamically.",
-        specs: [
-          { label: "Protocol", val: "Bluetooth v2.0+EDR" },
-          { label: "Baud Rate", val: "9600 bps (Configurable)" },
-          { label: "Range", val: "Up to 10 Meters" },
-          { label: "Interface", val: "UART (Tx/Rx)" }
-        ]
-      },
-      jetson_nano: {
-        title: "Nvidia Jetson Nano",
-        category: "Edge AI & Embedded Computing",
-        icon: "fas fa-brain",
-        desc: "In the <strong>AI Fruit Sorting System (Team AGRISORT AI at MECA 2026)</strong>, the Nvidia Jetson Nano executes real-time CNN models via OpenCV & TensorRT to classify agricultural produce defects and trigger pneumatic PLC actuators.",
-        specs: [
-          { label: "GPU Architecture", val: "128-core Maxwell" },
-          { label: "CPU", val: "Quad-core ARM A57" },
-          { label: "Frameworks", val: "TensorRT, OpenCV, PyTorch" },
-          { label: "Interface", val: "GPIO / UART to Mitsubishi PLC" }
-        ]
-      },
-      plc: {
-        title: "Mitsubishi PLC (GX Works3)",
-        category: "Industrial Automation & Ladder Logic",
-        icon: "fas fa-cogs",
-        desc: "Engineered for industrial automation and pneumatic sorting actuators. Ladder Logic routines developed in <strong>GX Works3</strong> execute sequence interlocks, optocoupler sensor inputs, and pneumatic cylinder timing with deterministic real-time control.",
-        specs: [
-          { label: "Software IDE", val: "MELSOFT GX Works3" },
-          { label: "Logic Type", val: "Ladder Diagram (LD)" },
-          { label: "Actuation", val: "Pneumatic Ejectors" },
-          { label: "Competition", val: "6th Mitsubishi Electric Cup Finalist" }
+          { label: "Period", val: "June – August 2025" },
+          { label: "Focus", val: "Digital Logic & RTL" }
         ]
       },
       pcb_design: {
-        title: "Circuit & Zero PCB Prototyping",
-        category: "Hardware Assembly & Soldering",
-        icon: "fas fa-microchip",
-        desc: "Hands-on expertise assembling point-to-point zero PCB prototypes, power distribution buses, optoisolated relay driver circuits, and sensor interface shields for robust field testing.",
+        title: "MCB and PLC Manufacturing Intern",
+        category: "Industrial Electrical",
+        icon: "fas fa-bolt",
+        desc: "Gained industrial control experience through PLC-based panel wiring and MCB manufacturing at Core Electrical Company (June – July 2024).",
         specs: [
-          { label: "Technique", val: "Point-to-Point Hand Soldering" },
-          { label: "Prototyping", val: "Zero PCB / Stripboard" },
-          { label: "Testing", val: "Digital Multimeter & DSO" },
-          { label: "Applications", val: "RoboRush, IoT & Telemetry Systems" }
+          { label: "Company", val: "Core Electrical Company" },
+          { label: "Period", val: "June – July 2024" }
         ]
       },
-      esp32: {
-        title: "ESP32 SoC Microcontroller",
-        category: "Dual-Core IoT Edge Compute",
-        icon: "fas fa-wifi",
-        desc: "Primary edge computing platform for GPS safety tracking, wireless telemetry, and real-time biometric transmission. Leverages FreeRTOS dual-core multitasking for parallel computation.",
-        specs: [
-          { label: "Architecture", val: "Xtensa 32-bit LX6 (240MHz)" },
-          { label: "Connectivity", val: "Wi-Fi 802.11 b/g/n & Bluetooth" },
-          { label: "Peripherals", val: "ADC, DAC, I2C, SPI, UART" },
-          { label: "RTOS", val: "FreeRTOS Multitasking" }
-        ]
-      },
-      esp32_cam: {
-        title: "ESP32-CAM AIoT Module",
-        category: "Embedded Vision & Wi-Fi Telemetry",
-        icon: "fas fa-camera",
-        desc: "Integrated on the <strong>Smart Agriculture Boat</strong> to stream live video surveillance and telemetry metrics over MQTT brokers to remote cloud monitoring consoles.",
-        specs: [
-          { label: "Camera Sensor", val: "OV2640 2MP" },
-          { label: "Memory", val: "520KB SRAM + 4MB PSRAM" },
-          { label: "Protocol", val: "MQTT / HTTP Streaming" },
-          { label: "Application", val: "AgriTech Telemetry Vessel" }
-        ]
-      },
-      esp8266: {
-        title: "ESP8266 Wi-Fi SoC",
-        category: "Low-Power Cloud Node",
-        icon: "fas fa-microchip",
-        desc: "Deployed in the award-winning <strong>IoT Prenatal Health Monitor</strong> and <strong>Smart Cloud Relay Switch</strong> to log sensor telemetry directly to cloud databases via REST APIs.",
-        specs: [
-          { label: "Processor", val: "Tensilica L106 32-bit (80MHz)" },
-          { label: "Connectivity", val: "2.4GHz Wi-Fi (802.11 b/g/n)" },
-          { label: "Protocols", val: "MQTT, HTTP REST, WebSockets" },
-          { label: "Application", val: "Medical IoT & Smart Relay" }
-        ]
-      },
-      arduino: {
-        title: "Arduino Development Platform",
-        category: "Embedded Hardware & Rapid Prototyping",
-        icon: "fas fa-infinity",
-        desc: "Utilized for embedded prototyping, robotics control algorithms (<strong>1st Prize at Echiesta 2K24</strong>, <strong>Flash UNO at RoboRush 1.0</strong>), MAX7219 matrix displays, and sensor calibrations.",
-        specs: [
-          { label: "Core Chips", val: "ATmega328P / SAMD21" },
-          { label: "Language", val: "Embedded C / C++" },
-          { label: "Toolchain", val: "Arduino IDE / CLI" },
-          { label: "Focus", val: "Robotics & Display Actuation" }
-        ]
-      },
-      proteus: {
-        title: "Proteus Design Suite",
-        category: "Electronic Circuit Simulation & VSM",
+      amba_transformer: {
+        title: "AMBA APB Data Transformation Unit (Verilog)",
+        category: "Digital VLSI Design",
         icon: "fas fa-project-diagram",
-        desc: "Used for simulating mixed-signal analog/digital electronic circuits, debugging microcontroller firmware interactions, and verifying PCB schematics prior to fabrication.",
+        desc: "Designed an APB-based on-chip data transformation unit supporting XOR, bit-reverse and half-word swap modes with register readback. Developed the Verilog testbench and verified all 4 test cases in Icarus Verilog on EDA Playground (September 2026).",
         specs: [
-          { label: "Simulation", val: "SPICE Mixed-Mode" },
-          { label: "Virtual System", val: "VSM Microcontroller Co-Sim" },
-          { label: "Analysis", val: "Voltage / Transient Curves" },
-          { label: "Verification", val: "Sensor Interfacing" }
+          { label: "Protocol", val: "AMBA APB" },
+          { label: "Modes", val: "XOR, bit-reverse, half-word swap, register readback" },
+          { label: "Simulation", val: "Icarus Verilog / EDA Playground" }
         ]
       },
-      tinkercad: {
-        title: "Autodesk Tinkercad Circuits",
-        category: "Schematic & Logic Simulation",
-        icon: "fas fa-cube",
-        desc: "Used for rapid architectural circuit ideation, educational hardware demonstration, and logic validation of digital sensor sub-circuits.",
+      verilog_miniprojects: {
+        title: "Verilog RTL Mini-Projects",
+        category: "RTL Design & Verification",
+        icon: "fas fa-code",
+        desc: "Developed synchronous FIFO memory RTL design and functional verification testbench, AMBA APB protocol controller, and FSM-based smart traffic light controller with dedicated left-turn logic.",
         specs: [
-          { label: "Engine", val: "Autodesk Web Simulation" },
-          { label: "Features", val: "Interactive Breadboard Circuitry" },
-          { label: "Logic", val: "Microcontroller Block Logic" },
-          { label: "Application", val: "Rapid Prototyping" }
-        ]
-      },
-      sensors: {
-        title: "Sensors & Biometric Interfaces",
-        category: "Hardware Transducers & Data Acquisition",
-        icon: "fas fa-heartbeat",
-        desc: "Integration experience with IR reflectance arrays for robotics, pulse oximeters (MAX30102), temperature probes (DS18B20), vibration sensors, IMUs (MPU6050), and GPS modules.",
-        specs: [
-          { label: "Protocols", val: "I2C, SPI, 1-Wire, ADC" },
-          { label: "Filtering", val: "Moving Average & Low-Pass" },
-          { label: "Application", val: "Robotics & Maternal Health" },
-          { label: "Calibration", val: "Hardware Zero-Offset" }
-        ]
-      },
-      thingspeak: {
-        title: "ThingSpeak IoT Cloud",
-        category: "Cloud Data Analytics & MATLAB Telemetry",
-        icon: "fas fa-cloud",
-        desc: "Telemetry aggregation backbone for health monitoring and agriculture projects, executing integrated MATLAB statistical routines to generate real-time visual trend lines and trigger anomaly notifications.",
-        specs: [
-          { label: "Protocol", val: "REST API & MQTT" },
-          { label: "Data Pipeline", val: "Real-Time Cloud Channels" },
-          { label: "Analytics", val: "Native MATLAB Integration" },
-          { label: "Integration", val: "ESP32 / ESP8266 Nodes" }
-        ]
-      },
-      aws_iot: {
-        title: "AWS IoT Core",
-        category: "Scalable Cloud IoT Architecture",
-        icon: "fab fa-aws",
-        desc: "Managed cloud broker enabling bi-directional, TLS-encrypted MQTT messaging between physical hardware prototypes and cloud telemetry dashboards.",
-        specs: [
-          { label: "Broker Protocol", val: "MQTT v3.1.1 / TLS 1.2" },
-          { label: "Cloud Services", val: "Rules Engine, Lambda, DynamoDB" },
-          { label: "Security", val: "X.509 Certificate Auth" },
-          { label: "Latency", val: "< 50ms Real-Time Sync" }
-        ]
-      },
-      mqtt: {
-        title: "MQTT Messaging Protocol",
-        category: "Lightweight Machine-to-Machine Messaging",
-        icon: "fas fa-exchange-alt",
-        desc: "Extremely lightweight publish/subscribe network protocol engineered for constrained IoT devices and low-bandwidth remote telemetry environments.",
-        specs: [
-          { label: "Model", val: "Publish / Subscribe" },
-          { label: "Header Overhead", val: "2 Bytes (Ultra-Low)" },
-          { label: "QoS Levels", val: "QoS 0, QoS 1, QoS 2" },
-          { label: "Brokers", val: "Mosquitto, AWS IoT, HiveMQ" }
-        ]
-      },
-      rest_api: {
-        title: "HTTP / REST APIs",
-        category: "Stateless Cloud Interfacing",
-        icon: "fas fa-network-wired",
-        desc: "Structured HTTP request/response JSON endpoints utilized by embedded Wi-Fi microcontrollers to push sensor telemetry payloads to remote cloud servers.",
-        specs: [
-          { label: "Payload", val: "JSON / URL-Encoded" },
-          { label: "Methods", val: "GET, POST, PUT, DELETE" },
-          { label: "Security", val: "HTTPS / API Key Authentication" },
-          { label: "Application", val: "Cloud Database Ingestion" }
-        ]
-      },
-      firebase: {
-        title: "Google Firebase Cloud",
-        category: "Realtime Database & Cloud Firestore",
-        icon: "fas fa-fire",
-        desc: "Cloud backend utilized for instant data synchronization with mobile telemetry dashboards, real-time geofence tracking, and push notifications.",
-        specs: [
-          { label: "Database", val: "NoSQL Realtime Database" },
-          { label: "Sync Speed", val: "WebSockets Real-Time" },
-          { label: "Services", val: "Cloud Functions, Firestore" },
-          { label: "Application", val: "Safety Beacon Dashboard" }
-        ]
-      },
-      n8n: {
-        title: "n8n Workflow Automation",
-        category: "Event-Driven Automation Pipelines",
-        icon: "fas fa-sitemap",
-        desc: "Self-hosted workflow automation platform used to connect incoming IoT webhook triggers directly to Telegram alerts, database logging, and automated notification services.",
-        specs: [
-          { label: "Architecture", val: "Node-based Workflow Engine" },
-          { label: "Triggers", val: "Webhooks, MQTT, Cron, REST" },
-          { label: "Execution", val: "Self-Hosted / Containerized" },
-          { label: "Application", val: "Automated Incident Escalation" }
-        ]
-      },
-      vivado: {
-        title: "Xilinx Vivado Design Suite",
-        category: "FPGA Synthesis & RTL Emulation",
-        icon: "fas fa-microchip",
-        desc: "Primary EDA toolchain used for synthesizing, mapping, placing, and routing Verilog RTL designs for digital logic systems and RISC-V processor security modules. Allows static timing analysis and behavioral simulation.",
-        specs: [
-          { label: "Design Entry", val: "Verilog / SystemVerilog" },
-          { label: "Analysis", val: "Static Timing & Slack Analysis" },
-          { label: "Target", val: "Xilinx Artix-7 / 7-Series FPGA" },
-          { label: "Simulation", val: "Vivado Simulator (XSim)" }
-        ]
-      },
-      quartus: {
-        title: "Intel Quartus Prime",
-        category: "CPLD/FPGA Synthesis & Logic Design",
-        icon: "fas fa-desktop",
-        desc: "EDA platform for logic minimization, pin assignments, state machine analysis, and timing closure on Intel/Altera Cyclone FPGA families.",
-        specs: [
-          { label: "Vendor", val: "Intel / Altera" },
-          { label: "Features", val: "TimeQuest Timing Analyzer" },
-          { label: "Verification", val: "ModelSim-Altera Co-Sim" },
-          { label: "Focus", val: "Digital Logic Emulation" }
-        ]
-      },
-      cadence: {
-        title: "Cadence Virtuoso",
-        category: "Custom IC & Analog Layout Design",
-        icon: "fas fa-wave-square",
-        desc: "Electronic design automation platform for schematic capture, transistor-level spice simulation (Spectre), and full-custom CMOS layout design with DRC/LVS rule checks.",
-        specs: [
-          { label: "Design Level", val: "Transistor / Custom Silicon" },
-          { label: "Simulation", val: "Spectre Circuit Simulator" },
-          { label: "Checks", val: "DRC / LVS Rule Verification" },
-          { label: "Domain", val: "VLSI Circuit Design" }
-        ]
-      },
-      matlab: {
-        title: "MATLAB & Simulink",
-        category: "Mathematical Modeling & Signal Analytics",
-        icon: "fas fa-calculator",
-        desc: "Employed for digital signal processing, algorithm modeling, mathematical simulations of biomedical telemetry data, and control system transfer function analyses.",
-        specs: [
-          { label: "Toolboxes", val: "Signal Processing, Control Systems" },
-          { label: "Integration", val: "ThingSpeak MATLAB Analytics" },
-          { label: "Computation", val: "Matrix Numerical Analysis" },
-          { label: "Modeling", val: "Simulink Dynamic Systems" }
-        ]
-      },
-      fusion360: {
-        title: "Autodesk Fusion 360",
-        category: "CAD Modeling & Industrial Enclosure Design",
-        icon: "fas fa-drafting-compass",
-        desc: "Used for 3D parametric mechanical design of electronic enclosures, autonomous robotics chassis, and prototype packaging for 3D printing.",
-        specs: [
-          { label: "Design Type", val: "3D Parametric CAD" },
-          { label: "Prototyping", val: "FDM 3D Printing STL Export" },
-          { label: "Rendering", val: "Raytraced Product Viz" },
-          { label: "Applications", val: "Robotics & Patent Models" }
+          { label: "Projects", val: "FIFO, APB Controller, Traffic Light FSM" },
+          { label: "Language", val: "Verilog HDL" }
         ]
       },
       riscv: {
         title: "RISC-V ISA Architecture",
         category: "Processor Design & Hardware Security",
         icon: "fas fa-microchip",
-        desc: "The open-standard RISC-V RV32I instruction set architecture serves as the foundation for Hema's <strong>sanctioned ₹1,00,000 research grant</strong>. Focuses on implementing dedicated hardware root-of-trust security extensions and side-channel countermeasures.",
+        desc: "Working with RV32I instruction set architecture, processor datapath, control unit, ALU, register file, and pipelining/hazards.",
         specs: [
-          { label: "Base Architecture", val: "RV32I (32-bit Integer)" },
-          { label: "Research Grant", val: "₹1,00,000 Seed Grant (MRIIRS)" },
-          { label: "Hardware Description", val: "Verilog HDL" },
-          { label: "Target Emulation", val: "Xilinx 7-Series FPGA" }
+          { label: "ISA", val: "RV32I" },
+          { label: "Architecture", val: "Datapath, Control Unit, ALU, Pipelining" }
         ]
       },
       verilog: {
-        title: "Verilog HDL",
-        category: "Digital Hardware Description Language",
+        title: "Verilog HDL & SystemVerilog",
+        category: "Hardware Description Languages",
         icon: "fas fa-code",
-        desc: "Hardware Description Language utilized to design register-transfer level (RTL) circuits, state machines (Mealy/Moore FSMs), ALU modules, and custom cryptographic primitives.",
+        desc: "Proficient in Verilog HDL and SystemVerilog for design and verification.",
         specs: [
-          { label: "Paradigm", val: "RTL / Behavioral / Structural" },
-          { label: "Verification", val: "Directed Testbenches & SystemVerilog" },
-          { label: "Industry Practice", val: "Engineers World & Maven Silicon" },
-          { label: "Focus", val: "RISC-V Security & RTL Design" }
+          { label: "Languages", val: "Verilog HDL, SystemVerilog" }
         ]
       },
-      python: {
-        title: "Python Programming",
-        category: "Software Development & Deep Learning",
-        icon: "fab fa-python",
-        desc: "Core language used for training neural networks, implementing edge inferencing scripts, automating EDA flows, and building rapid cloud telemetry test harnesses.",
+      rtl_design: {
+        title: "RTL Design Guidelines",
+        category: "RTL Coding",
+        icon: "fas fa-microchip",
+        desc: "FSM design (Moore and Mealy), blocking and non-blocking assignments, generate blocks, synthesis coding guidelines, synchronous and asynchronous reset.",
         specs: [
-          { label: "Version", val: "Python 3.10+" },
-          { label: "Libraries", val: "NumPy, OpenCV, PyTorch, Matplotlib" },
-          { label: "Hardware Control", val: "Jetson.GPIO, PySerial" },
-          { label: "Paradigm", val: "Object-Oriented & Scripting" }
+          { label: "FSM", val: "Moore & Mealy" },
+          { label: "Assignments", val: "Blocking & Non-Blocking" }
+        ]
+      },
+      verification: {
+        title: "Verification Methodologies",
+        category: "ASIC Verification",
+        icon: "fas fa-check-double",
+        desc: "Self-checking testbenches, directed and constrained-random testing, reference models, waveform debugging, functional coverage, SystemVerilog Assertions.",
+        specs: [
+          { label: "Techniques", val: "CRV, SVA, Coverage, Scoreboards" }
+        ]
+      },
+      uvm: {
+        title: "UVM 1.2",
+        category: "Verification Methodology",
+        icon: "fas fa-cubes",
+        desc: "Universal Verification Methodology (UVM 1.2) training and application for scalable verification testbenches.",
+        specs: [
+          { label: "Version", val: "UVM 1.2" }
+        ]
+      },
+      amba_protocols: {
+        title: "AMBA APB & Protocols",
+        category: "On-Chip Protocols",
+        icon: "fas fa-network-wired",
+        desc: "Experience with AMBA APB, I2C, SPI, and UART protocols.",
+        specs: [
+          { label: "Protocols", val: "AMBA APB, I2C, SPI, UART" }
+        ]
+      },
+      questasim: {
+        title: "QuestaSim & EDA Tools",
+        category: "Simulation Toolchain",
+        icon: "fas fa-laptop-code",
+        desc: "Proficient with QuestaSim, Synopsys VCS, Synopsys Verdi, Synopsys Design Compiler, Xilinx Vivado, Intel Quartus Prime, Cadence Virtuoso, Icarus Verilog, GTKWave, EDA Playground, and MATLAB.",
+        specs: [
+          { label: "Tools", val: "QuestaSim, VCS, Verdi, Vivado, Quartus, Virtuoso" }
+        ]
+      },
+      synopsys: {
+        title: "Synopsys Suite",
+        category: "EDA Tools",
+        icon: "fas fa-microchip",
+        desc: "Experience with Synopsys VCS, Verdi, and Design Compiler.",
+        specs: [
+          { label: "Tools", val: "VCS, Verdi, Design Compiler" }
+        ]
+      },
+      vivado: {
+        title: "Xilinx Vivado",
+        category: "FPGA Toolchain",
+        icon: "fas fa-microchip",
+        desc: "Synthesis and implementation using Xilinx Vivado.",
+        specs: [
+          { label: "Tool", val: "Xilinx Vivado" }
+        ]
+      },
+      quartus: {
+        title: "Intel Quartus Prime",
+        category: "FPGA Toolchain",
+        icon: "fas fa-desktop",
+        desc: "FPGA design implementation with Intel Quartus Prime.",
+        specs: [
+          { label: "Tool", val: "Intel Quartus Prime" }
+        ]
+      },
+      cadence: {
+        title: "Cadence Virtuoso",
+        category: "IC Design",
+        icon: "fas fa-wave-square",
+        desc: "Custom IC layout and schematic design using Cadence Virtuoso.",
+        specs: [
+          { label: "Tool", val: "Cadence Virtuoso" }
+        ]
+      },
+      icarus: {
+        title: "Icarus Verilog & GTKWave",
+        category: "Open Source EDA",
+        icon: "fas fa-code",
+        desc: "Simulation and waveform visualization using Icarus Verilog and GTKWave.",
+        specs: [
+          { label: "Tools", val: "Icarus Verilog, GTKWave" }
+        ]
+      },
+      edaplayground: {
+        title: "EDA Playground",
+        category: "Cloud EDA",
+        icon: "fas fa-cloud",
+        desc: "Cloud-based verification and simulation development on EDA Playground.",
+        specs: [
+          { label: "Platform", val: "EDA Playground" }
+        ]
+      },
+      matlab: {
+        title: "MATLAB",
+        category: "Mathematical Modeling",
+        icon: "fas fa-calculator",
+        desc: "Numerical computation and algorithmic modeling in MATLAB.",
+        specs: [
+          { label: "Tool", val: "MATLAB" }
         ]
       },
       cpp: {
-        title: "C / C++ (Embedded)",
-        category: "Bare-Metal Firmware Development",
+        title: "C, C++, Embedded C",
+        category: "Programming",
         icon: "fas fa-file-code",
-        desc: "Used for developing high-performance firmware, direct register manipulation, interrupt service routines (ISRs), and display drivers on microcontrollers.",
+        desc: "Firmware and software programming in C, C++, and Embedded C.",
         specs: [
-          { label: "Standard", val: "C99 / C++17" },
-          { label: "Target Chips", val: "ESP32, Arduino Nano/Uno, AVR" },
-          { label: "Key Features", val: "Direct Memory Access, Low Footprint" },
-          { label: "Toolchains", val: "GCC, ESP-IDF, PlatformIO, Arduino CLI" }
+          { label: "Languages", val: "C, C++, Embedded C" }
+        ]
+      },
+      python: {
+        title: "Python",
+        category: "Programming",
+        icon: "fab fa-python",
+        desc: "Scripting and AI application development in Python.",
+        specs: [
+          { label: "Language", val: "Python" }
+        ]
+      },
+      plc: {
+        title: "PLC Ladder Logic & GX Works3",
+        category: "Industrial Automation",
+        icon: "fas fa-cogs",
+        desc: "Industrial control programming using PLC Ladder Logic and MELSOFT GX Works3.",
+        specs: [
+          { label: "Platform", val: "GX Works3 / Ladder Logic" }
         ]
       },
       linux: {
-        title: "Linux Environment & CLI",
-        category: "Operating System & Embedded Toolchains",
+        title: "Linux Environment",
+        category: "Operating System",
         icon: "fab fa-linux",
-        desc: "Development environment for running embedded toolchains on Nvidia Jetson Nano, configuring MobaXterm server SSH tunnels, compiling RISC-V GCC cross-compilers, and shell scripting.",
+        desc: "Command line operations and development in Linux environments.",
         specs: [
-          { label: "Distros", val: "Ubuntu LTS, JetPack Linux" },
-          { label: "Utilities", val: "Bash Scripting, SSH, Git, Make" },
-          { label: "Toolchains", val: "RISC-V GNU Cross-Compiler" },
-          { label: "Terminal", val: "MobaXterm, Linux CLI" }
+          { label: "OS", val: "Linux" }
+        ]
+      },
+      arduino: {
+        title: "Arduino",
+        category: "Hardware",
+        icon: "fas fa-infinity",
+        desc: "Rapid prototyping and hardware control using Arduino platforms.",
+        specs: [
+          { label: "Platform", val: "Arduino" }
+        ]
+      },
+      esp32: {
+        title: "ESP32 / ESP8266",
+        category: "IoT Hardware",
+        icon: "fas fa-wifi",
+        desc: "IoT development and wireless telemetry using ESP32 and ESP8266 SoCs.",
+        specs: [
+          { label: "Modules", val: "ESP32, ESP8266" }
+        ]
+      },
+      jetson_nano: {
+        title: "Jetson Nano",
+        category: "Edge AI",
+        icon: "fas fa-brain",
+        desc: "Deep learning inference and edge AI implementation on Nvidia Jetson Nano.",
+        specs: [
+          { label: "Platform", val: "Nvidia Jetson Nano" }
         ]
       },
       fpga: {
-        title: "FPGA Emulation",
-        category: "Reconfigurable Hardware Prototyping",
+        title: "FPGA Design",
+        category: "Hardware Prototyping",
         icon: "fas fa-layer-group",
-        desc: "Enables hardware-level emulation of custom processors and digital accelerators before chip fabrication. Validates side-channel attack resistance in real-time execution environments.",
+        desc: "Reconfigurable hardware design and emulation on FPGA platforms.",
         specs: [
-          { label: "Platform", val: "Xilinx / Altera Devices" },
-          { label: "Clock Domains", val: "Synchronous Multi-Clock" },
-          { label: "Verification", val: "In-System Logic Analyzer" },
-          { label: "Application", val: "Hardware Crypto Core" }
+          { label: "Technology", val: "FPGA" }
+        ]
+      },
+      proteus: {
+        title: "Proteus & Tinkercad",
+        category: "Circuit Simulation",
+        icon: "fas fa-project-diagram",
+        desc: "Schematic capture and simulation using Proteus and Tinkercad.",
+        specs: [
+          { label: "Tools", val: "Proteus, Tinkercad" }
+        ]
+      },
+      fusion360: {
+        title: "Fusion 360",
+        category: "CAD",
+        icon: "fas fa-drafting-compass",
+        desc: "3D CAD modeling and enclosure design using Autodesk Fusion 360.",
+        specs: [
+          { label: "Tool", val: "Autodesk Fusion 360" }
         ]
       },
       hardware_security: {
         title: "Hardware Cryptography & Security",
-        category: "Silicon Root of Trust & Tamper Defense",
+        category: "Silicon Security",
         icon: "fas fa-shield-alt",
-        desc: "Research domain centered on developing secure hardware architectures resistant to power analysis, fault injection, and timing side-channel attacks on embedded microprocessors.",
+        desc: "Research on hardware root-of-trust security extensions and side-channel countermeasures on RISC-V architectures.",
         specs: [
-          { label: "Grant Funding", val: "₹1,00,000 Sanctioned" },
-          { label: "Duration", val: "24 Months (2026–2028)" },
-          { label: "Institution", val: "MRIIRS Research Board" },
-          { label: "Deliverable", val: "Secure RISC-V SoC Prototype" }
+          { label: "Focus", val: "Root-of-Trust & Side-Channel Countermeasures" }
         ]
       },
       riscv_grant: {
-        title: "RISC-V Security Seed Grant [Ongoing]",
-        category: "Sanctioned Research Project (₹1,00,000)",
+        title: "Hardware Security on RISC-V Architecture",
+        category: "Seed Research Grant Project",
         icon: "fas fa-award",
-        desc: "Official 24-month research project sanctioned by the <strong>MRIIRS Research Board (Ref: MRIIRS/REGR/2026/483)</strong>. Focused on 'Hardware Security Implementation on RISC-V Architecture' under the Dept. of ECE.",
+        desc: "Principal Investigator on an MRIIRS seed research grant developing hardware root-of-trust security extensions and side-channel countermeasures on an open-source RISC-V RV32I RTL core, validated through FPGA emulation.",
         specs: [
-          { label: "Sanction Amount", val: "₹1,00,000 Seed Grant" },
-          { label: "Duration", val: "24 Months (2026–2028)" },
-          { label: "Affiliation", val: "ECE Dept, SET, MRIIRS" },
-          { label: "Status", val: "Active Research (Ongoing)" }
+          { label: "Role", val: "Principal Investigator" },
+          { label: "Funding", val: "MRIIRS Seed Research Grant" }
         ]
       },
       pen_patent: {
         title: "Gesture Pen HCI Interface",
-        category: "Granted Utility Patent (App: 459423-001)",
+        category: "Utility Patent Application",
         icon: "fas fa-pen-nib",
-        desc: "Patented Human-Computer Interface pen that translates continuous handwriting and hand gestures in 3D space into digital computer commands using multi-axis sensor fusion algorithms without touchscreens.",
+        desc: "Utility Patent Application: Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction, filed 19 May 2025, application no. 459423-001.",
         specs: [
-          { label: "Patent Type", val: "Utility Patent" },
-          { label: "Status", val: "Granted (2025)" },
-          { label: "Sensor Array", val: "IMU / 6-DOF Motion Tracking" },
-          { label: "Presentation", val: "Presented at 4th IEEE DELCON 2025" }
+          { label: "Type", val: "Utility Patent" },
+          { label: "App No", val: "459423-001 (Filed 19 May 2025)" }
         ]
       },
       cart_patent: {
         title: "Autonomous Smart Shopping Cart",
-        category: "Granted Design Patent (App: 202511118413)",
+        category: "Design Patent Application",
         icon: "fas fa-shopping-cart",
-        desc: "Patented automated supermarket trolley integrated with barcode scanning, scale telemetry, and instant wireless billing to eliminate supermarket checkout queues.",
+        desc: "Design Patent Application: Autonomous Smart Shopping Cart, filed 27 November 2025, application no. 202511118413.",
         specs: [
-          { label: "Patent Type", val: "Industrial Design Patent" },
-          { label: "Status", val: "Granted (2025)" },
-          { label: "Application", val: "Smart Retail & Logistics" },
-          { label: "Electronics", val: "Embedded Telemetry Terminal" }
+          { label: "Type", val: "Design Patent" },
+          { label: "App No", val: "202511118413 (Filed 27 Nov 2025)" }
         ]
       },
       lighting_patent: {
         title: "Lighting Shrub System",
-        category: "Granted Design Patent (App: 465417-001)",
+        category: "Design Patent Application",
         icon: "fas fa-lightbulb",
-        desc: "Patented sustainable architectural illumination fixture featuring solar collection petals and ambient-sensing LED drivers for smart city outdoor lighting.",
+        desc: "Design Patent Application: Lighting Shrub, filed 11 July 2025, application no. 465417-001.",
         specs: [
-          { label: "Patent Type", val: "Industrial Design Patent" },
-          { label: "Status", val: "Granted (2025)" },
-          { label: "Energy Source", val: "Solar Assisted CleanTech" },
-          { label: "Application", val: "Smart Outdoor Illumination" }
-        ]
-      },
-      amba_transformer: {
-        title: "AMBA-Based On-Chip Data Transformation Engine",
-        category: "Ongoing Computer Architecture Project",
-        icon: "fas fa-project-diagram",
-        desc: "An ongoing project focused on transforming data on-chip through AMBA interfaces and understanding high-throughput, memory-mapped, and streaming communication paths.",
-        specs: [
-          { label: "Protocols", val: "AXI4, AXI4-Lite, AXI4-Stream, AHB-Lite, APB" },
-          { label: "Design Topics", val: "Crossbars, Protocol Bridges, VALID / READY" },
-          { label: "Focus", val: "On-Chip Data Transformation" },
-          { label: "Status", val: "Ongoing Project" }
-        ]
-      },
-      amba_protocols: {
-        title: "AMBA Protocols",
-        category: "On-Chip Interconnect & Data Movement",
-        icon: "fas fa-network-wired",
-        desc: "Working knowledge of AMBA communication protocols used for control, memory-mapped, and streaming data transfers between on-chip components.",
-        specs: [
-          { label: "Protocols", val: "AXI4, AXI4-Lite, AXI4-Stream" },
-          { label: "Additional", val: "AHB-Lite, APB" },
-          { label: "Architecture", val: "Crossbars & Protocol Bridges" },
-          { label: "Handshake", val: "VALID / READY" }
-        ]
-      },
-      rtl_design: {
-        title: "SystemVerilog RTL & Design",
-        category: "RTL Design and Verification",
-        icon: "fas fa-code",
-        desc: "Skills in writing synthesizable RTL, designing finite-state machines, building testbenches, and considering timing, clock-domain crossing, and low-power requirements.",
-        specs: [
-          { label: "RTL", val: "SystemVerilog RTL / Synthesizable RTL" },
-          { label: "Design", val: "FSM Design" },
-          { label: "Verification", val: "Testbenches" },
-          { label: "Implementation", val: "Timing Closure, CDC, Low-Power RTL" }
-        ]
-      },
-      synopsys_dc: {
-        title: "Synopsys Design Compiler",
-        category: "Logic Synthesis and Timing Analysis",
-        icon: "fas fa-microchip",
-        desc: "EDA tool for synthesizing RTL into optimized gate-level implementations while checking timing and design constraints.",
-        specs: [
-          { label: "Use", val: "RTL Synthesis" },
-          { label: "Focus", val: "Optimization and Constraints" }
-        ]
-      },
-      modelsim: {
-        title: "ModelSim",
-        category: "HDL Simulation",
-        icon: "fas fa-wave-square",
-        desc: "Simulation environment for checking Verilog and SystemVerilog RTL behavior through testbenches and waveforms.",
-        specs: [
-          { label: "Use", val: "RTL Simulation" },
-          { label: "Output", val: "Waveform-Based Debugging" }
-        ]
-      },
-      questasim: {
-        title: "QuestaSim",
-        category: "Advanced HDL Simulation and Verification",
-        icon: "fas fa-vial",
-        desc: "Simulation and verification tool for debugging SystemVerilog designs, testbenches, and protocol behavior.",
-        specs: [
-          { label: "Use", val: "SystemVerilog Verification" },
-          { label: "Focus", val: "Testbench and Protocol Debugging" }
+          { label: "Type", val: "Design Patent" },
+          { label: "App No", val: "465417-001 (Filed 11 July 2025)" }
         ]
       },
       ieee_paper: {
-        title: "4th IEEE DELCON 2025 Presentation",
-        category: "Peer-Reviewed Conference (PID: 174)",
+        title: "IEEE Publication",
+        category: "Peer-Reviewed Conference Paper",
         icon: "fas fa-book",
-        desc: "Authored & presented paper titled <em>'A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications'</em> at Jamia Millia Islamia, technically sponsored by IEEE Delhi Section.",
+        desc: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications, 2025 IEEE DELCON. Available on IEEE Xplore.",
         specs: [
-          { label: "Conference", val: "4th IEEE DELCON 2025" },
-          { label: "Paper ID", val: "PID: 174" },
-          { label: "Venue", val: "Dept of EE, Jamia Millia Islamia" },
-          { label: "Indexed in", val: "IEEE Xplore Digital Library" }
+          { label: "Event", val: "2025 IEEE DELCON" },
+          { label: "Library", val: "IEEE Xplore" }
+        ]
+      },
+      research_note: {
+        title: "Research Note: Amdahl's Law",
+        category: "Technical Research Note",
+        icon: "fas fa-file-alt",
+        desc: "Amdahl's Law: Theoretical Limits of Parallel Speedup in Multicore Computing, MRIIRS, September 2026.",
+        specs: [
+          { label: "Institution", val: "MRIIRS" },
+          { label: "Date", val: "September 2026" }
+        ]
+      },
+      mitsubishi_award: {
+        title: "Appreciation Award, 6th Mitsubishi Electric Cup",
+        category: "National Level Award",
+        icon: "fas fa-trophy",
+        desc: "Appreciation Award at the 6th Mitsubishi Electric Cup, National Level (February 2026).",
+        specs: [
+          { label: "Event", val: "6th Mitsubishi Electric Cup" },
+          { label: "Level", val: "National" }
+        ]
+      },
+      srijan_award: {
+        title: "Second Prize, Srijan Competition, INNOSKILL 2025",
+        category: "Institute Award",
+        icon: "fas fa-medal",
+        desc: "Second Prize in Srijan Competition, INNOSKILL 2025 (April 2025).",
+        specs: [
+          { label: "Event", val: "INNOSKILL 2025" }
+        ]
+      },
+      health_innovation: {
+        title: "First Prize, Health Tech Innovation, CHI, MRIIRS",
+        category: "Innovation Award",
+        icon: "fas fa-trophy",
+        desc: "First Prize in Health Tech Innovation at Centre for Health Innovation (CHI), MRIIRS (April 2024).",
+        specs: [
+          { label: "Venue", val: "CHI, MRIIRS" }
+        ]
+      },
+      echiesta_awards: {
+        title: "Echiesta 2K24 Awards",
+        category: "Technical Festival",
+        icon: "fas fa-trophy",
+        desc: "Echiesta2k24, Echelon Institute of Technology (November 2024): Second Prize in Arduino Project Battle, First Prize in Line Following Robot Race, First Prize in Ideathon.",
+        specs: [
+          { label: "Venue", val: "Echelon Institute of Technology" },
+          { label: "Awards", val: "1st Prize (Line Follower, Ideathon), 2nd Prize (Arduino Battle)" }
         ]
       }
     };
@@ -2422,18 +2291,31 @@
         });
       }
       document.getElementById('modalSpecs').innerHTML = specsHtml;
-      document.getElementById('techModalOverlay').classList.add('active');
+      
+      // Request animation frame for smooth pop-in
+      const modalOverlay = document.getElementById('techModalOverlay');
+      modalOverlay.style.display = 'flex';
+      requestAnimationFrame(() => {
+        modalOverlay.classList.add('active');
+      });
     }
 
     function closeTechModal(e) {
       if (!e || e.target.id === 'techModalOverlay' || e.target.closest('.modal-close-btn')) {
-        document.getElementById('techModalOverlay').classList.remove('active');
+        const modalOverlay = document.getElementById('techModalOverlay');
+        modalOverlay.classList.remove('active');
+        // Wait for transition to finish before hiding
+        setTimeout(() => {
+          if (!modalOverlay.classList.contains('active')) {
+            modalOverlay.style.display = 'none';
+          }
+        }, 300);
       }
     }
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        document.getElementById('techModalOverlay').classList.remove('active');
+        closeTechModal({target: {id: 'techModalOverlay'}});
         document.getElementById('aiModal').classList.remove('active');
       }
     });
@@ -2445,11 +2327,23 @@
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -30px 0px"
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
     });
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* Smooth Scrolling for Nav Links */
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
 
     /* CURSOR-REACTIVE CIRCUIT BACKGROUND ENGINE */
     const canvas = document.getElementById('pcb-canvas');
@@ -2512,7 +2406,6 @@
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
-      // Detailed PCB schematic traces & nodes
       ctx.strokeStyle = rgba(currentTheme.primary, 0.06);
       ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -2894,15 +2787,17 @@
       chatBody.scrollTop = chatBody.scrollHeight;
 
       setTimeout(() => {
-        let reply = "Query acknowledged.";
+        let reply = "Query acknowledged. Hema is focused on becoming an exceptional verification and hardware engineer.";
         if (text.toLowerCase().includes('maven') || text.toLowerCase().includes('uvm')) {
-           reply = "Active Trainee at Maven Silicon. Focus: SystemVerilog, UVM 1.2, CRV, and SVA.";
+           reply = "Active Trainee at Maven Silicon. Focus: SystemVerilog, UVM 1.2, CRV, SVA, and functional coverage.";
+        } else if (text.toLowerCase().includes('amba') || text.toLowerCase().includes('apb')) {
+           reply = "Designed an APB-based on-chip data transformation unit supporting XOR, bit-reverse and half-word swap modes verified via Icarus Verilog on EDA Playground.";
         } else if (text.toLowerCase().includes('risc') || text.toLowerCase().includes('grant')) {
-           reply = "Principal Investigator for a ₹1,00,000 sanctioned seed grant on RISC-V hardware security.";
+           reply = "Principal Investigator for a seed research grant on RISC-V hardware security, focusing on root-of-trust extensions and side-channel countermeasures.";
         } else if (text.toLowerCase().includes('patent')) {
-           reply = "I have 3 granted patents: Gesture Pen, Smart Cart, and Lighting Shrub.";
-        } else if (text.toLowerCase().includes('project')) {
-           reply = "My top projects include the AI Fruit Sorting System (MECA Finalist) and RISC-V Hardware Security.";
+           reply = "I have 3 patent applications filed: Gesture-Based Wireless Pen Interface, Lighting Shrub, and Autonomous Smart Shopping Cart.";
+        } else if (text.toLowerCase().includes('synopsys') || text.toLowerCase().includes('hpc')) {
+           reply = "Actively preparing for formal verification roles by deep-diving into Synopsys VC tools, SystemVerilog assertions, and advanced High Performance Computing topics like loop vectorization.";
         }
         chatBody.innerHTML += `<div class="ai-msg ai-msg-bot">${reply}</div>`;
         chatBody.scrollTop = chatBody.scrollHeight;
