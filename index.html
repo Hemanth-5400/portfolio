@@ -79,7 +79,7 @@
       transition: width 0.08s linear;
     }
 
-    /* ===== 14-SLIDE HIGH-QUALITY LIT ELECTRONIC CIRCUIT BACKGROUNDS ===== */
+    /* ===== 14-SLIDE HIGH-QUALITY LIT ELECTRONIC CIRCUIT BACKGROUNDS (AUTOMATIC CYCLE) ===== */
     .bg-slideshow {
       position: fixed;
       top: 0;
@@ -244,7 +244,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(3, 7, 18, 0.82);
+      background: rgba(3, 7, 18, 0.85);
       backdrop-filter: blur(22px);
       -webkit-backdrop-filter: blur(22px);
       border-bottom: 1px solid rgba(0, 240, 255, 0.2);
@@ -307,9 +307,11 @@
       letter-spacing: 0.07em;
     }
 
-    .nav-links a:hover, .nav-links a:active {
-      color: var(--primary-light);
-      text-shadow: 0 0 12px rgba(0, 240, 255, 0.65);
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a.active-nav {
+      color: var(--primary);
+      text-shadow: 0 0 14px rgba(0, 240, 255, 0.75);
     }
 
     .nav-links a::after {
@@ -321,10 +323,35 @@
       height: 2px;
       background: linear-gradient(90deg, var(--primary), var(--accent));
       transition: var(--transition);
+      box-shadow: 0 0 10px var(--primary);
     }
 
-    .nav-links a:hover::after, .nav-links a:active::after {
+    .nav-links a:hover::after,
+    .nav-links a:active::after,
+    .nav-links a.active-nav::after {
       width: 100%;
+    }
+
+    /* ===== RESPONSIVE MOBILE HAMBURGER BUTTON & DRAWER ===== */
+    .mobile-menu-btn {
+      display: none;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--primary);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(0, 240, 255, 0.22);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
+      color: #fff;
     }
 
     .container {
@@ -1176,6 +1203,48 @@
       padding: 12px;
     }
 
+    /* ===== FOOTER 1-CLICK COPY EMAIL PILL ===== */
+    .footer-contact-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+    }
+
+    .email-copy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(0, 240, 255, 0.09);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      color: var(--primary-light);
+      padding: 0.42rem 1rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .email-copy-pill:hover {
+      background: rgba(0, 240, 255, 0.22);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .email-copy-pill.copied {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: var(--green);
+      color: #34d399;
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.45);
+    }
+
     .floating-corner-dock {
       position: fixed;
       bottom: 30px;
@@ -1482,7 +1551,32 @@
       .hero-container { flex-direction: column-reverse; text-align: center; gap: 3rem; }
       .hero-btns { justify-content: center; }
       .hero h1 { font-size: 2.75rem; }
-      .nav-links { display: none; }
+      .mobile-menu-btn { display: inline-flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(3, 7, 18, 0.96);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1.25rem;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9);
+      }
+      .nav-links.mobile-open {
+        display: flex;
+        animation: mobileMenuSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+    }
+
+    @keyframes mobileMenuSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -1522,7 +1616,10 @@
         <div class="logo-pulse"></div>
         <span>DOGGA HEMA PRASAD</span>
       </a>
-      <ul class="nav-links">
+      <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+        <i class="fas fa-bars" id="mobileMenuIcon"></i>
+      </button>
+      <ul class="nav-links" id="navLinksMenu">
         <li><a href="#patents">Research & IP</a></li>
         <li><a href="#projects">Engineering</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -1539,7 +1636,7 @@
         <div class="hero-content reveal">
           <div class="badge">
             <i class="fas fa-microchip"></i>
-            <span id="heroBadgeTyped">VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</span><span class="typing-cursor" aria-hidden="true"></span>
+            <span id="heroBadgeTyped"></span><span class="typing-cursor" aria-hidden="true"></span>
           </div>
           <h1>Architecting <span>Resilient Silicon</span> & Intelligent Hardware</h1>
           <p>Electronics and Communication Engineering (AIoT) student specializing in Verilog RTL design, AMBA APB protocols, RISC-V architectures, functional verification, industrial automation, and edge AI systems.</p>
@@ -2199,7 +2296,17 @@
     <footer id="contact" data-theme="contact">
       <div class="container reveal">
         <h3 style="color: var(--text); margin-bottom: 0.6rem; font-size: 1.4rem;">Dogga Hema Prasad</h3>
-        <p style="margin-bottom: 1.4rem; color: var(--text-muted);">Visakhapatnam, India • doggahemant@gmail.com • +91 7569330584</p>
+        <div class="footer-contact-row">
+          <span><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> Visakhapatnam, India</span>
+          <span>•</span>
+          <button type="button" class="email-copy-pill" id="copyEmailBtn" onclick="copyFooterEmail()" title="Click to copy email address">
+            <i class="fas fa-envelope" id="copyEmailIcon"></i>
+            <span id="copyEmailText">doggahemant@gmail.com</span>
+            <i class="fas fa-copy" style="font-size:0.75rem; opacity:0.8;"></i>
+          </button>
+          <span>•</span>
+          <span><i class="fas fa-phone-alt" style="color:var(--whatsapp);"></i> +91 7569330584</span>
+        </div>
         <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
           <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
              target="_blank"
@@ -2287,16 +2394,65 @@
   </div>
 
   <script>
+    /* ===== MOBILE HAMBURGER MENU TOGGLE ===== */
+    function toggleMobileMenu() {
+      const menu = document.getElementById('navLinksMenu');
+      const icon = document.getElementById('mobileMenuIcon');
+      const isOpen = menu.classList.toggle('mobile-open');
+      icon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+    }
+
+    /* ===== 1-CLICK COPY EMAIL IN FOOTER ===== */
+    function copyFooterEmail() {
+      const email = 'doggahemant@gmail.com';
+      const btn = document.getElementById('copyEmailBtn');
+      const textSpan = document.getElementById('copyEmailText');
+      const icon = document.getElementById('copyEmailIcon');
+
+      const showCopiedState = () => {
+        btn.classList.add('copied');
+        icon.className = 'fas fa-check';
+        textSpan.textContent = 'Copied to Clipboard!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          icon.className = 'fas fa-envelope';
+          textSpan.textContent = email;
+        }, 2000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(showCopiedState).catch(() => {
+          fallbackCopyEmail(email);
+          showCopiedState();
+        });
+      } else {
+        fallbackCopyEmail(email);
+        showCopiedState();
+      }
+    }
+
+    function fallbackCopyEmail(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+
     /* ===== HERO BADGE TERMINAL TYPEWRITER EFFECT ===== */
     const badgePhrases = [
-      "VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security",
-      "Verilog RTL Design • AMBA APB Interconnects • SVA",
-      "Hardware Root-of-Trust • FPGA Emulation • Edge AI Systems",
-      "3 Patent Filings • IEEE DELCON '25 Published Author"
+      "VLSI Design & Verification (SystemVerilog / UVM 1.2)",
+      "Verilog RTL Architect • AMBA APB & On-Chip Protocols",
+      "RISC-V Silicon Security • Hardware Root-of-Trust PI",
+      "Constrained-Random Verification • SVA & Functional Coverage",
+      "Edge AI & Industrial PLC Automation • 3 Patent Filings"
     ];
     let badgePhraseIndex = 0;
-    let badgeCharIndex = badgePhrases[0].length;
-    let isDeletingBadge = true;
+    let badgeCharIndex = 0;
+    let isDeletingBadge = false;
 
     function runBadgeTypewriter() {
       const targetEl = document.getElementById('heroBadgeTyped');
@@ -2309,30 +2465,50 @@
         if (badgeCharIndex <= 0) {
           isDeletingBadge = false;
           badgePhraseIndex = (badgePhraseIndex + 1) % badgePhrases.length;
-          setTimeout(runBadgeTypewriter, 320);
+          setTimeout(runBadgeTypewriter, 260);
         } else {
-          setTimeout(runBadgeTypewriter, 22);
+          setTimeout(runBadgeTypewriter, 20);
         }
       } else {
         badgeCharIndex++;
         targetEl.textContent = currentPhrase.substring(0, badgeCharIndex);
         if (badgeCharIndex >= currentPhrase.length) {
           isDeletingBadge = true;
-          setTimeout(runBadgeTypewriter, 2800);
+          setTimeout(runBadgeTypewriter, 2400);
         } else {
-          setTimeout(runBadgeTypewriter, 45);
+          setTimeout(runBadgeTypewriter, 42);
         }
       }
     }
-    setTimeout(runBadgeTypewriter, 2600);
+    runBadgeTypewriter();
 
-    /* TOP NEON SCROLL PROGRESS TRACKER */
+    /* ===== TOP NEON SCROLL PROGRESS TRACKER & SCROLL-SPY NAVBAR HIGHLIGHTING ===== */
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+    const trackedSections = Array.from(navLinksAll).map(link => {
+      const id = link.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    }).filter(Boolean);
+
     window.addEventListener('scroll', () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
       const bar = document.getElementById('scrollProgressBar');
       if (bar) bar.style.width = `${pct}%`;
+
+      let currentActiveId = '';
+      const triggerLine = window.innerHeight * 0.32;
+      trackedSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top <= triggerLine && rect.bottom >= 120) {
+          currentActiveId = sec.id;
+        }
+      });
+
+      navLinksAll.forEach(link => {
+        const hrefId = link.getAttribute('href').substring(1);
+        link.classList.toggle('active-nav', hrefId === currentActiveId);
+      });
     });
 
     /* PROJECT CATEGORY FILTER TABS */
@@ -2886,10 +3062,16 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* Smooth Scrolling for Nav Links */
+    /* Smooth Scrolling for Nav Links + Auto-Close Mobile Drawer */
     document.querySelectorAll('.nav-links a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
+        const navMenu = document.getElementById('navLinksMenu');
+        const navIcon = document.getElementById('mobileMenuIcon');
+        if (navMenu && navMenu.classList.contains('mobile-open')) {
+          navMenu.classList.remove('mobile-open');
+          if (navIcon) navIcon.className = 'fas fa-bars';
+        }
         const targetId = this.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
         if (targetSection) {
