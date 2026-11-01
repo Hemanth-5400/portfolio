@@ -59,6 +59,26 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ===== TOP NEON SCROLL PROGRESS BAR ===== */
+    .scroll-progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3.5px;
+      background: rgba(2, 6, 23, 0.55);
+      z-index: 2500;
+      pointer-events: none;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 60%, var(--green) 100%);
+      box-shadow: 0 0 16px var(--primary), 0 0 28px var(--accent);
+      transition: width 0.08s linear;
+    }
+
     /* ===== 14-SLIDE HIGH-QUALITY LIT ELECTRONIC CIRCUIT BACKGROUNDS ===== */
     .bg-slideshow {
       position: fixed;
@@ -85,16 +105,6 @@
       filter: brightness(0.76) contrast(1.24) saturate(1.36);
       will-change: opacity, transform;
       animation: slideFadeLit 84s infinite ease-in-out;
-      transition: opacity 0.7s ease-in-out;
-    }
-
-    .bg-slideshow.manual-mode .bg-slide {
-      animation: none !important;
-      opacity: 0;
-    }
-    .bg-slideshow.manual-mode .bg-slide.manual-active {
-      opacity: 1 !important;
-      transform: scale(1.01);
     }
 
     /* Slide 1: Original 1st Image — Deep Macro Green/Dark PCB & SMD Components */
@@ -342,7 +352,7 @@
     }
 
     .hero {
-      min-height: 96vh;
+      min-height: 95vh;
       display: flex;
       align-items: center;
       padding-top: 7.5rem;
@@ -362,6 +372,7 @@
       max-width: 720px;
     }
 
+    /* ===== HERO BADGE WITH TERMINAL TYPEWRITER CURSOR ===== */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -374,6 +385,7 @@
       font-size: 0.84rem;
       font-family: var(--font-mono);
       margin-bottom: 1.6rem;
+      min-height: 2.35rem;
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
       backdrop-filter: blur(12px);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -383,6 +395,22 @@
       transform: translateY(-2px) scale(1.02);
       border-color: var(--primary);
       box-shadow: 0 0 32px rgba(0, 240, 255, 0.4);
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.05em;
+      background-color: var(--primary);
+      vertical-align: middle;
+      margin-left: 3px;
+      box-shadow: 0 0 10px var(--primary);
+      animation: cursorBlink 0.8s steps(2, start) infinite;
+    }
+
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     .hero h1 {
@@ -423,67 +451,6 @@
       gap: 0.95rem;
       flex-wrap: wrap;
       align-items: center;
-    }
-
-    /* ===== HERO SILICON TELEMETRY HUD BAR ===== */
-    .hero-telemetry-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.85rem;
-      margin-top: 2.3rem;
-    }
-
-    .telemetry-pill {
-      background: rgba(6, 14, 32, 0.72);
-      border: 1px solid rgba(0, 240, 255, 0.26);
-      border-radius: 12px;
-      padding: 0.85rem 0.9rem;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .telemetry-pill::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      opacity: 0.65;
-    }
-
-    .telemetry-pill:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.25);
-    }
-
-    .telemetry-val {
-      font-family: var(--font-orbitron);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .telemetry-val i {
-      color: var(--primary);
-      font-size: 0.95rem;
-    }
-
-    .telemetry-lbl {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--primary-light);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 0.2rem;
     }
 
     .btn {
@@ -648,7 +615,7 @@
     .section-title {
       font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -680,13 +647,51 @@
       box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
     }
 
+    /* ===== PROJECT CATEGORY FILTER TABS ===== */
+    .project-filter-bar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.4rem;
+    }
+
+    .filter-pill-btn {
+      background: rgba(6, 14, 32, 0.78);
+      border: 1px solid rgba(0, 240, 255, 0.28);
+      color: var(--text-muted);
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-pill-btn:hover {
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .filter-pill-btn.active {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.24), rgba(251, 191, 36, 0.16));
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(0, 240, 255, 0.35);
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 2rem;
     }
 
-    /* ===== CYBERNETIC GLASSMORPHISM CARDS WITH CURSOR SPOTLIGHT ===== */
+    /* ===== CYBERNETIC GLASSMORPHISM CARDS WITH 3D TILT & CURSOR SPOTLIGHT ===== */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -694,7 +699,9 @@
       padding: 2.2rem;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s;
+      transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+      transition: transform 0.18s ease-out, box-shadow 0.3s, border-color 0.3s, opacity 0.3s;
+      will-change: transform;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -704,7 +711,10 @@
       overflow: hidden;
     }
 
-    /* Dynamic cursor-tracking radial spotlight inside cards */
+    .card.hidden-project {
+      display: none !important;
+    }
+
     .card::after,
     .skill-box::after {
       content: '';
@@ -712,7 +722,7 @@
       inset: 0;
       background: radial-gradient(
         480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-        rgba(0, 240, 255, 0.13),
+        rgba(0, 240, 255, 0.14),
         transparent 45%
       );
       opacity: 0;
@@ -743,11 +753,11 @@
     }
     
     .card:active {
-      transform: scale(0.98) translateY(-2px);
+      transform: perspective(1000px) scale(0.98) !important;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      --ty: -7px;
       border-color: var(--card-hover-border);
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 38px rgba(0, 240, 255, 0.28);
     }
@@ -865,7 +875,9 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      transition: var(--transition);
+      transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+      transition: transform 0.18s ease-out, box-shadow 0.3s, border-color 0.3s;
+      will-change: transform;
       position: relative;
       overflow: hidden;
     }
@@ -881,9 +893,9 @@
     }
     
     .skill-box:hover {
+      --ty: -6px;
       border-color: var(--card-hover-border);
       box-shadow: 0 25px 55px rgba(0, 0, 0, 0.82), 0 0 32px rgba(0, 240, 255, 0.26);
-      transform: translateY(-6px);
     }
     
     .skill-box:hover::before { opacity: 1; }
@@ -1162,65 +1174,6 @@
       border: 1px solid var(--card-border);
       border-radius: 10px;
       padding: 12px;
-    }
-
-    /* ===== FLOATING BACKGROUND SLIDE SWITCHER PILL (BOTTOM LEFT) ===== */
-    .bg-switcher-pill {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      z-index: 1050;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(6, 12, 28, 0.92);
-      border: 1px solid rgba(0, 240, 255, 0.4);
-      backdrop-filter: blur(16px);
-      padding: 7px 13px;
-      border-radius: 999px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      color: var(--primary-light);
-    }
-
-    .bg-pill-btn {
-      background: rgba(0, 240, 255, 0.1);
-      border: 1px solid rgba(0, 240, 255, 0.3);
-      color: #fff;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.75rem;
-      transition: all 0.2s;
-    }
-
-    .bg-pill-btn:hover {
-      background: var(--primary);
-      color: #030712;
-      box-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-    }
-
-    .bg-pill-auto {
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(251, 191, 36, 0.4);
-      background: rgba(251, 191, 36, 0.12);
-      color: var(--accent);
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      transition: all 0.2s;
-    }
-
-    .bg-pill-auto.active-auto {
-      background: var(--accent);
-      color: #030712;
-      font-weight: 700;
     }
 
     .floating-corner-dock {
@@ -1528,16 +1481,19 @@
     @media (max-width: 900px) {
       .hero-container { flex-direction: column-reverse; text-align: center; gap: 3rem; }
       .hero-btns { justify-content: center; }
-      .hero-telemetry-grid { grid-template-columns: repeat(2, 1fr); }
       .hero h1 { font-size: 2.75rem; }
       .nav-links { display: none; }
-      .bg-switcher-pill { bottom: 15px; left: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 14-Slide High-Quality Lit Electronic Circuit Backgrounds (1st Original + 13 Vecteezy Photos) -->
+  <!-- TOP NEON SCROLL PROGRESS INDICATOR BAR -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
+  <!-- 14-Slide High-Quality Lit Electronic Circuit Backgrounds (Automatic Cycle) -->
   <div class="bg-slideshow" id="bgSlideshow">
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
@@ -1581,7 +1537,10 @@
     <header class="hero" data-theme="hero">
       <div class="container hero-container">
         <div class="hero-content reveal">
-          <div class="badge"><i class="fas fa-microchip"></i> VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</div>
+          <div class="badge">
+            <i class="fas fa-microchip"></i>
+            <span id="heroBadgeTyped">VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security</span><span class="typing-cursor" aria-hidden="true"></span>
+          </div>
           <h1>Architecting <span>Resilient Silicon</span> & Intelligent Hardware</h1>
           <p>Electronics and Communication Engineering (AIoT) student specializing in Verilog RTL design, AMBA APB protocols, RISC-V architectures, functional verification, industrial automation, and edge AI systems.</p>
           
@@ -1614,26 +1573,6 @@
               <button type="button" class="btn btn-ai" onclick="toggleAIChat()">
                 <i class="fas fa-robot"></i> Interactive AI
               </button>
-            </div>
-          </div>
-
-          <!-- SILICON TELEMETRY HUD STATS BAR -->
-          <div class="hero-telemetry-grid">
-            <div class="telemetry-pill" onclick="document.getElementById('patents').scrollIntoView({behavior:'smooth'})">
-              <div class="telemetry-val"><i class="fas fa-certificate"></i> 3 Patents</div>
-              <div class="telemetry-lbl">1 Utility • 2 Design</div>
-            </div>
-            <div class="telemetry-pill" onclick="document.getElementById('patents').scrollIntoView({behavior:'smooth'})">
-              <div class="telemetry-val"><i class="fas fa-file-signature"></i> IEEE '25</div>
-              <div class="telemetry-lbl">DELCON Xplore Author</div>
-            </div>
-            <div class="telemetry-pill" onclick="document.getElementById('experience').scrollIntoView({behavior:'smooth'})">
-              <div class="telemetry-val"><i class="fas fa-check-double"></i> SV / UVM</div>
-              <div class="telemetry-lbl">Maven Silicon DV</div>
-            </div>
-            <div class="telemetry-pill" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
-              <div class="telemetry-val"><i class="fas fa-shield-alt"></i> RISC-V PI</div>
-              <div class="telemetry-lbl">Seed Grant Research</div>
             </div>
           </div>
         </div>
@@ -1743,9 +1682,26 @@
     <section id="projects" data-theme="projects">
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-microchip"></i> Featured Engineering Projects</h2>
-        <div class="grid">
+
+        <!-- CATEGORY FILTER TABS -->
+        <div class="project-filter-bar reveal">
+          <button class="filter-pill-btn active" onclick="filterProjects('all', this)">
+            <i class="fas fa-layer-group"></i> All Projects (5)
+          </button>
+          <button class="filter-pill-btn" onclick="filterProjects('vlsi', this)">
+            <i class="fas fa-microchip"></i> VLSI & RTL Design (2)
+          </button>
+          <button class="filter-pill-btn" onclick="filterProjects('riscv', this)">
+            <i class="fas fa-shield-alt"></i> RISC-V Silicon Security (1)
+          </button>
+          <button class="filter-pill-btn" onclick="filterProjects('edge_iot', this)">
+            <i class="fas fa-robot"></i> Edge AI & Embedded IoT (2)
+          </button>
+        </div>
+
+        <div class="grid" id="projectsGrid">
           
-          <div class="card card-ongoing reveal" onclick="openTechModal('riscv_grant')">
+          <div class="card card-ongoing reveal" data-category="riscv" onclick="openTechModal('riscv_grant')">
             <div>
               <div class="card-header">
                 <h3 class="card-title">Hardware Security Implementation on RISC-V Architecture</h3>
@@ -1763,7 +1719,7 @@
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('amba_transformer')">
+          <div class="card reveal" data-category="vlsi" onclick="openTechModal('amba_transformer')">
             <div>
               <div class="card-header">
                 <h3 class="card-title">AMBA APB Data Transformation Unit (Verilog)</h3>
@@ -1779,7 +1735,7 @@
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('verilog_miniprojects')">
+          <div class="card reveal" data-category="vlsi" onclick="openTechModal('verilog_miniprojects')">
             <div>
               <div class="card-header">
                 <h3 class="card-title">Verilog RTL Mini-Projects</h3>
@@ -1795,7 +1751,7 @@
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('jetson_nano')">
+          <div class="card reveal" data-category="edge_iot" onclick="openTechModal('jetson_nano')">
             <div>
               <div class="card-header">
                 <h3 class="card-title">Deep Learning Based Automated Fruit Sorting System</h3>
@@ -1811,7 +1767,7 @@
             </div>
           </div>
 
-          <div class="card reveal" onclick="openTechModal('esp32_cam')">
+          <div class="card reveal" data-category="edge_iot" onclick="openTechModal('esp32_cam')">
             <div>
               <div class="card-header">
                 <h3 class="card-title">IoT & Embedded Systems Projects</h3>
@@ -2079,7 +2035,7 @@
       </div>
     </section>
 
-    <!-- INTERACTIVE RTL SIMULATOR SECTION (CLEAN HARDWARE & FLIP-FLOP TRUTH/EXCITATION TABLES) -->
+    <!-- INTERACTIVE RTL SIMULATOR SECTION -->
     <section id="simulator" data-theme="skills">
       <div class="container">
         <h2 class="section-title reveal"><i class="fas fa-wave-square"></i> Interactive RTL Logic & Sequential Simulator</h2>
@@ -2291,14 +2247,6 @@
     </div>
   </div>
 
-  <!-- FLOATING BACKGROUND SLIDE SWITCHER PILL (BOTTOM LEFT) -->
-  <div class="bg-switcher-pill" title="Switch Circuit Background">
-    <button class="bg-pill-btn" onclick="stepBackground(-1)" aria-label="Previous background"><i class="fas fa-chevron-left"></i></button>
-    <span id="bgSlideIndicator">BG 1 / 14</span>
-    <button class="bg-pill-btn" onclick="stepBackground(1)" aria-label="Next background"><i class="fas fa-chevron-right"></i></button>
-    <button class="bg-pill-auto active-auto" id="bgAutoBtn" onclick="resumeAutoBackground()">Auto</button>
-  </div>
-
   <div class="floating-corner-dock">
     <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
        target="_blank"
@@ -2339,6 +2287,69 @@
   </div>
 
   <script>
+    /* ===== HERO BADGE TERMINAL TYPEWRITER EFFECT ===== */
+    const badgePhrases = [
+      "VLSI Design & Verification (SV/UVM) • RISC-V Silicon Security",
+      "Verilog RTL Design • AMBA APB Interconnects • SVA",
+      "Hardware Root-of-Trust • FPGA Emulation • Edge AI Systems",
+      "3 Patent Filings • IEEE DELCON '25 Published Author"
+    ];
+    let badgePhraseIndex = 0;
+    let badgeCharIndex = badgePhrases[0].length;
+    let isDeletingBadge = true;
+
+    function runBadgeTypewriter() {
+      const targetEl = document.getElementById('heroBadgeTyped');
+      if (!targetEl) return;
+      const currentPhrase = badgePhrases[badgePhraseIndex];
+
+      if (isDeletingBadge) {
+        badgeCharIndex--;
+        targetEl.textContent = currentPhrase.substring(0, badgeCharIndex);
+        if (badgeCharIndex <= 0) {
+          isDeletingBadge = false;
+          badgePhraseIndex = (badgePhraseIndex + 1) % badgePhrases.length;
+          setTimeout(runBadgeTypewriter, 320);
+        } else {
+          setTimeout(runBadgeTypewriter, 22);
+        }
+      } else {
+        badgeCharIndex++;
+        targetEl.textContent = currentPhrase.substring(0, badgeCharIndex);
+        if (badgeCharIndex >= currentPhrase.length) {
+          isDeletingBadge = true;
+          setTimeout(runBadgeTypewriter, 2800);
+        } else {
+          setTimeout(runBadgeTypewriter, 45);
+        }
+      }
+    }
+    setTimeout(runBadgeTypewriter, 2600);
+
+    /* TOP NEON SCROLL PROGRESS TRACKER */
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      const bar = document.getElementById('scrollProgressBar');
+      if (bar) bar.style.width = `${pct}%`;
+    });
+
+    /* PROJECT CATEGORY FILTER TABS */
+    function filterProjects(category, btnEl) {
+      document.querySelectorAll('.project-filter-bar .filter-pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+
+      document.querySelectorAll('#projectsGrid .card').forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden-project');
+        } else {
+          card.classList.add('hidden-project');
+        }
+      });
+    }
+
     /* UNBLOCKED EXTERNAL LINK & WHATSAPP HANDLERS */
     function openExternalLink(event, url) {
       if (event) event.preventDefault();
@@ -2366,37 +2377,28 @@
       return openExternalLink(null, url);
     }
 
-    /* CURSOR SPOTLIGHT TRACKING ON CARDS & SKILL BOXES */
+    /* 3D PERSPECTIVE TILT & CURSOR SPOTLIGHT TRACKING ON CARDS & SKILL BOXES */
     document.querySelectorAll('.card, .skill-box').forEach(cardEl => {
       cardEl.addEventListener('mousemove', e => {
         const rect = cardEl.getBoundingClientRect();
-        cardEl.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-        cardEl.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        cardEl.style.setProperty('--mouse-x', `${x}px`);
+        cardEl.style.setProperty('--mouse-y', `${y}px`);
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4.5;
+        const rotateY = ((x - centerX) / centerX) * 4.5;
+        cardEl.style.setProperty('--rx', `${rotateX.toFixed(2)}deg`);
+        cardEl.style.setProperty('--ry', `${rotateY.toFixed(2)}deg`);
+      });
+
+      cardEl.addEventListener('mouseleave', () => {
+        cardEl.style.setProperty('--rx', '0deg');
+        cardEl.style.setProperty('--ry', '0deg');
       });
     });
-
-    /* MANUAL / AUTO BACKGROUND SLIDE SWITCHER */
-    let currentBgIndex = 0;
-    const totalBgSlides = 14;
-    function stepBackground(dir) {
-      const container = document.getElementById('bgSlideshow');
-      const slides = container.querySelectorAll('.bg-slide');
-      container.classList.add('manual-mode');
-      document.getElementById('bgAutoBtn').classList.remove('active-auto');
-
-      currentBgIndex = (currentBgIndex + dir + totalBgSlides) % totalBgSlides;
-      slides.forEach((s, idx) => s.classList.toggle('manual-active', idx === currentBgIndex));
-      document.getElementById('bgSlideIndicator').innerText = `BG ${currentBgIndex + 1} / ${totalBgSlides}`;
-    }
-
-    function resumeAutoBackground() {
-      const container = document.getElementById('bgSlideshow');
-      const slides = container.querySelectorAll('.bg-slide');
-      container.classList.remove('manual-mode');
-      slides.forEach(s => s.classList.remove('manual-active'));
-      document.getElementById('bgAutoBtn').classList.add('active-auto');
-      document.getElementById('bgSlideIndicator').innerText = `BG Auto (14)`;
-    }
 
     const techDossier = {
       mriirs_edu: {
@@ -3005,10 +3007,10 @@
     /* ===== SIMULATOR ENGINE WITH CHARACTERISTIC TRUTH TABLES & EXCITATION TABLES ===== */
     let currentCategory = 'combinational';
     let currentKey = 'AND';
-    let seqTableMode = 'char'; // 'char' (Characteristic Truth Table) or 'excite' (Excitation Table)
-    let simA = 0; // Input A (or D / J / T / S)
-    let simK = 0; // Secondary Input K (for JK_FF) or R (for SR_FF)
-    let simB = 0; // Input B (or CLK for Sequential)
+    let seqTableMode = 'char';
+    let simA = 0;
+    let simK = 0;
+    let simB = 0;
     let seqStateQ = 0;
 
     const combinationalGates = {
