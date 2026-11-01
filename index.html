@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
   <title>Dogga Hema Prasad | Silicon Verification & Embedded Architect</title>
   
   <meta property="og:title" content="Dogga Hema Prasad | Silicon Verification & Embedded Architect" />
@@ -19,7 +20,7 @@
   <style>
     :root {
       --bg: #030712;
-      --card-bg: rgba(6, 12, 28, 0.65);
+      --card-bg: rgba(6, 12, 28, 0.68);
       --card-border: rgba(0, 229, 255, 0.25);
       --card-hover-border: rgba(0, 229, 255, 0.9);
       
@@ -58,7 +59,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== HD ELECTRONICS BACKGROUNDS ===== */
+    /* ===== 14-SLIDE HIGH-QUALITY LIT ELECTRONIC CIRCUIT BACKGROUNDS (84s CYCLE, 6s PER SLIDE) ===== */
     .bg-slideshow {
       position: fixed;
       top: 0;
@@ -68,6 +69,7 @@
       z-index: -3;
       background: #020617;
       overflow: hidden;
+      pointer-events: none;
     }
 
     .bg-slide {
@@ -78,34 +80,117 @@
       height: 100%;
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       opacity: 0;
-      /* Darkened for professional contrast and readability */
-      filter: brightness(0.18) contrast(1.15);
-      animation: slideFade 36s infinite ease-in-out;
+      /* Balanced dark contrast + vivid lighting so glowing circuits & microchips are clearly visible */
+      filter: brightness(0.65) contrast(1.22) saturate(1.3);
+      will-change: opacity, transform;
+      animation: slideFadeLit 84s infinite ease-in-out;
     }
 
-    /* 1. Deep Macro Electronic Components / Circuit Board */
-    .bg-slide:nth-child(1) {  
-      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2560&q=80');  
-      animation-delay: 0s;  
+    /* Slide 1: Original 1st Image — Deep Macro Green/Dark PCB & SMD Components */
+    .bg-slide:nth-child(1) {
+      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2560&q=85');
+      animation-delay: 0s;
     }
-    /* 2. Microchip / Advanced Motherboard Detail */
-    .bg-slide:nth-child(2) {  
-      background-image: url('https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&w=2560&q=80');  
-      animation-delay: 12s;  
+    /* Slide 2: Vecteezy 027/180/099 — Electronic Circuit Board Lit Up With Lights */
+    .bg-slide:nth-child(2) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/027/180/099/large_2x/the-electronic-circuit-board-is-lit-up-with-lights-ai-generated-free-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/027/180/099/small_2x/the-electronic-circuit-board-is-lit-up-with-lights-ai-generated-free-photo.jpg');
+      animation-delay: 6s;
     }
-    /* 3. High-Tech GPU / Silicon Architecture */
-    .bg-slide:nth-child(3) {  
-      background-image: url('https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=2560&q=80');  
-      animation-delay: 24s;  
+    /* Slide 3: Vecteezy 059/352/934 — Close-Up of a Lit Circuit Board Showcasing Intricate Components */
+    .bg-slide:nth-child(3) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/059/352/934/large_2x/close-up-of-a-lit-circuit-board-showcasing-intricate-electronic-components-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/059/352/934/small_2x/close-up-of-a-lit-circuit-board-showcasing-intricate-electronic-components-photo.jpg');
+      animation-delay: 12s;
+    }
+    /* Slide 4: Vecteezy 029/616/634 — High-Tech Electronic Circuit Board Background Neural Network */
+    .bg-slide:nth-child(4) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/029/616/634/large_2x/high-tech-electronic-circuit-board-background-neural-network-ai-generated-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/029/616/634/small_2x/high-tech-electronic-circuit-board-background-neural-network-ai-generated-photo.jpg');
+      animation-delay: 18s;
+    }
+    /* Slide 5: Vecteezy 071/506/588 — Close-Up of Electronic Circuit Board with Microchip */
+    .bg-slide:nth-child(5) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/071/506/588/large_2x/close-up-of-electronic-circuit-board-with-microchip-free-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/071/506/588/small_2x/close-up-of-electronic-circuit-board-with-microchip-free-photo.jpg');
+      animation-delay: 24s;
+    }
+    /* Slide 6: Vecteezy 024/746/189 — Complexity of Computer Chip Circuit Board Technological Masterpiece */
+    .bg-slide:nth-child(6) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/024/746/189/large_2x/complexity-of-computer-chip-circuit-board-a-technological-masterpiece-generated-by-ai-free-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/024/746/189/small_2x/complexity-of-computer-chip-circuit-board-a-technological-masterpiece-generated-by-ai-free-photo.jpg');
+      animation-delay: 30s;
+    }
+    /* Slide 7: Vecteezy 014/610/580 — Central Computer Processors CPU Concept 3D Rendering */
+    .bg-slide:nth-child(7) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/014/610/580/large_2x/central-computer-processors-cpu-concept-industry-leading-advanced-technology-3d-rendering-free-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/014/610/580/small_2x/central-computer-processors-cpu-concept-industry-leading-advanced-technology-3d-rendering-free-photo.jpg');
+      animation-delay: 36s;
+    }
+    /* Slide 8: Vecteezy 028/127/342 — Blue and Black Metallic Tech Wallpaper */
+    .bg-slide:nth-child(8) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/028/127/342/large_2x/blue-and-black-metallic-wallpaper-with-high-resolution-in-a-tech-style-generative-ai-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/028/127/342/small/blue-and-black-metallic-wallpaper-with-high-resolution-in-a-tech-style-generative-ai-photo.jpg');
+      animation-delay: 42s;
+    }
+    /* Slide 9: Vecteezy 082/384/571 — Glowing Quantum Neural Core on Modern Printed Circuit Board */
+    .bg-slide:nth-child(9) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/082/384/571/large_2x/glowing-quantum-neural-core-on-modern-electronic-printed-circuit-board-photo.jpeg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/082/384/571/small/glowing-quantum-neural-core-on-modern-electronic-printed-circuit-board-photo.jpeg');
+      animation-delay: 48s;
+    }
+    /* Slide 10: Vecteezy 046/759/439 — Closeup of Digital Circuit Patterns Isolated on Dark Background */
+    .bg-slide:nth-child(10) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/046/759/439/large_2x/closeup-of-digital-circuit-patterns-representing-electronic-advancements-isolated-on-a-dark-background-with-copy-space-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/046/759/439/small/closeup-of-digital-circuit-patterns-representing-electronic-advancements-isolated-on-a-dark-background-with-copy-space-photo.jpg');
+      animation-delay: 54s;
+    }
+    /* Slide 11: Vecteezy 025/550/110 — Electronic Circuit Board Close-Up Central Computer Processors CPU */
+    .bg-slide:nth-child(11) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/025/550/110/large_2x/electronic-circuit-board-close-up-technology-background-central-computer-processors-cpu-concept-motherboard-digital-microchips-tech-background-integrated-communication-processor-generative-ai-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/025/550/110/small_2x/electronic-circuit-board-close-up-technology-background-central-computer-processors-cpu-concept-motherboard-digital-microchips-tech-background-integrated-communication-processor-generative-ai-photo.jpg');
+      animation-delay: 60s;
+    }
+    /* Slide 12: Vecteezy 039/861/247 — Neural Circuit and Electronic Cyber Brain in Quantum Computing */
+    .bg-slide:nth-child(12) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/039/861/247/large_2x/ai-generated-neural-circuit-and-electronic-cyber-brain-in-a-quantum-computing-system-artificial-intelligence-photo.jpg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/039/861/247/small_2x/ai-generated-neural-circuit-and-electronic-cyber-brain-in-a-quantum-computing-system-artificial-intelligence-photo.jpg');
+      animation-delay: 66s;
+    }
+    /* Slide 13: Vecteezy 059/359/577 — Close-Up of Electronic Components on a Circuit Board */
+    .bg-slide:nth-child(13) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/059/359/577/large_2x/a-close-up-of-electronic-components-on-a-circuit-board-photo.jpeg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/059/359/577/small_2x/a-close-up-of-electronic-components-on-a-circuit-board-photo.jpeg');
+      animation-delay: 72s;
+    }
+    /* Slide 14: Vecteezy 038/498/790 — Microchip Microscopic Landscape of Tiny Pathways and Connections */
+    .bg-slide:nth-child(14) {
+      background-image:
+        url('https://static.vecteezy.com/system/resources/previews/038/498/790/large_2x/ai-generated-a-microchip-s-microscopic-landscape-a-realm-of-tiny-pathways-and-connections-free-photo.jpeg'),
+        url('https://static.vecteezy.com/system/resources/thumbnails/038/498/790/small_2x/ai-generated-a-microchip-s-microscopic-landscape-a-realm-of-tiny-pathways-and-connections-free-photo.jpeg');
+      animation-delay: 78s;
     }
 
-    @keyframes slideFade {
-      0% { opacity: 0; transform: scale(1.05); }
-      8% { opacity: 1; transform: scale(1); }
-      28% { opacity: 1; transform: scale(1); }
-      36% { opacity: 0; transform: scale(1.05); }
-      100% { opacity: 0; transform: scale(1.05); }
+    @keyframes slideFadeLit {
+      0%    { opacity: 0; transform: scale(1.05); }
+      1.8%  { opacity: 1; transform: scale(1); }
+      7.2%  { opacity: 1; transform: scale(1); }
+      9.5%  { opacity: 0; transform: scale(1.05); }
+      100%  { opacity: 0; transform: scale(1.05); }
     }
 
     .vignette-overlay {
@@ -115,7 +200,9 @@
       width: 100vw;
       height: 100vh;
       z-index: -2;
-      background: radial-gradient(circle at center, rgba(2,6,23,0.2) 0%, rgba(2,6,23,0.95) 100%);
+      background:
+        radial-gradient(circle at center, rgba(2, 6, 23, 0.16) 0%, rgba(2, 6, 23, 0.88) 100%),
+        linear-gradient(180deg, rgba(2, 6, 23, 0.45) 0%, rgba(2, 6, 23, 0.12) 50%, rgba(2, 6, 23, 0.65) 100%);
       pointer-events: none;
     }
 
@@ -295,6 +382,7 @@
       margin-bottom: 1.3rem;
       letter-spacing: -0.02em;
       color: #ffffff;
+      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.85);
     }
 
     .hero h1 span {
@@ -310,6 +398,7 @@
       margin-bottom: 2.5rem;
       font-weight: 400;
       line-height: 1.7;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85);
     }
 
     .hero-btns {
@@ -332,6 +421,8 @@
       border: 1px solid transparent;
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s, background 0.2s;
       font-family: var(--font-sans);
+      position: relative;
+      z-index: 5;
     }
     
     .btn:active {
@@ -351,9 +442,9 @@
     }
 
     .btn-github {
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(15, 23, 42, 0.75);
       color: #fff;
-      border-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.18);
       backdrop-filter: blur(10px);
     }
 
@@ -364,9 +455,10 @@
     }
 
     .btn-whatsapp {
-      background: rgba(34, 197, 94, 0.1);
-      border-color: rgba(34, 197, 94, 0.4);
+      background: rgba(34, 197, 94, 0.12);
+      border-color: rgba(34, 197, 94, 0.45);
       color: #f1f5f9;
+      backdrop-filter: blur(10px);
     }
 
     .btn-whatsapp:hover {
@@ -377,9 +469,10 @@
     }
 
     .btn-ai {
-      background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(251, 191, 36, 0.15));
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(251, 191, 36, 0.16));
       border-color: rgba(0, 240, 255, 0.35);
       color: #f1f5f9;
+      backdrop-filter: blur(10px);
     }
 
     .btn-ai:hover {
@@ -605,6 +698,7 @@
       transition: var(--transition);
       cursor: pointer;
       display: inline-block;
+      text-decoration: none;
     }
     
     .tag:active {
@@ -726,7 +820,7 @@
       background: var(--cyan);
       color: #030712;
       border-color: var(--cyan);
-      box-shadow: 0 0 20px var(--cyan-glow);
+      box-shadow: 0 0 20px var(--cyan);
       font-weight: 700;
     }
 
@@ -1193,8 +1287,19 @@
 </head>
 <body>
 
-  <!-- HD Electronics Background Images (Unsplash high quality) -->
+  <!-- 14-Slide High-Quality Lit Electronic Circuit Backgrounds (1st Original + 13 Vecteezy Photos) -->
   <div class="bg-slideshow">
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
+    <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
     <div class="bg-slide"></div>
@@ -1202,12 +1307,11 @@
 
   <div class="vignette-overlay"></div>
 
-  <!-- Interactive Cursor-Reactive Particle Network Overlay (Smooth version) -->
+  <!-- Interactive Cursor-Reactive Particle Network Overlay (Exact Smooth Version) -->
   <canvas id="pcb-canvas"></canvas>
 
   <div class="site-wrapper">
     <nav>
-      <!-- FIXED LOGO LINK -->
       <a href="https://hemanth-5400.github.io/portfolio/" class="logo">
         <div class="logo-pulse"></div>
         <span>DOGGA HEMA PRASAD</span>
@@ -1233,16 +1337,31 @@
           
           <div class="hero-action-clusters">
             <div class="hero-btns">
-              <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 referrerpolicy="no-referrer"
+                 onclick="return openExternalLink(event, 'https://www.linkedin.com/in/dogga-hema-prasad-a35258287/')"
+                 class="btn btn-primary">
                 <i class="fab fa-linkedin"></i> LinkedIn
               </a>
-              <a href="https://github.com/Hemanth-5400" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+              <a href="https://github.com/Hemanth-5400"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 referrerpolicy="no-referrer"
+                 onclick="return openExternalLink(event, 'https://github.com/Hemanth-5400')"
+                 class="btn btn-github">
                 <i class="fab fa-github"></i> GitHub
               </a>
-              <a href="https://wa.me/917569330584?text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 referrerpolicy="no-referrer"
+                 onclick="return openWhatsAppLink(event, '917569330584', 'Hi Hema Prasad, I saw your portfolio and would like to connect!')"
+                 class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> WhatsApp
               </a>
-              <button class="btn btn-ai" onclick="toggleAIChat()">
+              <button type="button" class="btn btn-ai" onclick="toggleAIChat()">
                 <i class="fas fa-robot"></i> Interactive AI
               </button>
             </div>
@@ -1322,7 +1441,12 @@
               <p class="card-desc">Author & Presenter: "A Review of Gesture-Based Wireless Pen Interfaces for Human-Computer Interaction: Sensors, Algorithms, and Applications".</p>
             </div>
             <div class="tag-list">
-              <a href="https://ieeexplore.ieee.org/document/11400200" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="tag tag-highlight">
+              <a href="https://ieeexplore.ieee.org/document/11400200"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 referrerpolicy="no-referrer"
+                 onclick="event.stopPropagation(); return openExternalLink(event, 'https://ieeexplore.ieee.org/document/11400200')"
+                 class="tag tag-highlight">
                 View on IEEE Xplore &rarr;
               </a>
             </div>
@@ -1598,7 +1722,7 @@
             <h3><i class="fas fa-code"></i> Hardware Description Languages</h3>
             <div class="tag-list">
               <span class="tag" onclick="openTechModal('verilog')">Verilog HDL</span>
-              <span class="tag" onclick="openTechModal('systemverilog')">SystemVerilog</span>
+              <span class="tag" onclick="openTechModal('verilog')">SystemVerilog</span>
             </div>
           </div>
 
@@ -1844,9 +1968,30 @@
         <h3 style="color: var(--text); margin-bottom: 0.6rem; font-size: 1.4rem;">Dogga Hema Prasad</h3>
         <p style="margin-bottom: 1.4rem; color: var(--text-muted);">Visakhapatnam, India • doggahemant@gmail.com • +91 7569330584</p>
         <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
-          <a href="https://wa.me/917569330584" target="_blank" rel="noopener noreferrer" style="color: var(--whatsapp); font-size: 1.4rem;"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-size: 1.4rem;"><i class="fab fa-linkedin"></i></a>
-          <a href="https://github.com/Hemanth-5400" target="_blank" rel="noopener noreferrer" style="color: var(--text); font-size: 1.4rem;"><i class="fab fa-github"></i></a>
+          <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+             target="_blank"
+             rel="noopener noreferrer"
+             referrerpolicy="no-referrer"
+             onclick="return openWhatsAppLink(event, '917569330584', 'Hi Hema Prasad, I saw your portfolio and would like to connect!')"
+             style="color: var(--whatsapp); font-size: 1.4rem;">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/dogga-hema-prasad-a35258287/"
+             target="_blank"
+             rel="noopener noreferrer"
+             referrerpolicy="no-referrer"
+             onclick="return openExternalLink(event, 'https://www.linkedin.com/in/dogga-hema-prasad-a35258287/')"
+             style="color: var(--primary); font-size: 1.4rem;">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/Hemanth-5400"
+             target="_blank"
+             rel="noopener noreferrer"
+             referrerpolicy="no-referrer"
+             onclick="return openExternalLink(event, 'https://github.com/Hemanth-5400')"
+             style="color: var(--text); font-size: 1.4rem;">
+            <i class="fab fa-github"></i>
+          </a>
         </div>
         <p style="font-size: 0.82rem; color: var(--primary); font-family: var(--font-mono);">&copy; 2026 Dogga Hema Prasad. Built with Clean Semantic Architecture.</p>
       </div>
@@ -1870,7 +2015,13 @@
   </div>
 
   <div class="floating-corner-dock">
-    <a href="https://wa.me/917569330584" target="_blank" rel="noopener noreferrer" class="float-dock-btn dock-whatsapp" title="Chat on WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
+       target="_blank"
+       rel="noopener noreferrer"
+       referrerpolicy="no-referrer"
+       onclick="return openWhatsAppLink(event, '917569330584', 'Hi Hema Prasad, I saw your portfolio and would like to connect!')"
+       class="float-dock-btn dock-whatsapp"
+       title="Chat on WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
     <button class="float-dock-btn dock-ai" onclick="toggleAIChat()" title="AI Portfolio Assistant">
@@ -1903,6 +2054,33 @@
   </div>
 
   <script>
+    /* UNBLOCKED EXTERNAL LINK & WHATSAPP HANDLERS */
+    function openExternalLink(event, url) {
+      if (event) event.preventDefault();
+      const newWin = window.open(url, '_blank', 'noopener,noreferrer');
+      if (!newWin || newWin.closed || typeof newWin.closed === 'undefined') {
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = url;
+        tempAnchor.target = '_blank';
+        tempAnchor.rel = 'noopener noreferrer';
+        tempAnchor.referrerPolicy = 'no-referrer';
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        document.body.removeChild(tempAnchor);
+      }
+      return false;
+    }
+
+    function openWhatsAppLink(event, phone, message) {
+      if (event) event.preventDefault();
+      const encodedMsg = encodeURIComponent(message || '');
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const url = isMobile
+        ? `https://wa.me/${phone}?text=${encodedMsg}`
+        : `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMsg}`;
+      return openExternalLink(null, url);
+    }
+
     const techDossier = {
       mriirs_edu: {
         title: "B.Tech in ECE (AIoT)",
@@ -2351,7 +2529,6 @@
       const modalOverlay = document.getElementById('techModalOverlay');
       modalOverlay.style.display = 'flex';
       
-      // Use small timeout to allow display:flex to apply before adding class for opacity transition
       setTimeout(() => {
         modalOverlay.classList.add('active');
       }, 10);
@@ -2402,7 +2579,7 @@
       });
     });
 
-    /* REVERTED TO PREVIOUS PARTICLE CANVAS ANIMATION */
+    /* ===== EXACT REQUESTED PARTICLE CANVAS ANIMATION ===== */
     const canvas = document.getElementById('pcb-canvas');
     const ctx = canvas.getContext('2d');
     let width, height;
@@ -2425,7 +2602,7 @@
 
       ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
-      // Reverted to completely random particle generation
+      // Completely random particle generation with smooth movement
       particles = Array.from(
         { length: Math.min(100, Math.floor((width * height) / 10000)) },
         () => ({
@@ -2452,7 +2629,7 @@
       ctx.fillStyle = grad;
       ctx.fillRect(mouse.x - glowRadius, mouse.y - glowRadius, glowRadius * 2, glowRadius * 2);
 
-      // Reverted to straight line connection between close particles
+      // Straight line connection between close particles
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
