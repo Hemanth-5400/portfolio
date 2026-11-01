@@ -1052,6 +1052,31 @@
       background: rgba(16, 185, 129, 0.12);
     }
 
+    /* 1Hz Auto-Clock Pulse Button */
+    .auto-clk-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      background: rgba(3, 7, 18, 0.9);
+      border: 1px solid rgba(251, 191, 36, 0.45);
+      color: var(--accent);
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 2px;
+    }
+
+    .auto-clk-btn.active {
+      background: rgba(16, 185, 129, 0.22);
+      border-color: var(--green);
+      color: #34d399;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.45);
+    }
+
     .gate-symbol-box {
       display: flex;
       flex-direction: column;
@@ -1268,7 +1293,7 @@
       border: 1px solid rgba(0, 240, 255, 0.4);
       cursor: pointer;
       text-decoration: none;
-      transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+      transition: transform 0.25s, box-shadow 0.25s, background 0.25s, opacity 0.3s;
       position: relative;
     }
     
@@ -1279,6 +1304,27 @@
       background: var(--primary);
       color: #030712;
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.7);
+    }
+
+    .dock-scroll-top {
+      color: var(--primary);
+      border-color: rgba(0, 240, 255, 0.55);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(15px) scale(0.8);
+    }
+
+    .dock-scroll-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .dock-scroll-top.visible:hover {
+      transform: scale(1.15);
+      background: var(--primary);
+      color: #030712;
+      box-shadow: 0 0 32px rgba(0, 240, 255, 0.85);
     }
 
     .dock-whatsapp {
@@ -1403,6 +1449,41 @@
 
     .tech-spec-label { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
     .tech-spec-val { color: var(--primary-light); font-weight: 600; font-family: var(--font-mono); font-size: 0.85rem; }
+
+    /* Modal Left/Right Keyboard & Button Navigation Footer */
+    .modal-nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(0, 240, 255, 0.18);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .modal-nav-btn {
+      background: rgba(0, 240, 255, 0.08);
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      color: var(--primary-light);
+      padding: 0.45rem 0.95rem;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s;
+    }
+
+    .modal-nav-btn:hover {
+      background: var(--primary);
+      color: #030712;
+      font-weight: 700;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+    }
 
     .ai-modal {
       position: fixed;
@@ -2163,6 +2244,9 @@
                 <div class="io-node" id="wrapB">
                     <span style="font-family:var(--font-mono); color:var(--text-muted);" id="labelB">INPUT B</span>
                     <button class="toggle-btn" id="btnB" onclick="toggle('B')">0</button>
+                    <button type="button" class="auto-clk-btn" id="btnAutoClk" onclick="toggleAutoClock()">
+                      <i class="fas fa-clock"></i> <span id="autoClkText">Auto-CLK: OFF</span>
+                    </button>
                 </div>
 
                 <div class="gate-symbol-box">
@@ -2338,7 +2422,7 @@
     </footer>
   </div>
 
-  <!-- POPUP MODALS -->
+  <!-- POPUP MODALS (WITH LEFT/RIGHT ARROW KEYBOARD NAVIGATION) -->
   <div class="modal-overlay" id="techModalOverlay" onclick="closeTechModal(event)">
     <div class="tech-modal-card" id="techModalCard" onclick="event.stopPropagation()">
       <button class="modal-close-btn" onclick="closeTechModal()"><i class="fas fa-times"></i></button>
@@ -2351,10 +2435,22 @@
       </div>
       <div class="tech-modal-body" id="modalDescription">Detailed technical breakdown will appear here.</div>
       <div class="tech-spec-grid" id="modalSpecs"></div>
+      <div class="modal-nav-footer">
+        <button type="button" class="modal-nav-btn" onclick="navigateTechModal(-1)" title="Previous (Left Arrow Key)">
+          <i class="fas fa-arrow-left"></i> Prev
+        </button>
+        <span id="modalIndexIndicator">Use ← / → keys</span>
+        <button type="button" class="modal-nav-btn" onclick="navigateTechModal(1)" title="Next (Right Arrow Key)">
+          Next <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="floating-corner-dock">
+    <button type="button" class="float-dock-btn dock-scroll-top" id="scrollTopBtn" onclick="scrollToTopPage()" title="Scroll to Top" aria-label="Scroll to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
     <a href="https://api.whatsapp.com/send?phone=917569330584&text=Hi%20Hema%20Prasad,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!"
        target="_blank"
        rel="noopener noreferrer"
@@ -2394,6 +2490,11 @@
   </div>
 
   <script>
+    /* ===== SMOOTH SCROLL TO TOP HANDLER ===== */
+    function scrollToTopPage() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     /* ===== MOBILE HAMBURGER MENU TOGGLE ===== */
     function toggleMobileMenu() {
       const menu = document.getElementById('navLinksMenu');
@@ -2482,7 +2583,7 @@
     }
     runBadgeTypewriter();
 
-    /* ===== TOP NEON SCROLL PROGRESS TRACKER & SCROLL-SPY NAVBAR HIGHLIGHTING ===== */
+    /* ===== TOP NEON SCROLL PROGRESS TRACKER, SCROLL-TO-TOP VISIBILITY & SCROLL-SPY NAVBAR ===== */
     const navLinksAll = document.querySelectorAll('.nav-links a');
     const trackedSections = Array.from(navLinksAll).map(link => {
       const id = link.getAttribute('href').substring(1);
@@ -2495,6 +2596,11 @@
       const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
       const bar = document.getElementById('scrollProgressBar');
       if (bar) bar.style.width = `${pct}%`;
+
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      if (scrollTopBtn) {
+        scrollTopBtn.classList.toggle('visible', scrollTop > 350);
+      }
 
       let currentActiveId = '';
       const triggerLine = window.innerHeight * 0.32;
@@ -2854,13 +2960,24 @@
           { label: "Modules", val: "ESP32, ESP8266" }
         ]
       },
-      jetson_nano: {
-        title: "Jetson Nano",
-        category: "Edge AI",
-        icon: "fas fa-brain",
-        desc: "Deep learning inference and edge AI implementation on Nvidia Jetson Nano.",
+      esp32_cam: {
+        title: "IoT & Embedded Systems Projects",
+        category: "Vision IoT & Embedded Hardware",
+        icon: "fas fa-wifi",
+        desc: "IoT Smart Shopping Cart using ESP32 (2025), IoT Smart Boat for farmers using ESP32-CAM (2024), Prenatal Monitoring System, Mobile Safety Tracking System, and ESP8266 Smart Switch.",
         specs: [
-          { label: "Platform", val: "Nvidia Jetson Nano" }
+          { label: "Modules", val: "ESP32, ESP32-CAM, ESP8266" },
+          { label: "Period", val: "2024 – 2025" }
+        ]
+      },
+      jetson_nano: {
+        title: "Deep Learning Fruit Sorting System (Jetson Nano)",
+        category: "Edge AI & Industrial PLC Automation",
+        icon: "fas fa-brain",
+        desc: "Integrated Nvidia Jetson Nano deep learning inference with Mitsubishi FX5U PLC control to build an automated pneumatic sorting system (National Finalist, 6th Mitsubishi Electric Cup).",
+        specs: [
+          { label: "Platform", val: "Nvidia Jetson Nano + Mitsubishi PLC" },
+          { label: "Award", val: "National Finalist • 6th Mitsubishi Electric Cup" }
         ]
       },
       fpga: {
@@ -2999,14 +3116,24 @@
       }
     };
 
+    const techDossierKeys = Object.keys(techDossier);
+    let currentModalKey = null;
+
     function openTechModal(key) {
       const data = techDossier[key];
       if (!data) return;
+      currentModalKey = key;
 
       document.getElementById('modalTitle').innerHTML = data.title;
       document.getElementById('modalCategory').innerText = data.category;
       document.getElementById('modalDescription').innerHTML = data.desc;
       document.getElementById('modalIcon').innerHTML = `<i class="${data.icon}"></i>`;
+
+      const idx = techDossierKeys.indexOf(key);
+      const indEl = document.getElementById('modalIndexIndicator');
+      if (indEl && idx !== -1) {
+        indEl.innerText = `${idx + 1} / ${techDossierKeys.length} (← / → keys)`;
+      }
 
       let specsHtml = '';
       if (data.specs) {
@@ -3029,6 +3156,14 @@
       }, 10);
     }
 
+    function navigateTechModal(dir) {
+      if (!currentModalKey) return;
+      const curIdx = techDossierKeys.indexOf(currentModalKey);
+      if (curIdx === -1) return;
+      const nextIdx = (curIdx + dir + techDossierKeys.length) % techDossierKeys.length;
+      openTechModal(techDossierKeys[nextIdx]);
+    }
+
     function closeTechModal(e) {
       if (!e || e.target.id === 'techModalOverlay' || e.target.closest('.modal-close-btn')) {
         const modalOverlay = document.getElementById('techModalOverlay');
@@ -3043,9 +3178,17 @@
     }
 
     document.addEventListener('keydown', (e) => {
+      const modalOverlay = document.getElementById('techModalOverlay');
+      const isModalOpen = modalOverlay && modalOverlay.classList.contains('active');
       if (e.key === 'Escape') {
         closeTechModal({target: {id: 'techModalOverlay'}});
         document.getElementById('aiModal').classList.remove('active');
+      } else if (isModalOpen && e.key === 'ArrowRight') {
+        e.preventDefault();
+        navigateTechModal(1);
+      } else if (isModalOpen && e.key === 'ArrowLeft') {
+        e.preventDefault();
+        navigateTechModal(-1);
       }
     });
 
@@ -3186,7 +3329,7 @@
     resizeCanvas();
     animateBackground();
 
-    /* ===== SIMULATOR ENGINE WITH CHARACTERISTIC TRUTH TABLES & EXCITATION TABLES ===== */
+    /* ===== SIMULATOR ENGINE WITH 1Hz AUTO-CLOCK OSCILLATOR & TRUTH/EXCITATION TABLES ===== */
     let currentCategory = 'combinational';
     let currentKey = 'AND';
     let seqTableMode = 'char';
@@ -3194,6 +3337,26 @@
     let simK = 0;
     let simB = 0;
     let seqStateQ = 0;
+    let autoClkTimer = null;
+
+    function toggleAutoClock() {
+      const btn = document.getElementById('btnAutoClk');
+      const txt = document.getElementById('autoClkText');
+      if (autoClkTimer) {
+        clearInterval(autoClkTimer);
+        autoClkTimer = null;
+        btn.classList.remove('active');
+        txt.innerText = 'Auto-CLK: OFF';
+      } else {
+        btn.classList.add('active');
+        txt.innerText = 'Auto-CLK: 1Hz ON';
+        autoClkTimer = setInterval(() => {
+          if (currentCategory === 'sequential') {
+            toggle('B');
+          }
+        }, 500);
+      }
+    }
 
     const combinationalGates = {
       'AND':  { label: 'AND Gate',  type: 'comb', expr: 'Y = A · B' },
@@ -3301,6 +3464,7 @@
       const wrapK = document.getElementById('wrapK');
       const wrapB = document.getElementById('wrapB');
       const modeSwitch = document.getElementById('seqTableModeSwitch');
+      const autoClkBtn = document.getElementById('btnAutoClk');
       if (currentCategory === 'combinational') {
         document.getElementById('labelA').innerText = 'INPUT A';
         document.getElementById('labelB').innerText = 'INPUT B';
@@ -3308,6 +3472,8 @@
         wrapK.style.display = 'none';
         wrapB.style.display = currentKey === 'NOT' ? 'none' : 'flex';
         modeSwitch.style.display = 'none';
+        autoClkBtn.style.display = 'none';
+        if (autoClkTimer) toggleAutoClock();
       } else {
         const item = sequentialElements[currentKey];
         document.getElementById('labelA').innerText = item.in1Label;
@@ -3315,6 +3481,7 @@
         document.getElementById('labelY').innerText = 'OUTPUT Q';
         wrapB.style.display = 'flex';
         modeSwitch.style.display = 'flex';
+        autoClkBtn.style.display = 'inline-flex';
         if (item.dualInput) {
           wrapK.style.display = 'flex';
           document.getElementById('labelK').innerText = item.in2Label;
